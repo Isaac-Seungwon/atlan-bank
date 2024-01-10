@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--라이브러리 참조 : Thymeleaf & Thymeleaf Layout -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <!--공통 JS / CSS 영역을 관리하는 환경 영역-->
+        <title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">AtlanBank</title>
+        <th:block layout:fragment="head">
+            <link th:replace="common/fragments/asset :: ConfigFragment"/>
+        </th:block>
+    </head>
+
+    <body>
+        <!--Header 영역을 참조합니다.-->
+        <header th:replace="common/fragments/header :: HeaderFragment"></header>
+    
+        <!--Content 내용 영역을 참조합니다-->
+        <th:block layout:fragment="Content"></th:block>
+    
+        <!--Footer 영역을 참조합니다.-->
+        <footer th:replace="common/fragments/footer :: FooterFragment"></footer>
+    </body>
+</html>
+
