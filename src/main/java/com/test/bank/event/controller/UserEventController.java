@@ -12,23 +12,11 @@ public class UserEventController {
 
 	@Autowired
 	private EventService service;
-
-	@GetMapping(value="/news.do")
-	public String news(Model model) {
-		
-		return "user/news/view";
-	}
 	
 	@GetMapping(value="/event.do")
 	public String event(Model model) {
 		
 		return "user/event/view";
-	}
-
-	@GetMapping(value="/benefit.do")
-	public String benefit(Model model) {
-		
-		return "user/benefit/view";
 	}
 
 }
