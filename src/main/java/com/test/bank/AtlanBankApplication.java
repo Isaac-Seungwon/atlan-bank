@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan(basePackages = "com.test.bank.news.mapper")
 @MapperScan(basePackages = "com.test.bank.member.mapper")
 @MapperScan(basePackages = "com.test.bank.ticket.mapper")
+@MapperScan(basePackages = "com.test.bank.forex.mapper")
 public class AtlanBankApplication {
 
 	public static void main(String[] args) {
