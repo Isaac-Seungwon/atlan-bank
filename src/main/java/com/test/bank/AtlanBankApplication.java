@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.test.bank.event.mapper")
+@MapperScan(basePackages = "com.test.bank.benefit.mapper")
+@MapperScan(basePackages = "com.test.bank.news.mapper")
 @MapperScan(basePackages = "com.test.bank.member.mapper")
 @MapperScan(basePackages = "com.test.bank.ticket.mapper")
 public class AtlanBankApplication {
