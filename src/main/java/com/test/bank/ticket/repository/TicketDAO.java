@@ -1,5 +1,14 @@
 package com.test.bank.ticket.repository;
 
-public interface TicketDAO {
+import java.util.List;
 
+import com.test.bank.ticket.domain.BankDTO;
+
+public interface TicketDAO {
+	
+	int connectionTest();
+	
+	List<BankDTO> bankList();
+
+	List<BankDTO> bankOne(String location);
 }
