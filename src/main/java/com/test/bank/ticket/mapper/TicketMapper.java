@@ -1,5 +1,15 @@
 package com.test.bank.ticket.mapper;
 
-public interface TicketMapper {
+import java.util.List;
 
+import com.test.bank.ticket.domain.BankDTO;
+
+public interface TicketMapper {
+	
+	int connectionTest();
+	
+	List<BankDTO> bankList();
+	
+	List<BankDTO> bankOne(String location);
+	
 }
