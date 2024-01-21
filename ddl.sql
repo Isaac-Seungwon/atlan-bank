@@ -164,8 +164,8 @@ CREATE TABLE tblFranchise (
 /* 소식 테이블 */
 CREATE TABLE tblNews (
     news_seq NUMBER PRIMARY KEY, /* 소식번호 */
-    name VARCHAR2(100) NOT NULL, /* 소식명 */
-    content VARCHAR2(2000) NOT NULL, /* 소식내용 */ 
+    name VARCHAR2(200) NOT NULL, /* 소식명 */
+    content VARCHAR2(1000) NOT NULL, /* 소식내용 */ 
     img VARCHAR2(100), /* 소식이미지 */
     regdate DATE DEFAULT TRUNC(SYSDATE) NOT NULL, /* 작성시각 */
     hits_count NUMBER DEFAULT 0 NOT NULL /* 조회수 */
@@ -174,11 +174,10 @@ CREATE TABLE tblNews (
 /* 이벤트 테이블 */
 CREATE TABLE tblEvent (
     event_seq NUMBER PRIMARY KEY, /* 이벤트번호 */
-    name VARCHAR2(100) NOT NULL, /* 이벤트명 */
-    content VARCHAR2(2000) NOT NULL, /* 이벤트내용 */
+    name VARCHAR2(200) NOT NULL, /* 이벤트명 */
+    content VARCHAR2(1000), /* 이벤트내용 */
     img VARCHAR2(100), /* 이벤트이미지 */
-    target VARCHAR2(500) NOT NULL, /* 이벤트대상 */
-    caution VARCHAR2(500) NOT NULL, /* 유의사항 */
+    caution VARCHAR2(1000) NOT NULL, /* 유의사항 */
     start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 이벤트시작시간 */
     end_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '30' DAY + INTERVAL '16' HOUR NOT NULL, /* 이벤트종료시간 */
     is_complete NUMBER DEFAULT 0 NOT NULL, /* 완료여부(0: 진행, 1: 완료) */ 
@@ -200,8 +199,8 @@ CREATE TABLE tblEventParticipation (
 /* 혜택 테이블 */
 CREATE TABLE tblBenefit (
     benefit_seq NUMBER PRIMARY KEY, /* 혜택번호 */
-    name VARCHAR2(100) NOT NULL, /* 혜택명 */
-    content VARCHAR2(2000) NOT NULL, /* 혜택정보 */
+    name VARCHAR2(200) NOT NULL, /* 혜택명 */
+    content VARCHAR2(1000) NOT NULL, /* 혜택정보 */
     img VARCHAR2(100), /* 혜택이미지 */
     start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 혜택시작시간 */
     end_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '30' DAY + INTERVAL '16' HOUR NOT NULL, /* 혜택종료시간 */
