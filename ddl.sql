@@ -6,42 +6,42 @@ GRANT CONNECT, resource, dba TO atlanbank;
 -- DELETE TABLE
 DELETE FROM tblBankFavorite;
 DELETE FROM tblTicketWaitingStatus;
-DELETE FROM tblMember;
 DELETE FROM tblWorkDoc;
 DELETE FROM tblBankWork;
 DELETE FROM tblDetailWork;
 DELETE FROM tblDoc;
 DELETE FROM tblBank;
 DELETE FROM tblWork;
-DELETE FROM tblFranchise;
-DELETE FROM tblNews;
-DELETE FROM tblEvent;
 DELETE FROM tblEventParticipation;
-DELETE FROM tblBenefit;
 DELETE FROM tblCheckAttendance;
 DELETE FROM tblComment;
+DELETE FROM tblNews;
+DELETE FROM tblEvent;
+DELETE FROM tblBenefit;
+DELETE FROM tblFranchise;
+DELETE FROM tblMember;
+
 
 -- DROP TABLE
 DROP TABLE tblBankFavorite;
 DROP TABLE tblTicketWaitingStatus;
-DROP TABLE tblMember;
 DROP TABLE tblWorkDoc;
 DROP TABLE tblBankWork;
 DROP TABLE tblDetailWork;
 DROP TABLE tblDoc;
 DROP TABLE tblBank;
 DROP TABLE tblWork;
-DROP TABLE tblFranchise;
-DROP TABLE tblNews;
-DROP TABLE tblEvent;
 DROP TABLE tblEventParticipation;
-DROP TABLE tblBenefit;
 DROP TABLE tblCheckAttendance;
 DROP TABLE tblComment;
+DROP TABLE tblNews;
+DROP TABLE tblEvent;
+DROP TABLE tblBenefit;
+DROP TABLE tblFranchise;
+DROP TABLE tblMember;
 
 
 -- DROP SEQUENCE
-DROP SEQUENCE member_seq;
 DROP SEQUENCE bank_seq;
 DROP SEQUENCE work_seq;
 DROP SEQUENCE detail_work_seq;
@@ -50,13 +50,14 @@ DROP SEQUENCE doc_seq;
 DROP SEQUENCE work_doc_seq;
 DROP SEQUENCE bank_favorite_seq;
 DROP SEQUENCE ticket_waiting_status_seq;
-DROP SEQUENCE franchise_seq;
-DROP SEQUENCE news_seq;
-DROP SEQUENCE event_seq;
 DROP SEQUENCE eventparticipation_seq;
-DROP SEQUENCE benefit_seq;
 DROP SEQUENCE checkAttendance_seq;
 DROP SEQUENCE comment_seq;
+DROP SEQUENCE news_seq;
+DROP SEQUENCE event_seq;
+DROP SEQUENCE benefit_seq;
+DROP SEQUENCE franchise_seq;
+DROP SEQUENCE member_seq;
 
 
 -- CREATE TABLE
@@ -156,7 +157,6 @@ CREATE TABLE tblTicketWaitingStatus (
 CREATE TABLE tblFranchise (
 	franchise_seq NUMBER PRIMARY KEY, /* 가맹점번호 */
     name VARCHAR2(100) NOT NULL, /* 가맹점명 */
-    info VARCHAR2(500) NOT NULL, /* 가맹점정보 */ 
 	img VARCHAR2(100) NOT NULL, /* 가맹점이미지 */
 	tel VARCHAR2(100) NOT NULL /* 가맹점연락처 */
 );
