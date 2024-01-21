@@ -157,7 +157,7 @@ CREATE TABLE tblTicketWaitingStatus (
 CREATE TABLE tblFranchise (
 	franchise_seq NUMBER PRIMARY KEY, /* 가맹점번호 */
     name VARCHAR2(100) NOT NULL, /* 가맹점명 */
-	img VARCHAR2(100) NOT NULL, /* 가맹점이미지 */
+	img VARCHAR2(100), /* 가맹점이미지 */
 	tel VARCHAR2(100) NOT NULL /* 가맹점연락처 */
 );
 
@@ -165,22 +165,18 @@ CREATE TABLE tblFranchise (
 CREATE TABLE tblNews (
     news_seq NUMBER PRIMARY KEY, /* 소식번호 */
     name VARCHAR2(100) NOT NULL, /* 소식명 */
-    info VARCHAR2(500) NOT NULL, /* 소식정보 */ 
-    type VARCHAR2(100) NOT NULL, /* 소식종류 */
-    img VARCHAR2(100) NOT NULL, /* 소식이미지 */
-    regdate DATE DEFAULT SYSDATE NOT NULL, /* 작성시각 */
-    hits_count NUMBER DEFAULT 0 NOT NULL, /* 조회수 */
-    franchise_seq NUMBER, /* 가맹점번호 */
-    FOREIGN KEY (franchise_seq) REFERENCES tblFranchise(franchise_seq)
+    content VARCHAR2(2000) NOT NULL, /* 소식내용 */ 
+    img VARCHAR2(100), /* 소식이미지 */
+    regdate DATE DEFAULT TRUNC(SYSDATE) NOT NULL, /* 작성시각 */
+    hits_count NUMBER DEFAULT 0 NOT NULL /* 조회수 */
 );
 
 /* 이벤트 테이블 */
 CREATE TABLE tblEvent (
     event_seq NUMBER PRIMARY KEY, /* 이벤트번호 */
     name VARCHAR2(100) NOT NULL, /* 이벤트명 */
-    info VARCHAR2(500) NOT NULL, /* 이벤트정보 */ 
-    type VARCHAR2(100) NOT NULL, /* 이벤트종류 */
-    img VARCHAR2(100) NOT NULL, /* 이벤트이미지 */
+    content VARCHAR2(2000) NOT NULL, /* 이벤트내용 */
+    img VARCHAR2(100), /* 이벤트이미지 */
     target VARCHAR2(500) NOT NULL, /* 이벤트대상 */
     caution VARCHAR2(500) NOT NULL, /* 유의사항 */
     start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 이벤트시작시간 */
@@ -205,7 +201,8 @@ CREATE TABLE tblEventParticipation (
 CREATE TABLE tblBenefit (
     benefit_seq NUMBER PRIMARY KEY, /* 혜택번호 */
     name VARCHAR2(100) NOT NULL, /* 혜택명 */
-    info VARCHAR2(500) NOT NULL, /* 혜택정보 */ 
+    content VARCHAR2(2000) NOT NULL, /* 혜택정보 */
+    img VARCHAR2(100), /* 혜택이미지 */
     start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 혜택시작시간 */
     end_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '30' DAY + INTERVAL '16' HOUR NOT NULL, /* 혜택종료시간 */
     franchise_seq NUMBER, /* 가맹점번호 */
