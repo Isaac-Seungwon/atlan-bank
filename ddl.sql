@@ -13,7 +13,13 @@ DELETE FROM tblDetailWork;
 DELETE FROM tblDoc;
 DELETE FROM tblBank;
 DELETE FROM tblWork;
-
+DELETE FROM tblFranchise;
+DELETE FROM tblNews;
+DELETE FROM tblEvent;
+DELETE FROM tblEventParticipation;
+DELETE FROM tblBenefit;
+DELETE FROM tblCheckAttendance;
+DELETE FROM tblComment;
 
 -- DROP TABLE
 DROP TABLE tblBankFavorite;
@@ -25,6 +31,13 @@ DROP TABLE tblDetailWork;
 DROP TABLE tblDoc;
 DROP TABLE tblBank;
 DROP TABLE tblWork;
+DROP TABLE tblFranchise;
+DROP TABLE tblNews;
+DROP TABLE tblEvent;
+DROP TABLE tblEventParticipation;
+DROP TABLE tblBenefit;
+DROP TABLE tblCheckAttendance;
+DROP TABLE tblComment;
 
 
 -- DROP SEQUENCE
@@ -37,6 +50,13 @@ DROP SEQUENCE doc_seq;
 DROP SEQUENCE work_doc_seq;
 DROP SEQUENCE bank_favorite_seq;
 DROP SEQUENCE ticket_waiting_status_seq;
+DROP SEQUENCE franchise_seq;
+DROP SEQUENCE news_seq;
+DROP SEQUENCE event_seq;
+DROP SEQUENCE eventparticipation_seq;
+DROP SEQUENCE benefit_seq;
+DROP SEQUENCE checkAttendance_seq;
+DROP SEQUENCE comment_seq;
 
 
 -- CREATE TABLE
@@ -48,7 +68,7 @@ CREATE TABLE tblMember (
 	pw VARCHAR2(500) not null, /* 비밀번호 */
 	RRN VARCHAR2(500) not null, /* 주민등록번호 */
 	transfer_limit VARCHAR2(500) not null, /* 이체한도 */
-	tel VARCHAR2(500) not null, /* 전화번호 */
+	tel VARCHAR2(100) not null, /* 전화번호 */
 	email VARCHAR2(500) not null, /* 이메일 */
 	zipcode VARCHAR2(500) not null, /* 우편번호 */
 	address VARCHAR2(500) DEFAULT '미기재' not null, /* 주소 */
@@ -65,11 +85,10 @@ CREATE TABLE tblBank (
     lat NUMBER not null, /* 위도 */
     lng NUMBER not null, /* 경도 */
     start_date DATE DEFAULT TO_DATE('09:00', 'HH24:MI') not null, /* 영업시작시간*/
-    end_date DATE DEFAULT TO_DATE('16:00', 'HH24:MI') not null, /*영업종료시간*/
+    end_date DATE DEFAULT TO_DATE('16:00', 'HH24:MI') not null, /* 영업종료시간*/
     type NUMBER DEFAULT 1 not null, /* 지점유형(1: 지점, 2: ATM)*/
     tel VARCHAR2(100) not null /* 전화번호 */
 );
-
 
 /* 업무 테이블 */
 CREATE TABLE tblWork (
@@ -86,7 +105,6 @@ CREATE TABLE tblDetailWork (
     FOREIGN KEY (work_seq) REFERENCES tblWork(work_seq)
 );
 
-
 /* 은행 별 업무 테이블 */
 CREATE TABLE tblBankWork (
     bank_work_seq NUMBER PRIMARY KEY, /* 은행별업무번호 */
@@ -96,13 +114,11 @@ CREATE TABLE tblBankWork (
     FOREIGN KEY (work_seq) REFERENCES tblWork(work_seq)
 );
 
-
 /* 서류 테이블 */
 CREATE TABLE tblDoc (
     doc_seq NUMBER PRIMARY KEY, /* 서류번호 */
     doc_name VARCHAR(200) not null /* 서류명 */
 );
-
 
 /* 업무 별 서류 테이블 */
 CREATE TABLE tblWorkDoc (
@@ -137,25 +153,88 @@ CREATE TABLE tblTicketWaitingStatus (
 );
 
 /* 가맹점 테이블 */
-
+CREATE TABLE tblFranchise (
+	franchise_seq NUMBER PRIMARY KEY, /* 가맹점번호 */
+    name VARCHAR2(100) NOT NULL, /* 가맹점명 */
+    info VARCHAR2(500) NOT NULL, /* 가맹점정보 */ 
+	img VARCHAR2(100) NOT NULL, /* 가맹점이미지 */
+	tel VARCHAR2(100) NOT NULL /* 가맹점연락처 */
+);
 
 /* 소식 테이블 */
-
+CREATE TABLE tblNews (
+    news_seq NUMBER PRIMARY KEY, /* 소식번호 */
+    name VARCHAR2(100) NOT NULL, /* 소식명 */
+    info VARCHAR2(500) NOT NULL, /* 소식정보 */ 
+    type VARCHAR2(100) NOT NULL, /* 소식종류 */
+    img VARCHAR2(100) NOT NULL, /* 소식이미지 */
+    regdate DATE DEFAULT SYSDATE NOT NULL, /* 작성시각 */
+    hits_count NUMBER DEFAULT 0 NOT NULL, /* 조회수 */
+    franchise_seq NUMBER, /* 가맹점번호 */
+    FOREIGN KEY (franchise_seq) REFERENCES tblFranchise(franchise_seq)
+);
 
 /* 이벤트 테이블 */
+CREATE TABLE tblEvent (
+    event_seq NUMBER PRIMARY KEY, /* 이벤트번호 */
+    name VARCHAR2(100) NOT NULL, /* 이벤트명 */
+    info VARCHAR2(500) NOT NULL, /* 이벤트정보 */ 
+    type VARCHAR2(100) NOT NULL, /* 이벤트종류 */
+    img VARCHAR2(100) NOT NULL, /* 이벤트이미지 */
+    target VARCHAR2(500) NOT NULL, /* 이벤트대상 */
+    caution VARCHAR2(500) NOT NULL, /* 유의사항 */
+    start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 이벤트시작시간 */
+    end_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '30' DAY + INTERVAL '16' HOUR NOT NULL, /* 이벤트종료시간 */
+    is_complete NUMBER DEFAULT 0 NOT NULL, /* 완료여부(0: 진행, 1: 완료) */ 
+    hits_count NUMBER DEFAULT 0 NOT NULL, /* 조회수 */
+    franchise_seq NUMBER, /* 가맹점번호 */
+    FOREIGN KEY (franchise_seq) REFERENCES tblFranchise(franchise_seq)
+);
 
-
-/* 이벤트 현황 테이블 */
-
+/* 이벤트현황 테이블 */
+CREATE TABLE tblEventParticipation (
+    eventparticipation_seq NUMBER PRIMARY KEY, /* 이벤트현황번호 */
+    regdate DATE DEFAULT SYSDATE NOT NULL, /* 참여시각 */
+    member_seq NUMBER NOT NULL, /* 회원번호 */
+    event_seq NUMBER, /* 이벤트번호 */
+    FOREIGN KEY (member_seq) REFERENCES tblMember(member_seq),
+    FOREIGN KEY (event_seq) REFERENCES tblEvent(event_seq)
+);
 
 /* 혜택 테이블 */
-
+CREATE TABLE tblBenefit (
+    benefit_seq NUMBER PRIMARY KEY, /* 혜택번호 */
+    name VARCHAR2(100) NOT NULL, /* 혜택명 */
+    info VARCHAR2(500) NOT NULL, /* 혜택정보 */ 
+    start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 혜택시작시간 */
+    end_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '30' DAY + INTERVAL '16' HOUR NOT NULL, /* 혜택종료시간 */
+    franchise_seq NUMBER, /* 가맹점번호 */
+    FOREIGN KEY (franchise_seq) REFERENCES tblFranchise(franchise_seq)
+);
 
 /* 출석체크 테이블 */
+CREATE TABLE tblCheckAttendance (
+    checkAttendance_seq NUMBER PRIMARY KEY, /* 출석체크번호 */
+    regdate DATE DEFAULT SYSDATE NOT NULL, /* 참여시각 */
+    point NUMBER NOT NULL, /* 적립포인트 */
+    member_seq NUMBER NOT NULL, /* 회원번호 */
+    FOREIGN KEY (member_seq) REFERENCES tblMember(member_seq)
+);
+
+/* 댓글 테이블 */
+CREATE TABLE tblComment (
+    comment_seq NUMBER PRIMARY KEY, /* 댓글번호 */
+    content VARCHAR2(1000) NOT NULL, /* 댓글내용 */
+    regdate DATE DEFAULT SYSDATE NOT NULL, /* 작성시각 */
+    member_seq NUMBER NOT NULL, /* 회원번호 */
+    news_seq NUMBER NOT NULL, /* 소식번호 */
+    FOREIGN KEY (member_seq) REFERENCES tblMember(member_seq),
+    FOREIGN KEY (news_seq) REFERENCES tblNews(news_seq)
+);
 
 
--- creat SEQUENCE
-CREATE SEQUENCE seqtblMember;
+-- CREATE SEQUENCE
+CREATE SEQUENCE seqtblMember; /* 수정 필요 */
 CREATE SEQUENCE bank_seq;
 CREATE SEQUENCE work_seq;
 CREATE SEQUENCE detail_work_seq;
@@ -164,3 +243,10 @@ CREATE SEQUENCE doc_seq;
 CREATE SEQUENCE work_doc_seq;
 CREATE SEQUENCE bank_favorite_seq;
 CREATE SEQUENCE ticket_waiting_status_seq;
+CREATE SEQUENCE franchise_seq;
+CREATE SEQUENCE news_seq;
+CREATE SEQUENCE event_seq;
+CREATE SEQUENCE eventparticipation_seq;
+CREATE SEQUENCE benefit_seq;
+CREATE SEQUENCE checkAttendance_seq;
+CREATE SEQUENCE comment_seq;
