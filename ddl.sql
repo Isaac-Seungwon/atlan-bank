@@ -1,49 +1,48 @@
 -- ddl
-create user atlanbank identified by admin1234;
-grant connect, resource, dba to atlanbank;
-
--- delete table
-delete from tblBankFavorite;
-delete from tblTicketWaitingStatus;
-delete from tblMember;
-delete from tblWorkDoc;
-delete from tblBankWork;
-delete from tblDetailWork;
-delete from tblDoc;
-delete from tblBank;
-delete from tblWork;
+CREATE USER atlanbank identified BY admin1234;
+GRANT CONNECT, resource, dba TO atlanbank;
 
 
-
--- drop table
-drop table tblBankFavorite;
-drop table tblTicketWaitingStatus;
-drop table tblMember;
-drop table tblWorkDoc;
-drop table tblBankWork;
-drop table tblDetailWork;
-drop table tblDoc;
-drop table tblBank;
-drop table tblWork;
-
+-- DELETE TABLE
+DELETE FROM tblBankFavorite;
+DELETE FROM tblTicketWaitingStatus;
+DELETE FROM tblMember;
+DELETE FROM tblWorkDoc;
+DELETE FROM tblBankWork;
+DELETE FROM tblDetailWork;
+DELETE FROM tblDoc;
+DELETE FROM tblBank;
+DELETE FROM tblWork;
 
 
+-- DROP TABLE
+DROP TABLE tblBankFavorite;
+DROP TABLE tblTicketWaitingStatus;
+DROP TABLE tblMember;
+DROP TABLE tblWorkDoc;
+DROP TABLE tblBankWork;
+DROP TABLE tblDetailWork;
+DROP TABLE tblDoc;
+DROP TABLE tblBank;
+DROP TABLE tblWork;
 
--- drop sequence
-drop sequence seqtblMember;
-drop sequence bank_seq;
-drop sequence work_seq;
-drop sequence detail_work_seq;
-drop sequence bank_work_seq;
-drop sequence doc_seq;
-drop sequence work_doc_seq;
-drop sequence bank_favorite_seq;
-drop sequence ticket_waiting_status_seq;
+
+-- DROP SEQUENCE
+DROP SEQUENCE seqtblMember;
+DROP SEQUENCE bank_seq;
+DROP SEQUENCE work_seq;
+DROP SEQUENCE detail_work_seq;
+DROP SEQUENCE bank_work_seq;
+DROP SEQUENCE doc_seq;
+DROP SEQUENCE work_doc_seq;
+DROP SEQUENCE bank_favorite_seq;
+DROP SEQUENCE ticket_waiting_status_seq;
 
 
--- create table
-create table tblMember (
-	member_seq number primary key, /* 유저번호 */
+-- CREATE TABLE
+/* 회원 테이블 */
+CREATE TABLE tblMember (
+	member_seq NUMBER PRIMARY KEY, /* 유저번호 */
     name VARCHAR2(500) not null, /* 이름 */
     id VARCHAR2(500) not null, /* 아이디 */ 
 	pw VARCHAR2(500) not null, /* 비밀번호 */
@@ -59,8 +58,8 @@ create table tblMember (
 );
 
 /* 지점(은행) 테이블 */
-create table tblBank (
-    bank_seq NUMBER primary key, /* 지점번호 */
+CREATE TABLE tblBank (
+    bank_seq NUMBER PRIMARY KEY, /* 지점번호 */
     bank_name VARCHAR2(500) not null, /* 지점명 */
     bank_address VARCHAR2(1000) not null, /* 주소 */
     lat NUMBER not null, /* 위도 */
@@ -135,20 +134,33 @@ CREATE TABLE tblTicketWaitingStatus (
     FOREIGN KEY (bank_seq) REFERENCES tblBank(bank_seq),
     FOREIGN KEY (detail_work_seq) REFERENCES tblDetailWork(detail_work_seq),
     FOREIGN KEY (member_seq) REFERENCES tblMember(member_seq)
-
 );
 
+/* 가맹점 테이블 */
 
 
--- creat sequence
-create sequence seqtblMember;
-create sequence bank_seq;
-create sequence work_seq;
-create sequence detail_work_seq;
-create sequence bank_work_seq;
-create sequence doc_seq;
-create sequence work_doc_seq;
-create sequence bank_favorite_seq;
-create sequence ticket_waiting_status_seq;
+/* 소식 테이블 */
 
 
+/* 이벤트 테이블 */
+
+
+/* 이벤트 현황 테이블 */
+
+
+/* 혜택 테이블 */
+
+
+/* 출석체크 테이블 */
+
+
+-- creat SEQUENCE
+CREATE SEQUENCE seqtblMember;
+CREATE SEQUENCE bank_seq;
+CREATE SEQUENCE work_seq;
+CREATE SEQUENCE detail_work_seq;
+CREATE SEQUENCE bank_work_seq;
+CREATE SEQUENCE doc_seq;
+CREATE SEQUENCE work_doc_seq;
+CREATE SEQUENCE bank_favorite_seq;
+CREATE SEQUENCE ticket_waiting_status_seq;
