@@ -41,7 +41,7 @@ DROP TABLE tblComment;
 
 
 -- DROP SEQUENCE
-DROP SEQUENCE seqtblMember;
+DROP SEQUENCE member_seq;
 DROP SEQUENCE bank_seq;
 DROP SEQUENCE work_seq;
 DROP SEQUENCE detail_work_seq;
@@ -234,7 +234,7 @@ CREATE TABLE tblComment (
 
 
 -- CREATE SEQUENCE
-CREATE SEQUENCE seqtblMember; /* 수정 필요 */
+CREATE SEQUENCE member_seq;
 CREATE SEQUENCE bank_seq;
 CREATE SEQUENCE work_seq;
 CREATE SEQUENCE detail_work_seq;
