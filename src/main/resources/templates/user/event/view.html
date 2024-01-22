@@ -162,11 +162,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${list}" var="dto" varStatus="status">
-					<td>${totalPosts - status.index - map.startIndex + 1}</td>
-					<td><a href="/bank/event/detail.do?seq=${dto.event_seq}">${dto.subject}</a></td>
-					<td>${dto.regdate}</td>
-				</c:forEach>
+			    <c:forEach items="${list}" var="dto" varStatus="status">
+		            <tr>
+		                <td>${totalPosts - status.index - map.startIndex + 1}</td>
+		                <td><a href="/bank/event/detail.do?seq=${dto.event_seq}">${dto.subject}</a></td>
+		                <td>${dto.regdate}</td>
+		            </tr>
+		        </c:forEach>
 			</tbody>
 		</table>
 
