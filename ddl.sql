@@ -65,8 +65,8 @@ create table tblBank (
     bank_address VARCHAR2(1000) not null, /* 주소 */
     lat NUMBER not null, /* 위도 */
     lng NUMBER not null, /* 경도 */
-    start_date DATE DEFAULT TO_DATE('09:00', 'HH24:MI') not null, /* 영업시작시간*/
-    end_date DATE DEFAULT TO_DATE('16:00', 'HH24:MI') not null, /*영업종료시간*/
+    start_time DATE DEFAULT TO_DATE('09:00', 'HH24:MI') not null, /* 영업시작시간*/
+    end_time DATE DEFAULT TO_DATE('16:00', 'HH24:MI') not null, /*영업종료시간*/
     type NUMBER DEFAULT 1 not null, /* 지점유형(1: 지점, 2: ATM)*/
     tel VARCHAR2(100) not null /* 전화번호 */
 );
