@@ -21,10 +21,11 @@ public class TicketAjaxController {
 	@GetMapping("/location/{location}")
 	public Map<String, List<BankDTO>> resJsonBody2(@PathVariable("location") String location) {
 		System.out.println("location: " + location);
-		Map<String, List<BankDTO>> bankOne = new HashMap<>();
-		List<BankDTO> result = service.bankOne(location);
-		bankOne.put("data", result);
-		return bankOne;
+		Map<String, List<BankDTO>> searchedBankList = new HashMap<>();
+		List<BankDTO> result = service.searchedBankList(location);
+		searchedBankList.put("data", result);
+		//System.out.println(searchedBankList);
+		return searchedBankList;
 	}
 	
 }

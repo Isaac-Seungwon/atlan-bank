@@ -25,8 +25,8 @@ public class TicketDAOImpl implements TicketDAO{
 	}
 	
 	@Override
-	public List<BankDTO> bankOne(String location) {
-		return mapper.bankOne(location);
+	public List<BankDTO> searchedBankList(String location) {
+		return mapper.searchedBankList(location);
 	}
 
 }

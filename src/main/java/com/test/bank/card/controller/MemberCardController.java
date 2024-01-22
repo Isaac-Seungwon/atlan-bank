@@ -17,6 +17,6 @@ public class MemberCardController {
 	
 	@GetMapping(value = "/view.do")
 	public String view(Model model) {
-		return "/member/card/view";
+		return "member/card/view";
 	}
 }

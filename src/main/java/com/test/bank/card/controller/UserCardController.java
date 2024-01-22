@@ -17,11 +17,11 @@ public class UserCardController {
 	
 	@GetMapping(value = "/view.do")
 	public String view(Model model) {
-		return "/user/card/view";
+		return "user/card/view";
 	}
 	
 	@GetMapping(value = "/detail.do")
 	public String detail(Model model) {
-		return "/user/card/detail";
+		return "user/card/detail";
 	}
 }
