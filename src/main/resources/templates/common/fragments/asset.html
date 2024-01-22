@@ -22,9 +22,9 @@
 	    <!-- Google Fonts -->
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
 	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	    <link rel="stylesheet" href="@{https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap}">
+	    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap}" />
     	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
+   		 
         <!--Common JS-->
         <script th:src="@{https://code.jquery.com/jquery-1.12.4.js}"></script>
     
@@ -40,7 +40,7 @@
 	    <link th:href="@{/assets/css/main.css}" rel="stylesheet">
 
 		<!-- Font Awesome -->
-		<script th:src="@{https://kit.fontawesome.com/a92e13dcf8.js}" crossorigin="anonymous"></script>
+		<script th:src="@{https://kit.fontawesome.com/a92e13dcf8.js}" crossorigin="anonymous" defer="true"></script>
 		
 		<!-- Vendor JS Files -->
 		<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
@@ -52,8 +52,6 @@
 		
 		<!-- Template Main JS File -->
 		<script th:src="@{/assets/js/main.js}"></script>
-
-
 
 </head>
 </html>
