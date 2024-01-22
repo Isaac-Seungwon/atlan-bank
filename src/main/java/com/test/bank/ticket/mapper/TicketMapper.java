@@ -10,6 +10,6 @@ public interface TicketMapper {
 	
 	List<BankDTO> bankList();
 	
-	List<BankDTO> bankOne(String location);
+	List<BankDTO> searchedBankList(String location);
 	
 }
