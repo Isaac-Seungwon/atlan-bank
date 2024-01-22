@@ -4,14 +4,213 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>Event</title>
+<style>
+#event {
+	text-align: center;
+}
 
+#search-form {
+	margin-top: 40px;
+}
+
+#category {
+	width: 100px;
+	height: 40px;
+	margin-right: 5px;
+}
+
+#search-field {
+	height: 40px;
+}
+
+#search-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+#search-button span {
+	font-size: 40px;
+	position: relative;
+	top: 13px;
+}
+
+#event-list {
+	width: 80%;
+	text-align: center;
+	border-top: 2px solid #000;
+	margin: 50px auto 0;
+}
+
+#event-list th, #event-list td {
+	height: 60px;
+	color: #444;
+	padding: 10px;
+	border-bottom: 1px solid #E1E1E1;
+}
+
+#event-list th {
+	font-size: 1.02rem;
+	font-weight: bold;
+}
+
+#event-list th:nth-child(1) {
+	width: 20%;
+}
+
+#event-list th:nth-child(2) {
+	width: 60%;
+}
+
+#event-list th:nth-child(3) {
+	width: 20%;
+}
+
+#event-list td:nth-child(2) a {
+	font-weight: bold;
+	color: #333;
+}
+
+#page-bar {
+	display: flex;
+	font-size: 1.2rem;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+#previous-button, #current-page, #other-pages, #next-button {
+	color: #000;
+	margin: 0 10px;
+}
+
+#previous-button, #next-button {
+	display: block;
+	margin-top: 1.5px;
+}
+
+#current-page {
+	color: #F00;
+}
+
+#button-list {
+	text-align: right;
+}
+
+#button-list i {
+	margin-right: 10px;
+}
+
+#add-button {
+	width: 90px;
+	height: 40px;
+	background-color: transparent;
+	border: 2px solid #CCC;
+	margin: 30px 150px 0;
+}
+
+.nav-icon {
+	font-size: 50px;
+}
+</style>
 </head>
 
 <body>
-	<main id="main">
-	
-	</main>
-	<!-- End #main -->
+	<!-- Start Main -->
+	<main id="event">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>Event</h2>
+							<p>event page</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="index.do">Home</a></li>
+						<li>Event</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
 
+		<form method="GET" action="/bank/event.do" id="search-form">
+			<select name="category" id="category">
+				<option value="subject">제목</option>
+				<option value="content">내용</option>
+			</select> <input type="text" name="word" id="search-field" size="60"
+				pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
+
+			<button type="submit" id="search-button">
+				<span class="material-symbols-outlined">search</span>
+			</button>
+		</form>
+
+		<table id="event-list">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>등록일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${list}" var="dto" varStatus="status">
+					<td>${totalPosts - status.index - map.startIndex + 1}</td>
+					<td><a href="/bank/event/detail.do?seq=${dto.event_seq}">${dto.subject}</a></td>
+					<td>${dto.regdate}</td>
+				</c:forEach>
+			</tbody>
+		</table>
+
+		<div id="page-bar">${pageBar}</div>
+
+		<c:if test="${lv == 2}">
+			<div id="button-list">
+				<button type="button" id="add-button">
+					<i class="fa-solid fa-plus"></i>등록
+				</button>
+			</div>
+		</c:if>
+	</main>
+	<!-- End Main -->
+
+	<script>
+		/* document.addEventListener('DOMContentLoaded', function() {
+			var searchField = document.getElementById('search-field');
+
+			searchField.addEventListener('keyup', function(event) {
+				if (event.key === 'Enter') {
+					document.getElementById('search-form').submit();
+				}
+			});
+		});
+
+		<c:if test="${map.searchStatus == 'y'}">
+		$('#category').val('${map.category}');
+		$('#search-field').val('${map.word}');
+		</c:if>
+
+		document
+				.addEventListener(
+						'keydown',
+						function(event) {
+							if (event.key === 'F5'
+									|| ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
+								location.href = '/bank/event.do';
+							}
+						});
+
+		$('#add-button').click(function() {
+			location.href = '/bank/event/add.do';
+		}); */
+	</script>
 </body>
 </html>
