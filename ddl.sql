@@ -85,8 +85,8 @@ CREATE TABLE tblBank (
     bank_address VARCHAR2(1000) not null, /* 주소 */
     lat NUMBER not null, /* 위도 */
     lng NUMBER not null, /* 경도 */
-    start_date DATE DEFAULT TO_DATE('09:00', 'HH24:MI') not null, /* 영업시작시간*/
-    end_date DATE DEFAULT TO_DATE('16:00', 'HH24:MI') not null, /* 영업종료시간*/
+    start_time DATE DEFAULT TO_DATE('09:00', 'HH24:MI') not null, /* 영업시작시간*/
+    end_time DATE DEFAULT TO_DATE('16:00', 'HH24:MI') not null, /*영업종료시간*/
     type NUMBER DEFAULT 1 not null, /* 지점유형(1: 지점, 2: ATM)*/
     tel VARCHAR2(100) not null /* 전화번호 */
 );
@@ -180,7 +180,6 @@ CREATE TABLE tblEvent (
     caution VARCHAR2(1000) NOT NULL, /* 유의사항 */
     start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 이벤트시작시간 */
     end_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '30' DAY + INTERVAL '16' HOUR NOT NULL, /* 이벤트종료시간 */
-    is_complete NUMBER DEFAULT 0 NOT NULL, /* 완료여부(0: 진행, 1: 완료) */ 
     hits_count NUMBER DEFAULT 0 NOT NULL, /* 조회수 */
     franchise_seq NUMBER, /* 가맹점번호 */
     FOREIGN KEY (franchise_seq) REFERENCES tblFranchise(franchise_seq)

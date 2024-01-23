@@ -18,14 +18,27 @@ public class TicketService {
 		
 		List<BankDTO> bankList = dao.bankList();
 		
+		//시간 가공
+		for (BankDTO dto : bankList) {
+			dto.setStartTime(dto.getStartTime().substring(11,16));
+			dto.setEndTime(dto.getEndTime().substring(11,16));
+		}
+		
+		
 		return bankList;
 	}
 
-	public List<BankDTO> bankOne(String location) {
+	public List<BankDTO> searchedBankList(String location) {
 		
-		List<BankDTO> bankOne = dao.bankOne(location);
+		List<BankDTO> searchedBankList = dao.searchedBankList(location);
 		
-		return bankOne;
+		// 시간 가공
+		for (BankDTO dto : searchedBankList) {
+			dto.setStartTime(dto.getStartTime().substring(11, 16));
+			dto.setEndTime(dto.getEndTime().substring(11, 16));
+		}
+		
+		return searchedBankList;
 	}
 	
 	
