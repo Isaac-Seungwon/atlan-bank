@@ -116,17 +116,6 @@ section {
   z-index: 2;
 }
 
-@media (max-width: 640px) {
-  .section-header h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-  }
-
-  .section-header span {
-    font-size: 38px;
-  }
-}
-
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
@@ -570,6 +559,114 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Index Main Section
+--------------------------------------------------------------*/
+.features {
+    width: 100%;
+	display: flex;
+}
+
+.features i {
+	color: #068dff;
+}
+.feature-box {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.features:last-child > .feature-box:last-child {
+    border-left: 20px solid #FFF;
+}
+
+.sub-features div {
+    background-color: var(--back-color);
+    transition: all 0.3s;
+}
+
+.sub-features > div:hover {
+    background-color: var(--button-hover-color);
+    /* transform: scale(1.05); */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.feature-box p {
+	text-align: center;
+}
+
+/* 
+@keyframes moveCircle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.feature-box p:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--color-primary);
+    margin: auto;
+    border-radius: 50%;
+    margin-top: 5px;
+    animation: moveCircle 2s infinite;
+}
+*/
+
+/* 
+.sub-features > div:hover p {
+    transform: scale(1.5);
+}
+*/
+
+.feature-box h2 {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+.feature-box h2 > i {
+	margin-right: 3px;
+}
+
+.sub-features > .feature-box {
+    cursor: pointer;
+}
+
+.sub-features {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 100px;
+}
+
+.sub-features div p {
+    margin-top: 15px;
+}
+
+.feature-box > ul {
+	margin-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .section-header h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .section-header span {
+    font-size: 38px;
+  }
+}
+
+/*--------------------------------------------------------------
 # Featured Services Section
 --------------------------------------------------------------*/
 .featured-services .service-item {
@@ -848,7 +945,7 @@ section {
 # Features Section
 --------------------------------------------------------------*/
 .features {
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .features .features-item+.features-item {
@@ -888,6 +985,22 @@ section {
 
 .features .features-item p:last-child {
   margin-bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 640px) {
+    .features {
+        flex-direction: column;
+    }
+
+    .feature-box {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .sub-features {
+        flex-direction: column;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -1912,59 +2025,4 @@ section {
 
 .footer .credits a {
   color: #fff;
-}
-
-/* index.jsp */
-.features {
-    width: 100%;
-	display: flex;
-}
-
-.features i {
-	color: #068dff;
-}
-.feature-box {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.features:last-child > .feature-box:last-child {
-    border-left: 20px solid #FFF;
-}
-
-
-.sub-features div {
-    background-color: var(--back-color);
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.sub-features > div:hover {
-    background-color: var(--button-hover-color);
-    transform: scale(1.05);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.feature-box h2 {
-	margin-top: 0px;
-	margin-bottom: 5px;
-}
-
-.feature-box h2 > i {
-	margin-right: 3px;
-}
-
-.feature-box p {
-	text-align: center;
-}
-
-.sub-features > .feature-box {
-    cursor: pointer;
-}
-
-.sub-features {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 }
