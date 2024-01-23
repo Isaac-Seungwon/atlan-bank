@@ -24,4 +24,9 @@ public class EventDAOImpl implements EventDAO {
 	public List<EventDTO> getEventsWithPaging(Map<String, String> map) {
 		return mapper.getEventsWithPaging(map);
 	}
+	
+	@Override
+	public List<EventDTO> getLatestEvents() {
+	    return mapper.getLatestEvents();
+	}
 }

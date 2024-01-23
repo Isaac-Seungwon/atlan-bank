@@ -155,9 +155,9 @@
 					<i class="fa-solid fa-gifts"></i>이벤트
 				</h2>
 				<ul>
-					<li><a href="">이벤트1</a></li>
-					<li><a href="">이벤트2</a></li>
-					<li><a href="">이벤트3</a></li>
+					<li th:each="event : ${latestEvents}">
+					    <a th:href="@{/event/detail.do(seq=${event.eventSeq})}" th:text="${event.name}"></a>
+					</li>
 				</ul>
 			</div>
 			<div class="feature-box">

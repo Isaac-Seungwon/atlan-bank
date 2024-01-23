@@ -47,4 +47,9 @@ public class EventService {
 	public List<EventDTO> getEventsWithPaging(Map<String, String> map) {
 		return dao.getEventsWithPaging(map);
 	}
+
+	public List<EventDTO> getLatestEvents() {
+	    return dao.getLatestEvents();
+	}
+	
 }
