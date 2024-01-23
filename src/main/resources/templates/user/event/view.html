@@ -168,10 +168,8 @@
 			</thead>
 			<tbody>
 				<tr th:each="eventList, status : ${eventList}">
-					<!-- <td th:text="${totalPosts - status.index - map.startIndex + 1}"></td> -->
 					<td th:text="${eventList.eventSeq}"></td>
-					<td><a
-						th:href="@{/event/detail.do(seq=${eventList.eventSeq})}"
+					<td><a th:href="@{/event/detail.do(seq=${eventList.eventSeq})}"
 						th:text="${eventList.name}"></a> <span class="in-progress"
 						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss') and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행 중</span> <span class="completed"
 						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">종료</span>
