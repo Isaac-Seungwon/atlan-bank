@@ -71,11 +71,28 @@
 	color: #333;
 }
 
+#event-list td:nth-child(2) {
+	text-align: left;
+}
+
+.in-progress {
+	color: var(--color-primary);
+}
+
+.completed {
+	color: #555;
+}
+
+.in-progress, .completed {
+    font-size: 0.9rem;
+}
+
 #page-bar {
 	display: flex;
 	font-size: 1.2rem;
 	justify-content: center;
 	margin-top: 50px;
+	margin-bottom: 15px;
 }
 
 #previous-button, #current-page, #other-pages, #next-button {
@@ -117,7 +134,7 @@
 <body>
 	<!-- Start Main -->
 	<main id="event">
-		<!-- ======= Breadcrumbs ======= -->
+		<!-- Start Breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="page-header d-flex align-items-center"
 				style="background-image: url('assets/img/page-header.jpg');">
@@ -141,78 +158,56 @@
 		</div>
 		<!-- End Breadcrumbs -->
 
-		<form method="GET" action="/bank/event.do" id="search-form">
-			<select name="category" id="category">
-				<option value="subject">제목</option>
-				<option value="content">내용</option>
-			</select> <input type="text" name="word" id="search-field" size="60"
-				pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
-
-			<button type="submit" id="search-button">
-				<span class="material-symbols-outlined">search</span>
-			</button>
-		</form>
-
 		<table id="event-list">
 			<thead>
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
-					<th>등록일</th>
+					<th>조회수</th>
 				</tr>
 			</thead>
 			<tbody>
-			    <c:forEach items="${list}" var="dto" varStatus="status">
-		            <tr>
-		                <td>${totalPosts - status.index - map.startIndex + 1}</td>
-		                <td><a href="/bank/event/detail.do?seq=${dto.event_seq}">${dto.subject}</a></td>
-		                <td>${dto.regdate}</td>
-		            </tr>
-		        </c:forEach>
+				<tr th:each="eventList, status : ${eventList}">
+					<td th:text="${eventList.eventSeq}"></td>
+					<td><a th:href="@{/event/detail.do(seq=${eventList.eventSeq})}"
+						th:text="${eventList.name}"></a> <span class="in-progress"
+						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss') and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행 중</span> <span class="completed"
+						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">종료</span>
+					<td th:text="${eventList.hitsCount}"></td>
+				</tr>
 			</tbody>
 		</table>
 
-		<div id="page-bar">${pageBar}</div>
-
-		<c:if test="${lv == 2}">
-			<div id="button-list">
-				<button type="button" id="add-button">
-					<i class="fa-solid fa-plus"></i>등록
-				</button>
-			</div>
-		</c:if>
+		<form method="GET" action="/atlanbank/event.do" id="search-form">
+			<select name="category" id="category">
+				<option value="name">제목</option>
+				<option value="content">내용</option>
+			</select> <input type="text" name="word" id="search-field" size="60" pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
+			<button type="submit" id="search-button">
+				<span class="material-symbols-outlined">search</span>
+			</button>
+		</form>
+		
+		<!-- Paging -->
+		<nav id="page-bar" aria-label="Page navigation example">
+		    <ul class="pagination justify-content-center">
+		        <div th:each="pageNumber : ${#numbers.sequence(1, map.totalPages)}">
+		            <li th:class="${pageNumber} == ${currentPage} ? 'page-item active' : 'page-item'">
+		                <a class="page-link" th:href="@{/atlanbank/event.do(page=${pageNumber}, category=${map.category}, word=${map.word})}" th:text="${pageNumber}"></a>
+		            </li>
+		        </div>
+		    </ul>
+		</nav>
 	</main>
 	<!-- End Main -->
 
 	<script>
-		/* document.addEventListener('DOMContentLoaded', function() {
-			var searchField = document.getElementById('search-field');
-
-			searchField.addEventListener('keyup', function(event) {
-				if (event.key === 'Enter') {
-					document.getElementById('search-form').submit();
+		document.addEventListener('keydown',
+			function(event) {
+				if (event.key === 'F5' || ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
+					location.href = '/atlanbank/event.do';
 				}
 			});
-		});
-
-		<c:if test="${map.searchStatus == 'y'}">
-		$('#category').val('${map.category}');
-		$('#search-field').val('${map.word}');
-		</c:if>
-
-		document
-				.addEventListener(
-						'keydown',
-						function(event) {
-							if (event.key === 'F5'
-									|| ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
-								location.href = '/bank/event.do';
-							}
-						});
-
-		$('#add-button').click(function() {
-			location.href = '/bank/event/add.do';
-		}); */
 	</script>
 </body>
 </html>

@@ -11,8 +11,8 @@
 		select * from tblBank
 	</select>
 	
-	<select id="bankOne" parameterType="String" resultType="com.test.bank.ticket.domain.BankDTO">
-		select * from tblBank where bankName like '%' || #{location} || '%'
+	<select id="searchedBankList" parameterType="String" resultType="com.test.bank.ticket.domain.BankDTO">
+		select * from tblBank where bank_name like '%' || #{location} || '%'
 	</select>
 
 </mapper>

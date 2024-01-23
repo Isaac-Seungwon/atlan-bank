@@ -8,33 +8,34 @@
 </head>
 
 <body>
-  <main id="main">
+	<main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('/assets/img/page-header.jpg');">
-        <div class="container position-relative">
-          <div class="row d-flex justify-content-center">
-            <div class="col-lg-6 text-center">
-              <h2>지점 검색</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <nav>
-        <div class="container">
-          <ol>
-            <li><a th:href="@{/index.do}">Home</a></li>
-            <li>지점 검색</li>
-          </ol>
-        </div>
-      </nav>
-    </div>
-    <!-- End Breadcrumbs -->
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>지점 검색</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a th:href="@{/index.do}">Home</a></li>
+						<li>지점 검색</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
 
-    <!-- ======= Contact Section ======= -->
+		<!-- ======= Contact Section ======= -->
 		<section id="contact" class="contact">
-		<!-- 
+			<!-- 
 			<div class="container">
 				<div class="d-flex flex-row">
 					<div class="col-md-6 form-group">
@@ -49,74 +50,67 @@
 			<div id="map" style="width:50%;height:80%; float:left;"></div>
 			<div class="row justify-content-center">
   -->
-			 <div style="width:100%; height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto; padding: 20px;">
-			   <div style="width: 50%;height:80%;float: left;" class="col-md-6">
-			   
-			      <h2 style="text-align: left">지점 검색</h2>
-			      <hr>
-			      <ul>
-			      <li style="text-align: left;"><span style="color: red;">지점</span>을 선택해주세요</li>
-			      <!--  <li class="list-group-item" style="float: left; width: 30%;">지점명</li>-->
-			      </ul>
-			      <form id="form">
-			      <div id="input">
-			      <input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 100%; height: 10%;" name="branchname" id="InputName" class="form-control mb-2"> 
-			      </div>
-			      </form>
-			      <button id="test" class="btn btn-main mb-2" style="height: 35px;">검색</button>
-			      <!--<button id="basket" class="btn btn-main mb-2" style="height: 48px;">즐겨찾기에 등록</button>-->
-			      <h6 style="text-align: left">예) 계동지점  -> 계동</h6> 
-			
-			      <div id="branchList">
-			
-			      </div>
-			      </div>
-			      
-			      <div id="map" style="width:50%;height:80%; float:left;"></div>
-			 </div>
-			
-			 </div> <!-- End row justify-content-center -->
-			
+			<div
+				style="width: 100%; height: 600px; border: 1px solid rgba(0, 0, 0, .1); text-align: center; margin: 0 auto; padding: 20px;">
+				<div style="width: 50%; height: 80%; float: left;" class="col-md-6">
+
+					<h2 style="text-align: left">지점 검색</h2>
+					<hr>
+					<ul>
+						<li style="text-align: left;"><span style="color: red;">지점</span>을
+							선택해주세요</li>
+						<!--  <li class="list-group-item" style="float: left; width: 30%;">지점명</li>-->
+					</ul>
+					<form id="form">
+						<div id="input">
+							<input type="text" placeholder="지점명을 입력하세요"
+								style="float: left; width: 100%; height: 10%;" name="branchname"
+								id="InputName" class="form-control mb-2">
+						</div>
+					</form>
+					<button id="test" class="btn btn-main mb-2" style="height: 35px;">검색</button>
+					<!--<button id="basket" class="btn btn-main mb-2" style="height: 48px;">즐겨찾기에 등록</button>-->
+
+					<div id="branchList"></div>
+				</div>
+
+				<div id="map" style="width: 50%; height: 80%; float: left;"></div>
+			</div>
+
+			</div>
+			<!-- End row justify-content-center -->
+
 		</section>
 		<!-- End Contact Section -->
 
-	</main><!-- End #main -->
-	
-	
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=339ace59c5e1aeb3521f43eeef2678f7&libraries=services,clusterer,drawing"></script>
+	</main>
+	<!-- End #main -->
 
-<script>
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=339ace59c5e1aeb3521f43eeef2678f7&libraries=services,clusterer,drawing"></script>
+
+	<script>
 	kakao.maps.load(function() {
 		
-	
 	    const map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 	        center : new kakao.maps.LatLng(37.5696821, 126.9802171), // 지도의 중심좌표 
 	        level : 5 // 지도의 확대 레벨 
 	    });
 	
-    
 	    const imageSrc = '/assets/img/maker.png' // 마커이미지의 주소
 	    const imageSize = new kakao.maps.Size(30, 30) // 마커이미지의 크기입니다
 	    const imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 	      
 	   // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-	   let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
-	
-	    // 마커 클러스터러를 생성합니다 
-	    let clusterer = new kakao.maps.MarkerClusterer({
-	        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-	        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-	        minLevel: 10 // 클러스터 할 최소 지도 레벨 
-	    });
-	
+	   const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 	 
 	    // 데이터를 가져오기 위해 jQuery를 사용합니다
 	    // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-	    //$.get("${ pageContext.request.contextPath }/numberTicket/LatLng.json", function(data) {
 	    $.get("/ticket/banklist.json", function(data) {
 	        // 데이터에서 좌표 값을 가지고 마커를 표시합니다
 	        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-	        console.log(data)
+	        //console.log("data.positions: " + JSON.stringify(data.positions));
 	        let markers = $(data.positions).map(function(i, position) {
 	            return new kakao.maps.Marker({
 	                position : new kakao.maps.LatLng(position.lat, position.lng),
@@ -124,13 +118,16 @@
 	            });
 	        });
 	      for(let i=0 ; i<data.positions.length; i++){
-	         //console.log(data.positions[i].branch_name)
-	         console.log(data.positions[i])
-	         
 	        displayInfo(markers[i], data.positions[i])
 	      }
+	      
+	      // 마커 클러스터러를 생성합니다 
+		    const clusterer = new kakao.maps.MarkerClusterer({
+		        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+		        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+		        minLevel: 10 // 클러스터 할 최소 지도 레벨 
+		    });
 	        // 클러스터러에 마커들을 추가합니다
-	        
 	        clusterer.addMarkers(markers);
 	    });
 	    
@@ -150,10 +147,12 @@
 	        // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
 	        map.panTo(moveLatLon);            
 	    }        
+	    
 	 	let infoCheck = null;
 	    //infodata.지점코드 해서 정보를 가지고 온다.
 	  	 function displayInfo(infomarker, infodata) {
-	  		let iwContent = '<div style="text-align: center; padding:5px;">'
+	  		//console.log(infodata.bankName);
+	    	let iwContent = '<div style="text-align: center; padding:5px;">'
 	  						+ '<div class="close" onclick="closeCustomOverlay()" title="닫기">X</div>'
 	  						+ '<table class="table table-hover" style="width: 100%;">'
 	  						+ '<colgroup>'
@@ -190,7 +189,7 @@
 		         position : iwPosition, 
 		         content : iwContent 
 		     });
-	  		console.log('displayInfo')
+	  		//console.log('displayInfo')
 	  		kakao.maps.event.addListener(infomarker, 'click', function(){
 	  			if(infoCheck){
 	  				infoCheck.setMap(null);// param이 null ==> 지도에서 infoCheck를 제. 
@@ -199,19 +198,18 @@
 	  			infoCheck = infowindow
 	  		})
 	    }
+	    
 	    function closeCustomOverlay() {
 	    	infoCheck.setMap(null);
 		}
 	    
-	    let branch;
 	    $(document).on('click', "#test", function(){
 	       $.ajax({
 	          url : '/location/' + $('#InputName').val(),   
 	          type : 'get',
 	          success : function (data){
 	             $('#branchList').empty();
-	             branch = JSON.parse(data);
-	             
+
 	             let content = '';
 	             
 	             content +=     '<table class="table table-hover" style="text-align:center">';
@@ -223,17 +221,21 @@
 	             content +=             '</tr>';
 	             content +=         '</thead>';
 	             content +=         '<tbody>';
-	             content +=             '<tr class="chooselocation" id=' + branch.data[0].bankName + '>';
-	             content +=                   '<td style="width: 15%;">' + branch.data[0].bankName + '</td>';
-	             content +=                   '<td style="width: 70%;">' + branch.data[0].bankAddress + '</td>';
-	             content +=                   '<td style="width: 15%;">' + branch.data[0].startTime + '~' + branch.data[0].endTime + '</td>';
-	             content +=             '</tr>';
+	             
+	             data.data.forEach(function(item){
+	            	 content += '<tr class="chooselocation" id=' + item.bankName + '>';
+	                 content += '<td style="width: 15%;">' + item.bankName + '</td>';
+	                 content += '<td style="width: 70%;">' + item.bankAddress + '</td>';
+	                 content += '<td style="width: 15%;">' + (item.startTime ? (item.startTime + '~' + item.endTime) : '영업시간 정보 없음') + '</td>';
+	                 content += '</tr>';
+	           	});
+	             
 	             content +=         '</tbody>';
 	             content +=     '</table>';
 	             $('#branchList').append(content);
 	             
 	             // 이동할 위도 경도 위치를 생성합니다 
-	               let moveLatLon = new kakao.maps.LatLng(branch.data[0].lat, branch.data[0].lng);
+	             let moveLatLon = new kakao.maps.LatLng(data.data[0].lat, data.data[0].lng);
 	               
 	               // 지도 중심을 부드럽게 이동시킵니다
 	               // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
@@ -241,24 +243,23 @@
 	             
 	          },
 	          error : function() {
-	             alert('실패')
+	        	  console.error("Error fetching data:", error);
 	          }
 	       })
 	    })
     })
     
-/*     $(document).on('click', ".chooselocation", function(){
+    $(document).on('click', ".chooselocation", function(){
        let locations = $(this).attr('id');
-       location.href = "${ pageContext.request.contextPath }/location/reservation/" + locations
+       location.href = "/ticket/reservation/" + locations
 
     })
-	 */
   
 </script>
 
-    <!-- Essential Scripts
+	<!-- Essential Scripts
     =====================================-->
-    <!-- 
+	<!-- 
     <script src="${ pageContext.request.contextPath }/resources/plugins/slick-carousel/slick/slick.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="${ pageContext.request.contextPath }/resources/plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
@@ -266,6 +267,6 @@
     <script src="${ pageContext.request.contextPath }/resources/js/script.js"></script>
     <script src="${ pageContext.request.contextPath }/static/assets/js/script.js"></script>
 	 -->
-	
+
 </body>
 </html>
