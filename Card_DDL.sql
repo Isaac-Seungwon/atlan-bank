@@ -5,7 +5,7 @@ DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE member_card_seq;
 DROP SEQUENCE card_seq;
 DROP SEQUENCE performance_benefit_seq;
-DROP SEQUENCE benefit_seq;
+DROP SEQUENCE benefits_seq;
 
 --[TABLE 내용 삭제]
 DELETE FROM tblCardBenefit;
@@ -14,7 +14,7 @@ DELETE FROM tblMemberCardHistory;
 DELETE FROM tblMemberCard;
 DELETE FROM tblCard;
 DELETE FROM tblPerformanceBenefit;
-DELETE FROM tblBenefit;
+DELETE FROM tblBenefits;
 
 --[TABLE 삭제]
 DROP TABLE tblCardBenefit;
@@ -23,7 +23,7 @@ DROP TABLE tblMemberCardHistory;
 DROP TABLE tblMemberCard;
 DROP TABLE tblCard;
 DROP TABLE tblPerformanceBenefit;
-DROP TABLE tblBenefit;
+DROP TABLE tblBenefits;
 
 --[SEQUENCE 생성]
 CREATE SEQUENCE card_benefit_seq;
@@ -32,7 +32,7 @@ CREATE SEQUENCE member_card_history_seq;
 CREATE SEQUENCE member_card_seq;
 CREATE SEQUENCE card_seq;
 CREATE SEQUENCE performance_benefit_seq;
-CREATE SEQUENCE benefit_seq;
+CREATE SEQUENCE benefits_seq;
 
 --[TABLE 생성]
 /* 카드 */
@@ -47,24 +47,24 @@ CREATE TABLE tblCard (
 );
 
 /* 혜택 */
-CREATE TABLE tblBenefit (
-    benefit_seq NUMBER PRIMARY KEY, /* 혜택번호 */
+CREATE TABLE tblBenefits (
+    benefits_seq NUMBER PRIMARY KEY, /* 혜택번호 */
     type VARCHAR2(50) NOT NULL, /* 혜택종류 */
     subject VARCHAR2(200) NOT NULL, /* 혜택명 */
     content VARCHAR2(2000) NOT NULL /* 혜택 상세 */
 );
 
-/* 카드혜택 */
+/* 카드별혜택 */
 CREATE TABLE tblCardBenefit (
 	card_benefit_seq NUMBER PRIMARY KEY, /* 카드혜택번호 */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
-    benefit_seq NUMBER REFERENCES tblBenefit(benefit_seq) NOT NULL /* 혜택번호 */
+    benefits_seq NUMBER REFERENCES tblBenefits(benefits_seq) NOT NULL /* 혜택번호 */
 );
 
 /* 카드실적별혜택 */
 CREATE TABLE tblPerformanceBenefit (
 	performance_benefit_seq NUMBER PRIMARY KEY, /* 카드실적별혜택번호 */
-	benefit_seq NUMBER REFERENCES tblBenefit(benefit_seq) NOT NULL, /* 혜택번호 */
+	benefits_seq NUMBER REFERENCES tblBenefits(benefits_seq) NOT NULL, /* 혜택번호 */
 	prev_month_perf NUMBER NOT NULL, /* 전월실적(실적별 구분 30/50/100) */
 	rate NUMBER NOT NULL, /* 할인율 */
 	limit NUMBER NOT NULL /* 월 할인한도 */
