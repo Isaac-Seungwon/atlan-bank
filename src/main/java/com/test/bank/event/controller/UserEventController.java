@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.test.bank.event.service.EventService;
 
 @Controller
-@RequestMapping(value = "/atlanbank")
+@RequestMapping(value = "/atlanbank/user/event")
 public class UserEventController {
 
     @Autowired
     private EventService service;
 
-    @GetMapping(value = "/event.do")
+    @GetMapping(value = "/view.do")
     public String event(String category, String word, @RequestParam(defaultValue = "1") int page, Model model) {
 
         String solting = "user";
