@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.test.bank.card.service.CardService;
 
 @Controller
-@RequestMapping(value = "/user/card")
+@RequestMapping(value = "/atlanbank/user/card")
 public class UserCardController {
 
 	@Autowired
