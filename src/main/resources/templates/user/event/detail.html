@@ -157,57 +157,11 @@
 			</nav>
 		</div>
 		<!-- End Breadcrumbs -->
-
-		<table id="event-list">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="eventList, status : ${eventList}">
-					<td th:text="${eventList.eventSeq}"></td>
-					<td><a th:href="@{/atlanbank/user/event/detail.do(seq=${eventList.eventSeq})}"
-						th:text="${eventList.name}"></a> <span class="in-progress"
-						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss') and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행 중</span> <span class="completed"
-						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">종료</span>
-					<td th:text="${eventList.hitsCount}"></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<form method="GET" action="/atlanbank/event.do" id="search-form">
-			<select name="category" id="category">
-				<option value="name">제목</option>
-				<option value="content">내용</option>
-			</select> <input type="text" name="word" id="search-field" size="60" pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
-			<button type="submit" id="search-button">
-				<span class="material-symbols-outlined">search</span>
-			</button>
-		</form>
 		
-		<!-- Paging -->
-		<nav id="page-bar" aria-label="Page navigation example">
-		    <ul class="pagination justify-content-center">
-		        <div th:each="pageNumber : ${#numbers.sequence(1, map.totalPages)}">
-		            <li th:class="${pageNumber} == ${currentPage} ? 'page-item active' : 'page-item'">
-		                <a class="page-link" th:href="@{/atlanbank/user/event/view.do(page=${pageNumber}, category=${map.category}, word=${map.word})}" th:text="${pageNumber}"></a>
-		            </li>
-		        </div>
-		    </ul>
-		</nav>
+		<h2 th:text="${event.name}"></h2>
+		<p th:text="${event.content}"></p>
 	</main>
 	<!-- End Main -->
-
-	<script>
-		document.addEventListener('keydown',
-			function(event) {
-				if (event.key === 'F5' || ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
-					location.href = '/atlanbank/user/event/view.do';
-				}
-			});
-	</script>
+	
 </body>
 </html>

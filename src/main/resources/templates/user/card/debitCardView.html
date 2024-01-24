@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>카드</title>
+
+<style>
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 0 60px;
+	}
+	
+	/* card benefits list */
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+	
+	ul.benefits-menu li {
+		width: 150px;
+		height: 50px;
+		float: left;
+		border: 1px solid #777;
+		margin: 5px 10px;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu li a {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		color: inherit;
+	}
+	
+	ul.benefits-menu li a:hover {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+
+	ul.benefits-menu li a:focus {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	/* card list */
+	.card-container {
+		display: flex;
+	}
+	
+	.card-box {
+		padding-right: calc((100% - 960px) / 2);
+	}
+	
+	.card-container .card-box:last-child {
+		padding-right: 0;
+	}
+	
+	.card-box-item {
+		background: #F1F4F8;
+		position: relative;
+		width: 320px;
+		height: 466px;
+		border-radius: 12px;
+		padding: 24px;
+	}
+	
+	.card-box-item::after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 50%;
+		bottom: 56px;
+		width: 202px;
+		height: 202px;
+		margin-left: -101px;
+		border-radius: 100%;
+		background: #FFF;
+		
+	}
+	
+	.card-title {
+		cursor: pointer;
+	}
+	
+	.card-img {
+		position: absolute;
+		left: 50%;
+		top: 245px;
+		width: 202px;
+		height: 128px;
+		margin-left: -101px;
+		z-index: 1;
+	}
+	
+	.card-img img {
+		max-width: 202px;
+		max-height: 202px;
+	}
+	
+	.vertical {
+		transform: rotate(90deg);
+	}
+	
+	.card-box-item.back {
+		display: none;
+	}	
+	
+	
+
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>카드</h2>
+							<p>card page</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="/atlanbank/user/card/view.do">Card</a></li>
+						<li><a href="/atlanbank/user/card/debit/view.do">Debit Card</a></li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- Card List Section -->
+		<section>
+			<h2>체크 카드</h2>
+			
+			<ul class="benefits-menu">
+				<li><a href="#">적립/할인</a></li>
+				<li><a href="#">여행</a></li>
+				<li><a href="#">쇼핑</a></li>
+				<li><a href="#">주유/충전</a></li>
+				<li><a href="#">통신</a></li>
+				<li><a href="#">교육</a></li>
+				<li><a href="#">의료</a></li>
+				<li><a href="#">음식</a></li>
+				<li><a href="#">렌탈</a></li>
+				<li><a href="#">선택형</a></li>
+				<li><a href="#">공공/정부지원</a></li>
+			</ul>
+			
+			<div class="card-container">
+				
+				<div class="card-box">
+					<!-- front -->
+					<div class="card-box-item front">
+						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<h3>알뜰교통플러스 카드</h3>
+							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+						</div>
+						<div class="card-img">
+							<img src="/assets/img/card/card_sample1.png">
+						</div>
+					</div>
+					
+					<!-- back -->
+					<div class="card-box-item back">
+						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<h3>알뜰교통플러스 카드</h3>
+							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+						</div>
+						<div>
+							<p>연회비</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card-box">
+					<!-- front -->
+					<div class="card-box-item front">
+						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<h3>알뜰교통플러스 카드</h3>
+							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+						</div>
+						<div class="card-img">
+							<img src="/assets/img/card/card_sample1.png">
+						</div>
+					</div>
+					
+					<!-- back -->
+					<div class="card-box-item back">
+						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<h3>알뜰교통플러스 카드</h3>
+							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+						</div>
+						<div>
+							<p>연회비</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card-box">
+					<!-- front -->
+					<div class="card-box-item front">
+						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<h3>알뜰교통플러스 카드</h3>
+							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+						</div>
+						<div class="card-img">
+							<img src="/assets/img/card/card_sample1.png">
+						</div>
+					</div>
+					
+					<!-- back -->
+					<div class="card-box-item back">
+						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<h3>알뜰교통플러스 카드</h3>
+							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+						</div>
+						<div>
+							<p>연회비</p>
+						</div>
+					</div>
+				</div>
+			
+			
+			
+			</div>
+		
+		</section> <!-- End Card List Section -->
+		
+	</main>
+	<!-- End Main -->
+
+</body>
+</html>

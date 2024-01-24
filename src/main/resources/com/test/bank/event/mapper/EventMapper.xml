@@ -39,5 +39,10 @@
 	        ORDER BY event_seq DESC
 	    ) WHERE ROWNUM &lt;= 3
 	</select>
-
+	
+	<select id="getEventBySeq" parameterType="Integer" resultType="com.test.bank.event.domain.EventDTO">
+	    SELECT * FROM tblEvent
+	    WHERE event_seq = #{eventSeq}
+	</select>
+	
 </mapper>

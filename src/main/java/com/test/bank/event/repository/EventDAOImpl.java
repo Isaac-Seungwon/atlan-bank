@@ -12,21 +12,26 @@ import com.test.bank.event.mapper.EventMapper;
 @Repository
 public class EventDAOImpl implements EventDAO {
 
-    @Autowired
-    EventMapper mapper;
+	@Autowired
+	EventMapper mapper;
 
 	@Override
 	public int getTotalCount(Map<String, String> map) {
 		return mapper.getTotalCount(map);
 	}
-	
+
 	@Override
 	public List<EventDTO> getEventsWithPaging(Map<String, String> map) {
 		return mapper.getEventsWithPaging(map);
 	}
-	
+
 	@Override
 	public List<EventDTO> getLatestEvents() {
-	    return mapper.getLatestEvents();
+		return mapper.getLatestEvents();
+	}
+
+	@Override
+	public EventDTO getEventBySeq(int eventSeq) {
+		return mapper.getEventBySeq(eventSeq);
 	}
 }
