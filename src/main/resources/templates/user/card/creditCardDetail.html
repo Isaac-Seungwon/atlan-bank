@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>카드</title>
+
+<style>
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 0 60px;
+	}
+	
+	section a {
+		color: inherit;
+	}
+	
+	/* card benefits list */
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+	
+	ul.benefits-menu li {
+		width: 150px;
+		height: 50px;
+		float: left;
+		border: 1px solid #777;
+		margin: 5px 10px;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu li a {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		color: inherit;
+	}
+	
+	ul.benefits-menu li a:hover {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+
+	ul.benefits-menu li a:focus {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	/* card list */
+	.card-container {
+		display: flex;
+	}
+	
+	.card-box {
+		padding-right: calc((100% - 960px) / 2);
+	}
+	
+	.card-container .card-box:last-child {
+		padding-right: 0;
+	}
+	
+	.card-box-item {
+		background: #F1F4F8;
+		position: relative;
+		width: 320px;
+		height: 466px;
+		border-radius: 12px;
+		padding: 24px;
+	}
+	
+	.card-box-item::after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 50%;
+		bottom: 56px;
+		width: 202px;
+		height: 202px;
+		margin-left: -101px;
+		border-radius: 100%;
+		background: #FFF;
+		
+	}
+	
+	.card-title {
+		cursor: pointer;
+	}
+	
+	.card-img {
+		position: absolute;
+		left: 50%;
+		top: 245px;
+		width: 202px;
+		height: 128px;
+		margin-left: -101px;
+		z-index: 1;
+	}
+	
+	.card-img img {
+		max-width: 202px;
+		max-height: 202px;
+	}
+	
+	.vertical {
+		transform: rotate(90deg);
+	}
+	
+	.card-box-item.back {
+		display: none;
+	}	
+	
+	/* card detail section */
+	.card-detail-title {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.card-detail-box {
+		background: #F1F4F8;
+		height: auto;
+		padding-top: 20px;
+	}
+	
+	.card-detail-box h3 {
+		font-size: 1rem;
+		text-align: center;
+	}
+	
+	.card-detail-summary {
+		display: flex;
+		padding: 40px;
+	}
+	
+	.card-detail-summary div {
+		width: 50%;
+	}
+	
+	.card-detail-summary ul {
+		width: 50%;
+	}
+	
+	.card-detail-summary ul span {
+		font-weight: bold;
+	}
+	
+	.annual-fee-container {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 15px 50px;
+	}
+	
+	.annual-fee-box {
+		display: flex;
+		width: 50%;
+	}
+	
+	/* card detail */
+	.card-detail-contents {
+		margin: 30px 0;
+	}
+	
+	.card-detail-contents ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.card-detail-contents ul li {
+		padding: 0 15px;
+	}
+	
+
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>카드</h2>
+							<p>card page</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="/atlanbank/user/card/view.do">Card</a></li>
+						<li><a href="/atlanbank/user/card/credit/view.do">Credit Card</a></li>
+						<li>알뜰교통플러스 카드</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- Card Detail Section -->
+		<section>
+			<div class="card-detail-title">
+				<h1>알뜰교통플러스 카드</h1>
+				<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+			</div>
+			
+			<div class="card-detail-box">
+				<h3>신용카드</h3>
+				
+				<div class="card-detail-summary">
+					<div>
+						<img src="">
+					</div>
+					<ul>
+						<li>대중교통 <span>10% 할인</span></li>
+						<li>생활서비스 <span>5% 할인</span></li>
+						<li>대중교통 <span>10% 할인</span></li>
+					</ul>
+					
+				</div>
+				
+				<div class="annual-fee-container">
+		
+					<div class="annual-fee-box">
+						<p>국내전용</p>
+						<p>10,000원</p>
+					</div>
+
+					<div class="annual-fee-box">
+						<p>VISA</p>
+						<p>15,000원</p>
+					</div>
+
+				
+				</div>
+			
+			</div>
+			
+			<div class="card-detail-contents">
+				<ul>
+					<li><a href="#">대중교통</a></li>
+					<li><a href="#">생활서비스</a></li>
+					<li><a href="#">AT PAY 이용시 추가할인</a></li>
+					<li><a href="#">확인사항</a></li>
+				</ul>
+			
+				<!-- 첫번째 탭 -->
+				<div>
+				
+				</div>
+				
+				<!-- 두번째 탭 -->
+				<div>
+				
+				</div>
+			
+				<!-- 세번째 탭 -->
+				<div>
+				
+				</div>
+			
+				<!-- 네번째 탭 -->
+				<div>
+					<h3>확인사항</h3>
+					<p>
+						전월 이용 실적 기준
+						전월 1일 ~ 말일까지 KB국민 알뜰교통플러스카드의 일시불 및 할부 승인 금액 기준
+						해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입 완료 기준
+						취소 금액은 취소 전표가 당사에 접수된 월의 실적에서 차감
+						전월 이용 실적 제외 대상
+						KB국민 알뜰교통플러스카드로 청구할인 서비스를 적용 받은 이용건(해당 매출 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 아파트관리비, 초/중/고 학교납입금 전체(수업료/교육비/현장학습비/급식비 등), 대학(원)등록금, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 무승인전표(대중교통, 공항버스, 자판기, 터널통행료, 항공기내 이용 등), 취소금액
+						할인 제외 대상
+						무이자할부, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 연체료, 취소금액
+						연체이자율
+						연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+						단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+						일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+						무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용
+						해외 이용 확인사항
+						해외 이용시(해외사이트 거래 포함) 미화(USD)기준 거래미화금액에 접수일의(KB국민은행) 최초고시 전신환 매도율을 적용한 후, 국제브랜드사가 부과하는 국제브랜드 수수료(VISA 1.1%)와 KB국민카드가 부과하는 해외서비스 수수료 (0.25%)를 포함하여 원화로 청구됩니다. 이 경우 KB국민카드의 해외서비스 수수료는 국제브랜드 수수료를 제외하고 산정됩니다.
+						해외 이용시 청구금액 산출방법
+						해외 이용시 청구금액 = (거래미화금액 X 전신환매도율¹) + 국제브랜드 수수료² + 해외서비스 수수료³
+						
+						전신환 매도율 : 접수일의 KB국민은행 최초고시 전신환매도율
+						국제브랜드 수수료 = (거래미화금액 X 국제브랜드 이용수수료율) X 전신환매도율
+						해외서비스 수수료 = (거래미화금액 X 해외서비스 수수료율) X 전신환매도율
+						해당 내용은 해외원화결제(DCC) 서비스 수수료가 없는 경우이며, 해외원화결제(DCC) 서비스 이용 시 추가 수수료가 발생할 수 있으니 유의하시기 바랍니다.
+						
+						해외원화결제(DCC) 차단 서비스 이용방법 : KB국민카드 홈페이지/모바일앱 > 서비스 > 해외이용서비스 > 해외원화결제차단서비스
+						기타
+						KB국민 알뜰교통플러스카드 업종에 따른 청구 할인서비스는 대상 가맹점이 KB국민카드의 업종분류기준 상 해당 업종에 한하여 제공합니다.
+						별도 전용 가맹점번호로 승인되는 PG(결제대행)업체 또는 일부 간편결제(Pay) 이용 시 할인대상에서 제외될 수 있습니다.
+						KB국민 알뜰교통플러스카드 할인 서비스 대상 업종은 해당 가맹점 사업자번호로 당사 영업점 및 고객센터 1588-1688, KB국민은행 영업점을 통해 확인이 가능합니다.
+						전표 매입 순서대로 월간 할인한도내 서비스가 적용되며, 잔여 할인한도는 이월되지 않습니다.
+						할인 받은 이용 건을 취소할 경우 취소전표가 실시간 접수되지 않아 할인 한도가 즉시 복원되지 않을 수 있습니다.
+						결제계좌 개설 기관의 영업 마감시간(16시) 이후 결제계좌에 입금된 금액에 대해서는 결제계좌 개설 기관의 사정에 따라 당일 출금하지 못하여 연체로 처리될 수 있으므로 유의하시기 바랍니다. 자동이체 업무 마감시간 이후 당사 홈페이지/모바일* 등에서 바로출금(즉시결제) 또는 가상계좌 입금(송금납부)을 통해 당일 결제가 가능합니다.
+						세부내용 : KB국민카드 홈페이지 > MY KB > 바로출금결제 또는 가상계좌결제 참조
+						
+						KB국민 알뜰교통플러스카드는 기본 포인트리가 적립되지 않습니다.
+						단, KB국민카드 스타샵 가맹점에서 제공해드리는 포인트는 적립됩니다.
+					</p>
+				</div>
+			
+			</div>
+		
+		
+		</section> <!-- End Card Detail Section -->
+		
+		
+	</main>
+	<!-- End Main -->
+
+</body>
+</html>
