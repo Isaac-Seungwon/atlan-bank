@@ -13,18 +13,19 @@ import com.test.bank.event.repository.EventDAO;
 @Service
 public class EventService {
 
-    @Autowired
-    private EventDAO dao;
-    
-    public Map<String, String> paging(String solting, String searchStatus, String category, String word, int page, int pageSize) {
-    	
-    	Map<String, String> map = new HashMap<String, String>();
-		
-    	map.put("solting", solting);
+	@Autowired
+	private EventDAO dao;
+
+	public Map<String, String> paging(String solting, String searchStatus, String category, String word, int page,
+			int pageSize) {
+
+		Map<String, String> map = new HashMap<String, String>();
+
+		map.put("solting", solting);
 		map.put("searchStatus", searchStatus);
 		map.put("category", category);
 		map.put("word", word);
-		
+
 		int startIndex = (page - 1) * pageSize + 1;
 		int endIndex = startIndex + pageSize - 1;
 
@@ -49,7 +50,11 @@ public class EventService {
 	}
 
 	public List<EventDTO> getLatestEvents() {
-	    return dao.getLatestEvents();
+		return dao.getLatestEvents();
 	}
-	
+
+	public EventDTO getEventBySeq(int eventSeq) {
+		return dao.getEventBySeq(eventSeq);
+	}
+
 }

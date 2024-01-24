@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.bank.event.domain.EventDTO;
 import com.test.bank.event.service.EventService;
 
 @Controller
@@ -19,7 +20,7 @@ public class UserEventController {
     private EventService service;
 
     @GetMapping(value = "/view.do")
-    public String event(String category, String word, @RequestParam(defaultValue = "1") int page, Model model) {
+    public String view(String category, String word, @RequestParam(defaultValue = "1") int page, Model model) {
 
         String solting = "user";
         String searchStatus = (category == null && word == null) || (category.equals("") && word.equals("")) ? "n" : "y";
@@ -34,5 +35,15 @@ public class UserEventController {
 
         return "user/event/view";
     }
+    
+    @GetMapping(value = "/detail.do")
+    public String detail(@RequestParam int seq, Model model) {
+        EventDTO event = service.getEventBySeq(seq);
+
+        model.addAttribute("event", event);
+
+        return "user/event/detail";
+    }
+
 
 }

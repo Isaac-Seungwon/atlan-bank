@@ -14,5 +14,7 @@ public interface EventMapper {
 
 	List<EventDTO> getEventsWithPaging(Map<String, String> map);
 
-    List<EventDTO> getLatestEvents();
+	List<EventDTO> getLatestEvents();
+
+	EventDTO getEventBySeq(int eventSeq);
 }
