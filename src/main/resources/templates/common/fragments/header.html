@@ -18,6 +18,13 @@
                     <li><a th:href="@{/about}">About</a></li>
                     <li><a th:href="@{/services}">Services</a></li>
                     <li><a th:href="@{/pricing}">Pricing</a></li>
+                    <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>외환</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                        <ul>
+                            <li><a th:href="@{/atlanbank/user/forex/view.do}">환율 조회하기</a></li>
+                            <li><a th:href="@{/atlanbank/user/forex/application.do}">환전 신청하기</a></li>
+                            <li><a th:href="@{/atlanbank/member/forex/myapplication.do}">내 환전 관리하기</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li><a href="#">Drop Down 1</a></li>

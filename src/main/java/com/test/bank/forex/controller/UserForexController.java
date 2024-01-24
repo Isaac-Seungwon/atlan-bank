@@ -10,16 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping(value = "/user/forex")
+@RequestMapping(value = "atlanbank/user/forex")
 public class UserForexController {
 
 	@Autowired
 	private ForexService service;
 	
 	@GetMapping(value="/view.do")
-	public String forex(Model model) {
+	public String view(Model model) {
 		
 		return "user/forex/view";
+	}
+	
+	@GetMapping(value="/application.do")
+	public String application(Model model) {
+		
+		return "user/forex/application";
 	}
 	
 	

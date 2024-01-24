@@ -4,16 +4,81 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>Forex</title>
+<style>
+	tr, th, td{
+		border: 1px solid #c1bdba;
+	}
+	table{
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+
+</style>
 
 </head>
 
 <body>
+	<!-- Start Main -->
 	<main id="main">
-		<h2>일단은 외환 페이지입니다.</h2>
-	
-	
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>환율 조회하기</h2>
+							<p>Exchange rate Inquiry page</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="index.do">Home</a></li>
+						<li>환율 조회</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<table>
+			<thead>
+				<tr>
+					<th scope="col" rowspan="3" colspan="2">통화종류</th>
+					<th scope="col" rowspan="3">매매기준율</th>
+					<th scope="col" rowspan="2">송금(전신환)</th>
+					<th scope="col" rowspan="2">현찰</th>
+					<th scope="col" rowspan="3">환산율</th>
+					<th scope="col" rowspan="3">환율변동추이</th>
+				</tr>
+				<tr>
+					<th scope="col" rowspan="2">보내실 때</th>
+					<th scope="col" rowspan="2">받으실 때</th>
+					<th scope="col" rowspan="2">사실 때</th>
+					<th scope="col" rowspan="2">파실 때</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>USD</td>
+					<td>미국(달러)</td>
+					<td>.</td>
+					<td>.</td>
+					<td>.</td>
+					<td>.</td>
+					<td>.</td>
+					<td>.</td>
+					<td>.</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
 	</main>
-	<!-- End #main -->
+	<!-- End Main -->
 
 </body>
 </html>
