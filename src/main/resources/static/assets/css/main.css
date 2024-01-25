@@ -61,7 +61,7 @@ h6 {
 # Sections & Section Header
 --------------------------------------------------------------*/
 section {
-  padding: 80px 0;
+  padding: 50px 0;
   overflow: hidden;
 }
 
@@ -573,8 +573,15 @@ section {
 .features {
     width: 100%;
 	display: flex;
+}
+
+#option > div {
 	border-radius: 100px;
-	background-color: #CCC;
+	position: relative;
+    top: -60px;
+    margin-bottom: -60px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .features i {
@@ -632,6 +639,10 @@ section {
     transform: scale(1.5);
 }
 */
+
+.feature-box p {
+	font-size: 20px;
+}
 
 .feature-box h2 {
 	margin-top: 0px;
@@ -956,10 +967,6 @@ section {
 /*--------------------------------------------------------------
 # Features Section
 --------------------------------------------------------------*/
-.features {
-  padding-top: 20px;
-}
-
 .features .features-item+.features-item {
   margin-top: 100px;
 }
@@ -1827,15 +1834,34 @@ section {
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: 60vh;
-  background-color: #3786ff;
+  min-height: 50vh;
+  position: relative;
+  padding: 120px 0 60px 0;
+  /* background-color: #3786ff; */
+  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
   background-image: url("../img/hero-bg.png");
   background-size: cover;
   background-position: center;
-  position: relative;
-  padding: 120px 0 60px 0;
-  color: rgba(255, 255, 255, 0.8);
 }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(45deg, #1071ff, #00bcd4);
+}
+
+.hero img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
 
 .hero h2 {
   margin-bottom: 20px;
