@@ -12,7 +12,6 @@ import com.test.bank.event.domain.EventDTO;
 import com.test.bank.event.service.EventService;
 
 @Controller
-@RequestMapping(value = "/atlanbank")
 public class MainController {
 
     @Autowired
