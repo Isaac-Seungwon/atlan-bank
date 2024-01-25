@@ -127,10 +127,10 @@
 		border-radius: 5px;
 	}
 
-	ul.benefits-menu li a:focus {
+	/* ul.benefits-menu li a:focus {
 		outline: 2px solid black;
 		border-radius: 5px;
-	}
+	} */
 	
 	ul.benefits-menu::after {
 		content: '';
@@ -146,6 +146,7 @@
 	
 	.benefits-container ul li a {
 		display: flex;
+		flex-direction: column;
 		width: 100%;
 		height: 100%;
 		justify-content: center;
@@ -154,14 +155,34 @@
 		color: inherit;
 	}
 	
+	.benefits-container span {
+		font-weight: 600;
+	}
+	
 	.benefits-container ul li a:hover {
 		background: #F1F4F8;
+	}
+	
+	.benefits-container img {
+		width: 48px;
+		display: block;
+		margin: 10px;
 	}
 	
 	.benefits-container ul::after {
 		content: '';
 		display: block;
 		clear: both;
+	}
+	
+	/* benefits menu(credit/debit) */
+	.benefits-container.debit-card {
+		display: none;
+	}
+	
+	.on {
+		outline: 2px solid black;
+		border-radius: 5px;
 	}
 	
 	/* responsive */
@@ -307,76 +328,143 @@
 			<h2>혜택별 카드 찾기</h2>
 			
 			<ul class="benefits-menu">
-				<li><a href="javascript:void(0);">신용카드</a></li>
-				<li><a href="javascript:void(0);">체크카드</a></li>
+				<li><a href="javascript:void(0);" id="credit">신용카드</a></li>
+				<li><a href="javascript:void(0);" id="debit">체크카드</a></li>
 			</ul>
 			
-			<div class="benefits-container">
+			<!-- Credit Cards Benefits -->
+			<div class="benefits-container credit-card">
 				<ul>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>적립/할인</strong>
+							<img src="/assets/img/card/discount-saving_icon.png">
+							<span>적립/할인</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>여행</strong>
+							<img src="/assets/img/card/airplane_icon.png">
+							<span>여행</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>쇼핑</strong>
+							<img src="/assets/img/card/shopping_icon.png">
+							<span>쇼핑</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>주유/충전</strong>
+							<img src="/assets/img/card/gas-fuel_icon.png">
+							<span>주유/충전</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>통신</strong>
+							<img src="/assets/img/card/phone_icon.png">
+							<span>통신</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>교육</strong>
+							<img src="/assets/img/card/education_icon.png">
+							<span>교육</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>의료</strong>
+							<img src="/assets/img/card/hospital_icon.png">
+							<span>의료</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>음식</strong>
+							<img src="/assets/img/card/cutlery_icon.png">
+							<span>음식</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>렌탈</strong>
+							<img src="/assets/img/card/rental_icon.png">
+							<span>렌탈</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>선택형</strong>
+							<img src="/assets/img/card/choice_icon.png">
+							<span>선택형</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="">
-							<strong>공공/정부지원</strong>
+							<img src="/assets/img/card/public_icon.png">
+							<span>공공/정부지원</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- Debit Cards Benefits -->
+			<div class="benefits-container debit-card">
+				<ul>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/discount_icon.png">
+							<span>할인</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/discount-saving_icon.png">
+							<span>적립</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/cutlery_icon.png">
+							<span>음식</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/shopping_icon.png">
+							<span>쇼핑</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/airplane_icon.png">
+							<span>여행</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/phone_icon.png">
+							<span>통신</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/education_icon.png">
+							<span>교육</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/culture_icon.png">
+							<span>문화</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/student-id-card_icon.png">
+							<span>학생증</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="/assets/img/card/public_icon.png">
+							<span>공공/정부지원</span>
 						</a>
 					</li>
 				</ul>
@@ -386,6 +474,33 @@
 		
 	</main>
 	<!-- End Main -->
+
+	<!-- Script -->
+	<script>
+	
+		//Add 'on' class to the 'credit' menu upon page load
+		$(document).ready(function() {
+			$('#credit').addClass('on');
+		});
+		
+		//Benefits menu toggle
+		$('ul.benefits-menu a').click(function() {
+			
+			$('ul.benefits-menu a').removeClass('on');
+			
+			$(this).addClass('on');
+			
+			if ($('#credit').hasClass('on')) {
+				$('.benefits-container.credit-card').css('display', 'block');
+				$('.benefits-container.debit-card').css('display', 'none');
+			} else if (!$('#credit').hasClass('on')) {
+				$('.benefits-container.credit-card').css('display', 'none');
+				$('.benefits-container.debit-card').css('display', 'block');
+			}
+			
+		});
+	</script>
+
 
 </body>
 </html>
