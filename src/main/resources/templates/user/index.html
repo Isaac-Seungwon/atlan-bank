@@ -129,7 +129,7 @@
 						<div class="event-item">
 							<h3
 								th:text="${#strings.length(event.name) &gt; 20} ? ${#strings.substring(event.name, 0, 20) + '...'} : ${event.name}"></h3>
-							<a th:href="@{/atlanbank/user/event/detail.do(seq=${event.eventSeq})}"
+							<a th:href="@{/user/event/detail.do(seq=${event.eventSeq})}"
 								class="buy-btn">자세히 보기</a>
 						</div>
 					</div>
@@ -145,7 +145,7 @@
 
 		<div class="container" data-aos="fade-up">
 			<div class="section-header">
-				<a th:href="@{/atlanbank/user/event/view.do}"><h2><i class="fa-solid fa-comments-dollar"></i> 오늘의 뉴스</h2></a>
+				<a th:href="@{/atlanbank/user/event/view.do}"><h2><i class="fa-solid fa-comments-dollar"></i> 오늘의 소식</h2></a>
 			</div>
 		</div>
 		<section id="testimonials" class="testimonials">

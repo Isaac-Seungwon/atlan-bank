@@ -17,12 +17,18 @@
                     <li><a th:href="@{/about}">소개</a></li>
                     <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>예금</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a th:href="@{/atlanbank/index.do}"></a>계좌 1</li>
-                            <li><a th:href="@{/atlanbank/index.do}"></a>계좌 2</li>
-                            <li><a th:href="@{/atlanbank/index.do}"></a>계좌 3</li>
+                            <li><a th:href="@{/atlanbank/index.do}">계좌 1</a></li>
+                            <li><a th:href="@{/atlanbank/index.do}">계좌 2</a></li>
+                            <li><a th:href="@{/atlanbank/index.do}">계좌 3</a></li>
                         </ul>
                     </li>
-                    <li><a th:href="@{/pricing}">Pricing</a></li>
+                    <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>소식</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                        <ul>
+                            <li><a th:href="@{/atlanbank/index.do}">오늘의 소식</a></li>
+                            <li><a th:href="@{/atlanbank/index.do}">진행중인 이벤트</a></li>
+                            <li><a th:href="@{/atlanbank/index.do}">혜택 확인하기</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>외환</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li><a th:href="@{/atlanbank/user/forex/view.do}">환율 조회하기</a></li>

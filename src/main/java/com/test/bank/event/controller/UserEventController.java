@@ -45,5 +45,4 @@ public class UserEventController {
         return "user/event/detail";
     }
 
-
 }
