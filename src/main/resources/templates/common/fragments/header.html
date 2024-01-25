@@ -5,7 +5,7 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a th:href="@{/}" class="logo d-flex align-items-center">
+            <a th:href="@{/index.do}" class="logo d-flex align-items-center">
                 <!-- <img th:src="@{/assets/img/test_logo.png}" alt=""> -->
                 <h1>Atlan Bank</h1>
             </a>
@@ -14,26 +14,26 @@
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a th:href="@{/about}">소개</a></li>
-                    <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>예금</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li><a th:href="@{/about.do}">소개</a></li>
+                    <li class="dropdown"><a th:href="@{/user/forex/view.do}"><span>예금</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a th:href="@{/atlanbank/index.do}">계좌 1</a></li>
-                            <li><a th:href="@{/atlanbank/index.do}">계좌 2</a></li>
-                            <li><a th:href="@{/atlanbank/index.do}">계좌 3</a></li>
+                            <li><a th:href="@{/index.do}">계좌 1</a></li>
+                            <li><a th:href="@{/index.do}">계좌 2</a></li>
+                            <li><a th:href="@{/index.do}">계좌 3</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>소식</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li class="dropdown"><a th:href="@{/user/forex/view.do}"><span>소식</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a th:href="@{/atlanbank/index.do}">오늘의 소식</a></li>
-                            <li><a th:href="@{/atlanbank/index.do}">진행중인 이벤트</a></li>
-                            <li><a th:href="@{/atlanbank/index.do}">혜택 확인하기</a></li>
+                            <li><a th:href="@{/index.do}">오늘의 소식</a></li>
+                            <li><a th:href="@{/user/event/view.do}">진행중인 이벤트</a></li>
+                            <li><a th:href="@{/index.do}">혜택 확인하기</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>외환</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li class="dropdown"><a th:href="@{/user/forex/view.do}"><span>외환</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a th:href="@{/atlanbank/user/forex/view.do}">환율 조회하기</a></li>
-                            <li><a th:href="@{/atlanbank/user/forex/application.do}">환전 신청하기</a></li>
-                            <li><a th:href="@{/atlanbank/member/forex/myapplication.do}">내 환전 관리하기</a></li>
+                            <li><a th:href="@{/user/forex/view.do}">환율 조회하기</a></li>
+                            <li><a th:href="@{/user/forex/application.do}">환전 신청하기</a></li>
+                            <li><a th:href="@{/member/forex/myapplication.do}">내 환전 관리하기</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>

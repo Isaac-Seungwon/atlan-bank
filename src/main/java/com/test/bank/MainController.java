@@ -14,21 +14,21 @@ import com.test.bank.event.service.EventService;
 @Controller
 public class MainController {
 
-    @Autowired
-    private EventService evtService;
+	@Autowired
+	private EventService evtService;
 
-	@GetMapping(value="/index.do")
+	@GetMapping(value = "/index.do")
 	public String index(Model model) {
-        // 최신 이벤트 3개
-        List<EventDTO> latestEvents = evtService.getLatestEvents();
-        model.addAttribute("latestEvents", latestEvents);
-        
+		// 최신 이벤트 3개
+		List<EventDTO> latestEvents = evtService.getLatestEvents();
+		model.addAttribute("latestEvents", latestEvents);
+
 		return "user/index";
 	}
-	
-	@GetMapping(value="/test.do")
+
+	@GetMapping(value = "/test.do")
 	public String test(Model model) {
-		
+
 		return "user/test";
 	}
 
