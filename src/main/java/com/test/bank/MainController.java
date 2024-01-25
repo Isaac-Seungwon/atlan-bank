@@ -26,6 +26,12 @@ public class MainController {
 		return "user/index";
 	}
 
+	@GetMapping(value = "/about.do")
+	public String about(Model model) {
+
+		return "user/about";
+	}
+	
 	@GetMapping(value = "/test.do")
 	public String test(Model model) {
 
