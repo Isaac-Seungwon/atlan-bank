@@ -178,7 +178,8 @@
 						<button class="nav-link" id="end-tab" data-bs-toggle="tab" data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">종료한 이벤트</button>
 					</li>
 				</ul>
-					
+				
+				<!-- 전체 이벤트 -->
 				<div class="tab-content pt-2" id="borderedTabContent" style="padding-top: 0 !important;">
 					<div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab">
 						<!-- Event List -->
@@ -215,18 +216,30 @@
 						
 						<!-- Paging -->
 						<nav id="page-bar" aria-label="Page navigation example">
-						    <ul class="pagination justify-content-center">
-						        <div th:each="pageNumber : ${#numbers.sequence(1, map.totalPages)}">
-						            <li th:class="${pageNumber} == ${currentPage} ? 'page-item active' : 'page-item'">
-						                <a class="page-link" th:href="@{/user/event/view.do(page=${pageNumber}, category=${map.category}, word=${map.word})}" th:text="${pageNumber}"></a>
-						            </li>
-						        </div>
+							<ul class="pagination justify-content-center">
+								<li class="page-item">
+								    <a class="page-link" th:href="@{/user/event/view.do(page=${currentPage - 1}, category=${map.category}, word=${map.word})}" th:if="${currentPage > 1}">
+								        <span aria-hidden="true">&laquo;</span>
+								    </a>
+								</li>
+
+					            <li th:each="pageNumber : ${#numbers.sequence(1, map.totalPages)}" th:class="${pageNumber} == ${currentPage} ? 'page-item active' : 'page-item'">
+					                <a class="page-link" th:href="@{/user/event/view.do(page=${pageNumber}, category=${map.category}, word=${map.word})}" th:text="${pageNumber}"></a>
+					            </li>
+						        
+						        <li class="page-item">
+								    <a class="page-link" th:href="@{/user/event/view.do(page=${currentPage + 1}, category=${map.category}, word=${map.word})}" th:if="${currentPage >= 1}">
+								        <span aria-hidden="true">&raquo;</span>
+								    </a>
+								</li>
 						    </ul>
 						</nav>
 					</div>
+					
 					<div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="progress-tab">
 						진행중인 이벤트
 					</div>
+					
 					<div class="tab-pane fade" id="bordered-contact" role="tabpanel" aria-labelledby="end-tab">
 						종료한 이벤트
 					</div>
