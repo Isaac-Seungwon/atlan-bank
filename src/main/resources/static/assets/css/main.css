@@ -1044,13 +1044,13 @@ opacity
 .pricing h3 {
 	font-weight: 600;
 	margin-bottom: 15px;
-	font-size: 20px;
+	font-size: 30px;
 	color: var(--color-secondary);
 }
 
 .pricing h4 {
-	font-size: 48px;
-	color: var(--color-primary);
+	font-size: 20px;
+	color: #bcbcbc;
 	font-weight: 400;
 	font-family: var(--font-primary);
 	margin-bottom: 25px;
@@ -1122,6 +1122,12 @@ opacity
 .pricing .featured .buy-btn {
 	background: var(--color-primary);
 	color: #fff;
+}
+
+.event-item {
+	background-color: #f3f3f3;
+    border-radius: 20px;
+    padding: 20px;
 }
 
 @media ( max-width : 992px) {

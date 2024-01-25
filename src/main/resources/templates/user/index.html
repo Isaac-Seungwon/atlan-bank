@@ -117,26 +117,21 @@
 		<!-- ======= Pricing Section ======= -->
 		<section id="pricing" class="pricing pt-0">
 			<div class="container" data-aos="fade-up">
-
 				<div class="section-header">
 					<h2><a th:href="@{/atlanbank/user/event/view.do}"><i class="fa-solid fa-gifts"></i> 이벤트</a></h2>
 				</div>
 
 				<div class="row gy-4">
-
 					<div th:each="event : ${latestEvents}" class="col-lg-4"
 						data-aos="fade-up" data-aos-delay="${(event.index + 1) * 100}">
 						<div class="event-item">
-							<h3
-								th:text="${#strings.length(event.name) &gt; 20} ? ${#strings.substring(event.name, 0, 20) + '...'} : ${event.name}"></h3>
-							<a th:href="@{/user/event/detail.do(seq=${event.eventSeq})}"
-								class="buy-btn">자세히 보기</a>
+							<h3 th:text="${#strings.length(event.name) &gt; 26} ? ${#strings.substring(event.name, 0, 26) + '...'} : ${event.name}"></h3>
+							<h4 th:text="${#strings.length(event.content) &gt; 65} ? ${#strings.substring(event.content, 0, 65) + '...'} : ${event.content}"></h4>
+							<a th:href="@{/user/event/detail.do(seq=${event.eventSeq})}" class="buy-btn">자세히 보기</a>
 						</div>
 					</div>
 					<!-- End Event Item -->
-
 				</div>
-
 			</div>
 		</section>
 		<!-- End Pricing Section -->
@@ -338,9 +333,7 @@
 				<div class="row gy-4">
 					<div
 						class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-						<img src="assets/img/about.jpg" class="img-fluid" alt=""> <a
-							href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-							class="glightbox play-btn"></a>
+						<img src="assets/img/about.jpg" class="img-fluid" alt=""> <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
 					</div>
 					<div class="col-lg-6 content order-last  order-lg-first">
 						<h3>About Us</h3>
