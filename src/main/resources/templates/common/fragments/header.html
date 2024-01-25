@@ -7,16 +7,21 @@
 
             <a th:href="@{/}" class="logo d-flex align-items-center">
                 <!-- <img th:src="@{/assets/img/test_logo.png}" alt=""> -->
-                <h1>Logis</h1>
+                <h1>Atlan Bank</h1>
             </a>
 
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a th:href="@{/}" class="active">Home</a></li>
-                    <li><a th:href="@{/about}">About</a></li>
-                    <li><a th:href="@{/services}">Services</a></li>
+                    <li><a th:href="@{/about}">소개</a></li>
+                    <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>예금</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                        <ul>
+                            <li><a th:href="@{/atlanbank/index.do}"></a>계좌 1</li>
+                            <li><a th:href="@{/atlanbank/index.do}"></a>계좌 2</li>
+                            <li><a th:href="@{/atlanbank/index.do}"></a>계좌 3</li>
+                        </ul>
+                    </li>
                     <li><a th:href="@{/pricing}">Pricing</a></li>
                     <li class="dropdown"><a th:href="@{/atlanbank/user/forex/view.do}"><span>외환</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
@@ -43,7 +48,7 @@
                         </ul>
                     </li>
                     <li><a th:href="@{/contact}">Contact</a></li>
-                    <li><a class="get-a-quote" th:href="@{/get-a-quote}">Get a Quote</a></li>
+                    <li><a class="get-a-quote" th:href="@{/get-a-quote}">로그인</a></li>
                 </ul>
             </nav><!-- .navbar -->
 

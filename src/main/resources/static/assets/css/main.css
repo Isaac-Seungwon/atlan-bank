@@ -67,23 +67,33 @@ section {
 
 .section-header {
   text-align: left;
-  padding: 30px 0;
+  padding: 10px 0 0 0;
+  position: relative;
+}
+
+.section-header a {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 0;
+  color: #001236;
+  position: relative;
+  z-index: 2;
   position: relative;
 }
 
 .section-header h2 {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
   text-transform: uppercase;
   padding-bottom: 0;
-  color: #001973;
+  color: #001236;
   position: relative;
   z-index: 2;
-  /* margin-bottom: 20px; */
-  padding-bottom: 20px;
   position: relative;
 }
 
+/*
 .section-header h2:after {
 	content: "";
 	position: absolute;
@@ -91,11 +101,10 @@ section {
 	width: 45px;
 	height: 3px;
 	background: var(--color-primary);
-	/* left: 0; */
-	/* right: 0; */
 	bottom: 0;
 	margin: auto;
 }
+*/
 
 .section-header span {
   position: absolute;
@@ -564,6 +573,8 @@ section {
 .features {
     width: 100%;
 	display: flex;
+	border-radius: 100px;
+	background-color: #CCC;
 }
 
 .features i {
@@ -575,20 +586,16 @@ section {
     margin-bottom: 10px;
 }
 
-.features:last-child > .feature-box:last-child {
-    border-left: 20px solid #FFF;
-}
-
 .sub-features div {
     background-color: var(--back-color);
     transition: all 0.3s;
 }
 
-.sub-features > div:hover {
+/* .sub-features > div:hover {
     background-color: var(--button-hover-color);
-    /* transform: scale(1.05); */
+    transform: scale(1.05);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .feature-box p {
 	text-align: center;
@@ -629,6 +636,7 @@ section {
 .feature-box h2 {
 	margin-top: 0px;
 	margin-bottom: 5px;
+	font-size: 40px;
 }
 
 .feature-box h2 > i {
@@ -1819,8 +1827,8 @@ section {
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: 50vh;
-  background-color: var(--color-secondary);
+  min-height: 60vh;
+  background-color: #3786ff;
   background-image: url("../img/hero-bg.png");
   background-size: cover;
   background-position: center;
@@ -1832,7 +1840,7 @@ section {
 .hero h2 {
   margin-bottom: 20px;
   padding: 0;
-  font-size: 48px;
+  font-size: 60px;
   font-weight: 700;
   color: #fff;
 }
@@ -1844,7 +1852,7 @@ section {
 }
 
 .hero p {
-  font-size: 15px;
+  font-size: 28px;
   font-weight: 400;
   margin-bottom: 40px;
 }

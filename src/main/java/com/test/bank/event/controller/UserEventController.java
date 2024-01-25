@@ -13,7 +13,7 @@ import com.test.bank.event.domain.EventDTO;
 import com.test.bank.event.service.EventService;
 
 @Controller
-@RequestMapping(value = "/atlanbank/user/event")
+@RequestMapping(value = "/user/event")
 public class UserEventController {
 
     @Autowired

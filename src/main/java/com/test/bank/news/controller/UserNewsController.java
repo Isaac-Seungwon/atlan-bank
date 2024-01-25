@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.test.bank.news.service.NewsService;
 
 @Controller
-@RequestMapping(value = "/atlanbank")
+@RequestMapping(value = "/user/news")
 public class UserNewsController {
 
 	@Autowired
 	private NewsService service;
 	
-	@GetMapping(value="/news.do")
-	public String news(Model model) {
+	@GetMapping(value="/view.do")
+	public String view(Model model) {
 		
 		return "user/news/view";
 	}
