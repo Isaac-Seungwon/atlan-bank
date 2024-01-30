@@ -5,14 +5,14 @@
 <head>
 <title>Forex</title>
 <style>
-	tr, th, td{
-		border: 1px solid #c1bdba;
-	}
-	table{
-		margin-top:20px;
-		margin-bottom:20px;
-	}
-
+tr, th, td {
+	border: 1px solid #c1bdba;
+}
+table {
+	width:100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 </style>
 
 </head>
@@ -43,40 +43,37 @@
 			</nav>
 		</div>
 		<!-- End Breadcrumbs -->
-		
-		<table>
-			<thead>
-				<tr>
-					<th scope="col" rowspan="3" colspan="2">통화종류</th>
-					<th scope="col" rowspan="3">매매기준율</th>
-					<th scope="col" rowspan="2">송금(전신환)</th>
-					<th scope="col" rowspan="2">현찰</th>
-					<th scope="col" rowspan="3">환산율</th>
-					<th scope="col" rowspan="3">환율변동추이</th>
-				</tr>
-				<tr>
-					<th scope="col" rowspan="2">보내실 때</th>
-					<th scope="col" rowspan="2">받으실 때</th>
-					<th scope="col" rowspan="2">사실 때</th>
-					<th scope="col" rowspan="2">파실 때</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>USD</td>
-					<td>미국(달러)</td>
-					<td>.</td>
-					<td>.</td>
-					<td>.</td>
-					<td>.</td>
-					<td>.</td>
-					<td>.</td>
-					<td>.</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		
+
+		<div style="width:900px;">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2" rowspan="2">통화종류</th>
+						<th rowspan="2">매매기준율</th>
+						<th colspan="2">송금(전신환)</th>
+						<th colspan="2">현찰</th>
+					</tr>
+					<tr>
+						<th>보내실 때</th>
+						<th>받으실 때</th>
+						<th>사실 때</th>
+						<th>파실 때</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
 	</main>
 	<!-- End Main -->
 
