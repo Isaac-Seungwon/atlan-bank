@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.test.bank.card.service.CardService;
 
 @Controller
-@RequestMapping(value = "/atlanbank/user/card")
+@RequestMapping(value = "/user/card")
 public class UserCardController {
 
 	@Autowired
@@ -19,17 +19,17 @@ public class UserCardController {
 	public String view(Model model) {
 		return "user/card/view";
 	}
-	
+
 	@GetMapping(value = "/credit/view.do")
 	public String creditView(Model model) {
 		return "user/card/creditCardView";
 	}
-	
+
 	@GetMapping(value = "/credit/detail.do")
 	public String creditDetail(Model model) {
 		return "user/card/creditCardDetail";
 	}
-	
+
 	@GetMapping(value = "/debit/view.do")
 	public String debitView(Model model) {
 		return "user/card/debitCardView";
@@ -39,6 +39,5 @@ public class UserCardController {
 	public String debitDetail(Model model) {
 		return "user/card/debitCardDetail";
 	}
-	
-	
+
 }

@@ -25,95 +25,60 @@
     <div class="container">
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h2 data-aos="fade-up">Your Lightning Fast Delivery Partner</h2>
-          <p data-aos="fade-up" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
-
-          <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" class="form-control" placeholder="ZIP code or CitY">
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
-
-          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
-
-            <div class="col-lg-3 col-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Clients</p>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-3 col-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-3 col-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Support</p>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-3 col-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Workers</p>
-              </div>
-            </div><!-- End Stats Item -->
-
-          </div>
+          <h2 data-aos="fade-up">아틀란 은행</h2>
+          <p data-aos="fade-up" data-aos-delay="100">언제나 정성으로 모시겠습니다.</p>
         </div>
 
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-          <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
+          <img src="assets/img/hero-img.png" class="img-fluid mb-3 mb-lg-0" alt="">
         </div>
 
       </div>
     </div>
 	</section><!-- End Hero Section -->
 
-	<main id="main">
-		<div class="features container">
-			<div class="feature-box">
+	<main id="option">
+		<div class="features container" data-aos="fade-up"data-aos-delay="100">
+			<div class="feature-box" onclick="location.href='';">
 				<div class="sub-features">
 					<div class="feature-box" name="account-check">
 						<p>계좌조회</p>
 					</div>
 				</div>
 			</div>
-			<div class="feature-box">
+			<div class="feature-box" onclick="location.href='';">
 				<div class="sub-features">
 					<div class="feature-box">
 						<p>계좌이체</p>
 					</div>
 				</div>
 			</div>
-			<div class="feature-box"
-				onclick="location.href='/atlanbank/user/card/view.do';">
+			<div class="feature-box" onclick="location.href='/atlanbank/user/card/view.do';">
 				<div class="sub-features">
 					<div class="feature-box">
 						<p>카드신청</p>
 					</div>
 				</div>
 			</div>
-			<div class="feature-box">
+			<div class="feature-box" onclick="location.href='';">
 				<div class="sub-features">
 					<div class="feature-box">
-						<p>보안센터</p>
+						<p>대출받기</p>
 					</div>
 				</div>
 			</div>
-			<div class="feature-box">
+			<div class="feature-box" onclick="location.href='';">
 				<div class="sub-features">
 					<div class="feature-box">
-						<p>상담</p>
+						<p>회원가입</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="features container">
+	</main>
+	
+	<section>
+		<div class="features container" data-aos="fade-up" data-aos-delay="300">
 			<div class="feature-box">
 				<h2>
 					<i class="fa-solid fa-landmark"></i> 금융상품
@@ -146,48 +111,27 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="features container">
-			<div class="feature-box">
-				<h2>
-					<a th:href="@{/atlanbank/event.do}"> <i
-						class="fa-solid fa-gifts"></i> Event
-					</a>
-				</h2>
-				<ul>
-					<li th:each="event : ${latestEvents}"><a
-						th:href="@{/event/detail.do(seq=${event.eventSeq})}"
-						th:text="${#strings.length(event.name) &gt; 38} ? ${#strings.substring(event.name, 0, 38) + '...'} : ${event.name}"></a>
-					</li>
-				</ul>
-			</div>
-		</div> -->
-	</main>
+	</section>
 
 	<main id="main">
-
 		<!-- ======= Pricing Section ======= -->
 		<section id="pricing" class="pricing pt-0">
 			<div class="container" data-aos="fade-up">
-
 				<div class="section-header">
-					<a th:href="@{/atlanbank/user/event/view.do}"><h2><i class="fa-solid fa-gifts"></i> 이벤트</h2></a>
+					<h2><a th:href="@{/user/event/view.do}"><i class="fa-solid fa-gifts"></i> 이벤트</a></h2>
 				</div>
 
 				<div class="row gy-4">
-
 					<div th:each="event : ${latestEvents}" class="col-lg-4"
 						data-aos="fade-up" data-aos-delay="${(event.index + 1) * 100}">
 						<div class="event-item">
-							<h3
-								th:text="${#strings.length(event.name) &gt; 20} ? ${#strings.substring(event.name, 0, 20) + '...'} : ${event.name}"></h3>
-							<a th:href="@{/atlanbank/user/event/detail.do(seq=${event.eventSeq})}"
-								class="buy-btn">자세히 보기</a>
+							<h3 th:text="${#strings.length(event.name) &gt; 26} ? ${#strings.substring(event.name, 0, 26) + '...'} : ${event.name}"></h3>
+							<h4 th:text="${#strings.length(event.content) &gt; 65} ? ${#strings.substring(event.content, 0, 65) + '...'} : ${event.content}"></h4>
+							<a th:href="@{/user/event/detail.do(seq=${event.eventSeq})}" class="buy-btn">자세히 보기</a>
 						</div>
 					</div>
 					<!-- End Event Item -->
-
 				</div>
-
 			</div>
 		</section>
 		<!-- End Pricing Section -->
@@ -196,7 +140,7 @@
 
 		<div class="container" data-aos="fade-up">
 			<div class="section-header">
-				<a th:href="@{/atlanbank/user/event/view.do}"><h2><i class="fa-solid fa-comments-dollar"></i> 오늘의 뉴스</h2></a>
+				<a th:href="@{/atlanbank/user/event/view.do}"><h2><i class="fa-solid fa-comments-dollar"></i> 오늘의 소식</h2></a>
 			</div>
 		</div>
 		<section id="testimonials" class="testimonials">
@@ -389,9 +333,7 @@
 				<div class="row gy-4">
 					<div
 						class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-						<img src="assets/img/about.jpg" class="img-fluid" alt=""> <a
-							href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-							class="glightbox play-btn"></a>
+						<img src="assets/img/about.jpg" class="img-fluid" alt=""> <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
 					</div>
 					<div class="col-lg-6 content order-last  order-lg-first">
 						<h3>About Us</h3>

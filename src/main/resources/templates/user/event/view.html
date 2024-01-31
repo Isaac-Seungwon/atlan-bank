@@ -36,10 +36,9 @@
 }
 
 #event-list {
-	width: 80%;
+	width: 100%;
 	text-align: center;
-	border-top: 2px solid #000;
-	margin: 50px auto 0;
+	margin: 0;
 }
 
 #event-list th, #event-list td {
@@ -55,15 +54,15 @@
 }
 
 #event-list th:nth-child(1) {
-	width: 20%;
+	width: 15%;
 }
 
 #event-list th:nth-child(2) {
-	width: 60%;
+	width: 70%;
 }
 
 #event-list th:nth-child(3) {
-	width: 20%;
+	width: 15%;
 }
 
 #event-list td:nth-child(2) a {
@@ -134,70 +133,120 @@
 <body>
 	<!-- Start Main -->
 	<main id="event">
-		<!-- Start Breadcrumbs -->
-		<div class="breadcrumbs">
-			<div class="page-header d-flex align-items-center"
-				style="background-image: url('assets/img/page-header.jpg');">
-				<div class="container position-relative">
-					<div class="row d-flex justify-content-center">
-						<div class="col-lg-6 text-center">
-							<h2>Event</h2>
-							<p>event page</p>
-						</div>
+	
+	<!-- Start Breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="page-header d-flex align-items-center"
+			style="background-image: url('assets/img/page-header.jpg');">
+			<div class="container position-relative">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-6 text-center">
+						<h2>Event</h2>
+						<p>event page</p>
 					</div>
 				</div>
 			</div>
-			<nav>
-				<div class="container">
-					<ol>
-						<li><a href="index.do">Home</a></li>
-						<li>Event</li>
-					</ol>
-				</div>
-			</nav>
 		</div>
-		<!-- End Breadcrumbs -->
-
-		<table id="event-list">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="eventList, status : ${eventList}">
-					<td th:text="${eventList.eventSeq}"></td>
-					<td><a th:href="@{/atlanbank/user/event/detail.do(seq=${eventList.eventSeq})}"
-						th:text="${eventList.name}"></a> <span class="in-progress"
-						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss') and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행 중</span> <span class="completed"
-						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">종료</span>
-					<td th:text="${eventList.hitsCount}"></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<form method="GET" action="/atlanbank/user/event.do" id="search-form">
-			<select name="category" id="category">
-				<option value="name">제목</option>
-				<option value="content">내용</option>
-			</select> <input type="text" name="word" id="search-field" size="60" pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
-			<button type="submit" id="search-button">
-				<span class="material-symbols-outlined">search</span>
-			</button>
-		</form>
-		
-		<!-- Paging -->
-		<nav id="page-bar" aria-label="Page navigation example">
-		    <ul class="pagination justify-content-center">
-		        <div th:each="pageNumber : ${#numbers.sequence(1, map.totalPages)}">
-		            <li th:class="${pageNumber} == ${currentPage} ? 'page-item active' : 'page-item'">
-		                <a class="page-link" th:href="@{/atlanbank/user/event/view.do(page=${pageNumber}, category=${map.category}, word=${map.word})}" th:text="${pageNumber}"></a>
-		            </li>
-		        </div>
-		    </ul>
+		<nav>
+			<div class="container">
+				<ol>
+					<li><a href="index.do">Home</a></li>
+					<li>Event</li>
+				</ol>
+			</div>
 		</nav>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<div class="sub-menu" style="background-color: #CCC;">
+					서브 메뉴 자리
+				</div>
+			</div>
+			
+			<div class="col-10">
+				<ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist" style="margin-top: 10px;">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true">전체 이벤트</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">진행중인 이벤트</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="end-tab" data-bs-toggle="tab" data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">종료한 이벤트</button>
+					</li>
+				</ul>
+				
+				<!-- 전체 이벤트 -->
+				<div class="tab-content pt-2" id="borderedTabContent" style="padding-top: 0 !important;">
+					<div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab">
+						<!-- Event List -->
+						<table id="event-list">
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<th>조회수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="eventList, status : ${eventList}">
+									<td th:text="${eventList.eventSeq}"></td>
+									<td><a th:href="@{/user/event/detail.do(seq=${eventList.eventSeq})}"
+										th:text="${eventList.name}"></a> <span class="in-progress"
+										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss') and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행 중</span> <span class="completed"
+										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">종료</span>
+									<td th:text="${eventList.hitsCount}"></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<!-- Search -->
+						<form method="GET" action="/atlanbank/user/event/view.do" id="search-form">
+							<select name="category" id="category">
+								<option value="name">제목</option>
+								<option value="content">내용</option>
+							</select> <input type="text" name="word" id="search-field" size="60" pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
+							<button type="submit" id="search-button">
+								<span class="material-symbols-outlined">search</span>
+							</button>
+						</form>
+						
+						<!-- Paging -->
+						<nav id="page-bar" aria-label="Page navigation example">
+							<ul class="pagination justify-content-center">
+								<li class="page-item">
+								    <a class="page-link" th:href="@{/user/event/view.do(page=${currentPage - 1}, category=${map.category}, word=${map.word})}" th:if="${currentPage > 1}">
+								        <span aria-hidden="true">&laquo;</span>
+								    </a>
+								</li>
+
+					            <li th:each="pageNumber : ${#numbers.sequence(1, map.totalPages)}" th:class="${pageNumber} == ${currentPage} ? 'page-item active' : 'page-item'">
+					                <a class="page-link" th:href="@{/user/event/view.do(page=${pageNumber}, category=${map.category}, word=${map.word})}" th:text="${pageNumber}"></a>
+					            </li>
+						        
+						        <li class="page-item">
+								    <a class="page-link" th:href="@{/user/event/view.do(page=${currentPage + 1}, category=${map.category}, word=${map.word})}" th:if="${currentPage >= 1}">
+								        <span aria-hidden="true">&raquo;</span>
+								    </a>
+								</li>
+						    </ul>
+						</nav>
+					</div>
+					
+					<div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="progress-tab">
+						진행중인 이벤트
+					</div>
+					
+					<div class="tab-pane fade" id="bordered-contact" role="tabpanel" aria-labelledby="end-tab">
+						종료한 이벤트
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	</main>
 	<!-- End Main -->
 
@@ -209,5 +258,6 @@
 				}
 			});
 	</script>
+
 </body>
 </html>
