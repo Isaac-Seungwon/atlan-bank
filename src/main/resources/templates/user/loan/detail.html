@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>대출상품</title>
+</head>
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
+<style>
+	.loan_detail_list_detail {
+		display: none;
+	}
+	.loan_detail_choiceview {
+		display: inline;
+	}
+	.loan_detail_choiceview > div > h6, .loan_detail_choiceview > div > div {
+		padding: 0 15px;
+	}
+	.loan_detail_choiceview table{
+		width: 100%;
+	}
+	.loan_detail_choiceview > div {
+		padding-bottom: 50px;
+	}
+	.loan_detail_list_detail td,.loan_detail_list_detail th {
+		border: 1px solid #000;
+	}
+	.no-btn {
+		display: inline-block;
+	    padding: 12px 40px;
+	    border-radius: 4px;
+	    color: #fff;
+	    background-color: var(--color-primary);
+	    border: 2px solid var(--color-primary);
+	    transition: none;
+	    font-size: 16px;
+	    font-weight: 500;
+	    transition: 0.3s;
+	    font-family: var(--font-primary);
+	}
+	#input_area {
+		display: flex;
+		margin-top: 30px;
+	}
+	#calculator-area {
+		display: flex;
+		justify-content: space-between;
+    	align-items: center;
+    	padding: 0 60px;
+	}
+	.product-calculator .input-holder {
+	    min-width: auto;
+	    margin-left: 15px;
+		margin-right: 5px;
+	}
+	.product-calculator .input-holder + span {
+	    line-height: 35px;
+	}
+	.input-holder {
+	    position: relative;
+	    display: inline-block;
+	    vertical-align: top;
+	    text-align: left;
+	}
+	.div-tab1 {
+	    position: relative;
+	    height: 40px;
+	}
+	.div-tab1:before {
+	    content: '';
+	    width: 100%;
+	    height: 1px;
+	    position: absolute;
+	    bottom: 1px;
+	    left: 0;
+	    background: #696981;
+	}
+	.div-tab1 label {
+	    display: inline-block;
+	    float: left;
+	    width: 33%;
+	    position: relative;
+	    text-align: center;
+	    font-size: 13px;
+	}
+	.div-tab1 input[type="radio"] {
+	    width: 16px;
+	    height: 20px;
+	    margin: 0 -16px 0 0;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    opacity: 0;
+	    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	    z-index: auto;
+	}
+	.div-tab1 label span {
+	    display: block;
+	    height: 38px;
+	    line-height: 38px;
+	    overflow: hidden;
+	    position: relative;
+	    top: 1px;
+	    z-index: 5;
+	}
+	.product-calculator .div-tab1 label.checked:after {
+	    border-bottom-color: #f5f5f7;
+	}
+	.div-tab1 label.checked:after {
+	    content: '';
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    position: absolute;
+	    left: 0;
+	    bottom: -1px;
+	    box-sizing: border-box;
+	    border: 1px solid #696981;
+	    border-bottom: 1px solid #fff;
+	}
+	.div-tab1.icon2 label.ic2 > span:before {
+	    background-position: -360px -180px;
+	}
+	.div-tab1[class*=" icon"] label span:before {
+	    content: '';
+	    display: inline-block;
+	    width: 22px;
+	    height: 22px;
+	    margin: 5px 8px 0 0;
+	    background: #fff;
+	    vertical-align: top;
+	    background: url(https://oimg1.kbstar.com/img/ocommon/2018/icon_set1.png) no-repeat -240px -180px;
+	}
+	.div-tab1 label span .icon-com2 {
+	    margin: -2px 0 0 5px;
+	}
+	a, button, label {
+	    cursor: pointer;
+	    border: 0;
+	}
+	.product-calculator .label-tab1 label.checked:after {
+	    border-bottom-color: #ffffff;
+	}
+	#loanCalc h2 {
+		font-size: 32px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    padding-bottom: 0;
+	    color: #001973;
+	    position: relative;
+	    z-index: 2;
+	    padding-bottom: 20px;
+	    position: relative;
+	}
+	#loanCalc h2:after {
+	    content: "";
+	    position: absolute;
+	    display: block;
+	    width: 45px;
+	    height: 3px;
+	    background: var(--color-primary);
+	    /* left: 0; */
+	    /* right: 0; */
+	    bottom: 0;
+	    margin: auto;
+	}
+	#loanCalc span:nth-child(1) {
+	    position: absolute;
+	    color: rgba(14, 29, 52, 0.06);
+	    left: 80px;
+	    right: 0;
+	    z-index: 1;
+	    font-weight: 700;
+	    font-size: 56px;
+	    text-transform: uppercase;
+	    line-height: 0;
+	}
+	
+	#result_area{
+		padding: 20px 60px;
+	}
+	#result_area table{
+		width: 100%;
+		text-align: center;
+	}
+	#result_area th{
+		border: 1px solid #000000;
+	}
+	#result_area td{
+		border-bottom: 1px solid #000000;
+		border-left: 1px solid #000000;
+		border-right: 1px solid #000000;
+	}
+	input {
+		text-align: right;
+	}
+	
+	.btnarea{
+		margin-top: 30px;
+	}
+	.btnarea #buy-btn {
+	    display: inline-block;
+	    padding: 5px 10px;
+	    border-radius: 4px;
+	    color: #fff;
+	    background-color: var(--color-primary);
+	    border: 2px solid var(--color-primary);
+	    transition: none;
+	    font-size: 16px;
+	    font-weight: 500;
+	    transition: 0.3s;
+	    font-family: var(--font-primary);
+	}
+	.btnarea #buy-btn:hover {
+	    background: #406aff;
+	    border-color: #406aff;
+	}
+	.btnarea a:hover {
+	    color: #fff;
+	    text-decoration: none;
+	}
+	#result_area th:nth-child(1), #result_area td:nth-child(1) {
+		width: 8%;
+	}
+	#result_area th:nth-child(2), #result_area td:nth-child(2) {
+		width: 25%;
+	}
+	#result_area th:nth-child(3), #result_area td:nth-child(3) {
+		width: 25%;
+	}
+	#result_area th:nth-child(4), #result_area td:nth-child(4) {
+		width: 25%;
+	}
+	#result_area th:nth-child(5), #result_area td:nth-child(5) {
+		width: 25%;
+	}
+	.icon2 label.ic1 > span:before {
+	    background-position: -330px -180px;
+	}
+	.icon2 label.ic3 > span:before {
+	    background-position: -390px -180px;
+	}
+</style>
+
+<body>
+	<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>대출</h2>
+              <p>돈이 필요한 순간 Atlan Bank 대출</p>
+              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="/index.do">Home</a></li>
+            <li><a href="view.do">대출</a></li>
+            <li><a th:text="${loandto.type}" th:href="@{list.do?(type=${loandto.type})}"></a></li>
+            <li>상품 상세정보</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Service Details Section ======= -->
+    <section id="horizontal-pricing" class="horizontal-pricing pt-0"   style="padding: 30px 5% !important; padding-top: 60px !important;" >
+	    <div id="loanCalc" style="padding-bottom: 30px;">
+	    	<span>상품 정보</span>
+			<h2>상품 정보</h2>
+	    </div>
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100" style="padding: 15px 0;">
+          <div class="col-lg-3 d-flex align-items-center justify-content-center" style="align-items: unset !important;">
+            <h3 th:text="${loandto.name}"></h3>
+          </div>
+          <div class="col-lg-3 d-flex align-items-center justify-content-center" style="align-items: unset !important;">
+            <h4 th:text="${loandto.maxMoney+'원'}"><sup></sup></h4>
+          </div>
+          <div class="col-lg-3 d-flex align-items-center justify-content-center" style="align-items: unset !important;">
+            <h4 th:text="${'최대 '+loandto.maxDate+'년'}"><sup></sup></h4>
+          </div>
+          <div class="col-lg-3 d-flex align-items-center justify-content-center" style="align-items: unset !important;">
+            <div class="text-center">
+            	<a th:if="${loandto.isAvailable == 'Y'}" th:href="@{/loan/application.do(seq=${loandto.loanSeq})}" class="buy-btn">신청하기</a>
+            	<p th:if="${loandto.isAvailable != 'Y'}" class="no-btn">이 상품은 영업점 방문을 통해 신청 가능합니다</p>            	
+            </div>
+          </div>
+        </div><!-- End Pricing Item -->
+      </div>
+    </section><!-- End Horizontal Pricing Section -->
+    
+    <section id="service-details" class="service-details" style="padding-top: 0;  padding-bottom: 10px;">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+			<div class="col-lg-4" style="width: 25%;">
+			
+			  <div class="services-list">
+			    <a class="active" onclick="LoanDetailChoice(1);">상품안내</a>
+			    <a onclick="LoanDetailChoice(2);">금리 및 이율</a>
+			    <a onclick="LoanDetailChoice(3);">이용안내</a>
+			    <a onclick="LoanDetailChoice(4);">유의사항 및 기타</a>
+			  </div>
+			</div>
+
+			<div class="col-lg-8" style="padding-top: 15px;">
+				<div id="loan_detail_list_1" class="loan_detail_list_detail loan_detail_choiceview">
+					<div>
+						<h6>상품특징</h6>
+						<hr>
+						<div>
+							<p th:text="${loanproductguidedto.featuresContent}"></p>
+						</div>
+					</div>
+					<div>
+						<h6>대출신청자격</h6>
+						<hr>
+						<div>
+							<p th:text="${loanproductguidedto.eligibilityContent}"></p>
+						</div>
+					</div>
+					<div>
+						<h6>대출금액</h6>
+						<hr>
+						<div>
+							<p th:text="${loanproductguidedto.amountContent}"></p>
+						</div>
+					</div>
+					<div>
+						<h6>대출기간 및 상환 방법</h6>
+						<hr>
+						<div>
+							<p th:text="${loanproductguidedto.termAndRepaymentContent}"></p>
+						</div>
+					</div>
+				</div>
+				<div id="loan_detail_list_2" class="loan_detail_list_detail">
+					<div>
+						<h6>대출금리</h6>
+						<hr>
+						<div>
+							<table>
+								<tr>
+									<th colspan="2">기준금리</th>
+									<th>가산금리</th>
+									<th>최저금리</th>
+									<th>최고금리</th>
+								</tr>
+								<tr>
+									<td>금융채6개월</td>
+									<td>3.63</td>
+									<td>2.39</td>
+									<td>5.12</td>
+									<td>6.02</td>
+								</tr>
+								<tr>
+									<td>금융채12개월</td>
+									<td>3.56</td>
+									<td>2.29</td>
+									<td>4.95</td>
+									<td>5.85</td>
+								</tr>
+								<tr>
+									<td>신규 COFIX 12개월</td>
+									<td>3.70</td>
+									<td>1.48</td>
+									<td>4.67</td>
+									<td>5.17</td>
+								</tr>
+								<tr>
+									<td>신잔액 COFIX 12개월</td>
+									<td>3.18</td>
+									<td>1.39</td>
+									<td>4.07</td>
+									<td>4.57</td>
+								</tr>
+							</table>
+							<p th:text="${interestratedto.content}"></p>
+						</div>
+					</div>
+					<div>
+						<h6>중도상환수수료</h6>
+						<hr>
+						<div>
+							<p th:if="${interestratedto.charge == '0'}">-</p>
+							<div>
+								<p th:if="${interestratedto.charge != '0'}">중도상환원금 X 수수료율(<span th:text="${interestratedto.charge}"></span>%) X 잔존일수 ÷ 대출기간(당초 대출일로부터 3년까지 부과)</p>
+								<p th:if="${interestratedto.charge != '0'}">단, 금리변동주기와 대출기간이 동일한 경우 수수료율 0.7% 적용</p>
+								<p th:if="${interestratedto.charge != '0'}">종합통장자동대출의 경우 제외</p>
+							</div>
+						</div>
+					</div>
+					<div>
+						<h6>연체이자(지연배상금)에 관한 사항</h6>
+						<hr>
+						<div>
+							<p th:if="${interestratedto.isOverdue != 'Y'}">-</p>
+							<div th:if="${interestratedto.isOverdue == 'Y'}">
+								<p>① 연체이자율: 최고 연 15% (차주별 대출이자율 + 연체가산이자율)</p>
+								<p>※ 단, 대출이자율이 최고 연체이자율 이상인 경우 대출이자율 + 연 2.0%p</p>
+								<p>☞ 『연체가산이자율』은 연 3%를 적용합니다.</p>
+								<p>② 연체이자(지연배상금)를 내셔야 하는 경우</p>
+								<p>☞「이자를 납입하기로 약정한 날」에 납입하지 아니한 때</p>
+								<p>- 이자를 납입하여야 할 날의 다음날부터 1개월까지는 내셔야 할 약정이자에 대해 연체이자가 적용되고, 1개월이 경과하면 기한이익상실로 인하여 대출잔액에 연체이율을 곱한 연체이자 내셔야합니다.</p>
+								<p>☞「분할상환금(또는 분할상환원리금)을 상환하기로 한 날」에 상환하지 아니한 때</p>
+								<p>- 분할상환금(또는 분할상환원리금)을 상환하여야 할 날의 다음날부터는 해당 분할상환금(또는 분할상환원리금)에 대한 연체이자를, 2회이상 연속하여 지체한 때에는 기한이익상실로 인하여 대출잔액에 대한 연체이자를 내셔야 합니다.</p>
+							</div>
+						</div>
+					</div>
+					<div>
+						<h6>금리인하요구권 대상여부</h6>
+						<hr>
+						<div>
+							<p th:if="${interestratedto.isInterestReduction != 'Y'}">-</p>
+							<p th:if="${interestratedto.isInterestReduction == 'Y'}">본 상품은 금리인하요구권 신청이 가능합니다. 단, 은행의 심사결과에 따라 금리인하 요청이 반영되지 않을 수도 있습니다.</p>
+						</div>
+					</div>
+					<div>
+						<h6>대출계약철회권</h6>
+						<hr>
+						<div>
+							<p>계약서류 수령일, 계약 체결일, 대출금 수령일 중 나중에 발생한 날부터 14일(기간의 말일이 휴일인 경우 다음 영업일)까지 은행에 서면, 전화, 컴퓨터 통신으로 철회의사를 표시하고 원금, 이자 및 부대비용을 전액 반환한 경우 대출계약을 철회할 수 있습니다.</p>
+							<p>대출계약 철회권 남용 시 불이익 : 동일 은행에 최근 1개월 내에 2회 이상 대출계약을 철회하는 경우 해당 은행으로부터 신규대출·대출만기 연장 거절, 대출한도 축소, 금리우대 제한 등 불이익이 발생할 수 있습니다.</p>
+						</div>
+					</div>
+					<div>
+						<h6>위법계약해지권</h6>
+						<hr>
+						<div>
+							<p>은행이 「금융소비자 보호에 관한 법률」에서 정하는 적합성, 적정성 및 설명의무를 위반하였거나, 불공정거래행위 혹은 부당권유를 하여 대출계약을 체결한 경우, 법 위반사실을 안 날부터 1년 또는 계약서류 수령일·계약체결일·대출금 수령일로부터 5년 중 먼저 도달한 기간 이내에 서면, 전화, 컴퓨터 통신으로 해당 계약의 해지를 요구할 수 있습니다.</p>
+							<p>은행은 해지를 요구받은 날부터 10일 이내에 고객에게 수락여부 및 그 사유를 고객에게 통지합니다.</p>
+						</div>
+					</div>
+				</div>
+				<div id="loan_detail_list_3" class="loan_detail_list_detail">
+					<div>
+						<h6>담보</h6>
+						<hr>
+						<div>
+							<p th:text="${loanusageguidedto.collateral}"></p>
+						</div>
+					</div>
+					<div>
+						<h6>부대비용</h6>
+						<hr>
+						<div>
+							<p th:if="${loanusageguidedto.isAdditionalCost != 'Y'}">-</p>
+							<div th:if="${loanusageguidedto.isAdditionalCost == 'Y'}">
+								<p>대출 신규시 고객이 부담해야 하는 비용은 다음과 같습니다.</p>
+								<p>(1) 인지세 : 「인지세법」에 의해 대출약정 체결을 할 때 납부하는 세금으로 대출금액에 따라 세액이 차등 적용되며, 각 50%씩 고객과 은행이 부담</p>
+								<table>
+									<tr>
+										<th>대출금액</th>
+										<th>5천만원 이하</th>
+										<th>5천만원 초과 ~ 1억원 이하</th>
+										<th>1억원 초과 ~ 10억원 이하</th>
+										<th>10억원 초과</th>
+									</tr>
+									<tr>
+										<td>인지세액</td>
+										<td>비과세</td>
+										<td>7만원 (각각 3만5천원)</td>
+										<td>15만원 (각각 7만5천원)</td>
+										<td>35만원 (각각 17만5천원)</td>
+									</tr>
+								</table>
+								<p>대출 이용 중 또는 상환 시 고객이 부담해야 하는 비용은 없습니다.</p>
+							</div>
+						</div>
+					</div>
+					<div>
+						<h6>대출상환 관련 안내</h6>
+						<hr>
+						<div>
+							<p>이자 계산 방법 : 이자는 원금에 소정이자율과 기간을 곱한 후 약정이자율이 연리에 의한 경우 일 단위는 365(윤년은 366)로, 월 단위는 12로 나누어 계산합니다.</p>
+							<div>
+								<p>원금 및 이자의 상환시기</p>
+								<p>※ 아래의 내용은 상환방법에 대한 이해를 돕기 위한 내용으로 실제 대출상품별 선택 가능한 상환방법은 각 상품「상품안내」의 "대출기간 및 상환방법"을 확인하시기 바랍니다.</p>
+								<p>(1) 일시상환대출 : 대출기간 중에는 이자지급일에 이자만 납부하고, 대출기간 만료일에 대출원금을 전액 상환합니다.</p>
+								<p>(2) 원리금균등 분할상환 : 매월 이자지급일에 동일한 할부금을 상환합니다.</p>
+								<p>(3) 원금균등 분할상환 : 매월 이자지급일에 이자 및 동일한 할부 원금을 상환합니다.</p>
+								<p>(4) 할부금고정 분할상환 : 매월 이자지급일에 최초 할부금을 만기까지 상환하고, 잔액은 대출기간 만료일에 전액 상환합니다.</p>
+								<p>(5) 혼합상환 : 고객님이 지정한 대출원금은 만기일에 일시 상환하고, 나머지 금액은 매월 이자지급일에 동일한 할부금으로 상환합니다.</p>
+								<p>(6) 통장자동대출 : ‘매일의 잔액’에 대하여 하루단위로 이자를 계산하여 매월 이자납입일(은행이 정한 매월 결산일)에 대출금액에 합산합니다.</p>
+							</div>
+							<div>
+								<p>휴일 대출 상환 : 인터넷뱅킹을 통해 휴일에도 대출 원금 및 이자를 상환 할 수 있습니다.</p>
+								<p>(단, 외부 기관 협약 대출 등 일부 상품은 제외되며 외부기관의 사정에 의해 거래가 제한될 수 있습니다.)</p>
+							</div>
+	
+						</div>
+					</div>
+					<div>
+						<h6>기한연장 관련 안내</h6>
+						<hr>
+						<div>
+							<p th:if="${loanusageguidedto.isExtension != 'Y'}"></p>
+							<div th:if="${loanusageguidedto.isExtension == 'Y'}">
+								<p>일시상환방식 대출의 기한연장은 대출만기일 1개월 이전부터 가능하며, 만기일 전까지 영업점을 방문하셔서 필요한 절차(기한연장, 재대출, 대출상환 등)를 진행하셔야 대출금에 대한 연체이자 발생 등 불이익이 발생하지 않습니다. 단, 은행이 정한 기준에 따라 자동기한연장 대상으로 선정 시 자동기한연장에 대해 동의하는 경우 자동기한연장 처리됩니다.</p>
+								<p>자동기한연장의 동의는 인터넷뱅킹, 콜센터, 영업점을 통하여 등록 가능합니다.</p>
+								<p>※ 분할상환을 선택하는 경우 기한연장은 불가합니다.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="loan_detail_list_4" class="loan_detail_list_detail">
+				<div>
+					<h6>만기경과 후 기한의 이익 상실에 대한 안내</h6>
+						<hr>
+					<div>
+						<p>만기일 경과 후 대출금액을 전액 상환하지 않거나 기한 연장하지 않은 경우, 은행여신거래기본약관에 따라 기한의 이익이 상실되어 대출잔액에 대한 지연배상금이 부과됨.</p>
+						<p>연체가 계속되는 경우, 연체기간에 따라 『신용정보의 이용 및 보호에 관한 법률』과 『일반신용정보 관리규약』에 따라 "연체정보 등"으로 등록되어 금융 불이익을 받을 수 있음.</p>
+					</div>
+				</div>
+				<div>
+					<h6>본 공시내용의 유효기간</h6>
+						<hr>
+					<div>
+						<p th:text="${loancautiondto.startDate+' ~ '+loancautiondto.endDate}"></p>
+					</div>
+				</div>
+				<div>
+					<h6>고객께서 알아두셔야 할 사항</h6>
+						<hr>
+					<div>
+						<p th:text="${loancautiondto.content}"></p>
+					</div>
+				</div>
+				<div>
+					<h6>상품내용의 변경에 관한 사항</h6>
+						<hr>
+						<div>
+							<table>
+								<tr>
+									<th>구분</th>
+									<th>변경전</th>
+									<th>변경후</th>
+									<th>기존고객 적용여부</th>
+								</tr>
+								<tr>
+									<td>
+										<p>내맘대로통장자동대출 한도조절 가능채널 변경</p>
+										<p>(2022.11.13)</p>
+									</td>
+									<td>
+										<p>* 영업점</p>
+										<p>* (신설)</p>
+									</td>
+									<td>
+										<p>* 영업점</p>
+										<p>* 비대면 채널</p>
+										<p>(인터넷뱅킹, 스타뱅킹)</p>
+									</td>
+									<td>
+										<p>적용</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>상품가입채널의확대</p>
+										<p>(2022.10.12)</p>
+									</td>
+									<td>
+										<p>* 영업점</p>
+										<p>* (신설)</p>
+									</td>
+									<td>
+										<p>* 영업점</p>
+										<p>* 스마트상담부</p>
+									</td>
+									<td>
+										<p>미적용</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>종합통장자동대출의 운영방식 변경</p>
+										<p>(2022.8.28)</p>
+									</td>
+									<td>
+										<p>종합통장자동대출의 경우 아래방식으로 운용</p>
+										<p>① 일반방식 한도거래대출</p>
+										<p>② (신설)</p>
+									</td>
+									<td>
+										<p>종합통장자동대출의 경우 아래 중 선택</p>
+										<p>① 일반방식 한도거래대출</p>
+										<p>② 약정한도 증감방식 한도거래대출(내맘대로 통장자동대출)</p>
+									</td>
+									<td>
+										<p>창구연장 시점에서 선택시 적용</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>우대금리 항목 신설</p>
+										<p>(2022.8.28)</p>
+									</td>
+									<td>
+										<p>해당무</p>
+									</td>
+									<td>
+										<p>'내맘대로 통장자동대출' 선택시 '내맘대로 우대금리(연 0.1%p)추가 적용</p>
+										<p>(CSS 1~4등급)</p>
+									</td>
+									<td>
+										<p>창구연장 시점에서 선택시 적용</p>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div>
+						<h6>필요서류</h6>
+						<hr>
+						<div>
+							<p th:text="${loancautiondto.document}"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+      </div>
+    </section><!-- End Service Details Section -->
+    <section>
+      <form name="" action="#none" class="product-calculator container" id="loanCalc">
+      		<span>대출 계산기</span>
+			<h2>대출 계산기</h2>
+			<div class="card">
+			<div class="div-tab1 icon2">
+				<label for="chkPurpose1" class="ic1 checked" > 
+					<input type="radio" name="repayment" id="chkPurpose1" value="1" checked="checked"/> 
+					<span>원리금균등상환</span>
+				</label> 
+				<label for="chkPurpose2" class="ic2"> 
+					<input type="radio" name="repayment" id="chkPurpose2" value="2"/> 
+					<span>원금균등상환</span>
+				</label> 
+				<label for="chkPurpose3" class="ic3"> 
+					<input type="radio" name="repayment" id="chkPurpose3" value="3" /> 
+					<span>원금만기일시상환</span>
+				</label>
+			</div>
+			<div id="calculator-area">
+				<div id="input_area">
+					<div class="input-holder">
+						<input value="10000" type="text" class="input" aria-describedby="uiMesCal4" name="mthAmount" id="mthAmount" maxlength="6" defaultValue="대출금액"/>
+					</div>
+					<span>만원을</span>
+					<div class="input-holder w-min1">
+						<input value="5" type="text" class="input" aria-describedby="uiMesCal5" name="period" id="period" maxlength="2" defaultValue="기간"/>
+					</div>
+					<span>년 동안</span>
+					<div class="input-holder w-min1">
+						<input value="5" type="text" class="input" aria-describedby="uiMesCal6" name="interestRate" id="interestRate" maxlength="4" defaultValue="이자"/>
+					</div>
+					<span>%로 대출 받으면?</span>
+				</div>
+				<div class="btnarea">
+					<button type="button" class="btn-com c2" id="buy-btn" onclick="goCalc(); return false;">결과보기</button>
+				</div>
+			</div>
+			<hr>
+			<div id="result_area">
+				<table>
+						<tr>
+						  <th>회차</th>
+						  <th>납입금액</th>
+						  <th>원금</th>
+						  <th>이자</th>
+						  <th>잔금</th>
+						</tr>
+					<tbody id="add_result">
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</form>
+    </section><!-- End Testimonials Section -->
+  </main><!-- End #main -->
+	
+</body>
+<script>
+	$("#result_area").hide();
+	function LoanDetailChoice(choice){
+		choice = 'loan_detail_list_'+choice;
+		choice = document.getElementById(choice);
+		$(".services-list a").removeClass("active");
+		$(event.target).addClass("active");	
+		$(".loan_detail_list_detail").removeClass("loan_detail_choiceview");
+		$(choice).addClass("loan_detail_choiceview");	
+	};
+	$("input:radio[name=repayment]").click(function() {
+		$('label').removeClass('checked');
+		$('label[for='+$(event.target).attr("id")+']').addClass('checked');
+		if (!$('input:radio[name=repayment]').is(':checked')) $('input:radio[name=repayment]').trigger('click');
+	});
+	function goCalc() {
+
+		var mthAmount = $("#mthAmount").val().replace(/\,/g, "");
+		var period = $("#period").val().replace(/\,/g, "");
+		var interestRate = $("#interestRate").val().replace(/\,/g, "");
+		var repayment = $("input:radio[name=repayment]:checked").val();
+		var callCalculator = "Y";
+
+		if ($.trim(mthAmount) == "" || $.trim(mthAmount) <= 0) {
+			alert("대출금액을 입력해주세요.");
+			$("#mthAmount").focus();
+			return;
+		} else if ($.trim(mthAmount) > 100000) {
+			alert("대출금액은 최대 100,000만원(십억)입니다. 이하로 입력해주세요.");
+			$("#mthAmount").focus();
+			return;
+		}
+
+		if ($.trim(period) == "" || $.trim(period) <= 0) {
+			alert("대출기간을 입력해주세요.");
+			$("#period").focus();
+			return;
+		} else if ($.trim(period) > 35) {
+			alert("대출기간은 최대 35년입니다. 이하로 입력해주세요.");
+			$("#period").focus();
+			return;
+		}
+
+		if ($.trim(interestRate) == "") {
+			alert("대출금리를 입력해주세요.");
+			$("#interestRate").focus();
+			return;
+		} else if (Number($.trim(interestRate)) > 25.0) {
+			alert('최대 대출금리는 25.0% 입니다. 이하로 입력해주세요.');
+			$("#interestRate").focus();
+			return;
+		}
+
+		if (Number($.trim(interestRate)) == 0) {
+			alert('대출금리 0%는 입력할 수 없습니다.');
+			$("#interestRate").focus();
+			return;
+		}
+		let obj = {
+			mthAmount : mthAmount,
+			period : (period * 12),
+			interestRate : interestRate,
+			repaymentType : repayment,
+			callCalculator : callCalculator
+		};
+		$.ajax({
+			type : 'POST',
+			url : '/atlanbank/loan/calculator',
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			beforeSend : function(jqXHR, settings) {
+				var header = $("meta[name='_csrf_header']").attr("content");
+				var token = $("meta[name='_csrf']").attr("content");
+				jqXHR.setRequestHeader(header, token);
+			},
+			data : JSON.stringify(obj),
+			dataType : 'json',
+			success : function(result) {
+				$("#result_area").show();
+				$('#add_result').html("");
+ 				$(result).each((index, item) => {
+ 					console.log(item);
+ 					$('#add_result').append(`
+ 							<tr>
+	 						    <td>${item.num}</td>
+	 						    <td>${item.payment}</td>
+	 						    <td>${item.principal}</td>
+	 						    <td>${item.interest}</td>
+	 						    <td>${item.balance}</td>
+	 						</tr>
+ 							`);
+ 				});
+			},
+			error : function(a, b, c) {
+				console.log(a, b, c);
+			}
+		});
+	}
+</script>
+</html>
