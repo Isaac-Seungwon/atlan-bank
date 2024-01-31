@@ -5,18 +5,18 @@ import lombok.Data;
 @Data
 public class MemberDTO {
 	
-	private String member_seq;
+	private String memberSeq;
 	private String name;
 	private String id;
 	private String pw;
 	private String RRN;
-	private String transfer_limit;
+	private String transferLimit;
 	private String tel;
 	private String email;
 	private String zipcode;
 	private String address;
-	private String credit_rate;
-	private String is_guarantee;
+	private String creditRate;
+	private String isGuarantee;
 	private String point;
 	
 }

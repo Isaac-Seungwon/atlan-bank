@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.bank.loan.mapper.LoanMapper">
+
+	<select id="getloanlist" resultType="com.test.bank.loan.domain.LoanDTO">
+		select * from tblloan where type=#{type}
+	</select>
+	
+	<select id="getloandetail" resultType="com.test.bank.loan.domain.LoanDTO">
+		select * from tblloan where loan_seq=#{seq}
+	</select>
+	
+	<select id="getloanproductguide" resultType="com.test.bank.loan.domain.LoanProductGuideDTO">
+		select * from tblLoanProductGuide where loanproductguide_seq=#{seq}
+	</select>
+	
+	<select id="getinterestrate" resultType="com.test.bank.loan.domain.InterestRateDTO">
+		select * from tblInterestRate where Interestrate_seq=#{seq}
+	</select>
+	
+	<select id="getloanusageguide" resultType="com.test.bank.loan.domain.LoanUsageGuideDTO">
+		select * from tblLoanUsageGuide where loanusageguide_seq=#{seq}
+	</select>
+	
+	<select id="getloancaution" resultType="com.test.bank.loan.domain.LoanCautionDTO">
+		select * from tblLoanCaution where loancaution_seq=#{seq}
+	</select>
+	
+	<select id="getrepayment" resultType="com.test.bank.loan.domain.RepaymentDTO">
+		select * from tblRepayMent where loan_seq=#{seq}
+	</select>
+	
+	<select id="getmember" parameterType="Integer" resultType="com.test.bank.member.domain.MemberDTO">
+		select * from tblMember where member_seq = #{userseq}
+	</select>
+	
+	<select id="getmemberloanstatus" resultType="com.test.bank.loan.domain.LoanStatusDTO">
+		select 
+		    ls.loanstatus_seq, ls.money, ls.start_date, ls.end_date, ls.type, ls.max_money,
+		    ls.loan_interestrate, ls.interestrate, ls.loan_seq, ls.member_seq, l.name, l.type as loanType
+		from tblloanstatus  ls
+		    inner join tblloan l
+        		on l.loan_seq = ls.loan_seq
+		where member_seq = #{memberSeq}
+	</select>
+	
+	<insert id="insertloanstatus" parameterType="com.test.bank.loan.domain.LoanStatusDTO">
+	    INSERT INTO 
+	        TBLLOANSTATUS (LOANSTATUS_SEQ, MONEY, START_DATE, END_DATE, LOAN_INTERESTRATE, TYPE, INTERESTRATE, MAX_MONEY, MEMBER_SEQ, LOAN_SEQ)
+	    VALUES 
+	        (seqLoanStatus.nextVal, #{money}, to_date(#{startDate}, 'YYYY-MM-DD'), to_date(#{endDate}, 'YYYY-MM-DD'), #{loanInterestrate}, #{type}, #{interestrate}, #{maxMoney}, #{memberSeq}, #{loanSeq})
+	</insert>
+
+
+</mapper>

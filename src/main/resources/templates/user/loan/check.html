@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>지점 현황</title>
+
+</head>
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
+<style>
+	.display_center {
+		 display: flex;
+		 align-items: center;
+	}
+	.form-control {
+		margin: 3px 5px;
+	}
+	#loanCalc h2 {
+		font-size: 32px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    padding-bottom: 0;
+	    color: #001973;
+	    position: relative;
+	    z-index: 2;
+	    padding-bottom: 20px;
+	    position: relative;
+	}
+	#loanCalc h2:after {
+	    content: "";
+	    position: absolute;
+	    display: block;
+	    width: 45px;
+	    height: 3px;
+	    background: var(--color-primary);
+	    /* left: 0; */
+	    /* right: 0; */
+	    bottom: 0;
+	    margin: auto;
+	}
+	#loanCalc span:nth-child(1) {
+	    position: absolute;
+	    color: rgba(14, 29, 52, 0.06);
+	    left: 80px;
+	    right: 0;
+	    z-index: 1;
+	    font-weight: 700;
+	    font-size: 56px;
+	    text-transform: uppercase;
+	    line-height: 0;
+	}
+</style>
+<body>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>대출</h2>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="/index.do">Home</a></li>
+            <li><a href="view.do">대출</a></li>
+            <li><a th:text="${loandto.type}" th:href="@{list.do?(type=${loandto.type})}"></a></li>
+            <li><a th:href="@{detail.do?(seq=${loandto.loanSeq})}">상품 상세정보</a></li>
+            <li>신청</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Get a Quote Section ======= -->
+    <section id="get-a-quote" class="get-a-quote">
+      <div class="container" data-aos="fade-up">
+      	<div id="loanCalc" style="padding-bottom: 10px;">
+	    	<span>신청정보 확인</span>
+			<h2>신청정보 확인</h2>
+	    </div>
+        <div class="row g-0">
+	    <form action="/atlanbank/loan/complete.do" method="get" class="php-email-form">
+        	<div class="col-lg-7" style="width: 100%">
+              	<h3>상품 정보</h3>
+            	<div class="row gy-4" style="margin-top: 0;">
+	                <div class="col-md-12">
+	                	<span>상품명</span>
+	                	<div class="display_center">
+		                 	<div class="form-control" th:text="${loandto.name}"></div>
+	                	</div>
+	                </div>
+                
+                	<div class="col-md-6">
+                		<span>대출금액</span>
+                		<div class="display_center">
+		                 	<div class="form-control" th:text="${loanstatusdto.money+'원'}"></div>                		
+                		</div>
+                	</div>
+                
+	                <div class="col-md-6">
+	                	<span>상환 방식</span>
+	                	<div class="display_center">
+		                 	<div class="form-control" th:text="${loanstatusdto.type}"></div>                			                														
+	                	</div>
+	                </div>
+	                
+                	<div class="col-md-6">
+	                	<span>대출 계약일</span>
+	                	<div class="display_center">
+		                 	<div class="form-control" th:text="${loanstatusdto.startDate}"></div>                			                	
+	                	</div>
+	                </div>
+                	<div class="col-md-6">
+	                	<span>대출 만기일</span>
+	                	<div class="display_center">
+		                 	<div class="form-control" th:text="${loanstatusdto.endDate}"></div>                			                	
+	                	</div>
+	                </div>
+                
+	                
+	                <div class="col-md-6">
+	                	<span>금리</span>
+	                	<div class="display_center">
+		                 	<div class="form-control" th:text="${loanstatusdto.interestrate}"></div>                			                							
+	                	</div>
+	                </div>
+	                <div class="col-md-6">
+	                	<span>금리율</span>
+	                	<div class="display_center">                			                							
+		                 	<div class="form-control" th:text="${loanstatusdto.loanInterestrate}"></div>                			                							
+	                	</div>
+	                </div>
+	            </div>
+	            
+         		</div>
+			    <div class="container php-email-form" data-aos="fade-up" style="text-align: center;">
+			    	<div class="">
+						<span style="margin-right: 10px;">위 내용을 확인하고 동의합니다.</span>
+						<input type="checkbox" required>
+					</div>
+					<div class="container php-email-form" data-aos="fade-up" style="text-align: center;">
+				    	<input type="hidden" name="money" th:value="${loanstatusdto.money}">
+				    	<input type="hidden" name="maxMoney" th:value="${loanstatusdto.money}">
+				    	<input type="hidden" name="startDate" th:value="${loanstatusdto.startDate}">
+				    	<input type="hidden" name="endDate" th:value="${loanstatusdto.endDate}">
+				    	<input type="hidden" name="type" th:value="${loanstatusdto.type}">
+				    	<input type="hidden" name="loanInterestrate" th:value="${loanstatusdto.loanInterestrate}">
+				    	<input type="hidden" name="interestrate" th:value="${loanstatusdto.interestrate}">
+				    	<input type="hidden" name="memberSeq" th:value="${loanstatusdto.memberSeq}">
+				    	<input type="hidden" name=loanSeq th:value="${loanstatusdto.loanSeq}">
+			    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+						<button type="submit">확인</button>
+				    </div>
+				</div>
+	    	</form>
+			</div>
+    	</div>
+	</section><!-- End Get a Quote Section -->
+</main><!-- End #main -->
+</body>
+<script>
+
+</script>
+</html>
