@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
-<title>지점 현황</title>
+<title>대출 신청</title>
 
 </head>
 <style>
@@ -47,7 +47,6 @@
 	    -webkit-user-select: none; /* Safari */
 	    -ms-user-select: none; /* 인터넷익스플로러 */
 	    user-select: none;
-	    background-color: #c3c3c3 !important;
 	    pointer-events : none;
 	    caret-color: transparent;
 	}
@@ -66,9 +65,6 @@
 	    opacity: 0;
 	    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
 	    z-index: auto;
-	}
-	.checked{
-		background-color: #c3c3c3;
 	}
 	.form-control {
 		margin: 3px 5px;
@@ -115,18 +111,35 @@
 	    text-transform: uppercase;
 	    line-height: 0;
 	}
+	.label-button:hover {
+	    background: rgba(13, 66, 255, 0.8);
+	}
+	
+	.label-button {
+		text-align:center;
+	    background: var(--color-primary);
+	    border: 0;
+	    padding: 10px 30px;
+	    color: #fff;
+	    transition: 0.4s;
+	    border-radius: 4px;
+	}
+	.checked{
+		background-color: rgba(13, 66, 255, 0.5);
+	}
 </style>
 <body>
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>대출</h2>
-              <p></p>
+              <p>돈이 필요한 순간 Atlan Bank 대출</p>
+              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
             </div>
           </div>
         </div>
@@ -162,14 +175,14 @@
 				<div class="col-md-12">
 					<span>이름</span>
 				  	<div class="display_center">
-				    	<input type="text" name="name" class="form-control" th:value="${member.name}" required >
+				    	<input type="text" name="name" class="form-control none_select" th:value="${member.name}" required readonly>
 				  	</div>
 				</div>
 				
 				<div class="col-md-6">
 					<span>신용등급</span>
 				  	<div class="display_center">
-	 				   	<input type="text" name="creditRate" class="form-control none_select" th:value="${member.creditRate}" required readonly>
+	 				   	<input type="text" name="creditRate" class="form-control none_select" th:value="${member.creditRate}"  required readonly>
 				   		<!-- <input type="text" name="credit_rate" class="form-control none_select" value="1" required readonly> -->
 				  	</div>
 				</div>
@@ -202,11 +215,11 @@
 				<div class="col-md-12">
 					<span>주소</span>
 					<div class="display_center">
-						<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" required readonly>
-						<input type="button" class="form-control" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" required>
+						<input type="text" class="form-control none_select" id="sample6_postcode" placeholder="우편번호" required readonly style="width: 30%;">
+						<input type="button" class="form-control label-button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" required style="width: 20%;">
 					</div>
 					<div class="display_center">
-						<input type="text" class="form-control" id="sample6_address" placeholder="주소" required readonly>
+						<input type="text" class="form-control none_select" id="sample6_address" placeholder="주소" required readonly>
 					</div>
 					<div class="display_center">
 						<input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소" required>
@@ -246,28 +259,28 @@
 	                <div class="col-md-12">
 	                	<span>상환 방식</span>
 	                	<div class="repayment_list display_center" style="justify-content: space-between;">
-		                	<label class="form-control" for="repaymentChoice1"><input type="radio" name="type" id="repaymentChoice1" th:value="원리금균등상환" checked>원리금균등상환</label>
-		                	<label class="form-control checked" for="repaymentChoice2"><input type="radio" name="type" id="repaymentChoice2" th:value="원금균등상환">원금균등상환</label>
-		                	<label class="form-control checked" for="repaymentChoice3"><input type="radio" name="type" id="repaymentChoice3" th:value="원금만기일시상환">원금만기일시상환</label>
+		                	<label class="form-control label-button" for="repaymentChoice1"><input type="radio" name="type" id="repaymentChoice1" th:value="원리금균등상환" checked>원리금균등상환</label>
+		                	<label class="form-control checked label-button" for="repaymentChoice2"><input type="radio" name="type" id="repaymentChoice2" th:value="원금균등상환">원금균등상환</label>
+		                	<label class="form-control checked label-button" for="repaymentChoice3"><input type="radio" name="type" id="repaymentChoice3" th:value="원금만기일시상환">원금만기일시상환</label>
 	                	</div>
 	                </div>
                 
 	                <div class="col-md-12">
 	                	<span>금리</span>
 	                	<div class="interestrate_list display_center" style="justify-content: space-between;">
-		                	<label class="form-control" for="interestrate1">
+		                	<label class="form-control label-button" for="interestrate1">
 		                		<input type="radio" id="interestrate1" value="1" checked name="interestratechoice">
 		                		<span>금융채 6개월</span>
 		                	</label>
-		                	<label class="form-control checked" for="interestrate2">
+		                	<label class="form-control checked label-button" for="interestrate2">
 		                		<input type="radio" id="interestrate2" value="2" name="interestratechoice">
 		                		<span>금융채 12개월</span>
 		                	</label>
-		                	<label class="form-control checked" for="interestrate3">
+		                	<label class="form-control checked label-button" for="interestrate3">
 		                		<input type="radio" id="interestrate3" value="3" name="interestratechoice">
 		                		<span>신규 COFIX 12개월</span>
 		                	</label>
-		                	<label class="form-control checked" for="interestrate4">
+		                	<label class="form-control checked label-button" for="interestrate4">
 		                		<input type="radio" id="interestrate4" value="4" name="interestratechoice">
 		                		<span>신잔액 COFIX 12개월</span>
 		                	</label>
@@ -342,7 +355,7 @@
 	                	<span th:text="${member.name}"></span>	          
 	                	<span>님의 신용등급기준 해당 금리 선택시</span>
 	                	<div>
-		                	<input class="form-control" name="loanInterestrate" type="text" id="member_credit_rate" readonly style="padding: 5px 0; width: 100px; text-align: center;">
+		                	<input class="form-control none_select" name="loanInterestrate" type="text" id="member_credit_rate" readonly style="padding: 5px 0; width: 100px; text-align: center;">
 	                	</div>
 	                	<span>%</span>
 	                </div>

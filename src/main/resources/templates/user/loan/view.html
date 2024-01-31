@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
-<title>Loan</title>
+<title>대출</title>
 </head>
 <meta name="_csrf" th:content="${_csrf.token}">
 <meta name="_csrf_header" th:content="${_csrf.headerName}">
@@ -73,9 +73,6 @@
 	    top: 1px;
 	    z-index: 5;
 	}
-	.product-calculator .div-tab1 label.checked:after {
-	    border-bottom-color: #f5f5f7;
-	}
 	.div-tab1 label.checked:after {
 	    content: '';
 	    display: block;
@@ -85,8 +82,9 @@
 	    left: 0;
 	    bottom: -1px;
 	    box-sizing: border-box;
-	    border: 1px solid #696981;
+	    border: 1px solid #0000002d;
 	    border-bottom: 1px solid #fff;
+	    border-radius: 2px;
 	}
 	.div-tab1.icon2 label.ic2 > span:before {
 	    background-position: -360px -180px;
@@ -164,6 +162,56 @@
 	input {
 		text-align: right;
 	}
+	.testimonials{
+		background-image: url('/atlanbank/assets/img/loan/loan_main3.png');
+		background-size: 100%;
+	}
+	.icon2 label.ic1 > span:before {
+	    background-position: -330px -180px;
+	}
+	.icon2 label.ic3 > span:before {
+	    background-position: -390px -180px;
+	}
+	.btnarea{
+		margin-top: 30px;
+	}
+	.btnarea #buy-btn {
+	    display: inline-block;
+	    padding: 5px 10px;
+	    border-radius: 4px;
+	    color: #fff;
+	    background-color: var(--color-primary);
+	    border: 2px solid var(--color-primary);
+	    transition: none;
+	    font-size: 16px;
+	    font-weight: 500;
+	    transition: 0.3s;
+	    font-family: var(--font-primary);
+	}
+	.btnarea #buy-btn:hover {
+	    background: #406aff;
+	    border-color: #406aff;
+	}
+	.btnarea a:hover {
+	    color: #fff;
+	    text-decoration: none;
+	}
+	#result_area th:nth-child(1), #result_area td:nth-child(1) {
+		width: 8%;
+	}
+	#result_area th:nth-child(2), #result_area td:nth-child(2) {
+		width: 25%;
+	}
+	#result_area th:nth-child(3), #result_area td:nth-child(3) {
+		width: 25%;
+	}
+	#result_area th:nth-child(4), #result_area td:nth-child(4) {
+		width: 25%;
+	}
+	#result_area th:nth-child(5), #result_area td:nth-child(5) {
+		width: 25%;
+	}
+
 </style>
 
 <body>
@@ -171,12 +219,13 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center" style=" background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>대출</h2>
-              <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+              <p>돈이 필요한 순간 Atlan Bank 대출</p>
+              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
             </div>
           </div>
         </div>
@@ -207,7 +256,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400" style="width: 25%;">
             <div class="card">
               <div class="card-img">
-                <img src="/atlanbank/assets/img/loan/cash-payment.jpg" alt="" class="img-fluid">
+                <img src="/atlanbank/assets/img/loan/loan1.png" alt="" class="img-fluid">
                 <!-- <a href="https://kr.freepik.com/free-photo/businessman-holding-heap-of-banknote-for-cash-payment-and-money-transfer-exchange-concept-by-3d-render-illustration_26266684.htm#query=%EB%8C%80%EC%B6%9C&position=33&from_view=keyword&track=sph&uuid=dd2df99b-9588-4df6-a6fa-9cb717a678ed">작가 DilokaStudio</a> 출처 Freepik -->
               </div>
               <h3><a href="list.do?type=신용대출" class="stretched-link">신용대출</a></h3>
@@ -218,7 +267,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500" style="width: 25%;">
             <div class="card">
               <div class="card-img">
-                <img src="/atlanbank/assets/img/packaging-service.jpg" alt="" class="img-fluid">
+                <img src="/atlanbank/assets/img/loan/loan2.png" alt="" class="img-fluid">
               </div>
               <h3><a href="list.do?type=담보대출" class="stretched-link">담보대출</a></h3>
               <p>내 자산으로 더욱 안전한 대출을</p>
@@ -228,7 +277,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600" style="width: 25%;">
             <div class="card">
               <div class="card-img">
-                <img src="/atlanbank/assets/img/warehousing-service.jpg" alt="" class="img-fluid">
+                <img src="/atlanbank/assets/img/loan/loan3.png" alt="" class="img-fluid">
               </div>
               <h3><a href="list.do?type=전월세/반환보증" class="stretched-link">전월세/반환보증</a></h3>
               <p>전월세/반환보증 Atlan-bank와 함께</p>
@@ -238,7 +287,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700" style="width: 25%;">
             <div class="card">
               <div class="card-img">
-                <img src="/atlanbank/assets/img/warehousing-service.jpg" alt="" class="img-fluid">
+                <img src="/atlanbank/assets/img/loan/loan4.png" alt="" class="img-fluid">
               </div>
               <h3><a href="list.do?type=자동차대출" class="stretched-link">자동차대출</a></h3>
               <p>자동차 대출도 Atlan-bank와 함께</p>
@@ -259,7 +308,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="/atlanbank/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <img src="/atlanbank/assets/img/loan/loan_mini1.png" class="testimonial-img" alt="">
                 <h3>직장인든든 신용대출</h3>
                 <h4>신용대출</h4>
                 <p>직장인이라면 신청 가능</p>
@@ -268,7 +317,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="/atlanbank/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <img src="/atlanbank/assets/img/loan/loan_mini2.png" class="testimonial-img" alt="">
                 <h3>청약(주택종합저축)담보대출</h3>
                 <h4>담보대출</h4>
                 <p>은행에 예치된 청약저축 또는 주택청약종합저축을 거래하는 고객이 긴급한 가계자금을 필요로 할 경우 청약저축의 중도해지에 따른 손실예방을 위해 납입액 범위 내에서 대출</p>
@@ -277,7 +326,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="/atlanbank/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <img src="/atlanbank/assets/img/loan/loan_mini3.png" class="testimonial-img" alt="">
                 <h3>비상금 대출</h3>
                 <h4>신용대출</h4>
                 <p>서울보증보험㈜ 개인금융신용보험증권 담보 소액신용대출</p>
@@ -286,7 +335,7 @@
             
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="/atlanbank/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <img src="/atlanbank/assets/img/loan/loan_mini4.png" class="testimonial-img" alt="">
                 <h3>매직카대출(신차)</h3>
                 <h4>자동차대출</h4>
                 <p>캐피탈 대비 유리한 금리조건으로 신규자동차를 구매하려는 고객을 위한 맞춤상품 별도의 취급수수료, 보험료, 근저당설정 부담 없음 KB국민카드로 결제시 캐시백 혜택 제공!</p>
@@ -294,7 +343,7 @@
             </div><!-- End testimonial item -->
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="/atlanbank/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <img src="/atlanbank/assets/img/loan/loan3.png" class="testimonial-img" alt="">
                 <h3>신혼부부 전세자금대출</h3>
                 <h4>전월세/반환보증</h4>
                 <p>전세 신규입주 또는 계약갱신을 하시는 고객님께 임차보증금의 90%까지 한국주택금융공사 보증서 담보로 지원하는 대출상품 신혼부부 우대금리 0.15%p를 최초 대출기간 만료일까지 추가 적용</p>
@@ -343,7 +392,7 @@
 					<span>%로 대출 받으면?</span>
 				</div>
 				<div class="btnarea">
-					<button type="button" class="btn-com c2" id="resultBtn" onclick="goCalc(); return false;">결과보기</button>
+					<a type="button" class="btn-com c2" id="buy-btn" onclick="goCalc(); return false;">결과보기</a>
 				</div>
 			</div>
 			<hr>

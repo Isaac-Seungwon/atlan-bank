@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
-<title>Loan</title>
+<title>대출상품</title>
 </head>
 <meta name="_csrf" th:content="${_csrf.token}">
 <meta name="_csrf_header" th:content="${_csrf.headerName}">
@@ -195,6 +195,52 @@
 	input {
 		text-align: right;
 	}
+	
+	.btnarea{
+		margin-top: 30px;
+	}
+	.btnarea #buy-btn {
+	    display: inline-block;
+	    padding: 5px 10px;
+	    border-radius: 4px;
+	    color: #fff;
+	    background-color: var(--color-primary);
+	    border: 2px solid var(--color-primary);
+	    transition: none;
+	    font-size: 16px;
+	    font-weight: 500;
+	    transition: 0.3s;
+	    font-family: var(--font-primary);
+	}
+	.btnarea #buy-btn:hover {
+	    background: #406aff;
+	    border-color: #406aff;
+	}
+	.btnarea a:hover {
+	    color: #fff;
+	    text-decoration: none;
+	}
+	#result_area th:nth-child(1), #result_area td:nth-child(1) {
+		width: 8%;
+	}
+	#result_area th:nth-child(2), #result_area td:nth-child(2) {
+		width: 25%;
+	}
+	#result_area th:nth-child(3), #result_area td:nth-child(3) {
+		width: 25%;
+	}
+	#result_area th:nth-child(4), #result_area td:nth-child(4) {
+		width: 25%;
+	}
+	#result_area th:nth-child(5), #result_area td:nth-child(5) {
+		width: 25%;
+	}
+	.icon2 label.ic1 > span:before {
+	    background-position: -330px -180px;
+	}
+	.icon2 label.ic3 > span:before {
+	    background-position: -390px -180px;
+	}
 </style>
 
 <body>
@@ -202,12 +248,13 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>대출</h2>
-              <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+              <p>돈이 필요한 순간 Atlan Bank 대출</p>
+              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
             </div>
           </div>
         </div>
@@ -621,7 +668,7 @@
 					<span>%로 대출 받으면?</span>
 				</div>
 				<div class="btnarea">
-					<button type="button" class="btn-com c2" id="resultBtn" onclick="goCalc(); return false;">결과보기</button>
+					<button type="button" class="btn-com c2" id="buy-btn" onclick="goCalc(); return false;">결과보기</button>
 				</div>
 			</div>
 			<hr>
