@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
+import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.repository.TicketDAO;
 
 @Service
@@ -39,6 +41,44 @@ public class TicketService {
 		}
 		
 		return searchedBankList;
+	}
+
+	public TicketWaitingStatusDTO selectStandBy100(String bankSeq) {
+		TicketWaitingStatusDTO nt100 = dao.selectStandBy100(bankSeq);
+		return nt100;
+	}
+
+	public TicketWaitingStatusDTO selectStandBy200(String bankSeq) {
+		TicketWaitingStatusDTO nt200 = dao.selectStandBy200(bankSeq);
+		return nt200;
+	}
+
+	public TicketWaitingStatusDTO selectStandBy300(String bankSeq) {
+		TicketWaitingStatusDTO nt300 = dao.selectStandBy300(bankSeq);
+		return nt300;
+	}
+
+	public TicketWaitingStatusDTO selectStandBy400(String bankSeq) {
+		TicketWaitingStatusDTO nt400 = dao.selectStandBy400(bankSeq);
+		return nt400;
+	}
+
+	public List<WorkListDTO> selectWorkList(String bankSeq) {
+		List<WorkListDTO> workList = dao.selectWorkList(bankSeq);
+		return workList;
+	}
+
+	public String selectBankName(List<WorkListDTO> workList) {
+		String bankName = "";
+		for (WorkListDTO bank : workList) {
+			bankName = bank.getBankName();
+		}
+		return bankName;
+	}
+
+	public List<WorkListDTO> getWorkList(String bankSeq, String type) {
+		List<WorkListDTO> workList = dao.getWorkList(bankSeq, type);
+		return workList;
 	}
 	
 	

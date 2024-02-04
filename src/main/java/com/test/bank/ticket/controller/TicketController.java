@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
+import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.service.TicketService;
 
 
@@ -45,30 +47,32 @@ public class TicketController {
 		return bankList;
 	}
 	
-	@RequestMapping("/reservation/{locations}")
-	public String reservation(@PathVariable("locations") String locations){
-		return "user/ticket/standbystatus";
-//		ModelAndView mav = new ModelAndView();
-//		NumberTicket_NumberTicketVO nt100 = numberTicketService.selectStandBy100(locations);
-//		NumberTicket_NumberTicketVO nt200 = numberTicketService.selectStandBy200(locations);
-//		NumberTicket_NumberTicketVO nt300 = numberTicketService.selectStandBy300(locations);
-//		NumberTicket_NumberTicketVO nt400 = numberTicketService.selectStandBy400(locations);
-//		
-//		List<ServiceDescVO> serviceDescList = numberTicketService.selectListServiceDesc();
-//		
-//		mav.addObject("locations", locations);
-//		mav.addObject("nt100", nt100);
-//		System.out.println(nt100);
-//		mav.addObject("nt200", nt200);
-//		System.out.println(nt200);
-//		mav.addObject("nt300", nt300);
-//		System.out.println(nt300);
-//		mav.addObject("nt400", nt400);
-//		System.out.println(nt400);
-//		mav.addObject("serviceDescList", serviceDescList);
-//		System.out.println(serviceDescList);
-//		mav.setViewName("/numberTicket/numberTicket_2");
-//		return mav;
+	@RequestMapping("/reservation/{bankSeq}")
+	public ModelAndView reservation(@PathVariable("bankSeq") String bankSeq){
+		//return "user/ticket/standbystatus";
+		ModelAndView mav = new ModelAndView();
+		TicketWaitingStatusDTO nt100 = service.selectStandBy100(bankSeq);
+		TicketWaitingStatusDTO nt200 = service.selectStandBy200(bankSeq);
+		TicketWaitingStatusDTO nt300 = service.selectStandBy300(bankSeq);
+		TicketWaitingStatusDTO nt400 = service.selectStandBy400(bankSeq);
+		
+		List<WorkListDTO> workList = service.selectWorkList(bankSeq);
+		String bankName = service.selectBankName(workList);
+		
+		mav.addObject("bankSeq", bankSeq);
+		mav.addObject("bankName", bankName);
+		mav.addObject("nt100", nt100);
+		System.out.println(nt100);
+		mav.addObject("nt200", nt200);
+		System.out.println(nt200);
+		mav.addObject("nt300", nt300);
+		System.out.println(nt300);
+		mav.addObject("nt400", nt400);
+		System.out.println(nt400);
+		mav.addObject("workList", workList);
+		System.out.println(workList);
+		mav.setViewName("user/ticket/standbystatus");
+		return mav;
 	}	
 	
 	
