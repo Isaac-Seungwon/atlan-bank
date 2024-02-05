@@ -19,11 +19,13 @@ DELETE FROM tblNews;
 DELETE FROM tblEvent;
 DELETE FROM tblBenefit;
 DELETE FROM tblFranchise;
+DELETE FROM tblLoanStatus;
+DELETE FROM tblRepayment;
 DELETE FROM tblLoan;
-DELETE FROM tblInterestRate;
-DELETE FROM tblLoanCaution;
 DELETE FROM tblLoanUsageGuide;
+DELETE FROM tblLoanCaution;
 DELETE FROM tblLoanProductGuide;
+DELETE FROM tblInterestRate;
 DELETE FROM tblMember;
 
 
@@ -43,13 +45,13 @@ DROP TABLE tblNews;
 DROP TABLE tblEvent;
 DROP TABLE tblBenefit;
 DROP TABLE tblFranchise;
-DROP TABLE tblLoan;
 DROP TABLE tblLoanStatus;
 DROP TABLE tblRepayment;
-DROP TABLE tblInterestRate;
-DROP TABLE tblLoanCaution;
+DROP TABLE tblLoan;
 DROP TABLE tblLoanUsageGuide;
+DROP TABLE tblLoanCaution;
 DROP TABLE tblLoanProductGuide;
+DROP TABLE tblInterestRate;
 DROP TABLE tblMember;
 
 
@@ -194,7 +196,7 @@ CREATE TABLE tblEvent (
     event_seq NUMBER PRIMARY KEY, /* 이벤트번호 */
     name VARCHAR2(200) NOT NULL, /* 이벤트명 */
     content VARCHAR2(1000) NOT NULL, /* 이벤트내용 */
-    visual_img VARCHAR2(100), /* 이벤트명이미지 */
+    visual_img VARCHAR2(100), /* 이벤트메인이미지 */
     content_img VARCHAR2(100), /* 이벤트내용이미지 */
     caution_img VARCHAR2(100), /* 이벤트유의사항이미지 */
     start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 이벤트시작시간 */

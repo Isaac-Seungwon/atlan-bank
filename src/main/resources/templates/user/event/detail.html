@@ -8,7 +8,40 @@
 <meta name="_csrf" th:content="${_csrf.token}">
 <meta name="_csrf_header" th:content="${_csrf.headerName}">
 <style>
+#event {
+	text-align: center;
+}
 
+#event-name {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#event-date {
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+.in-progress {
+	color: var(--color-primary);
+}
+
+.completed {
+	color: var(--color-secondary);
+}
+
+.upcoming {
+	color: #059652;
+}
+
+.container {
+	align-content: center;
+}
+
+.event-img img {
+	width: 70%;
+	margin-bottom: 50px;
+}
 </style>
 
 <body>
@@ -20,8 +53,8 @@
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
-							<h2>Event</h2>
-							<p>event page</p>
+							<h2>이벤트</h2>
+							<p>Atlban Bank에서 준비한 다양한 이벤트에 참여하세요!</p>
 						</div>
 					</div>
 				</div>
@@ -29,16 +62,43 @@
 			<nav>
 				<div class="container">
 					<ol>
-						<li><a href="index.do">Home</a></li>
-						<li>Event</li>
+						<li><a th:href="@{/index.do}">Home</a></li>
+						<li><a th:href="@{/user/event/view.do}">이벤트</a></li>
+						<li>이벤트 상세정보</li>
 					</ol>
 				</div>
 			</nav>
 		</div>
 		<!-- End Breadcrumbs -->
 		
-		<h2 th:text="${event.name}"></h2>
-		<p th:text="${event.content}"></p>
+		<!-- Start Event Content -->
+		<div class="container">
+			<!-- 이벤트명 -->
+			<h2 id="event-name" th:text="${event.name}"></h2>
+			
+			<!-- 이벤트 진행 여부 -->
+			<span class="in-progress"
+			th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(event.startDate, 'yyyy-MM-dd HH:mm:ss')
+			and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(event.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행중</span>
+			<span class="completed"
+			th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(event.endDate, 'yyyy-MM-dd HH:mm:ss')}">마감</span>
+			<span class="upcoming"
+			th:unless="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(event.startDate, 'yyyy-MM-dd HH:mm:ss')
+			and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(event.endDate, 'yyyy-MM-dd HH:mm:ss')
+			or #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(event.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행예정</span>
+			
+			<!-- 이벤트 기한 -->
+			<h4 id="event-date" th:text="${#dates.format(event.startDate, 'yyyy.MM.dd.')} + ' ~ ' + ${#dates.format(event.endDate, 'yyyy.MM.dd.')}"></h4>
+			
+			<!-- Display Images -->
+			<div class="event-img">
+				<img th:if="${event.visualImg != null}" th:src="@{/assets/img/event/{imgName}(imgName=${event.visualImg})}" alt="Visual Image">
+				<img th:if="${event.contentImg != null}" th:src="@{/assets/img/event/{imgName}(imgName=${event.contentImg})}" alt="Content Image">
+				<img th:if="${event.cautionImg != null}" th:src="@{/assets/img/event/{imgName}(imgName=${event.cautionImg})}" alt="Caution Image">
+			</div>
+		</div>
+		<!-- End Event Content -->
+		
 	</main>
 	<!-- End Main -->
 	

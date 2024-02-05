@@ -151,7 +151,7 @@
 				<div class="row d-flex justify-content-center">
 					<div class="col-lg-6 text-center">
 						<h2>이벤트</h2>
-						<p>다양한 이벤트에 참여하세요!</p>
+						<p>Atlban Bank에서 준비한 다양한 이벤트에 참여하세요!</p>
 					</div>
 				</div>
 			</div>
@@ -159,8 +159,8 @@
 		<nav>
 			<div class="container">
 				<ol>
-					<li><a href="index.do">Home</a></li>
-					<li>Event</li>
+					<li><a th:href="@{/index.do}">Home</a></li>
+					<li>이벤트</li>
 				</ol>
 			</div>
 		</nav>
@@ -180,12 +180,14 @@
 					<li class="nav-item" role="presentation">
 						<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true">전체 이벤트</button>
 					</li>
+					<!--
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">진행중 이벤트</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="end-tab" data-bs-toggle="tab" data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">진행예정 이벤트</button>
 					</li>
+					-->
 				</ul>
 				
 				<!-- 전체 이벤트 -->
@@ -203,22 +205,30 @@
 							</thead>
 							<tbody>
 								<tr th:each="eventList, status : ${eventList}">
+									<!-- 이벤트 번호 -->
 									<td th:text="${eventList.eventSeq}"></td>
 									<td>
+										<!-- 이벤트명 -->
 										<a th:href="@{/user/event/detail.do(seq=${eventList.eventSeq})}"
 											th:text="${#strings.length(eventList.name) > 47 ? #strings.substring(eventList.name, 0, 47) + '...' : eventList.name}">
 										</a>
-											<span class="in-progress"
-											th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
-											and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행중</span>
-											<span class="completed"
-											th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">마감</span>
-											<span class="upcoming"
-											th:unless="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
-											and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')
-											or #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행예정</span>
+										
+										<!-- 이벤트 진행 여부 -->
+										<span class="in-progress"
+										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
+										and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행중</span>
+										<span class="completed"
+										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">마감</span>
+										<span class="upcoming"
+										th:unless="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
+										and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')
+										or #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행예정</span>
 									</td>
+									
+									<!-- 이벤트 기한 -->
 									<td th:text="${#dates.format(eventList.startDate, 'yyyy.MM.dd.')} + ' ~ ' + ${#dates.format(eventList.endDate, 'yyyy.MM.dd.')}"></td>
+									
+									<!-- 조회수 -->
 									<td th:text="${eventList.hitsCount}"></td>
 								</tr>
 							</tbody>
@@ -257,12 +267,45 @@
 						</nav>
 					</div>
 					
+					<!-- 진행중 이벤트 -->
 					<div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="progress-tab">
-						진행중 이벤트
+					    <!-- Progress Events -->
+					    <!--
+					    <table id="event-list">
+					        <thead>
+					            <tr>
+					                <th>번호</th>
+					                <th>제목</th>
+					                <th>이벤트 기간</th>
+					                <th>조회수</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+					            <tr th:each="eventList : ${eventList}" th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
+					                                    and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">
+					                이벤트 번호
+					                <td th:text="${eventList.eventSeq}"></td>
+					                <td>
+					                    이벤트명
+					                    <a th:href="@{/user/event/detail.do(seq=${eventList.eventSeq})}"
+					                        th:text="${#strings.length(eventList.name) > 47 ? #strings.substring(eventList.name, 0, 47) + '...' : eventList.name}">
+					                    </a>
+					                </td>
+					
+					                이벤트 기한
+					                <td th:text="${#dates.format(eventList.startDate, 'yyyy.MM.dd.')} + ' ~ ' + ${#dates.format(eventList.endDate, 'yyyy.MM.dd.')}"></td>
+					
+					                조회수
+					                <td th:text="${eventList.hitsCount}"></td>
+					            </tr>
+					        </tbody>
+					    </table>
+					    -->
 					</div>
 					
+					<!-- 진행예정 이벤트 -->
 					<div class="tab-pane fade" id="bordered-contact" role="tabpanel" aria-labelledby="end-tab">
-						진행예정 이벤트
+						
 					</div>
 				</div>
 			</div>
