@@ -228,6 +228,77 @@ CREATE TABLE tblComment (
 );
 
 
+-- 대출상품 안내
+CREATE TABLE tblLoanProductGuide (
+	loanproductguide_seq      NUMBER PRIMARY KEY, -- 대출상품 안내번호
+	features_content          VARCHAR2(4000)  NOT NULL, -- 상품 특징내용
+	eligibility_content       VARCHAR2(4000)  NOT NULL, -- 신청 자격내용
+	amount_content            VARCHAR2(4000)  NOT NULL, -- 대출 금액내용
+	term_and_repayment_content	 VARCHAR2(4000) NOT NULL  -- 대출기간 및 상환 방법 내용
+);
+
+-- 대출 금리 및 이율
+CREATE TABLE tblInterestRate (
+    Interestrate_seq      NUMBER PRIMARY KEY, -- 대출 금리 및 이율 번호
+    content               VARCHAR2(4000) NOT NULL, -- 대출 금리 내용
+    charge                NUMBER         NOT NULL, -- 대출 중도상환 수수료
+    is_overdue            CHAR(1)        DEFAULT 'Y' NOT NULL, -- 연체이자 여부
+    is_interest_reduction CHAR(1)        DEFAULT 'Y' NOT NULL -- 금리 인하 요구권 여부
+);
+
+-- 대출 이용안내
+CREATE TABLE tblLoanUsageGuide (
+    loanusageguide_seq NUMBER PRIMARY KEY, -- 대출 이용안내 번호
+    collateral         VARCHAR2(4000) DEFAULT '무보증' NOT NULL, -- 담보
+    is_additional_cost CHAR(1)       DEFAULT 'Y' NOT NULL, -- 부대비용 여부
+    is_extension       CHAR(1)       DEFAULT 'Y' NOT NULL -- 기한연장 여부
+);
+
+-- 대출 유의사항
+CREATE TABLE tblLoanCaution (
+	loancaution_seq NUMBER PRIMARY KEY, -- 대출 유의사항 번호
+	start_date      DATE           DEFAULT sysdate NOT NULL, -- 공시내용 공지 기간
+	end_date        DATE           NOT NULL, -- 공시내용 만료 기간
+	content         VARCHAR2(4000) NOT NULL, -- 고객 공지사항
+	document        VARCHAR2(4000)  DEFAULT '없음' NOT NULL  -- 필요서류
+);
+
+-- 대출상품
+CREATE TABLE tblLoan (
+	loan_seq NUMBER PRIMARY KEY, -- 대출상품 번호
+	name VARCHAR2(4000) NOT NULL, -- 대출상품명
+	type VARCHAR(4000) NOT NULL, -- 대출상품 유형
+	max_date NUMBER NOT NULL, -- 대출 최대기간
+	max_money NUMBER NOT NULL, -- 대출 최대금액
+	loanproductguide_seq NUMBER REFERENCES tblLoanProductGuide (loanproductguide_seq) NOT NULL, -- 대출상품 안내번호
+	Interestrate_seq NUMBER REFERENCES tblInterestRate (Interestrate_seq) NOT NULL, -- 대출 금리 및 이율 번호
+	loanusageguide_seq NUMBER REFERENCES tblLoanUsageGuide (loanusageguide_seq) NOT NULL, -- 대출 이용안내 번호
+	loancaution_seq NUMBER REFERENCES tblLoanCaution (loancaution_seq) NOT NULL,  -- 대출 유의사항 번호
+	is_available  CHAR(1) DEFAULT 'Y' NOT NULL
+);
+
+-- 대출상환
+CREATE TABLE tblRepayment (
+	repayment_seq NUMBER PRIMARY KEY, -- 대출상환 번호
+	type     VARCHAR2(4000) NOT NULL, -- 대출상환 방식
+	loan_seq NUMBER REFERENCES tblLoan (loan_seq) NOT NULL  -- 대출상품 번호
+);
+
+-- 대출 현황
+CREATE TABLE tblLoanStatus (
+	loanstatus_seq    NUMBER PRIMARY KEY, -- 대출현황 번호
+	money             NUMBER       NOT NULL, -- 대출잔액
+	start_date        DATE        DEFAULT sysdate  NOT NULL , -- 대출 시작일
+	end_date          DATE         NOT NULL, -- 대출 종료일
+	type              VARCHAR2(4000) NOT NULL, -- 대출 상환방식
+	loan_Interestrate NUMBER       NOT NULL, -- 대출 금리
+	Interestrate VARCHAR2(4000)      NOT NULL, -- 금리명
+	max_money             NUMBER       NOT NULL, -- 대출금액
+	loan_seq          NUMBER REFERENCES tblLoan (loan_seq) NOT NULL, -- 대출상품 번호
+	member_seq        NUMBER REFERENCES tblMember (member_seq) NOT NULL  -- 회원번호
+);
+
+
 -- CREATE SEQUENCE
 CREATE SEQUENCE member_seq;
 CREATE SEQUENCE bank_seq;
@@ -245,3 +316,10 @@ CREATE SEQUENCE eventparticipation_seq;
 CREATE SEQUENCE benefit_seq;
 CREATE SEQUENCE checkAttendance_seq;
 CREATE SEQUENCE comment_seq;
+CREATE SEQUENCE seqLoanStatus;
+CREATE SEQUENCE seqRepayment;
+CREATE SEQUENCE seqLoan;
+CREATE SEQUENCE seqLoanProductGuide;
+CREATE SEQUENCE seqInterestRate;
+CREATE SEQUENCE seqLoanUsageGuide;
+CREATE SEQUENCE seqLoanCaution;
