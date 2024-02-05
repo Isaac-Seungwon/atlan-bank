@@ -14,5 +14,33 @@
 	<select id="searchedBankList" parameterType="String" resultType="com.test.bank.ticket.domain.BankDTO">
 		select * from tblBank where bank_name like '%' || #{location} || '%'
 	</select>
+	
+	<select id="selectStandBy100" parameterType="String" resultType="com.test.bank.ticket.domain.TicketWaitingStatusDTO">
+		select count(*) as standby, (count(*)*10) as standbyTime
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = 100
+	</select>
+	
+	<select id="selectStandBy200" parameterType="String" resultType="com.test.bank.ticket.domain.TicketWaitingStatusDTO">
+		select count(*) as standby, (count(*)*10) as standbyTime
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = 200
+	</select>
+	
+	<select id="selectStandBy300" parameterType="String" resultType="com.test.bank.ticket.domain.TicketWaitingStatusDTO">
+		select count(*) as standby, (count(*)*10) as standbyTime
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = 300
+	</select>
+	
+	<select id="selectStandBy400" parameterType="String" resultType="com.test.bank.ticket.domain.TicketWaitingStatusDTO">
+		select count(*) as standby, (count(*)*10) as standbyTime
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = 400
+	</select>
+	
+	<select id="selectWorkList" parameterType="String" resultType="com.test.bank.ticket.domain.WorkListDTO">
+		select * from vwWorkList where bank_seq = #{bankSeq} 
+	</select>
+	
+	<select id="getWorkList" parameterType="String" resultType="com.test.bank.ticket.domain.WorkListDTO">
+		select * from vwWorkList where bank_seq = #{bankSeq} and work_seq = #{type}
+	</select>
 
 </mapper>
