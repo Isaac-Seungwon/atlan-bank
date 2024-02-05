@@ -14,6 +14,7 @@
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
             <nav id="navbar" class="navbar">
                 <ul>
+                    <li><a th:href="@{/contact}">AI Chat</a></li>
                     <li><a th:href="@{/about.do}">소개</a></li>
                     <li class="dropdown"><a th:href="@{/user/forex/view.do}"><span>예금</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
@@ -36,6 +37,7 @@
                             <li><a th:href="@{/member/forex/myapplication.do}">내 환전 관리하기</a></li>
                         </ul>
                     </li>
+                    <!--
                     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li><a href="#">Drop Down 1</a></li>
@@ -53,7 +55,7 @@
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
                     </li>
-                    <li><a th:href="@{/contact}">Contact</a></li>
+                    -->
                     <li><a class="get-a-quote" th:href="@{/get-a-quote}">로그인</a></li>
                 </ul>
             </nav><!-- .navbar -->

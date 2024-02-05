@@ -1006,6 +1006,13 @@ section {
 	border-radius: 5px;
 }
 
+.pricing p {
+	margin-bottom: 15px;
+	font-weight: 500;
+	font-size: 25px;
+	color: rgb(35 35 35 / 80%);
+}
+
 .pricing h3 {
 	font-weight: 600;
 	margin-bottom: 15px;
@@ -1087,6 +1094,26 @@ section {
 .pricing .featured .buy-btn {
 	background: var(--color-primary);
 	color: #fff;
+}
+
+.event-item-container {
+	display: flex;
+    gap: 15px;
+}
+
+.event-link {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 18px;
+}
+
+.text {
+	color: rgb(35 35 35 / 80%);
+}
+
+.event-link .text {
+	margin-right: 5px;
 }
 
 .event-item {
