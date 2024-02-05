@@ -11,4 +11,6 @@ public class TicketWaitingStatusDTO {
 	private String regdate;
 	private String time;
 	private int isComplete;
+	private int standby;
+	private int standbyTime;
 }

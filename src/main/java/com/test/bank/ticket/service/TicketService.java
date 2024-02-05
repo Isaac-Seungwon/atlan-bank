@@ -1,6 +1,9 @@
 package com.test.bank.ticket.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,9 +79,24 @@ public class TicketService {
 		return bankName;
 	}
 
-	public List<WorkListDTO> getWorkList(String bankSeq, String type) {
+	public Map<String, List<String>> getWorkList(String bankSeq, String type) {
 		List<WorkListDTO> workList = dao.getWorkList(bankSeq, type);
-		return workList;
+
+        // 세부 업무별 서류번호를 저장할 맵
+        Map<String, List<String>> workMap = new HashMap<>();
+
+        // 데이터 처리
+        for (WorkListDTO work : workList) {
+        	String detailWorkSeq = work.getDetailWorkSeq();
+        	String detailWorkName = work.getDetailWorkName();
+            String docName = work.getDocName();
+            workMap.computeIfAbsent(detailWorkName, k -> new ArrayList<>()).add(docName);
+        }
+        
+        System.out.println("ticketService workMap: " + workMap);
+
+		
+		return workMap;
 	}
 	
 	

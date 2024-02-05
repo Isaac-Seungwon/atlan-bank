@@ -49,7 +49,6 @@ public class TicketController {
 	
 	@RequestMapping("/reservation/{bankSeq}")
 	public ModelAndView reservation(@PathVariable("bankSeq") String bankSeq){
-		//return "user/ticket/standbystatus";
 		ModelAndView mav = new ModelAndView();
 		TicketWaitingStatusDTO nt100 = service.selectStandBy100(bankSeq);
 		TicketWaitingStatusDTO nt200 = service.selectStandBy200(bankSeq);
@@ -62,15 +61,10 @@ public class TicketController {
 		mav.addObject("bankSeq", bankSeq);
 		mav.addObject("bankName", bankName);
 		mav.addObject("nt100", nt100);
-		System.out.println(nt100);
 		mav.addObject("nt200", nt200);
-		System.out.println(nt200);
 		mav.addObject("nt300", nt300);
-		System.out.println(nt300);
 		mav.addObject("nt400", nt400);
-		System.out.println(nt400);
 		mav.addObject("workList", workList);
-		System.out.println(workList);
 		mav.setViewName("user/ticket/standbystatus");
 		return mav;
 	}	

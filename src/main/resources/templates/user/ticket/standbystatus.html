@@ -27,6 +27,10 @@
 		border: none;
 	}
 	
+	#workTable {
+		padding: 20px;
+	}
+	
 </style>
 </head>
 
@@ -68,7 +72,7 @@
 		
 		<h2 style="text-align: center;">대기 손님 현황</h2>
 		<hr>
-		<table class="table table-bordered" style="width: 100%;">
+		<table id="workTable" class="table table-bordered" style="width: 100%;">
 			<tr>
 				<th colspan="3">
 					<span style="color: red;">원하시는 업무</span>를 선택해주세요
@@ -113,11 +117,20 @@
 
   </main><!-- End #main -->
   
-  <script>
+ <script>
+  
+  const bankSeq = "[[${bankSeq}]]";
+  
+	window.onload = function(){
+		getWorkList(100);
+	}
   
 	$(document).on('click', ".type", function() {
-		let bankSeq = "[[${bankSeq}]]";
 		let type = $(this).attr('name');
+		getWorkList(type);
+	});
+	
+	function getWorkList(type) {
 		$.ajax({
 			url: '/atlanbank/ticket/' + bankSeq + '/' + type,
 			type: 'get',
@@ -125,31 +138,31 @@
 				$('#docs').empty();
 				
 				let content = '';
-				
-				content += '<table class="table">'
+			   
+			  content += '<table class="table">'
 				content += '	<tr>'
 				content += '		<th style="width: 30%;">업무명</th>'
 				content += '		<th>필요서류</th>'
 				content += '	</tr>'
 				
-				data.data.forEach(function(item) {
-					content += '<tr>'
-					content += '	<td>' + item.detailWorkName + '</td>'
-					content += '	<td>' + item.docName + '</td>'
-					content += '</tr>'
+			  Object.keys(data.data).forEach(function(workType) {
+				  let documents = data.data[workType];
+				  let documentList = documents.join(', ');
 					
-				});
-				 content +=     '</table>';
-	             $('#docs').append(content);
-				
+					content += '<tr>'
+					content += '	<td>' + workType + '</td>'
+					content += '	<td>' + documentList + '</td>'
+					content += '</tr>'
+			  });
+				  content +=     '</table>';
+				  $('#docs').append(content);
 			},
 			error : (a,b,c) => {
 		  		console.log(a,b,c,);
 		  	}
 			
-		})
-	})
-
+		});
+	}
 	
   </script>
 

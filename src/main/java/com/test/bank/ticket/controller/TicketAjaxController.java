@@ -32,9 +32,11 @@ public class TicketAjaxController {
 	}
 	
 	@GetMapping("/ticket/{bankSeq}/{type}")
-	public Map<String, List<WorkListDTO>> getWorkList(@PathVariable("bankSeq") String bankSeq, @PathVariable("type") String type) {
-		Map<String, List<WorkListDTO>> workList = new HashMap<>();
-		List<WorkListDTO> result = service.getWorkList(bankSeq, type); 
+	public Map<String, Map<String, List<String>>> getWorkList(@PathVariable("bankSeq") String bankSeq, @PathVariable("type") String type) {
+		// Map<String, List<WorkListDTO>> workList = new HashMap<>();
+		// List<WorkListDTO> result = service.getWorkList(bankSeq, type); 
+		Map<String, Map<String, List<String>>> workList = new HashMap();
+		Map<String, List<String>> result = service.getWorkList(bankSeq, type); 
 		workList.put("data", result);
 		System.out.println("TicketAjaxController workList: " + workList);
 		return workList;
