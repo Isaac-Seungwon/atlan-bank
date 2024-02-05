@@ -61,12 +61,15 @@
 	
 	.card-row {
 		display: flex;
+		flex-wrap: wrap; /* 이거 임시 */
 	}
 	
 	.card-box {
-		padding-right: calc((100% - 960px) / 2);
+		/* padding-right: calc((100% - 960px) / 2);
 		padding-top: 20px;
-		padding-bottom: 20px;
+		padding-bottom: 20px; */
+		/* 아래 임시 */
+		padding: 20px calc((100% - 960px) / 6);
 	}
 	
 	.card-container .card-box:last-child {
@@ -171,7 +174,7 @@
 			<h2>신용 카드</h2>
 			
 			<ul class="benefits-menu">
-				<li><a href="javascript:void(0);" data-filter=".filter-discount-saving">적립/할인</a></li>
+				<li><a href="javascript:void(0);" data-filter=".filter-saving-discount">적립/할인</a></li>
 				<li><a href="javascript:void(0);" data-filter=".filter-travel">여행</a></li>
 				<li><a href="javascript:void(0);" data-filter=".filter-shopping">쇼핑</a></li>
 				<li><a href="javascript:void(0);" data-filter=".filter-charging">주유/충전</a></li>
@@ -187,29 +190,36 @@
 			<div class="card-container">
 				
 				<div class="card-row">
-					<div class="card-box .filter-discount-saving">
+				
+					<!-- Card 1개 -->
+					<div class="card-box .filter-saving-discount" th:each="card : ${creditCardList}">
 						<!-- front -->
 						<div class="card-box-item front">
 							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
 							</div>
 							<div class="card-img">
-								<img src="/atlanbank/assets/img/card/card_sample1.png" class="vertical">
+								<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 							</div>
 						</div>
 						
 						<!-- back -->
 						<div class="card-box-item back">
 							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
 							</div>
 							<div>
 								<p>연회비</p>
 							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
 					
 					<div class="card-box .filter-shopping">
 						<!-- front -->
@@ -261,35 +271,6 @@
 					
 				</div>
 				
-				<div class="card-row">
-				
-					<div class="card-box">
-						<!-- front -->
-						<div class="card-box-item front">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-							</div>
-							<div class="card-img">
-								<img src="/atlanbank/assets/img/card/card_sample1.png">
-							</div>
-						</div>
-						
-						<!-- back -->
-						<div class="card-box-item back">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-							</div>
-							<div>
-								<p>연회비</p>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			
-			
 			
 			</div>
 		
@@ -301,6 +282,12 @@
 	<!-- Script -->
 	<script>
 	
+		/* //Add 'on' class to the '적립/할인' category upon page load
+		$(document).ready(function () {
+			$('#saving-discount').addClass('on');
+		}); */
+		
+		//클릭하면 Data-filtering으로 해당하는 클래스만 보이도록
 	
 	
 	

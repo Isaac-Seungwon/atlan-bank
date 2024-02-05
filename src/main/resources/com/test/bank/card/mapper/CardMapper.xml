@@ -3,5 +3,9 @@
 
 <mapper namespace="com.test.bank.card.mapper.CardMapper">
 
+	<!-- User용 -->
+	<select id="getCreditCardList" resultType="com.test.bank.card.domain.CardDTO">
+		select * from tblCard where type = 1
+	</select>
 
 </mapper>

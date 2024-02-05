@@ -3,10 +3,18 @@ commit;
 select * from tblCard;
 
 -- tblCard
-INSERT INTO tblCard (card_seq, type, name, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, '신용카드', '아틀란카드', '국내전용', 5000, 'front.png', default);
-INSERT INTO tblCard (card_seq, type, name, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, '신용카드', '아틀란카드', 'VISA', 15000, 'front.png', default);
-INSERT INTO tblCard (card_seq, type, name, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, '신용카드', '당근카드', '국내전용', 5000, 'front.png', default);
-INSERT INTO tblCard (card_seq, type, name, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, '신용카드', '당근카드', 'Master', 15000, 'front.png', default);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, '알뜰교통플러스 카드', '교통비 SAVE!! 생활서비스 할인 혜택까지~', '국내 전용', 8000, '(신용)알뜰교통플러스카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, '알뜰교통플러스 카드', '교통비 SAVE!! 생활서비스 할인 혜택까지~', 'VISA', 8000, '(신용)알뜰교통플러스카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'WE:SH All 카드', 'Simple Life를 위한 모두의 카드', '국내 전용', 20000, '(신용)위시올카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'WE:SH All 카드', 'Simple Life를 위한 모두의 카드', 'VISA', 20000, '(신용)위시올카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'My WE:SH 카드', '''나''의 행복을 위한 필수 혜택 카드', '국내 전용', 15000, '(신용)마이위시카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'My WE:SH 카드', '''나''의 행복을 위한 필수 혜택 카드', 'MASTER', 15000, '(신용)마이위시카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'My WE:SH 카드', '''나''의 행복을 위한 필수 혜택 카드', 'AMEX', 15000, '(신용)마이위시카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'Our WE:SH 카드', '함께 사는 ''우리''를 위한 필수 카드', '국내 전용', 15000, '(신용)아워위시카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'Our WE:SH 카드', '함께 사는 ''우리''를 위한 필수 카드', 'MASTER', 15000, '(신용)아워위시카드.png', 1);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'American Express Blue Card', '매일 쓰는 영역 할인으로 내 생활에 착붙!', 'AMEX', 19000, '(신용)아멕스블루카드.png', default);
+INSERT INTO tblCard (card_seq, type, name, info, brand, annual_fee, img, orientation) VALUES (card_seq.nextVal, 1, 'American Express Rose Gold Card', '아틀란뱅크와 만나는 장밋빛 할인 혜택', 'AMEX', 19000, '(신용)아멕스로즈골드카드.png', default);
+
 
 --tblCardUsageGuide
 INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '전월 이용실적 기준', '전월 1일 ~ 말일까지 KB국민 알뜰교통플러스카드의 일시불 및 할부 승인 금액 기준
@@ -42,3 +50,5 @@ inner join tblPerformanceBenefit b
 on a.benefits_seq = b.benefits_seq;
 
 -- 할인/적립/항공마일리지 카테고리를 한번 더 세분화해서 항공의경우 1000원단위 절사해서 적립되도록
+
+select * from tblCard where type = 1;

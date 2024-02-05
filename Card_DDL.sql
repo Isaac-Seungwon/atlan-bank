@@ -4,7 +4,7 @@ DROP SEQUENCE card_usage_guide_seq;
 DROP SEQUENCE benefits_seq;
 DROP SEQUENCE card_benefit_seq;
 DROP SEQUENCE performance_benefit_seq;
---DROP SEQUENCE member_card_seq;
+DROP SEQUENCE member_card_seq;
 DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE payment_seq;
 
@@ -34,7 +34,7 @@ CREATE SEQUENCE card_usage_guide_seq;
 CREATE SEQUENCE benefits_seq;
 CREATE SEQUENCE card_benefit_seq;
 CREATE SEQUENCE performance_benefit_seq;
---CREATE SEQUENCE member_card_seq;
+CREATE SEQUENCE member_card_seq;
 CREATE SEQUENCE member_card_history_seq;
 CREATE SEQUENCE payment_seq;
 
@@ -42,8 +42,9 @@ CREATE SEQUENCE payment_seq;
 /* 카드 */
 CREATE TABLE tblCard (
 	card_seq NUMBER PRIMARY KEY, /* 카드종류번호 */
-	type VARCHAR2(50) NOT NULL, /* 카드종류 */
+	type NUMBER NOT NULL, /* 카드종류(1: 신용카드, 2: 체크카드) */
 	name VARCHAR2(200) NOT NULL, /* 카드명 */
+    info VARCHAR2(500) NOT NULL, /* 카드 설명 */
     brand VARCHAR2(100) NOT NULL, /* 브랜드(국내외 사용가능 여부) */
     annual_fee NUMBER NOT NULL, /* 연회비 */
     img VARCHAR2(200) NOT NULL, /* 카드 이미지 */
@@ -85,8 +86,9 @@ CREATE TABLE tblPerformanceBenefit (
 
 /* 회원카드 */
 CREATE TABLE tblMemberCard (
-	member_card_no NUMBER PRIMARY KEY, /* 회원카드번호(16자리) */
+	member_card_seq NUMBER PRIMARY KEY, /* 회원카드번호 */
 	member_seq NUMBER REFERENCES tblMember(member_seq) NOT NULL, /* 회원번호 */
+    card_no NUMBER NOT NULL, /* 카드번호(16자리) */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
 	exp DATE NOT NULL, /* 만료일 */
 	cvc NUMBER NOT NULL, /* 카드인증코드 */
@@ -97,7 +99,7 @@ CREATE TABLE tblMemberCard (
 /* 회원카드이용내역 */
 CREATE TABLE tblMemberCardHistory (
 	member_card_history_seq NUMBER PRIMARY KEY, /* 회원카드이용내역번호 */
-	member_card_no NUMBER REFERENCES tblMemberCard(member_card_no) NOT NULL, /* 회원카드번호 */
+	member_card_seq NUMBER REFERENCES tblMemberCard(member_card_seq) NOT NULL, /* 회원카드번호 */
 	transaction_date DATE NOT NULL, /* 결제일 */
 	amount NUMBER NOT NULL, /* 금액 */
 	installment_months NUMBER NOT NULL /* 할부 개월수 */
