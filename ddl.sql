@@ -163,13 +163,13 @@ CREATE TABLE tblBankFavorite (
 CREATE TABLE tblTicketWaitingStatus (
     ticket_waiting_status_seq NUMBER PRIMARY KEY, /* 대기리스트 번호 */
     bank_seq NUMBER not null, /* 지점 번호 */
-    detail_work_seq NUMBER not null, /* 세부업무 번호 */
+    work_seq NUMBER not null, /* 업무 번호 */
     member_seq NUMBER not null, /* 회원 번호 */
     regdate	DATE DEFAULT SYSDATE, /* 신청일자 */
     time DATE not null, /* 신청시간 */ 
     is_complete NUMBER DEFAULT 0 not null, /* 완료여부(1: 완료, 0: 대기) */ 
     FOREIGN KEY (bank_seq) REFERENCES tblBank(bank_seq),
-    FOREIGN KEY (detail_work_seq) REFERENCES tblDetailWork(detail_work_seq),
+    FOREIGN KEY (work_seq) REFERENCES tblWork(work_seq),
     FOREIGN KEY (member_seq) REFERENCES tblMember(member_seq)
 );
 
