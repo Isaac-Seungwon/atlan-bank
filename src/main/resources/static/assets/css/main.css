@@ -642,6 +642,7 @@ section {
 
 .sub-features div p {
 	margin-top: 15px;
+	color: var(--color-default);
 }
 
 .feature-box>ul {
