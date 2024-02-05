@@ -1,6 +1,6 @@
 -- ddl
-CREATE USER atlanbank identified BY admin1234;
-GRANT CONNECT, resource, dba TO atlanbank;
+-- CREATE USER atlanbank identified BY admin1234;
+-- GRANT CONNECT, resource, dba TO atlanbank;
 
 
 -- DELETE TABLE
@@ -19,6 +19,11 @@ DELETE FROM tblNews;
 DELETE FROM tblEvent;
 DELETE FROM tblBenefit;
 DELETE FROM tblFranchise;
+DELETE FROM tblLoan;
+DELETE FROM tblInterestRate;
+DELETE FROM tblLoanCaution;
+DELETE FROM tblLoanUsageGuide;
+DELETE FROM tblLoanProductGuide;
 DELETE FROM tblMember;
 
 
@@ -38,14 +43,14 @@ DROP TABLE tblNews;
 DROP TABLE tblEvent;
 DROP TABLE tblBenefit;
 DROP TABLE tblFranchise;
-DROP TABLE tblMember;
+DROP TABLE tblLoan;
 DROP TABLE tblLoanStatus;
 DROP TABLE tblRepayment;
-DROP TABLE tblLoan;
-DROP TABLE tblLoanProductGuide;
 DROP TABLE tblInterestRate;
-DROP TABLE tblLoanUsageGuide;
 DROP TABLE tblLoanCaution;
+DROP TABLE tblLoanUsageGuide;
+DROP TABLE tblLoanProductGuide;
+DROP TABLE tblMember;
 
 
 -- DROP SEQUENCE
@@ -188,9 +193,10 @@ CREATE TABLE tblNews (
 CREATE TABLE tblEvent (
     event_seq NUMBER PRIMARY KEY, /* 이벤트번호 */
     name VARCHAR2(200) NOT NULL, /* 이벤트명 */
-    content VARCHAR2(1000), /* 이벤트내용 */
-    img VARCHAR2(100), /* 이벤트이미지 */
-    caution VARCHAR2(1000) NOT NULL, /* 유의사항 */
+    content VARCHAR2(1000) NOT NULL, /* 이벤트내용 */
+    visual_img VARCHAR2(100), /* 이벤트명이미지 */
+    content_img VARCHAR2(100), /* 이벤트내용이미지 */
+    caution_img VARCHAR2(100), /* 이벤트유의사항이미지 */
     start_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '9' HOUR NOT NULL, /* 이벤트시작시간 */
     end_date DATE DEFAULT TRUNC(SYSDATE) + INTERVAL '30' DAY + INTERVAL '16' HOUR NOT NULL, /* 이벤트종료시간 */
     hits_count NUMBER DEFAULT 0 NOT NULL, /* 조회수 */

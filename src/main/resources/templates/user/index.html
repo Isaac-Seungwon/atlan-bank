@@ -141,7 +141,7 @@
 										<p th:text="${#strings.length(event.content) &gt; 65} ? ${#strings.substring(event.content, 0, 65) + '...'} : ${event.content}"></p>
 		
 										<!-- 이벤트 기간 -->
-										<h4 th:text="${#dates.format(event.startDate, 'yyyy.MM.dd')} + ' ~ ' + ${#dates.format(event.endDate, 'yyyy.MM.dd.')}"></h4>
+										<h4 th:text="${#dates.format(event.startDate, 'yyyy.MM.dd.')} + ' ~ ' + ${#dates.format(event.endDate, 'yyyy.MM.dd.')}"></h4>
 									</div>
 									
 								    <!-- 바로가기 -->

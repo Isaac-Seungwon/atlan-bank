@@ -4,140 +4,19 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>Event</title>
-<style>
-#event {
-	text-align: center;
-}
-
-#search-form {
-	margin-top: 40px;
-}
-
-#category {
-	width: 100px;
-	height: 40px;
-	margin-right: 5px;
-}
-
-#search-field {
-	height: 40px;
-}
-
-#search-button {
-	background-color: transparent;
-	border: none;
-	outline: none;
-}
-
-#search-button span {
-	font-size: 40px;
-	position: relative;
-	top: 13px;
-}
-
-#event-list {
-	width: 80%;
-	text-align: center;
-	border-top: 2px solid #000;
-	margin: 50px auto 0;
-}
-
-#event-list th, #event-list td {
-	height: 60px;
-	color: #444;
-	padding: 10px;
-	border-bottom: 1px solid #E1E1E1;
-}
-
-#event-list th {
-	font-size: 1.02rem;
-	font-weight: bold;
-}
-
-#event-list th:nth-child(1) {
-	width: 20%;
-}
-
-#event-list th:nth-child(2) {
-	width: 60%;
-}
-
-#event-list th:nth-child(3) {
-	width: 20%;
-}
-
-#event-list td:nth-child(2) a {
-	font-weight: bold;
-	color: #333;
-}
-
-#event-list td:nth-child(2) {
-	text-align: left;
-}
-
-.in-progress {
-	color: var(--color-primary);
-}
-
-.completed {
-	color: #555;
-}
-
-.in-progress, .completed {
-    font-size: 0.9rem;
-}
-
-#page-bar {
-	display: flex;
-	font-size: 1.2rem;
-	justify-content: center;
-	margin-top: 50px;
-	margin-bottom: 15px;
-}
-
-#previous-button, #current-page, #other-pages, #next-button {
-	color: #000;
-	margin: 0 10px;
-}
-
-#previous-button, #next-button {
-	display: block;
-	margin-top: 1.5px;
-}
-
-#current-page {
-	color: #F00;
-}
-
-#button-list {
-	text-align: right;
-}
-
-#button-list i {
-	margin-right: 10px;
-}
-
-#add-button {
-	width: 90px;
-	height: 40px;
-	background-color: transparent;
-	border: 2px solid #CCC;
-	margin: 30px 150px 0;
-}
-
-.nav-icon {
-	font-size: 50px;
-}
-</style>
 </head>
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
+<style>
+
+</style>
 
 <body>
 	<!-- Start Main -->
 	<main id="event">
 		<!-- Start Breadcrumbs -->
 		<div class="breadcrumbs">
-			<div class="page-header d-flex align-items-center"
-				style="background-image: url('assets/img/page-header.jpg');">
+			<div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/event/event_main.png');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">

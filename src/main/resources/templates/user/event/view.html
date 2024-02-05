@@ -4,6 +4,9 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>Event</title>
+</head>
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
 <style>
 #event {
 	text-align: center;
@@ -54,15 +57,19 @@
 }
 
 #event-list th:nth-child(1) {
-	width: 15%;
+	width: 10%;
 }
 
 #event-list th:nth-child(2) {
-	width: 70%;
+	width: 60%;
 }
 
 #event-list th:nth-child(3) {
-	width: 15%;
+	width: 20%;
+}
+
+#event-list th:nth-child(4) {
+	width: 10%;
 }
 
 #event-list td:nth-child(2) a {
@@ -79,10 +86,14 @@
 }
 
 .completed {
-	color: #555;
+	color: var(--color-secondary);
 }
 
-.in-progress, .completed {
+.upcoming {
+	color: #059652;
+}
+
+.in-progress, .completed, .upcoming {
     font-size: 0.9rem;
 }
 
@@ -128,7 +139,6 @@
 	font-size: 50px;
 }
 </style>
-</head>
 
 <body>
 	<!-- Start Main -->
@@ -136,13 +146,12 @@
 	
 	<!-- Start Breadcrumbs -->
 	<div class="breadcrumbs">
-		<div class="page-header d-flex align-items-center"
-			style="background-image: url('assets/img/page-header.jpg');">
+		<div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/event/event_main.png');">
 			<div class="container position-relative">
 				<div class="row d-flex justify-content-center">
 					<div class="col-lg-6 text-center">
-						<h2>Event</h2>
-						<p>event page</p>
+						<h2>이벤트</h2>
+						<p>다양한 이벤트에 참여하세요!</p>
 					</div>
 				</div>
 			</div>
@@ -172,10 +181,10 @@
 						<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true">전체 이벤트</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">진행중인 이벤트</button>
+						<button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">진행중 이벤트</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="end-tab" data-bs-toggle="tab" data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">종료한 이벤트</button>
+						<button class="nav-link" id="end-tab" data-bs-toggle="tab" data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">진행예정 이벤트</button>
 					</li>
 				</ul>
 				
@@ -188,16 +197,28 @@
 								<tr>
 									<th>번호</th>
 									<th>제목</th>
+									<th>이벤트 기간</th>
 									<th>조회수</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="eventList, status : ${eventList}">
 									<td th:text="${eventList.eventSeq}"></td>
-									<td><a th:href="@{/user/event/detail.do(seq=${eventList.eventSeq})}"
-										th:text="${eventList.name}"></a> <span class="in-progress"
-										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss') and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행 중</span> <span class="completed"
-										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">종료</span>
+									<td>
+										<a th:href="@{/user/event/detail.do(seq=${eventList.eventSeq})}"
+											th:text="${#strings.length(eventList.name) > 47 ? #strings.substring(eventList.name, 0, 47) + '...' : eventList.name}">
+										</a>
+											<span class="in-progress"
+											th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
+											and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행중</span>
+											<span class="completed"
+											th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">마감</span>
+											<span class="upcoming"
+											th:unless="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
+											and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')
+											or #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행예정</span>
+									</td>
+									<td th:text="${#dates.format(eventList.startDate, 'yyyy.MM.dd.')} + ' ~ ' + ${#dates.format(eventList.endDate, 'yyyy.MM.dd.')}"></td>
 									<td th:text="${eventList.hitsCount}"></td>
 								</tr>
 							</tbody>
@@ -208,7 +229,7 @@
 							<select name="category" id="category">
 								<option value="name">제목</option>
 								<option value="content">내용</option>
-							</select> <input type="text" name="word" id="search-field" size="60" pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
+							</select> <input type="text" name="word" id="search-field" size="60" pattern=".{1,}" placeholder="검색어를 입력하세요." required>
 							<button type="submit" id="search-button">
 								<span class="material-symbols-outlined">search</span>
 							</button>
@@ -237,11 +258,11 @@
 					</div>
 					
 					<div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="progress-tab">
-						진행중인 이벤트
+						진행중 이벤트
 					</div>
 					
 					<div class="tab-pane fade" id="bordered-contact" role="tabpanel" aria-labelledby="end-tab">
-						종료한 이벤트
+						진행예정 이벤트
 					</div>
 				</div>
 			</div>
