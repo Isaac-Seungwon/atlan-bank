@@ -105,13 +105,13 @@ table {
             </thead>
             <tbody>
             	<tr th:each="list : ${exchangelist}">
-            		<td class="tg-0pky" style="border-left: none">${list.nationKr}</td>
-                     <td class="tg-0pky">${list.cashBuyRate}</td>
-                     <td class="tg-0pky">${list.cashSellRate}</td>
-                     <td class="tg-0pky">${list.transferSendRate}</td>
-                     <td class="tg-0pky">${list.transferReceiveRate}</td>
-                     <td class="tg-0pky">${list.buyBasicRate}</td>
-                     <td class="tg-0pky" style="border-right: none">${list.usdChangeRate}</td>
+            		<td class="tg-0pky" style="border-left: none" th:text="${list.nationKr}"></td>
+                     <td class="tg-0pky" th:text="${list.cashBuyRate}"></td>
+                     <td class="tg-0pky" th:text="${list.cashSellRate}"></td>
+                     <td class="tg-0pky" th:text="${list.transferSendRate}"></td>
+                     <td class="tg-0pky" th:text="${list.transferReceiveRate}"></td>
+                     <td class="tg-0pky" th:text="${list.buyBasicRate}"></td>
+                     <td class="tg-0pky" style="border-right: none" th:text="${list.usdChangeRate}"></td>
                </tr>
             </tbody>
          </table>
