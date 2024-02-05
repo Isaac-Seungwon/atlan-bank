@@ -13,7 +13,7 @@
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs">
 			<div class="page-header d-flex align-items-center"
-				style="background-image: url('/assets/img/page-header.jpg');">
+				style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
@@ -35,31 +35,14 @@
 
 		<!-- ======= Contact Section ======= -->
 		<section id="contact" class="contact">
-			<!-- 
+		<!-- 
 			<div class="container">
-				<div class="d-flex flex-row">
-					<div class="col-md-6 form-group">
-						<input type="text" class="form-control" name="branchname" id="InputName"
-							placeholder="지점명을 입력하세요" required>
-					</div>
-					<div class="text-center">
-						<button id="test" type="button" class="btn btn-primary">검색</button>
-					</div>
-				</div>
-			</div>
-			<div id="map" style="width:50%;height:80%; float:left;"></div>
-			<div class="row justify-content-center">
-  -->
-			<div
-				style="width: 100%; height: 600px; border: 1px solid rgba(0, 0, 0, .1); text-align: center; margin: 0 auto; padding: 20px;">
-				<div style="width: 50%; height: 80%; float: left;" class="col-md-6">
-
+				<div>
+				
 					<h2 style="text-align: left">지점 검색</h2>
 					<hr>
 					<ul>
-						<li style="text-align: left;"><span style="color: red;">지점</span>을
-							선택해주세요</li>
-						<!--  <li class="list-group-item" style="float: left; width: 30%;">지점명</li>-->
+						<li style="text-align: left;"><span class="text-danger">지점</span>을 선택해주세요</li>
 					</ul>
 					<form id="form">
 						<div id="input">
@@ -69,16 +52,41 @@
 						</div>
 					</form>
 					<button id="test" class="btn btn-main mb-2" style="height: 35px;">검색</button>
-					<!--<button id="basket" class="btn btn-main mb-2" style="height: 48px;">즐겨찾기에 등록</button>-->
+				</div>
+				<div style="width: 50%; float: left;" class="col-md-6">
 
 					<div id="branchList"></div>
 				</div>
 
-				<div id="map" style="width: 50%; height: 80%; float: left;"></div>
-			</div>
+				<div id="map" style="width: 50%; float: left;"></div>
+			</div> -->
 
+			<div class="container">
+				<div
+					style="width: 100%; height: 600px; text-align: center; margin: 0 auto; padding: 20px;">
+					<div style="width: 50%; height: 80%; float: left;" class="col-md-6">
+	
+						<h2 style="text-align: left">지점 검색</h2>
+						<hr>
+						<ul>
+							<li style="text-align: left;"><span style="color: red;">지점</span>을 선택해주세요</li>
+						</ul>
+						<form id="form">
+							<div id="input">
+								<input type="text" placeholder="지점명을 입력하세요"
+									style="float: left; width: 100%; height: 10%;" name="branchname"
+									id="InputName" class="form-control mb-2">
+							</div>
+						</form>
+						<button id="test" class="btn btn-main mb-2" style="height: 35px;">검색</button>
+						<!--<button id="basket" class="btn btn-main mb-2" style="height: 48px;">즐겨찾기에 등록</button>-->
+	
+						<div id="branchList"></div>
+					</div>
+	
+					<div id="map" style="width: 50%; height: 80%; float: left;"></div>
+				</div>
 			</div>
-			<!-- End row justify-content-center -->
 
 		</section>
 		<!-- End Contact Section -->
@@ -98,7 +106,7 @@
 	        level : 5 // 지도의 확대 레벨 
 	    });
 	
-	    const imageSrc = '/assets/img/maker.png' // 마커이미지의 주소
+	    const imageSrc = '/atlanbank/assets/img/maker.png' // 마커이미지의 주소
 	    const imageSize = new kakao.maps.Size(30, 30) // 마커이미지의 크기입니다
 	    const imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 	      
@@ -107,7 +115,7 @@
 	 
 	    // 데이터를 가져오기 위해 jQuery를 사용합니다
 	    // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-	    $.get("/ticket/banklist.json", function(data) {
+	    $.get("/atlanbank/ticket/banklist.json", function(data) {
 	        // 데이터에서 좌표 값을 가지고 마커를 표시합니다
 	        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
 	        //console.log("data.positions: " + JSON.stringify(data.positions));
@@ -205,7 +213,7 @@
 	    
 	    $(document).on('click', "#test", function(){
 	       $.ajax({
-	          url : '/location/' + $('#InputName').val(),   
+	          url : '/atlanbank/ticket/' + $('#InputName').val(),   
 	          type : 'get',
 	          success : function (data){
 	             $('#branchList').empty();
@@ -223,7 +231,7 @@
 	             content +=         '<tbody>';
 	             
 	             data.data.forEach(function(item){
-	            	 content += '<tr class="chooselocation" id=' + item.bankName + '>';
+	            	 content += '<tr class="chooselocation" id=' + item.bankSeq + '>';
 	                 content += '<td style="width: 15%;">' + item.bankName + '</td>';
 	                 content += '<td style="width: 70%;">' + item.bankAddress + '</td>';
 	                 content += '<td style="width: 15%;">' + (item.startTime ? (item.startTime + '~' + item.endTime) : '영업시간 정보 없음') + '</td>';
@@ -250,8 +258,8 @@
     })
     
     $(document).on('click', ".chooselocation", function(){
-       let locations = $(this).attr('id');
-       location.href = "/ticket/reservation/" + locations
+       let bankSeq = $(this).attr('id');
+       location.href = "/atlanbank/ticket/reservation/" + bankSeq
 
     })
   
