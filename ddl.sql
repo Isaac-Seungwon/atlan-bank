@@ -39,6 +39,13 @@ DROP TABLE tblEvent;
 DROP TABLE tblBenefit;
 DROP TABLE tblFranchise;
 DROP TABLE tblMember;
+DROP TABLE tblLoanStatus;
+DROP TABLE tblRepayment;
+DROP TABLE tblLoan;
+DROP TABLE tblLoanProductGuide;
+DROP TABLE tblInterestRate;
+DROP TABLE tblLoanUsageGuide;
+DROP TABLE tblLoanCaution;
 
 
 -- DROP SEQUENCE
@@ -58,7 +65,13 @@ DROP SEQUENCE event_seq;
 DROP SEQUENCE benefit_seq;
 DROP SEQUENCE franchise_seq;
 DROP SEQUENCE member_seq;
-
+DROP SEQUENCE seqLoanStatus;
+DROP SEQUENCE seqRepayment;
+DROP SEQUENCE seqLoan;
+DROP SEQUENCE seqLoanProductGuide;
+DROP SEQUENCE seqInterestRate;
+DROP SEQUENCE seqLoanUsageGuide;
+DROP SEQUENCE seqLoanCaution;
 
 -- CREATE TABLE
 /* 회원 테이블 */
