@@ -227,7 +227,6 @@ CREATE TABLE tblComment (
     FOREIGN KEY (news_seq) REFERENCES tblNews(news_seq)
 );
 
-
 -- 대출상품 안내
 CREATE TABLE tblLoanProductGuide (
 	loanproductguide_seq      NUMBER PRIMARY KEY, -- 대출상품 안내번호
