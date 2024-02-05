@@ -44,7 +44,7 @@ CREATE TABLE tblCard (
 	card_seq NUMBER PRIMARY KEY, /* 카드종류번호 */
 	type NUMBER NOT NULL, /* 카드종류(1: 신용카드, 2: 체크카드) */
 	name VARCHAR2(200) NOT NULL, /* 카드명 */
-    info VARCHAR2(500) NOT NULL, /* 카드 설명 */
+    info VARCHAR2(500) NULL, /* 카드 설명 */
     brand VARCHAR2(100) NOT NULL, /* 브랜드(국내외 사용가능 여부) */
     annual_fee NUMBER NOT NULL, /* 연회비 */
     img VARCHAR2(200) NOT NULL, /* 카드 이미지 */
