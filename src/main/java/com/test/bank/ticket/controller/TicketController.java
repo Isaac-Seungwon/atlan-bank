@@ -49,7 +49,6 @@ public class TicketController {
 	
 	@RequestMapping("/reservation/{bankSeq}")
 	public ModelAndView reservation(@PathVariable("bankSeq") String bankSeq){
-		//return "user/ticket/standbystatus";
 		ModelAndView mav = new ModelAndView();
 		TicketWaitingStatusDTO nt100 = service.selectStandBy100(bankSeq);
 		TicketWaitingStatusDTO nt200 = service.selectStandBy200(bankSeq);
