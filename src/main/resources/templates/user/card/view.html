@@ -270,23 +270,24 @@
 			
 			<div class="card-container">
 				
-				<div class="card-box">
+				<!-- Card 1개 -->
+				<div class="card-box" th:each="card : ${newCreditCardList}">
 					<!-- front -->
 					<div class="card-box-item front">
 						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3>알뜰교통플러스 카드</h3>
-							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+							<h3 th:text="${card.name}"></h3>
+							<p th:text="${card.info}"></p>
 						</div>
 						<div class="card-img">
-							<img src="/atlanbank/assets/img/card/card_sample1.png" class="vertical">
+							<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 						</div>
 					</div>
 					
 					<!-- back -->
 					<div class="card-box-item back">
 						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3>알뜰교통플러스 카드</h3>
-							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+							<h3 th:text="${card.name}"></h3>
+							<p th:text="${card.info}"></p>
 						</div>
 						<div>
 							<p>연회비</p>
@@ -294,56 +295,6 @@
 					</div>
 				</div>
 				
-				<div class="card-box">
-					<!-- front -->
-					<div class="card-box-item front">
-						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3>알뜰교통플러스 카드</h3>
-							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						</div>
-						<div class="card-img">
-							<img src="/atlanbank/assets/img/card/card_sample1.png">
-						</div>
-					</div>
-					
-					<!-- back -->
-					<div class="card-box-item back">
-						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3>알뜰교통플러스 카드</h3>
-							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						</div>
-						<div>
-							<p>연회비</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="card-box">
-					<!-- front -->
-					<div class="card-box-item front">
-						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3>알뜰교통플러스 카드</h3>
-							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						</div>
-						<div class="card-img">
-							<img src="/atlanbank/assets/img/card/card_sample1.png">
-						</div>
-					</div>
-					
-					<!-- back -->
-					<div class="card-box-item back">
-						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3>알뜰교통플러스 카드</h3>
-							<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						</div>
-						<div>
-							<p>연회비</p>
-						</div>
-					</div>
-				</div>
-			
-			
-			
 			</div>
 			
 		</section> <!-- End New Card List Section -->
@@ -361,67 +312,67 @@
 			<div class="benefits-container credit-card">
 				<ul>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=saving-discount">
 							<img src="/atlanbank/assets/img/card/discount-saving_icon.png">
 							<span>적립/할인</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=travle">
 							<img src="/atlanbank/assets/img/card/airplane_icon.png">
 							<span>여행</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=shopping">
 							<img src="/atlanbank/assets/img/card/shopping_icon.png">
 							<span>쇼핑</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=charging">
 							<img src="/atlanbank/assets/img/card/gas-fuel_icon.png">
 							<span>주유/충전</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=communication">
 							<img src="/atlanbank/assets/img/card/phone_icon.png">
 							<span>통신</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=education">
 							<img src="/atlanbank/assets/img/card/education_icon.png">
 							<span>교육</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=medical">
 							<img src="/atlanbank/assets/img/card/hospital_icon.png">
 							<span>의료</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=food">
 							<img src="/atlanbank/assets/img/card/cutlery_icon.png">
 							<span>음식</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=rental">
 							<img src="/atlanbank/assets/img/card/rental_icon.png">
 							<span>렌탈</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=choice">
 							<img src="/atlanbank/assets/img/card/choice_icon.png">
 							<span>선택형</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/credit/view.do?category=public">
 							<img src="/atlanbank/assets/img/card/public_icon.png">
 							<span>공공/정부지원</span>
 						</a>

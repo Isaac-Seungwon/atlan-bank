@@ -2,10 +2,15 @@ package com.test.bank.card.mapper;
 
 import java.util.List;
 
+import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 
 public interface CardMapper {
 
-	List<CardDTO> getCreditCardList();
+	List<CardDTO> getCategoryCreditCardList(String category);
+
+	List<CardAnnualFeeDTO> getAnnualFeeList();
+
+	List<CardDTO> getNewCreditCardList();
 
 }

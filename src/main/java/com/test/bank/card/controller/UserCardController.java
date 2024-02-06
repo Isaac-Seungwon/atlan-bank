@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.service.CardService;
 
@@ -26,19 +28,27 @@ public class UserCardController {
 
 	@GetMapping(value = "/view.do")
 	public String view(Model model) {
+		
+		//New Card List(only credit card)
+		List<CardDTO> newCreditCardList = service.getNewCreditCardList();
+		
+		model.addAttribute("newCreditCardList", newCreditCardList);
+		
 		return "user/card/view";
 	}
 
 	@GetMapping(value = "/credit/view.do")
-	public String creditView(Model model) {
+	public String creditView(@RequestParam(defaultValue = "적립/할인")String category, Model model) {
 		
-		//페이징 추후 추가하기
+		//creditCardList
+		List<CardDTO> categoryCreditCardList = service.getCategoryCreditCardList(category);
 		
-		//Credit Card List(조인해서 한테이블로 내보내기)
-		List<CardDTO> creditCardList = service.getCreditCardList();
+		//annualFeeList
+		List<CardAnnualFeeDTO> annualFeeList = service.getAnnualFeeList();
 		
 		//클라이언트측에서 적립/할인 먼저 기본으로 보여주고 나머지는 선택 시 변경되어 보여주도록
-		model.addAttribute("creditCardList", creditCardList);
+		model.addAttribute("creditCardList", categoryCreditCardList);
+		model.addAttribute("annualFeeList", annualFeeList);
 		
 		return "user/card/creditCardView";
 	}

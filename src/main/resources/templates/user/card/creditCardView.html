@@ -52,6 +52,11 @@
 		display: block;
 		clear: both;
 	}
+	
+	.on {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
 
 	/* card list */
 	.card-container {
@@ -174,17 +179,17 @@
 			<h2>신용 카드</h2>
 			
 			<ul class="benefits-menu">
-				<li><a href="javascript:void(0);" data-filter=".filter-saving-discount">적립/할인</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-travel">여행</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-shopping">쇼핑</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-charging">주유/충전</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-communication">통신</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-education">교육</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-medical">의료</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-food">음식</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-rental">렌탈</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-choice">선택형</a></li>
-				<li><a href="javascript:void(0);" data-filter=".filter-public">공공/정부지원</a></li>
+				<li><a href="javascript:void(0);" data-category="saving-discount" onclick="solting('saving-discount')">적립/할인</a></li>
+				<li><a href="javascript:void(0);" data-category="travle" onclick="solting('travle')">여행</a></li>
+				<li><a href="javascript:void(0);" data-category="shopping" onclick="solting('shopping')">쇼핑</a></li>
+				<li><a href="javascript:void(0);" data-category="charging" onclick="solting('charging')">주유/충전</a></li>
+				<li><a href="javascript:void(0);" data-category="communication" onclick="solting('communication')">통신</a></li>
+				<li><a href="javascript:void(0);" data-category="education" onclick="solting('education')">교육</a></li>
+				<li><a href="javascript:void(0);" data-category="medical" onclick="solting('medical')">의료</a></li>
+				<li><a href="javascript:void(0);" data-category="food" onclick="solting('food')">음식</a></li>
+				<li><a href="javascript:void(0);" data-category="rental" onclick="solting('rental')">렌탈</a></li>
+				<li><a href="javascript:void(0);" data-category="choice" onclick="solting('choice')">선택형</a></li>
+				<li><a href="javascript:void(0);" data-category="public" onclick="solting('public')">공공/정부지원</a></li>
 			</ul>
 			
 			<div class="card-container">
@@ -192,7 +197,7 @@
 				<div class="card-row">
 				
 					<!-- Card 1개 -->
-					<div class="card-box .filter-saving-discount" th:each="card : ${creditCardList}">
+					<div class="card-box" th:each="card : ${creditCardList}">
 						<!-- front -->
 						<div class="card-box-item front">
 							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
@@ -216,13 +221,8 @@
 						</div>
 					</div>
 					
-					
-					
-					
-					
-					
-					<div class="card-box .filter-shopping">
-						<!-- front -->
+					<!-- <div class="card-box .filter-shopping">
+						front
 						<div class="card-box-item front">
 							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
 								<h3>알뜰교통플러스 카드</h3>
@@ -233,7 +233,7 @@
 							</div>
 						</div>
 						
-						<!-- back -->
+						back
 						<div class="card-box-item back">
 							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
 								<h3>알뜰교통플러스 카드</h3>
@@ -243,31 +243,8 @@
 								<p>연회비</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					
-					<div class="card-box .filter-travel">
-						<!-- front -->
-						<div class="card-box-item front">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-							</div>
-							<div class="card-img">
-								<img src="/atlanbank/assets/img/card/card_sample1.png">
-							</div>
-						</div>
-						
-						<!-- back -->
-						<div class="card-box-item back">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-							</div>
-							<div>
-								<p>연회비</p>
-							</div>
-						</div>
-					</div>
 					
 				</div>
 				
@@ -282,12 +259,31 @@
 	<!-- Script -->
 	<script>
 	
-		/* //Add 'on' class to the '적립/할인' category upon page load
-		$(document).ready(function () {
-			$('#saving-discount').addClass('on');
-		}); */
+		//solting by category
+		function solting(category) {
+			location.href='/atlanbank/user/card/credit/view.do?category=' + category;
+		}
 		
-		//클릭하면 Data-filtering으로 해당하는 클래스만 보이도록
+		//alert($('.benefits-menu li a').data('category'));
+		
+		$(document).ready(function() {
+			
+			let queryString = window.location.search;
+			let selectedCategory = queryString.substr(10);
+			
+			if (queryString) {
+				//(When there is a query string) Add 'on class to the 'query string value' category upon page load
+				$('.benefits-menu li a[data-category="' + selectedCategory + '"]').addClass('on');
+			} else {
+				//(When there is no query string) Add 'on' class to the 'saving-discount' category upon page load
+				$('.benefits-menu li a[data-category=saving-discount]').addClass('on');
+				
+			}
+			
+		});
+		
+		
+		
 	
 	
 	

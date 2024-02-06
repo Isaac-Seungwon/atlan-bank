@@ -4,8 +4,16 @@
 <mapper namespace="com.test.bank.card.mapper.CardMapper">
 
 	<!-- User용 -->
-	<select id="getCreditCardList" resultType="com.test.bank.card.domain.CardDTO">
-		select * from tblCard where type = 1
+	<select id="getCategoryCreditCardList" parameterType="String" resultType="com.test.bank.card.domain.CardDTO">
+		select * from tblCard where type = 1 and category = #{category}
 	</select>
-
+	
+	<select id="getAnnualFeeList" resultType="com.test.bank.card.domain.CardAnnualFeeDTO">
+		select * from tblCardAnnualFee
+	</select>
+	
+	<select id="getNewCreditCardList" resultType="com.test.bank.card.domain.CardDTO">
+		select * from (select * from tblCard where type = 1 order by card_seq desc) where rownum <![CDATA[<=]]> 3
+	</select>
+	
 </mapper>

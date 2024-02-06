@@ -1,5 +1,6 @@
 --[SEQUENCE 삭제]
 DROP SEQUENCE card_seq;
+DROP SEQUENCE card_annual_fee_seq;
 DROP SEQUENCE card_usage_guide_seq;
 DROP SEQUENCE benefits_seq;
 DROP SEQUENCE card_benefit_seq;
@@ -9,27 +10,30 @@ DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE payment_seq;
 
 --[TABLE 내용 삭제]
+DELETE FROM tblPerformanceBenefit;
 DELETE FROM tblCardBenefit;
 DELETE FROM tblPayment;
 DELETE FROM tblMemberCardHistory;
 DELETE FROM tblMemberCard;
 DELETE FROM tblCardUsageGuide;
+DELETE FROM tblCardAnnualFee;
 DELETE FROM tblCard;
-DELETE FROM tblPerformanceBenefit;
 DELETE FROM tblBenefits;
 
 --[TABLE 삭제]
+DROP TABLE tblPerformanceBenefit;
 DROP TABLE tblCardBenefit;
 DROP TABLE tblPayment;
 DROP TABLE tblMemberCardHistory;
 DROP TABLE tblMemberCard;
 DROP TABLE tblCardUsageGuide;
+DROP TABLE tblCardAnnualFee;
 DROP TABLE tblCard;
-DROP TABLE tblPerformanceBenefit;
 DROP TABLE tblBenefits;
 
 --[SEQUENCE 생성]
 CREATE SEQUENCE card_seq;
+CREATE SEQUENCE card_annual_fee_seq;
 CREATE SEQUENCE card_usage_guide_seq;
 CREATE SEQUENCE benefits_seq;
 CREATE SEQUENCE card_benefit_seq;
@@ -43,12 +47,19 @@ CREATE SEQUENCE payment_seq;
 CREATE TABLE tblCard (
 	card_seq NUMBER PRIMARY KEY, /* 카드종류번호 */
 	type NUMBER NOT NULL, /* 카드종류(1: 신용카드, 2: 체크카드) */
+    category VARCHAR2(200) NOT NULL, /* 카드혜택분류 */
 	name VARCHAR2(200) NOT NULL, /* 카드명 */
-    info VARCHAR2(500) NULL, /* 카드 설명 */
-    brand VARCHAR2(100) NOT NULL, /* 브랜드(국내외 사용가능 여부) */
-    annual_fee NUMBER NOT NULL, /* 연회비 */
+    info VARCHAR2(500), /* 카드 설명 */
     img VARCHAR2(200) NOT NULL, /* 카드 이미지 */
     orientation NUMBER DEFAULT 0 NOT NULL /* 이미지방향(0: horizontal, 1: vertical) */
+);
+
+/* 카드연회비 */
+CREATE TABLE tblCardAnnualFee (
+	card_annual_fee_seq NUMBER PRIMARY KEY, /* 카드연회비번호 */
+	brand VARCHAR2(100) NOT NULL, /* 브랜드 */
+	annual_fee NUMBER NOT NULL, /* 연회비 */
+	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL /* 카드종류번호 */
 );
 
 /* 카드안내사항 */
@@ -63,7 +74,6 @@ CREATE TABLE tblCardUsageGuide (
 CREATE TABLE tblBenefits (
     benefits_seq NUMBER PRIMARY KEY, /* 혜택번호 */
     type NUMBER NOT NULL, /* 혜택종류(1: 할인, 2: 적립, 3: 항공마일리지적립) */
-    category VARCHAR2(200) NOT NULL, /* 혜택항목 */
     subject VARCHAR2(200) NOT NULL, /* 혜택명 */
     content VARCHAR2(2000) NOT NULL /* 혜택 상세 */
 );
@@ -78,11 +88,13 @@ CREATE TABLE tblCardBenefit (
 /* 카드실적별혜택 */
 CREATE TABLE tblPerformanceBenefit (
 	performance_benefit_seq NUMBER PRIMARY KEY, /* 카드실적별혜택번호 */
-	benefits_seq NUMBER REFERENCES tblBenefits(benefits_seq) NOT NULL, /* 혜택번호 */
+	card_benefit_seq NUMBER REFERENCES tblCardBenefit(card_benefit_seq) NOT NULL, /* 혜택번호 */
 	prev_month_perf NUMBER NOT NULL, /* 전월실적(실적별 구분 30/50/100) */
 	rate NUMBER NOT NULL, /* 할인/적립율 */
 	limit NUMBER NOT NULL /* 월 할인/적립 한도 */
 );
+
+----------------------------------------------------------------------------아래 RECHK
 
 /* 회원카드 */
 CREATE TABLE tblMemberCard (
