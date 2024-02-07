@@ -6,7 +6,21 @@
 <title>대출상품</title>
 
 </head>
-
+<style>
+	.section-header h2:after {
+	    content: "";
+	    position: absolute;
+	    display: block;
+	    width: 45px;
+	    height: 3px;
+	    background: var(--color-primary);
+	    bottom: 0;
+	    margin: auto;
+	}
+	.section-header h2 {
+	    padding-bottom: 20px;	
+	}
+</style>
 <body>
 
   <main id="main">
@@ -27,7 +41,7 @@
       <nav>
         <div class="container">
           <ol>
-            <li><a href="/index.html">Home</a></li>
+            <li><a href="/atlanbank/index.do">Home</a></li>
             <li><a href="view.do">대출</a></li>
             <li th:text="${type}"></li>
           </ol>
@@ -35,13 +49,12 @@
       </nav>
     </div><!-- End Breadcrumbs -->
     
-	<section id="service" class="services pt-0">
+	<section id="service" class="services pt-0" style="margin-top: 20px;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
           <span>대출상품</span>
           <h2>대출상품</h2>
-
         </div>
 
         <div class="row gy-4">
@@ -89,7 +102,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <span></span>
+          <span th:text="${type}"></span>
           <h2  th:text="${type}"></h2>
 
         </div>

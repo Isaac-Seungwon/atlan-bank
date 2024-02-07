@@ -124,7 +124,7 @@ public class UserLoanController {
 	@GetMapping(value="/loan/complete.do")
 	public String complete(Model model, LoanStatusDTO dto) {
 
-		service.insertloanstatus(dto);
+		/* service.insertloanstatus(dto); */
 		
 		LoanDTO loandto =  service.getloandetail(dto.getLoanSeq());		
 		model.addAttribute("memberdto", service.getmember(Integer.parseInt(dto.getMemberSeq())));

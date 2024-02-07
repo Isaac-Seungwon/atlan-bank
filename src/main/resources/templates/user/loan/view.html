@@ -109,41 +109,6 @@
 	.product-calculator .label-tab1 label.checked:after {
 	    border-bottom-color: #ffffff;
 	}
-	#loanCalc h2 {
-		font-size: 32px;
-	    font-weight: 700;
-	    text-transform: uppercase;
-	    padding-bottom: 0;
-	    color: #001973;
-	    position: relative;
-	    z-index: 2;
-	    padding-bottom: 20px;
-	    position: relative;
-	}
-	#loanCalc h2:after {
-	    content: "";
-	    position: absolute;
-	    display: block;
-	    width: 45px;
-	    height: 3px;
-	    background: var(--color-primary);
-	    /* left: 0; */
-	    /* right: 0; */
-	    bottom: 0;
-	    margin: auto;
-	}
-	#loanCalc span:nth-child(1) {
-	    position: absolute;
-	    color: rgba(14, 29, 52, 0.06);
-	    left: 80px;
-	    right: 0;
-	    z-index: 1;
-	    font-weight: 700;
-	    font-size: 56px;
-	    text-transform: uppercase;
-	    line-height: 0;
-	}
-	
 	#result_area{
 		padding: 20px 60px;
 	}
@@ -211,7 +176,19 @@
 	#result_area th:nth-child(5), #result_area td:nth-child(5) {
 		width: 25%;
 	}
-
+	.section-header h2:after {
+	    content: "";
+	    position: absolute;
+	    display: block;
+	    width: 45px;
+	    height: 3px;
+	    background: var(--color-primary);
+	    bottom: 0;
+	    margin: auto;
+	}
+	.section-header h2 {
+	    padding-bottom: 20px;	
+	}
 </style>
 
 <body>
@@ -233,7 +210,7 @@
       <nav>
         <div class="container">
           <ol>
-            <li><a href="/index.html">Home</a></li>
+            <li><a href="/atlanbank/index.do">Home</a></li>
             <li>대출</li>
           </ol>
         </div>
@@ -242,7 +219,7 @@
 
     
     <!-- ======= Services Section ======= -->
-    <section id="service" class="services pt-0">
+    <section id="service" class="services pt-0" style="margin-top: 20px;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
@@ -326,7 +303,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="/atlanbank/assets/img/loan/loan_mini3.png" class="testimonial-img" alt="">
+                <img src="/atlanbank/assets/img/loan/loan_mini1.png" class="testimonial-img" alt="">
                 <h3>비상금 대출</h3>
                 <h4>신용대출</h4>
                 <p>서울보증보험㈜ 개인금융신용보험증권 담보 소액신용대출</p>
@@ -343,7 +320,7 @@
             </div><!-- End testimonial item -->
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="/atlanbank/assets/img/loan/loan3.png" class="testimonial-img" alt="">
+                <img src="/atlanbank/assets/img/loan/loan_mini3.png" class="testimonial-img" alt="">
                 <h3>신혼부부 전세자금대출</h3>
                 <h4>전월세/반환보증</h4>
                 <p>전세 신규입주 또는 계약갱신을 하시는 고객님께 임차보증금의 90%까지 한국주택금융공사 보증서 담보로 지원하는 대출상품 신혼부부 우대금리 0.15%p를 최초 대출기간 만료일까지 추가 적용</p>
@@ -359,8 +336,10 @@
     
 	<section>
       <form name="" action="#none" class="product-calculator container" id="loanCalc">
+      	<div class="section-header">
       		<span>대출 계산기</span>
 			<h2>대출 계산기</h2>
+      	</div>
 			<div class="card">
 			<div class="div-tab1 icon2">
 				<label for="chkPurpose1" class="ic1 checked" > 

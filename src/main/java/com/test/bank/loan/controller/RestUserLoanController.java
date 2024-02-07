@@ -35,20 +35,25 @@ public class RestUserLoanController {
 		int principal = balance/Integer.parseInt(dto.getPeriod());
 		
 		List<calculatorDTO> list = new ArrayList<calculatorDTO>();
-		
+		int payment = 0;
 		for (int i = 1; i<=Integer.parseInt(dto.getPeriod()); i++) {
 			calculatorDTO indto = new calculatorDTO();
-			int payment = 0;			
+						
 			if (dto.getRepaymentType().equals("1")) {
-				indto.setPayment(decFormat.format(principal+(int)(interestRate * mthAmount/12)));
-				payment = (int)(principal+(int)(interestRate * mthAmount/12));
+				/*payment = (int)(principal+(int)(interestRate * mthAmount/12)-(interestRate * (balance)/12));*/
+				if (i==1) {					
+					payment = (int)(principal+(int)(interestRate * mthAmount/22.68));
+				}
+				indto.setPayment(decFormat.format(payment));
+				principal = (int)(payment - (interestRate * mthAmount/12));
 				mthAmount = mthAmount - principal;
 			} else if (dto.getRepaymentType().equals("2")) {
+				payment = 0;
 				indto.setPayment(decFormat.format(principal+(int)(interestRate * mthAmount/12)));
 				payment = (int)(principal+(int)(interestRate * mthAmount/12));
 				mthAmount = mthAmount - principal;
-				 
 			} else {
+				payment = 0;
 				principal = 0;
 				indto.setPayment(decFormat.format((interestRate * mthAmount / 12)));
 				payment = (int)(interestRate * mthAmount / 12);			

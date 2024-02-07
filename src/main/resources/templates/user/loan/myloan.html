@@ -9,40 +9,6 @@
 <meta name="_csrf" th:content="${_csrf.token}">
 <meta name="_csrf_header" th:content="${_csrf.headerName}">
 <style>
-	#loanCalc h2 {
-		font-size: 32px;
-	    font-weight: 700;
-	    text-transform: uppercase;
-	    padding-bottom: 0;
-	    color: #001973;
-	    position: relative;
-	    z-index: 2;
-	    padding-bottom: 20px;
-	    position: relative;
-	}
-	#loanCalc h2:after {
-	    content: "";
-	    position: absolute;
-	    display: block;
-	    width: 45px;
-	    height: 3px;
-	    background: var(--color-primary);
-	    /* left: 0; */
-	    /* right: 0; */
-	    bottom: 0;
-	    margin: auto;
-	}
-	#loanCalc span:nth-child(1) {
-	    position: absolute;
-	    color: rgba(14, 29, 52, 0.06);
-	    left: 80px;
-	    right: 0;
-	    z-index: 1;
-	    font-weight: 700;
-	    font-size: 56px;
-	    text-transform: uppercase;
-	    line-height: 0;
-	}
 	.myloan_table {
 		flex-shrink: unset;
 		margin: 24px 17px 0 17px;
@@ -62,6 +28,88 @@
 	.myloan_table td{
 		width:300px;;
 		padding: 5px 10px;
+	}
+	.section-header h2:after {
+	    content: "";
+	    position: absolute;
+	    display: block;
+	    width: 45px;
+	    height: 3px;
+	    background: var(--color-primary);
+	    bottom: 0;
+	    margin: auto;
+	}
+	.section-header h2 {
+	    padding-bottom: 20px;	
+	}
+	.btnarea{
+		text-align: right;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		justify-content: flex-end;
+	}
+	.btnarea > hr{
+		margin-top: 15px;
+	}	
+	.btnarea #buy-btn {
+	    display: inline-block;
+	    padding: 5px 10px;
+	    border-radius: 4px;
+	    color: #fff;
+	    background-color: var(--color-primary);
+	    border: 2px solid var(--color-primary);
+	    transition: none;
+	    font-size: 16px;
+	    font-weight: 500;
+	    transition: 0.3s;
+	    font-family: var(--font-primary);
+	}
+	.btnarea #buy-btn:hover {
+	    background: #406aff;
+	    border-color: #406aff;
+	}
+	.btnarea a:hover {
+	    color: #fff;
+	    text-decoration: none;
+	}
+	.pricing-item {
+		padding: 10px 10px;
+		border-radius: 10px;
+	}
+	.myloan-view-info {
+		text-align: center;
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.myloan-view-info div{
+		display: flex;
+	}
+	.myloan-view-info > div{
+		border-bottom: 1px solid #0e1d3426;
+	}
+	.myloan-view-info > div:nth-child(1){
+		border-top: 1px solid #0e1d3426;
+		justify-content: space-between;
+	}
+	.myloan-view-info > div > div{
+		width: 33%;
+	}
+	.myloan-view-info > div span{
+		border-right: 1px solid #0e1d3426;
+		padding-right: 10px;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		padding-left: 30px;
+	}
+	.myloan-view-info > div p{
+		margin-top: 1rem;
+		padding-left: 10px;
+		padding-right: 50px;
+	}
+	.pricing-item {
+		margin-top: 0; 
+		margin-bottom: 20px;
 	}
 </style>
 <body>
@@ -83,7 +131,7 @@
       <nav>
         <div class="container">
           <ol>
-            <li><a href="/index.do">Home</a></li>
+            <li><a href="/atlanbank/index.do">Home</a></li>
             <li>대출 신청 현황</li>
           </ol>
         </div>
@@ -91,91 +139,68 @@
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Get a Quote Section ======= -->
+    
     <section id="get-a-quote" class="get-a-quote">
       <div class="container" data-aos="fade-up">
-      	<div id="loanCalc" style="padding-bottom: 10px;">
+      	<div class="section-header">
 	    	<span>대출 신청 현황</span>
 			<h2>대출 신청 현황</h2>
 	    </div>
-        <div class="row g-0">
-        	<div class="col-lg-7" style="width: 100%">
-            	<div class="row gy-4" style="margin-top: 0;" th:each="loanstatus:${loanstatuslist}">
-            		<table class="myloan_table">
-            			<tr>
-            				<th>상품명</th>
-            				<td th:text="${loanstatus.name}"></td>
-            				<th>상품유형</th>
-            				<td th:text="${loanstatus.loanType}"></td>
-            				<th>상환 방식</th>
-            				<td th:text="${loanstatus.type}"></td>
-            			</tr>
-            			<tr>
-            				<th>대출금액</th>
-            				<td th:text="${loanstatus.maxMoney+'원'}"></td>
-            				<th>대출잔액</th>
-            				<td th:text="${loanstatus.money+'원'}"></td>
-            				<th>금리</th>
-            				<td th:text="${loanstatus.interestrate}"></td>
-            			</tr>
-            			<tr>
-            				<th>대출계약일</th>
-            				<td th:text="${#strings.substring(loanstatus.startDate,0,10)}"></td>
-            				<th>대출만기일</th>
-            				<td th:text="${#strings.substring(loanstatus.endDate,0,10)}"></td>
-            				<th>금리율</th>
-            				<td th:text="${loanstatus.loanInterestrate}"></td>
-            			</tr>
-            		</table>
+        <div id="horizontal-pricing" class="horizontal-pricing pt-0" >
+        	<div  class="container" data-aos="fade-up" style="width: 100%">
+            	<div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100" th:each="loanstatus:${loanstatuslist}">
+            			<div class="myloan-view-info">
+            				<div>
+            					<div>
+		            				<span>상품명</span>
+		            				<p th:text="${loanstatus.name}"></p>
+            					</div>
+            					<div>
+		            				<span>상품유형</span>
+		            				<p th:text="${loanstatus.loanType}"></p>
+            					</div>
+	            				<div class="btnarea">
+			            			<a class="btn-com c2" id="buy-btn" th:href="@{/loan/detail.do(seq=${loanstatus.loanSeq})}">상품 상세정보</a>
+			            		</div>
+            				</div>
+            				<div>
+	            				<div>
+		            				<span>대출금액</span>
+		            				<p th:text="${loanstatus.maxMoney+'원'}"></p>
+	            				</div>
+        	    				<div>
+		            				<span>대출잔액</span>
+		            				<p th:text="${loanstatus.money+'원'}"></p>
+	            				</div>
+            					<div>
+		            				<span>상환 방식</span>
+		            				<p th:text="${loanstatus.type}"></p>
+            					</div>
+            				</div>
+            				<div>
+            					<div>
+		            				<span>대출계약일</span>
+		            				<p th:text="${#strings.substring(loanstatus.startDate,0,10)}"></p>
+            					</div>
+            					<div>
+		            				<span>대출만기일</span>
+		            				<p th:text="${#strings.substring(loanstatus.endDate,0,10)}"></p>
+            					</div>
+            				</div>
+            				<div>
+            					<div>
+		            				<span>금리</span>
+		            				<p th:text="${loanstatus.interestrate}"></p>
+            					</div>
+            					<div>
+		            				<span>금리율</span>
+		            				<p th:text="${loanstatus.loanInterestrate+'%'}"></p>
+            					</div>
+            				</div>
+            			</div>
             		
-            		<!-- 
-	                <div class="col-md-12">
-	                	<span>상품명</span>
-	                	<div class="display_center">
-		                 	<div class="form-control" th:text="${loanstatus.name}"></div>
-	                	</div>
-	                </div>
-                
-                	<div class="col-md-6">
-                		<span>대출금액</span>
-                		<div class="display_center">
-		                 	<div class="form-control" th:text="${loanstatus.money+'원'}"></div>                		
-                		</div>
-                	</div>
-                
-	                <div class="col-md-6">
-	                	<span>상환 방식</span>
-	                	<div class="display_center">
-		                 	<div class="form-control" th:text="${loanstatus.type}"></div>                			                														
-	                	</div>
-	                </div>
-	                
-                	<div class="col-md-6">
-	                	<span>대출 계약일</span>
-	                	<div class="display_center">
-		                 	<div class="form-control" th:text="${loanstatus.startDate}"></div>                			                	
-	                	</div>
-	                </div>
-                	<div class="col-md-6">
-	                	<span>대출 만기일</span>
-	                	<div class="display_center">
-		                 	<div class="form-control" th:text="${loanstatus.endDate}"></div>                			                	
-	                	</div>
-	                </div>
-                
-	                
-	                <div class="col-md-6">
-	                	<span>금리</span>
-	                	<div class="display_center">
-		                 	<div class="form-control" th:text="${loanstatus.interestrate}"></div>                			                							
-	                	</div>
-	                </div>
-	                <div class="col-md-6">
-	                	<span>금리율</span>
-	                	<div class="display_center">                			                							
-		                 	<div class="form-control" th:text="${loanstatus.loanInterestrate}"></div>                			                							
-	                	</div>
-	                </div> -->
 	            </div>
+	            <hr>
          		</div>
 			</div>
     	</div>
@@ -183,6 +208,5 @@
 </main><!-- End #main -->
 </body>
 <script>
-
 </script>
 </html>
