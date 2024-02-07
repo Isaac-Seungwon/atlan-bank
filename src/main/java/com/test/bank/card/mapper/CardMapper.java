@@ -9,8 +9,10 @@ public interface CardMapper {
 
 	List<CardDTO> getCategoryCreditCardList(String category);
 
-	List<CardAnnualFeeDTO> getAnnualFeeList();
+	List<CardAnnualFeeDTO> getAnnualFeeList(String seq);
 
 	List<CardDTO> getNewCreditCardList();
+
+	CardDTO getCreditCard(String seq);
 
 }

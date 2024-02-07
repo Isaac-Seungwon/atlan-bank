@@ -43,18 +43,19 @@ public class UserCardController {
 		//creditCardList
 		List<CardDTO> categoryCreditCardList = service.getCategoryCreditCardList(category);
 		
-		//annualFeeList
-		List<CardAnnualFeeDTO> annualFeeList = service.getAnnualFeeList();
-		
-		//클라이언트측에서 적립/할인 먼저 기본으로 보여주고 나머지는 선택 시 변경되어 보여주도록
 		model.addAttribute("creditCardList", categoryCreditCardList);
-		model.addAttribute("annualFeeList", annualFeeList);
 		
 		return "user/card/creditCardView";
 	}
 
 	@GetMapping(value = "/credit/detail.do")
-	public String creditDetail(Model model) {
+	public String creditDetail(String seq, Model model) {
+		
+		//creditCard
+		CardDTO dto = service.getCreditCard(seq);
+		
+		model.addAttribute("dto", dto);
+		
 		return "user/card/creditCardDetail";
 	}
 
@@ -65,6 +66,8 @@ public class UserCardController {
 
 	@GetMapping(value = "/debit/detail.do")
 	public String debitDetail(Model model) {
+		
+		//debitCard
 		return "user/card/debitCardDetail";
 	}
 

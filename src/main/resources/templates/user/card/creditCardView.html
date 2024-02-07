@@ -66,15 +66,17 @@
 	
 	.card-row {
 		display: flex;
-		flex-wrap: wrap; /* 이거 임시 */
+		flex-wrap: wrap;
 	}
 	
 	.card-box {
-		/* padding-right: calc((100% - 960px) / 2);
-		padding-top: 20px;
-		padding-bottom: 20px; */
-		/* 아래 임시 */
-		padding: 20px calc((100% - 960px) / 6);
+		margin: 20px calc((100% - 960px) / 6);
+		width: 320px;
+		height: 466px;
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 1000;
+		/* cursor: pointer; */
 	}
 	
 	.card-container .card-box:last-child {
@@ -82,15 +84,19 @@
 	}
 	
 	.card-box-item {
-		background: #F1F4F8;
-		position: relative;
-		width: 320px;
-		height: 466px;
+		width: 100%;
+		height: 100%;
+		/* background: #F1F4F8; */
 		border-radius: 12px;
 		padding: 24px;
+		position: relative;
+		top: 0;
+		left: 0;
+		backface-visibility: hidden;
+		transition: all .5s;
 	}
 	
-	.card-box-item::after {
+	.card-box-item.front::after {
 		content: '';
 		display: block;
 		position: absolute;
@@ -106,6 +112,35 @@
 	
 	.card-title {
 		cursor: pointer;
+	}
+	
+	.front {
+		position: relative;
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
+		background: #F1F4F8;
+	}
+	
+	.back {
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+		background: #FFF;
+		border: 1px solid rgba(0, 0, 0, 0.16);
+	}
+	
+	.card-box:hover > .front {
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+	}
+	
+	.card-box:hover > .back {
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
 	}
 	
 	.card-img {
@@ -127,9 +162,64 @@
 		transform: rotate(90deg);
 	}
 	
-	.card-box-item.back {
-		display: none;
-	}	
+	.card-annual-fee {
+		padding: 10px 0;
+		font-size: .9rem;
+	}
+	
+	.card-annual-fee-sub-title > span:first-child {
+		float: left;
+	}
+	
+	.card-annual-fee-sub-title > span:last-child {
+		float: right;
+	}
+	
+	.card-annual-fee-sub-title::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	.card-annual-fee-sub-title span {
+		margin-bottom: 0;
+		font-weight: bold;
+	}
+	
+	.card-annual-fee > hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	.card-box-item.back .button-container {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		bottom: 24px;
+	}
+	
+	.button-container {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.button-container > button {
+		padding: 10px 25px;
+		border-radius: 3px;
+	}
+	
+	.button-container > button:first-child {
+		border: 1px solid black;
+		background: #FFF;
+		margin-right: 15px;
+	}
+	
+	.button-container > button:last-child {
+		border: 0;
+		background: #039be5;
+		width: 116px;
+		height: 46px;
+	}
 	
 	/* responsive */
 	@media (max-width: 1100px) {
@@ -200,7 +290,7 @@
 					<div class="card-box" th:each="card : ${creditCardList}">
 						<!-- front -->
 						<div class="card-box-item front">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">
 								<h3 th:text="${card.name}"></h3>
 								<p th:text="${card.info}"></p>
 							</div>
@@ -211,40 +301,27 @@
 						
 						<!-- back -->
 						<div class="card-box-item back">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">
 								<h3 th:text="${card.name}"></h3>
 								<p th:text="${card.info}"></p>
 							</div>
-							<div>
-								<p>연회비</p>
+							<div class="card-annual-fee">
+								<div class="card-annual-fee-sub-title">
+									<span>연회비</span>
+									<span>자세히보기<i class="bi bi-caret-right-fill"></i></span><!-- 추후 연회비 모달 추가 필요 -->
+								</div>
+								<hr>
+								<div th:each="fee : ${card.feeList}">
+									<span th:text="${fee.brand}"></span>
+									<span th:text="${fee.annualFee}"></span>
+								</div>
+							</div>
+							<div class="button-container">
+								<button type="button" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">상세보기</button>
+								<button type="button" th:onclick="">카드신청</button>
 							</div>
 						</div>
 					</div>
-					
-					<!-- <div class="card-box .filter-shopping">
-						front
-						<div class="card-box-item front">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-							</div>
-							<div class="card-img">
-								<img src="/atlanbank/assets/img/card/card_sample1.png">
-							</div>
-						</div>
-						
-						back
-						<div class="card-box-item back">
-							<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-								<h3>알뜰교통플러스 카드</h3>
-								<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-							</div>
-							<div>
-								<p>연회비</p>
-							</div>
-						</div>
-					</div> -->
-					
 					
 				</div>
 				
@@ -264,8 +341,7 @@
 			location.href='/atlanbank/user/card/credit/view.do?category=' + category;
 		}
 		
-		//alert($('.benefits-menu li a').data('category'));
-		
+		//category CSS
 		$(document).ready(function() {
 			
 			let queryString = window.location.search;
@@ -282,11 +358,6 @@
 			
 		});
 		
-		
-		
-	
-	
-	
 	</script>
 
 </body>

@@ -21,13 +21,18 @@ public class CardDAOImpl implements CardDAO {
 	}
 
 	@Override
-	public List<CardAnnualFeeDTO> getAnnualFeeList() {
-		return mapper.getAnnualFeeList();
+	public List<CardAnnualFeeDTO> getAnnualFeeList(String seq) {
+		return mapper.getAnnualFeeList(seq);
 	}
 
 	@Override
 	public List<CardDTO> getNewCreditCardList() {
 		return mapper.getNewCreditCardList();
+	}
+
+	@Override
+	public CardDTO getCreditCard(String seq) {
+		return mapper.getCreditCard(seq);
 	}
 	
 	

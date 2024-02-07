@@ -31,17 +31,32 @@ public class CardService {
 			case "public" : category = "공공/정부지원"; break;
 		}
 		
-		//System.out.println(category);
+		List<CardDTO> list = dao.getCategoryCreditCardList(category);
 		
-		return dao.getCategoryCreditCardList(category);
-	}
-
-	public List<CardAnnualFeeDTO> getAnnualFeeList() {
-		return dao.getAnnualFeeList();
+		//Add annualFeeList to CardDTOList
+		for (CardDTO card : list) {
+			List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
+			
+			card.setFeeList(feeList);
+			//System.out.println(card.toString());
+		}
+		
+		return list;
 	}
 
 	public List<CardDTO> getNewCreditCardList() {
 		return dao.getNewCreditCardList();
+	}
+
+	public CardDTO getCreditCard(String seq) {
+		
+		CardDTO dto = dao.getCreditCard(seq);
+		
+		//Add annualFeeList to CardDTO
+		List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(seq);
+		dto.setFeeList(feeList);
+		
+		return dto; 
 	}
 	
 	

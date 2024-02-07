@@ -8,12 +8,16 @@
 		select * from tblCard where type = 1 and category = #{category}
 	</select>
 	
-	<select id="getAnnualFeeList" resultType="com.test.bank.card.domain.CardAnnualFeeDTO">
-		select * from tblCardAnnualFee
+	<select id="getAnnualFeeList" parameterType="String" resultType="com.test.bank.card.domain.CardAnnualFeeDTO">
+		select * from tblCardAnnualFee where card_seq = #{seq}
 	</select>
 	
 	<select id="getNewCreditCardList" resultType="com.test.bank.card.domain.CardDTO">
 		select * from (select * from tblCard where type = 1 order by card_seq desc) where rownum <![CDATA[<=]]> 3
+	</select>
+	
+	<select id="getCreditCard" parameterType="String" resultType="com.test.bank.card.domain.CardDTO">
+		select * from tblCard where card_seq = #{seq}
 	</select>
 	
 </mapper>
