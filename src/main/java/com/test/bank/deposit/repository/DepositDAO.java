@@ -8,4 +8,6 @@ public interface DepositDAO {
 
 	List<BankBookProductDTO> getList();
 
+	String get();
+
 }

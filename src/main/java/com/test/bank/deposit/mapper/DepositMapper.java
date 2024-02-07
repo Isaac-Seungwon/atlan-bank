@@ -11,4 +11,6 @@ public interface DepositMapper {
 
 	List<BankBookProductDTO> getList();
 
+	String get();
+
 }
