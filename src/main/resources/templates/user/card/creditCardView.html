@@ -162,6 +162,7 @@
 		transform: rotate(90deg);
 	}
 	
+	/* card annual fee */
 	.card-annual-fee {
 		padding: 10px 0;
 		font-size: .9rem;
@@ -190,6 +191,17 @@
 		margin: 10px 1px;
 		opacity: .1;
 	}
+	
+	.card-annual-fee-box {
+		display: inline-block;
+		width: 49%;
+	}
+	
+	.card-annual-fee-box span {
+		font-weight: 500;
+	}
+	
+	/* card button */
 	
 	.card-box-item.back .button-container {
 		position: absolute;
@@ -311,8 +323,16 @@
 									<span>자세히보기<i class="bi bi-caret-right-fill"></i></span><!-- 추후 연회비 모달 추가 필요 -->
 								</div>
 								<hr>
-								<div th:each="fee : ${card.feeList}">
-									<span th:text="${fee.brand}"></span>
+								<div class="card-annual-fee-box" th:each="fee : ${card.feeList}">
+									<span>
+										<img th:if="${fee.brand} == '국내 전용'" th:src="@{/assets/img/card/logo-domestic.png}">
+										<img th:if="${fee.brand} == 'VISA'" th:src="@{/assets/img/card/logo-visa.png}">
+										<img th:if="${fee.brand} == 'MASTER'" th:src="@{/assets/img/card/logo-mastercard.png}">
+										<img th:if="${fee.brand} == 'AMEX'" th:src="@{/assets/img/card/logo-americanexpress.png}">
+										<img th:if="${fee.brand} == 'JCB'" th:src="@{/assets/img/card/logo-jcb.png}">
+										<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
+										<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
+									</span>
 									<span th:text="${fee.annualFee}"></span>
 								</div>
 							</div>

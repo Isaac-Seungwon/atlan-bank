@@ -50,13 +50,25 @@
 		margin-right: 10px;
 	}
 	
-	/* card list */
+	/* ===== new card list ===== */
 	.card-container {
 		display: flex;
+		flex-direction: column;
+	}
+	
+	.card-row {
+		display: flex;
+		flex-wrap: wrap;
 	}
 	
 	.card-box {
-		padding-right: calc((100% - 960px) / 2);
+		margin: 20px calc((100% - 960px) / 6);
+		width: 320px;
+		height: 466px;
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 1000;
+		/* cursor: pointer; */
 	}
 	
 	.card-container .card-box:last-child {
@@ -64,15 +76,19 @@
 	}
 	
 	.card-box-item {
-		background: #F1F4F8;
-		position: relative;
-		width: 320px;
-		height: 466px;
+		width: 100%;
+		height: 100%;
+		/* background: #F1F4F8; */
 		border-radius: 12px;
 		padding: 24px;
+		position: relative;
+		top: 0;
+		left: 0;
+		backface-visibility: hidden;
+		transition: all .5s;
 	}
 	
-	.card-box-item::after {
+	.card-box-item.front::after {
 		content: '';
 		display: block;
 		position: absolute;
@@ -88,6 +104,35 @@
 	
 	.card-title {
 		cursor: pointer;
+	}
+	
+	.front {
+		position: relative;
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
+		background: #F1F4F8;
+	}
+	
+	.back {
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+		background: #FFF;
+		border: 1px solid rgba(0, 0, 0, 0.16);
+	}
+	
+	.card-box:hover > .front {
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+	}
+	
+	.card-box:hover > .back {
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
 	}
 	
 	.card-img {
@@ -109,8 +154,63 @@
 		transform: rotate(90deg);
 	}
 	
-	.card-box-item.back {
-		display: none;
+	.card-annual-fee {
+		padding: 10px 0;
+		font-size: .9rem;
+	}
+	
+	.card-annual-fee-sub-title > span:first-child {
+		float: left;
+	}
+	
+	.card-annual-fee-sub-title > span:last-child {
+		float: right;
+	}
+	
+	.card-annual-fee-sub-title::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	.card-annual-fee-sub-title span {
+		margin-bottom: 0;
+		font-weight: bold;
+	}
+	
+	.card-annual-fee > hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	.card-box-item.back .button-container {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		bottom: 24px;
+	}
+	
+	.button-container {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.button-container > button {
+		padding: 10px 25px;
+		border-radius: 3px;
+	}
+	
+	.button-container > button:first-child {
+		border: 1px solid black;
+		background: #FFF;
+		margin-right: 15px;
+	}
+	
+	.button-container > button:last-child {
+		border: 0;
+		background: #039be5;
+		width: 116px;
+		height: 46px;
 	}
 	
 	/* card benefits list */
@@ -269,32 +369,55 @@
 			<h2>신규 카드</h2>
 			
 			<div class="card-container">
+			
+				<div class="card-row">
 				
-				<!-- Card 1개 -->
-				<div class="card-box" th:each="card : ${newCreditCardList}">
-					<!-- front -->
-					<div class="card-box-item front">
-						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3 th:text="${card.name}"></h3>
-							<p th:text="${card.info}"></p>
+					<!-- Card 1개 -->
+					<div class="card-box" th:each="card : ${newCreditCardList}">
+						<!-- front -->
+						<div class="card-box-item front">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
+							</div>
+							<div class="card-img">
+								<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
+							</div>
 						</div>
-						<div class="card-img">
-							<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
+						
+						<!-- back -->
+						<div class="card-box-item back">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
+							</div>
+							<div class="card-annual-fee">
+								<div class="card-annual-fee-sub-title">
+									<span>연회비</span>
+									<span>자세히보기<i class="bi bi-caret-right-fill"></i></span><!-- 추후 연회비 모달 추가 필요 -->
+								</div>
+								<hr>
+								<div th:each="fee : ${card.feeList}">
+									<span>
+										<img th:if="${fee.brand} == '국내 전용'" th:src="@{/assets/img/card/logo-domestic.png}">
+										<img th:if="${fee.brand} == 'VISA'" th:src="@{/assets/img/card/logo-visa.png}">
+										<img th:if="${fee.brand} == 'MASTER'" th:src="@{/assets/img/card/logo-mastercard.png}">
+										<img th:if="${fee.brand} == 'AMEX'" th:src="@{/assets/img/card/logo-americanexpress.png}">
+										<img th:if="${fee.brand} == 'JCB'" th:src="@{/assets/img/card/logo-jcb.png}">
+										<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
+										<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
+									</span>
+									<span th:text="${fee.annualFee}"></span>
+								</div>
+							</div>
+							<div class="button-container">
+								<button type="button" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">상세보기</button>
+								<button type="button" th:onclick="">카드신청</button>
+							</div>
 						</div>
 					</div>
-					
-					<!-- back -->
-					<div class="card-box-item back">
-						<div class="card-title" onclick="location.href='/atlanbank/user/card/credit/detail.do';">
-							<h3 th:text="${card.name}"></h3>
-							<p th:text="${card.info}"></p>
-						</div>
-						<div>
-							<p>연회비</p>
-						</div>
-					</div>
+
 				</div>
-				
 			</div>
 			
 		</section> <!-- End New Card List Section -->
@@ -384,61 +507,61 @@
 			<div class="benefits-container debit-card">
 				<ul>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=discount">
 							<img src="/atlanbank/assets/img/card/discount_icon.png">
 							<span>할인</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=saving">
 							<img src="/atlanbank/assets/img/card/discount-saving_icon.png">
 							<span>적립</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=food">
 							<img src="/atlanbank/assets/img/card/cutlery_icon.png">
 							<span>음식</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=shopping">
 							<img src="/atlanbank/assets/img/card/shopping_icon.png">
 							<span>쇼핑</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=travle">
 							<img src="/atlanbank/assets/img/card/airplane_icon.png">
 							<span>여행</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=communication">
 							<img src="/atlanbank/assets/img/card/phone_icon.png">
 							<span>통신</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=education">
 							<img src="/atlanbank/assets/img/card/education_icon.png">
 							<span>교육</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=culture">
 							<img src="/atlanbank/assets/img/card/culture_icon.png">
 							<span>문화</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=id">
 							<img src="/atlanbank/assets/img/card/student-id-card_icon.png">
 							<span>학생증</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/atlanbank/user/card/debit/view.do?category=public">
 							<img src="/atlanbank/assets/img/card/public_icon.png">
 							<span>공공/정부지원</span>
 						</a>

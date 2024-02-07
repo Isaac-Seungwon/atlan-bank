@@ -101,15 +101,25 @@
 		font-weight: bold;
 	}
 	
-	.annual-fee-container {
+	.card-detail-box .hr {
+		padding: 0 30px;
+	}
+	
+	.card-detail-box hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	/* card annual fee */
+	.card-annual-fee-container {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 15px 50px;
 	}
 	
-	.annual-fee-box {
-		display: flex;
-		width: 50%;
+	.card-annual-fee-box {
+		display: inline-block;
+		width: 49%;
 	}
 	
 	/* card detail contents */
@@ -136,12 +146,11 @@
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs">
 			<div class="page-header d-flex align-items-center"
-				style="background-image: url('assets/img/page-header.jpg');">
+				style="background-image: url('/atlanbank/assets/img/card/credit-card-851502_1280.jpg');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
 							<h2>카드</h2>
-							<p>card page</p>
 						</div>
 					</div>
 				</div>
@@ -152,7 +161,7 @@
 						<li><a href="/atlanbank/index.do">Home</a></li>
 						<li><a href="/atlanbank/user/card/view.do">Card</a></li>
 						<li><a href="/atlanbank/user/card/credit/view.do">Credit Card</a></li>
-						<li>알뜰교통플러스 카드</li>
+						<li th:text="${card.name}"></li>
 					</ol>
 				</div>
 			</nav>
@@ -174,16 +183,32 @@
 						<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 					</div>
 					<ul th:each="benefit : ${card.benefitList}">
-						<li th:text="${benefit.subject}">대중교통 <span th:text="${benefit.rate}">10% 할인</span></li>
+						<li>
+							<span th:text="${benefit.subject}"></span>
+							<span th:text="|${benefit.rate}%|"></span>
+							<span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+						</li>
 					</ul>
 					
 				</div>
 				
-				<div class="annual-fee-container">
+				<div class="hr">
+					<hr>
+				</div>
+				
+				<div class="card-annual-fee-container">
 					
 					<!-- 1 Annual Fee Brand -->
-					<div class="annual-fee-box" th:each="fee : ${card.feeList}">
-						<span th:text="${fee.brand}"></span>
+					<div class="card-annual-fee-box" th:each="fee : ${card.feeList}">
+						<span>
+							<img th:if="${fee.brand} == '국내 전용'" th:src="@{/assets/img/card/logo-domestic.png}">
+							<img th:if="${fee.brand} == 'VISA'" th:src="@{/assets/img/card/logo-visa.png}">
+							<img th:if="${fee.brand} == 'MASTER'" th:src="@{/assets/img/card/logo-mastercard.png}">
+							<img th:if="${fee.brand} == 'AMEX'" th:src="@{/assets/img/card/logo-americanexpress.png}">
+							<img th:if="${fee.brand} == 'JCB'" th:src="@{/assets/img/card/logo-jcb.png}">
+							<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
+							<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
+						</span>
 						<span th:text="${fee.annualFee}"></span>
 					</div>
 				</div>
