@@ -23,7 +23,14 @@ public class UserDepositController {
 	public String view(Model model ) {
 		List<BankBookProductDTO> list=service.getList();
 		
-		System.out.println(list.toString());
+		System.out.println(list.isEmpty());
+		
+		
+		
+		
+		System.out.println(list.get(0));
+		
+		model.addAttribute("list",list);
 		
 		return "user/deposit/view";
 	}

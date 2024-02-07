@@ -20,4 +20,9 @@ public class DepositDAOImpl implements DepositDAO{
 	public List<BankBookProductDTO> getList() {
 		return mapper.getList();
 	}
+	
+	@Override
+	public String get() {
+		return mapper.get();
+	}
 }
