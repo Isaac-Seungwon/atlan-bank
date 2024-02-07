@@ -187,6 +187,10 @@
 		font-weight: bold;
 	}
 	
+	.card-annual-fee-sub-title span:nth-child(2) {
+		cursor: pointer;
+	}
+	
 	.card-annual-fee > hr {
 		margin: 10px 1px;
 		opacity: .1;
@@ -201,8 +205,27 @@
 		font-weight: 500;
 	}
 	
-	/* card button */
+	/* annual fee modal */
+	.modal-content {
+		width: 80%;
+	}
 	
+	.modal-dialog-centered {
+		justify-content: center;
+	}
+	
+	button.close {
+		border: 0;
+		background: #FFF;
+		font-size: 30px;
+	}
+	
+	.modal-footer {
+		border-top: 0;
+		justify-content: center;
+	}
+	
+	/* card button */
 	.card-box-item.back .button-container {
 		position: absolute;
 		left: 0;
@@ -320,7 +343,7 @@
 							<div class="card-annual-fee">
 								<div class="card-annual-fee-sub-title">
 									<span>연회비</span>
-									<span>자세히보기<i class="bi bi-caret-right-fill"></i></span><!-- 추후 연회비 모달 추가 필요 -->
+									<span th:onclick="openModal([[${card.name}]], [[${card.feeList}]])">자세히보기<i class="bi bi-caret-right-fill"></i></span>
 								</div>
 								<hr>
 								<div class="card-annual-fee-box" th:each="fee : ${card.feeList}">
@@ -344,8 +367,27 @@
 					</div>
 					
 				</div>
-				
+			</div>
 			
+			<!-- Modal -->
+			<div class="modal fade" id="annualFeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modal"></h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+						<div class="modal-body">
+							<h5 style="font-size: 1rem; font-weight: 600;">연회비 안내</h5>
+							<table id="m-table" style="width: 100%;"></table>
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeModal()">확인</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		
 		</section> <!-- End Card List Section -->
@@ -378,6 +420,53 @@
 			
 		});
 		
+		/* Modal */
+		function openModal(name, feeList) {
+			
+			//init fee table
+			$('#m-table').html('');
+			
+			//add card name
+			$('#modal').text(name);
+			
+			//add fee table
+			feeList.forEach(function(obj) {
+				
+				let brand = obj.brand;
+				let fee = obj.annualFee;
+				let imgSrc = brandImg[brand];
+				
+				$('#m-table').append(`
+					<tr style="width: 100%; border-top: 1px solid rgba(0, 0, 0, .15); border-bottom: 1px solid rgba(0, 0, 0, .15);">
+						<td style="width: 20%; text-align: center; padding: 5px;">
+							<img src="${imgSrc}">
+						</td>
+						<td style="width: 60%;">${brand}</td>
+						<td style="width: 20%;">${fee}</td>
+					</tr>
+				`);
+				
+			});
+			
+			
+			
+			$('#annualFeeModal').modal('show');
+		}
+		
+		function closeModal() {
+			$('#annualFeeModal').modal('hide');
+		}
+		
+		//brand img mapping
+		const brandImg = {
+			'국내 전용' : '/atlanbank/assets/img/card/logo-domestic.png',
+			'VISA' : '/atlanbank/assets/img/card/logo-visa.png',
+			'MASTER' : '/atlanbank/assets/img/card/logo-mastercard.png',
+			'AMEX' : '/atlanbank/assets/img/card/logo-americanexpress.png',
+			'JCB' : '/atlanbank/assets/img/card/logo-jcb.png',
+			'UPI(K-WORLD)' : '/atlanbank/assets/img/card/logo-unionpay-kworld.png',
+			'JCB(K-WORLD)' : '/atlanbank/assets/img/card/logo-jcb-kworld.png'
+		};
 	</script>
 
 </body>

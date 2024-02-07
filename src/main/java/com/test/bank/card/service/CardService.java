@@ -38,6 +38,12 @@ public class CardService {
 		for (CardDTO card : list) {
 			List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
 			
+			for (CardAnnualFeeDTO f : feeList) {
+				int fee = Integer.parseInt(f.getAnnualFee());
+				String newFee = String.format("%,d", fee);
+				f.setAnnualFee(newFee);
+			}
+			
 			card.setFeeList(feeList);
 			//System.out.println(card.toString());
 		}
@@ -55,6 +61,13 @@ public class CardService {
 		
 		//Add annualFeeList to CardDTO
 		List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(seq);
+		
+		for (CardAnnualFeeDTO f : feeList) {
+			int fee = Integer.parseInt(f.getAnnualFee());
+			String newFee = String.format("%,d", fee);
+			f.setAnnualFee(newFee);
+		}
+		
 		dto.setFeeList(feeList);
 		
 		//Add benefitList to CardDTO
