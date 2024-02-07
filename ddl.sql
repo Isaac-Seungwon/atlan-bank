@@ -35,6 +35,7 @@ DELETE FROM tblCardAnnualFee;
 DELETE FROM tblCard;
 DELETE FROM tblBenefits;
 DELETE FROM tblMember;
+DELETE FROM tblForex;
 
 
 -- DROP TABLE
@@ -69,6 +70,7 @@ DROP TABLE tblCardAnnualFee;
 DROP TABLE tblCard;
 DROP TABLE tblBenefits;
 DROP TABLE tblMember;
+DROP TABLE tblForex;
 
 
 -- DROP SEQUENCE
@@ -103,6 +105,7 @@ DROP SEQUENCE card_benefit_seq;
 DROP SEQUENCE member_card_seq;
 DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE payment_seq;
+DROP SEQUENCE forex_seq;
 
 -- CREATE TABLE
 /* 회원 테이블 */
@@ -417,6 +420,18 @@ CREATE TABLE tblPayment (
 	amount NUMBER NOT NULL /* 대금결제금액 */
 );
 
+--환율 테이블
+CREATE TABLE tblForex(
+    forex_seq number primary key,  --환율 번호
+    nation_kr varchar2(300) not null, --통화 종류
+    cash_buy_rate number not null,  --살 때 환율
+    cash_sell_rate number not null, --팔 때 환율
+    transfer_send_rate number not null, --송금 보낼 때
+    transfer_receive_rate number not null,  --송금 받을 때
+    buy_basic_rate number not null,  --매매 기준율
+    usd_change_rate number not null  -- 미화 환산율
+);    
+
 
 
 -- CREATE SEQUENCE
@@ -452,3 +467,4 @@ CREATE SEQUENCE card_benefit_seq;
 CREATE SEQUENCE member_card_seq;
 CREATE SEQUENCE member_card_history_seq;
 CREATE SEQUENCE payment_seq;
+CREATE SEQUENCE forex_seq;
