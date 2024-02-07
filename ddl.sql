@@ -27,6 +27,7 @@ DELETE FROM tblLoanCaution;
 DELETE FROM tblLoanProductGuide;
 DELETE FROM tblInterestRate;
 DELETE FROM tblMember;
+DELETE FROM tblForex;
 
 
 -- DROP TABLE
@@ -53,6 +54,7 @@ DROP TABLE tblLoanCaution;
 DROP TABLE tblLoanProductGuide;
 DROP TABLE tblInterestRate;
 DROP TABLE tblMember;
+DROP TABLE tblForex;
 
 
 -- DROP SEQUENCE
@@ -79,6 +81,7 @@ DROP SEQUENCE seqLoanProductGuide;
 DROP SEQUENCE seqInterestRate;
 DROP SEQUENCE seqLoanUsageGuide;
 DROP SEQUENCE seqLoanCaution;
+DROP SEQUENCE forex_seq;
 
 -- CREATE TABLE
 /* 회원 테이블 */
@@ -318,6 +321,19 @@ CREATE TABLE tblLoanStatus (
 	member_seq        NUMBER REFERENCES tblMember (member_seq) NOT NULL  -- 회원번호
 );
 
+--환율 테이블
+CREATE TABLE tblForex(
+    forex_seq number primary key,  --환율 번호
+    nation_kr varchar2(300) not null, --통화 종류
+    cash_buy_rate number not null,  --살 때 환율
+    cash_sell_rate number not null, --팔 때 환율
+    transfer_send_rate number not null, --송금 보낼 때
+    transfer_receive_rate number not null,  --송금 받을 때
+    buy_basic_rate number not null,  --매매 기준율
+    usd_change_rate number not null  -- 미화 환산율
+);
+
+
 
 -- CREATE SEQUENCE
 CREATE SEQUENCE member_seq;
@@ -343,3 +359,4 @@ CREATE SEQUENCE seqLoanProductGuide;
 CREATE SEQUENCE seqInterestRate;
 CREATE SEQUENCE seqLoanUsageGuide;
 CREATE SEQUENCE seqLoanCaution;
+CREATE SEQUENCE forex_seq;
