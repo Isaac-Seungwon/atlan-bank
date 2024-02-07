@@ -6,8 +6,9 @@
         <id column="event_seq" property="eventSeq"/>
         <result column="name" property="name"/>
         <result column="content" property="content"/>
-        <result column="img" property="img"/>
-        <result column="caution" property="caution"/>
+        <result column="visual_img" property="visualImg"/>
+        <result column="content_img" property="contentImg"/>
+        <result column="caution_img" property="cautionImg"/>
         <result column="start_date" property="startDate"/>
         <result column="end_date" property="endDate"/>
         <result column="hits_count" property="hitsCount"/>
