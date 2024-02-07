@@ -16,8 +16,20 @@
 		select * from (select * from tblCard where type = 1 order by card_seq desc) where rownum <![CDATA[<=]]> 3
 	</select>
 	
-	<select id="getCreditCard" parameterType="String" resultType="com.test.bank.card.domain.CardDTO">
+	<select id="getCard" parameterType="String" resultType="com.test.bank.card.domain.CardDTO">
 		select * from tblCard where card_seq = #{seq}
+	</select>
+	
+	<select id="getCategoryDebitCardList" parameterType="String" resultType="com.test.bank.card.domain.CardDTO">
+		select * from tblCard where type = 2 and category = #{category}
+	</select>
+	
+	<select id="getBenefitList" parameterType="String" resultType="com.test.bank.card.domain.BenefitsDTO">
+		select a.card_benefit_seq, a.card_seq, b.benefits_seq, b.type, b.subject, b.content, b.prev_month_perf, b.rate, b.limit
+		from tblCardBenefit a
+		inner join tblBenefits b
+		on b.benefits_seq = a.benefits_seq
+		where card_seq = #{seq}
 	</select>
 	
 </mapper>

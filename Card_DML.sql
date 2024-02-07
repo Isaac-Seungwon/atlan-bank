@@ -80,15 +80,23 @@ INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VA
 취소 금액은 취소 전표가 당사에 접수된 월의 실적에서 차감');
 
 -- tblBenefits
-INSERT INTO tblBenefits (benefits_seq, type, category, subject, content) VALUES (benefits_seq.nextVal, 1, '적립/할인', '대중교통', '대중교통 버스, 지하철 이용시 10% 할인');
-INSERT INTO tblBenefits (benefits_seq, type, category, subject, content) VALUES (benefits_seq.nextVal, 1, '적립/할인', '생활서비스', '1,000원당 3마일리지 적립');
+INSERT INTO tblBenefits (benefits_seq, type, subject, content, prev_month_perf, rate, limit) VALUES (benefits_seq.nextVal, 1, '대중교통', '- 대중교통 버스, 지하철 이용시 10% 할인', 30, 10, 10000);
+INSERT INTO tblBenefits (benefits_seq, type, subject, content, prev_month_perf, rate, limit) VALUES (benefits_seq.nextVal, 1, '온라인 쇼핑', '- 쿠팡, 티몬, 위메프, G마켓, 11번가, SSG.COM에서 구매 시 10% 할인
+- 건별 10,000원 이상 결제 시 적용', 30, 10, 10000);
+INSERT INTO tblBenefits (benefits_seq, type, subject, content, prev_month_perf, rate, limit) VALUES (benefits_seq.nextVal, 1, '커피/편의점', '- 커피 오프라인 매장
+ ※ 커피전문점 업종 오프라인 결제건에 한하여 할인
+ ※ 백화점/대형마트 등 일부 입점 매장 제외', 30, 10, 10000);
+
 
 -- tblCardBenefit
 INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_seq) VALUES (card_benefit_seq.nextVal, 1, 1);
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_seq) VALUES (card_benefit_seq.nextVal, 5, 2);
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_seq) VALUES (card_benefit_seq.nextVal, 5, 3);
+
 
 -- tblPerformanceBenefit
-INSERT INTO tblPerformanceBenefit (performance_benefit_seq, benefits_seq, prev_month_perf, rate, limit) VALUES (performance_benefit_seq.nextVal, 2, 300000, 0.3, 10000);
-INSERT INTO tblPerformanceBenefit (performance_benefit_seq, benefits_seq, prev_month_perf, rate, limit) VALUES (performance_benefit_seq.nextVal, 2, 500000, 0.3, 20000);
+--INSERT INTO tblPerformanceBenefit (performance_benefit_seq, benefits_seq, prev_month_perf, rate, limit) VALUES (performance_benefit_seq.nextVal, 2, 300000, 0.3, 10000);
+--INSERT INTO tblPerformanceBenefit (performance_benefit_seq, benefits_seq, prev_month_perf, rate, limit) VALUES (performance_benefit_seq.nextVal, 2, 500000, 0.3, 20000);
 
 -- 조회
 select a.card_benefit_seq,
@@ -109,3 +117,11 @@ on a.benefits_seq = b.benefits_seq;
 -- 할인/적립/항공마일리지 카테고리를 한번 더 세분화해서 항공의경우 1000원단위 절사해서 적립되도록
 
 select * from tblCard where type = 1;
+
+select * from (select * from tblCard where type = 1 order by card_seq desc) where rownum <= 3;
+select * from tblcardannualfee where card_seq = 1;
+select *
+from tblCard a
+inner join tblCardAnnualFee b
+on a.card_seq = b.card_seq
+where a.card_seq = 1;

@@ -7,7 +7,9 @@ public class BenefitsDTO {
 
 	private String benefitsSeq;
 	private String type;
-	private String category;
 	private String subject;
 	private String content;
+	private String prevMonthPerf;
+	private String rate;
+	private String limit;
 }

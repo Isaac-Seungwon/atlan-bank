@@ -89,6 +89,10 @@
 		max-width: 100%;
 	}
 	
+	.vertical {
+		transform: rotate(90deg);
+	}
+	
 	.card-detail-summary ul {
 		width: 50%;
 	}
@@ -158,8 +162,8 @@
 		<!-- Card Detail Section -->
 		<section>
 			<div class="card-detail-title">
-				<h1>알뜰교통플러스 카드</h1>
-				<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
+				<h1 th:text="${card.name}"></h1>
+				<p th:text="${card.info}"></p>
 			</div>
 			
 			<div class="card-detail-box">
@@ -167,29 +171,21 @@
 				
 				<div class="card-detail-summary">
 					<div>
-						<img src="/assets/img/card/card_sample1.png">
+						<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 					</div>
-					<ul>
-						<li>대중교통 <span>10% 할인</span></li>
-						<li>생활서비스 <span>5% 할인</span></li>
-						<li>대중교통 <span>10% 할인</span></li>
+					<ul th:each="benefit : ${card.benefitList}">
+						<li th:text="${benefit.subject}">대중교통 <span th:text="${benefit.rate}">10% 할인</span></li>
 					</ul>
 					
 				</div>
 				
 				<div class="annual-fee-container">
-		
-					<div class="annual-fee-box">
-						<p>국내전용</p>
-						<p>10,000원</p>
+					
+					<!-- 1 Annual Fee Brand -->
+					<div class="annual-fee-box" th:each="fee : ${card.feeList}">
+						<span th:text="${fee.brand}"></span>
+						<span th:text="${fee.annualFee}"></span>
 					</div>
-
-					<div class="annual-fee-box">
-						<p>VISA</p>
-						<p>15,000원</p>
-					</div>
-
-				
 				</div>
 			
 			</div>

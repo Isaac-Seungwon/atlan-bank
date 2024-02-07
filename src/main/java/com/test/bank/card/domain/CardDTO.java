@@ -17,4 +17,7 @@ public class CardDTO {
 	
 	//연회비
 	private List<CardAnnualFeeDTO> feeList;
+	
+	//혜택
+	private List<BenefitsDTO> benefitList;
 }

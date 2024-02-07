@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.mapper.CardMapper;
@@ -31,9 +32,19 @@ public class CardDAOImpl implements CardDAO {
 	}
 
 	@Override
-	public CardDTO getCreditCard(String seq) {
-		return mapper.getCreditCard(seq);
+	public CardDTO getCard(String seq) {
+		return mapper.getCard(seq);
 	}
-	
+
+	@Override
+	public List<CardDTO> getCategoryDebitCardList(String category) {
+		return mapper.getCategoryDebitCardList(category);
+	}
+
+	@Override
+	public List<BenefitsDTO> getBenefitList(String seq) {
+		return mapper.getBenefitList(seq);
+	}
+
 	
 }

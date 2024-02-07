@@ -4,13 +4,11 @@ DROP SEQUENCE card_annual_fee_seq;
 DROP SEQUENCE card_usage_guide_seq;
 DROP SEQUENCE benefits_seq;
 DROP SEQUENCE card_benefit_seq;
-DROP SEQUENCE performance_benefit_seq;
 DROP SEQUENCE member_card_seq;
 DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE payment_seq;
 
 --[TABLE 내용 삭제]
-DELETE FROM tblPerformanceBenefit;
 DELETE FROM tblCardBenefit;
 DELETE FROM tblPayment;
 DELETE FROM tblMemberCardHistory;
@@ -21,7 +19,6 @@ DELETE FROM tblCard;
 DELETE FROM tblBenefits;
 
 --[TABLE 삭제]
-DROP TABLE tblPerformanceBenefit;
 DROP TABLE tblCardBenefit;
 DROP TABLE tblPayment;
 DROP TABLE tblMemberCardHistory;
@@ -37,7 +34,6 @@ CREATE SEQUENCE card_annual_fee_seq;
 CREATE SEQUENCE card_usage_guide_seq;
 CREATE SEQUENCE benefits_seq;
 CREATE SEQUENCE card_benefit_seq;
-CREATE SEQUENCE performance_benefit_seq;
 CREATE SEQUENCE member_card_seq;
 CREATE SEQUENCE member_card_history_seq;
 CREATE SEQUENCE payment_seq;
@@ -75,7 +71,10 @@ CREATE TABLE tblBenefits (
     benefits_seq NUMBER PRIMARY KEY, /* 혜택번호 */
     type NUMBER NOT NULL, /* 혜택종류(1: 할인, 2: 적립, 3: 항공마일리지적립) */
     subject VARCHAR2(200) NOT NULL, /* 혜택명 */
-    content VARCHAR2(2000) NOT NULL /* 혜택 상세 */
+    content VARCHAR2(2000) NOT NULL, /* 혜택 상세 */
+    prev_month_perf NUMBER NOT NULL, /* 전월실적(실적별 구분 30/50/100, 단위: 만원) */ --실적 1개로 통일
+	rate NUMBER NOT NULL, /* 할인/적립율 */
+	limit NUMBER NOT NULL /* 월 할인/적립 한도 */
 );
 
 /* 카드별혜택 */
@@ -85,14 +84,6 @@ CREATE TABLE tblCardBenefit (
     benefits_seq NUMBER REFERENCES tblBenefits(benefits_seq) NOT NULL /* 혜택번호 */
 );
 
-/* 카드실적별혜택 */
-CREATE TABLE tblPerformanceBenefit (
-	performance_benefit_seq NUMBER PRIMARY KEY, /* 카드실적별혜택번호 */
-	card_benefit_seq NUMBER REFERENCES tblCardBenefit(card_benefit_seq) NOT NULL, /* 혜택번호 */
-	prev_month_perf NUMBER NOT NULL, /* 전월실적(실적별 구분 30/50/100) */
-	rate NUMBER NOT NULL, /* 할인/적립율 */
-	limit NUMBER NOT NULL /* 월 할인/적립 한도 */
-);
 
 ----------------------------------------------------------------------------아래 RECHK
 

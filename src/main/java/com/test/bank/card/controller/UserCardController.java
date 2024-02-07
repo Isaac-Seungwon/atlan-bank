@@ -54,20 +54,29 @@ public class UserCardController {
 		//creditCard
 		CardDTO dto = service.getCreditCard(seq);
 		
-		model.addAttribute("dto", dto);
+		model.addAttribute("card", dto);
 		
 		return "user/card/creditCardDetail";
 	}
 
 	@GetMapping(value = "/debit/view.do")
-	public String debitView(Model model) {
+	public String debitView(@RequestParam(defaultValue = "할인")String category, Model model) {
+		
+		//debitCardList
+		List<CardDTO> categoryDebitCardList = service.getCategoryDebitCardList(category);
+		
+		model.addAttribute("debitCardList", categoryDebitCardList);
+		
 		return "user/card/debitCardView";
 	}
 
 	@GetMapping(value = "/debit/detail.do")
-	public String debitDetail(Model model) {
+	public String debitDetail(String seq, Model model) {
 		
 		//debitCard
+		CardDTO dto = service.getDebitCard(seq);
+		
+		model.addAttribute("dto", dto);
 		return "user/card/debitCardDetail";
 	}
 
