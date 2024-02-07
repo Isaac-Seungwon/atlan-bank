@@ -13,4 +13,8 @@ public interface EventMapper {
 	int getTotalCount(Map<String, String> map);
 
 	List<EventDTO> getEventsWithPaging(Map<String, String> map);
+
+	List<EventDTO> getLatestEvents();
+
+	EventDTO getEventBySeq(int eventSeq);
 }

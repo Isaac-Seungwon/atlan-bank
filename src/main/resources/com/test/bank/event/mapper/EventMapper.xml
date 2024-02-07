@@ -6,8 +6,9 @@
         <id column="event_seq" property="eventSeq"/>
         <result column="name" property="name"/>
         <result column="content" property="content"/>
-        <result column="img" property="img"/>
-        <result column="caution" property="caution"/>
+        <result column="visual_img" property="visualImg"/>
+        <result column="content_img" property="contentImg"/>
+        <result column="caution_img" property="cautionImg"/>
         <result column="start_date" property="startDate"/>
         <result column="end_date" property="endDate"/>
         <result column="hits_count" property="hitsCount"/>
@@ -15,22 +16,34 @@
     </resultMap>
     
 	<select id="getTotalCount" parameterType="map" resultType="int">
-	    select count(*) from tblEvent
+	    SELECT COUNT(*) FROM tblEvent
 	    <if test="solting == 'user' and searchStatus == 'y'.toString()">
-		where UPPER(${category}) like '%' || UPPER(#{word}) || '%'
+		WHERE UPPER(${category}) LIKE '%' || UPPER(#{word}) || '%'
 	    </if>
 	</select>
 	
 	<select id="getEventsWithPaging" parameterType="map" resultType="com.test.bank.event.domain.EventDTO">
-		select * from (
-			select n.*, rownum as rnum from (
-				select *
-				from tblEvent
-				order by tblEvent.event_seq desc) n
+		SELECT * FROM (
+			SELECT n.*, ROWNUM AS rnum FROM (
+				SELECT *
+				FROM tblEvent
+				ORDER BY tblEvent.event_seq DESC) n
 			<if test="solting == 'user' and searchStatus == 'y'.toString()">
-			 where UPPER(${category}) like '%' || UPPER(#{word}) || '%'
+			 WHERE UPPER(${category}) LIKE '%' || UPPER(#{word}) || '%'
 			</if>
-		) where rnum between #{startIndex} and #{endIndex}
+		) WHERE rnum BETWEEN #{startIndex} AND #{endIndex}
+	</select>
+	
+	<select id="getLatestEvents" resultType="com.test.bank.event.domain.EventDTO">
+	    SELECT * FROM (
+	        SELECT * FROM tblEvent
+	        ORDER BY event_seq DESC
+	    ) WHERE ROWNUM &lt;= 3
+	</select>
+	
+	<select id="getEventBySeq" parameterType="Integer" resultType="com.test.bank.event.domain.EventDTO">
+	    SELECT * FROM tblEvent
+	    WHERE event_seq = #{eventSeq}
 	</select>
 	
 </mapper>

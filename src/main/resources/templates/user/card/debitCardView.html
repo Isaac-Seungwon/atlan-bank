@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>카드</title>
+
+<style>
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 0 60px;
+		max-width: 1200px;
+	}
+	
+	/* card benefits list */
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+	
+	ul.benefits-menu li {
+		width: 150px;
+		height: 50px;
+		float: left;
+		border: 1px solid #777;
+		margin: 5px 10px;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu li a {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		color: inherit;
+	}
+	
+	ul.benefits-menu li a:hover {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+
+	ul.benefits-menu li a:focus {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	.on {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+
+	/* card list */
+	.card-container {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.card-row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.card-box {
+		margin: 20px calc((100% - 960px) / 6);
+		width: 320px;
+		height: 466px;
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 1000;
+		/* cursor: pointer; */
+	}
+	
+	.card-container .card-box:last-child {
+		padding-right: 0;
+	}
+	
+	.card-box-item {
+		width: 100%;
+		height: 100%;
+		/* background: #F1F4F8; */
+		border-radius: 12px;
+		padding: 24px;
+		position: relative;
+		top: 0;
+		left: 0;
+		backface-visibility: hidden;
+		transition: all .5s;
+	}
+	
+	.card-box-item.front::after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 50%;
+		bottom: 56px;
+		width: 202px;
+		height: 202px;
+		margin-left: -101px;
+		border-radius: 100%;
+		background: #FFF;
+		
+	}
+	
+	.card-title {
+		cursor: pointer;
+	}
+	
+	.front {
+		position: relative;
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
+		background: #F1F4F8;
+	}
+	
+	.back {
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+		background: #FFF;
+		border: 1px solid rgba(0, 0, 0, 0.16);
+	}
+	
+	.card-box:hover > .front {
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+	}
+	
+	.card-box:hover > .back {
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
+	}
+	
+	.card-img {
+		position: absolute;
+		left: 50%;
+		top: 245px;
+		width: 202px;
+		height: 128px;
+		margin-left: -101px;
+		z-index: 1;
+	}
+	
+	.card-img img {
+		max-width: 202px;
+		max-height: 202px;
+	}
+	
+	.vertical {
+		transform: rotate(90deg);
+	}
+	
+	.card-annual-fee {
+		padding: 10px 0;
+		font-size: .9rem;
+	}
+	
+	.card-annual-fee-sub-title > span:first-child {
+		float: left;
+	}
+	
+	/* .card-annual-fee-sub-title > span:last-child {
+		float: right;
+	} */
+	
+	.card-annual-fee-sub-title::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	.card-annual-fee-sub-title span {
+		margin-bottom: 0;
+		font-weight: bold;
+	}
+	
+	.card-annual-fee > hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	.card-box-item.back .button-container {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		bottom: 24px;
+	}
+	
+	.button-container {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.button-container > button {
+		padding: 10px 25px;
+		border-radius: 3px;
+	}
+	
+	.button-container > button:first-child {
+		border: 1px solid black;
+		background: #FFF;
+		margin-right: 15px;
+	}
+	
+	.button-container > button:last-child {
+		border: 0;
+		background: #039be5;
+		width: 116px;
+		height: 46px;
+	}
+	
+	/* responsive */
+	@media (max-width: 1100px) {
+		section {
+			margin: 20px 0;
+		}
+	}
+	
+	@media (max-width: 1380px) {
+		section {
+			width: 1110px;
+		}
+	}
+
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/atlanbank/assets/img/card/credit-card-851502_1280.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>카드</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="/atlanbank/user/card/view.do">Card</a></li>
+						<li><a href="/atlanbank/user/card/debit/view.do">Debit Card</a></li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- Card List Section -->
+		<section>
+			<h2>체크 카드</h2>
+			
+			<ul class="benefits-menu">
+				<li><a href="javascript:void(0);" data-category="discount" onclick="solting('discount')">할인</a></li>
+				<li><a href="javascript:void(0);" data-category="saving" onclick="solting('saving')">적립</a></li>
+				<li><a href="javascript:void(0);" data-category="food" onclick="solting('food')">음식</a></li>
+				<li><a href="javascript:void(0);" data-category="shopping" onclick="solting('shopping')">쇼핑</a></li>
+				<li><a href="javascript:void(0);" data-category="travle" onclick="solting('travle')">여행</a></li>
+				<li><a href="javascript:void(0);" data-category="communication" onclick="solting('communication')">통신</a></li>
+				<li><a href="javascript:void(0);" data-category="education" onclick="solting('education')">교육</a></li>
+				<li><a href="javascript:void(0);" data-category="culture" onclick="solting('culture')">문화</a></li>
+				<li><a href="javascript:void(0);" data-category="id" onclick="solting('id')">학생증</a></li>
+				<li><a href="javascript:void(0);" data-category="public" onclick="solting('public')">공공/정부지원</a></li>
+			</ul>
+			
+			<div class="card-container">
+				
+				<div class="card-row">
+				
+					<!-- Card 1개 -->
+					<div class="card-box" th:each="card : ${debitCardList}">
+						<!-- front -->
+						<div class="card-box-item front">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/debit/detail.do(seq=${card.cardSeq})}'|">
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
+							</div>
+							<div class="card-img">
+								<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
+							</div>
+						</div>
+						
+						<!-- back -->
+						<div class="card-box-item back">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/debit/detail.do(seq=${card.cardSeq})}'|">
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
+							</div>
+							<div class="card-annual-fee">
+								<div class="card-annual-fee-sub-title">
+									<span>연회비 없음</span>
+									<!-- <span>자세히보기<i class="bi bi-caret-right-fill"></i></span> -->
+								</div>
+								<hr>
+								<!-- <div th:each="fee : ${card.feeList}">
+									<span th:text="${fee.brand}"></span>
+									<span th:text="${fee.annualFee}"></span>
+								</div> -->
+							</div>
+							<div class="button-container">
+								<button type="button" th:onclick="|location.href='@{/user/card/debit/detail.do(seq=${card.cardSeq})}'|">상세보기</button>
+								<button type="button" th:onclick="">카드신청</button>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			
+			</div>
+		
+		</section> <!-- End Card List Section -->
+		
+	</main>
+	<!-- End Main -->
+	
+	<!-- Script -->
+	<script>
+	
+		//solting by category
+		function solting(category) {
+			location.href='/atlanbank/user/card/debit/view.do?category=' + category;
+		}
+		
+		//category CSS
+		$(document).ready(function() {
+			
+			let queryString = window.location.search;
+			let selectedCategory = queryString.substr(10);
+			
+			if (queryString) {
+				//(When there is a query string) Add 'on class to the 'query string value' category upon page load
+				$('.benefits-menu li a[data-category="' + selectedCategory + '"]').addClass('on');
+			} else {
+				//(When there is no query string) Add 'on' class to the 'saving-discount' category upon page load
+				$('.benefits-menu li a[data-category=discount]').addClass('on');
+				
+			}
+			
+		});
+		
+	</script>
+
+</body>
+</html>

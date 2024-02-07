@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>대출상품</title>
+
+</head>
+
+<body>
+
+  <main id="main">
+	
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>대출</h2>
+              <p>돈이 필요한 순간 Atlan Bank 대출</p>
+              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="view.do">대출</a></li>
+            <li th:text="${type}"></li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+    
+	<section id="service" class="services pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <span>대출상품</span>
+          <h2>대출상품</h2>
+
+        </div>
+
+        <div class="row gy-4">
+        
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400" style="width: 25%;">
+            <div class="card">
+              <img src="/atlanbank/assets/img/loan/loan1.png" alt="" class="img-fluid">
+              <h3 style="margin-top: 30px;"><a href="list.do?type=신용대출" class="stretched-link">신용대출</a></h3>
+              <p>담보 없이도 가능한 대출</p>
+            </div>
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500" style="width: 25%;">
+            <div class="card">
+                <img src="/atlanbank/assets/img/loan/loan2.png" alt="" class="img-fluid">
+              <h3 style="margin-top: 30px;"><a href="list.do?type=담보대출" class="stretched-link">담보대출</a></h3>
+              <p>내 자산으로 더욱 안전한 대출을</p>
+            </div>
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600" style="width: 25%;">
+            <div class="card">
+                <img src="/atlanbank/assets/img/loan/loan3.png" alt="" class="img-fluid">
+              <h3 style="margin-top: 30px;"><a href="list.do?type=전월세/반환보증" class="stretched-link">전월세/반환보증</a></h3>
+              <p>전월세/반환보증 Atlan-bank와 함께</p>
+            </div>
+          </div><!-- End Card Item -->
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700" style="width: 25%;">
+            <div class="card">
+                <img src="/atlanbank/assets/img/loan/loan4.png" alt="" class="img-fluid">
+              <h3 style="margin-top: 30px;"><a href="list.do?type=자동차대출" class="stretched-link">자동차대출</a></h3>
+              <p>자동차 대출도 Atlan-bank와 함께</p>
+            </div>
+          </div><!-- End Card Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    
+    <!-- ======= Horizontal Pricing Section ======= -->
+    <section id="horizontal-pricing" class="horizontal-pricing pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <span></span>
+          <h2  th:text="${type}"></h2>
+
+        </div>
+
+        <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100" th:each="loanlist : ${list}" style="margin: 25px 0;">
+          <div class="col-lg-3 d-flex align-items-center justify-content-center" style="text-align: center;">
+            <h3 th:text="${loanlist.name}"></h3>
+          </div>
+          <div class="col-lg-3 d-flex align-items-center justify-content-center">
+            <h4 th:text="${loanlist.maxMoney+'원'}"><sup></sup></h4>
+          </div>
+          <div class="col-lg-3 d-flex align-items-center justify-content-center" style="justify-content: left!important;">
+            <ul>
+              <li th:text="${loanlist.type}"></li>
+              <li th:text="${'최대 '+loanlist.maxDate+'년'}"></li>
+              <li th:text="${'최대 '+loanlist.maxMoney+'원'}"></li>
+              <li th:if="${loanlist.isAvailable == 'Y'}">온라인 신청 가능</li>
+            </ul>
+          </div>
+          <div class="col-lg-3 d-flex align-items-center justify-content-center">
+            <div class="text-center"><a th:href="@{/loan/detail.do(seq=${loanlist.loanSeq})}" class="buy-btn">자세히보기</a></div>
+          </div>
+        </div><!-- End Pricing Item -->
+
+      </div>
+    </section><!-- End Horizontal Pricing Section -->
+
+  </main><!-- End #main -->
+
+</body>
+</html>
