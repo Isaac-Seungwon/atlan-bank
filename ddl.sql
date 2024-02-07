@@ -20,7 +20,11 @@ DELETE FROM tblEvent;
 DELETE FROM tblBenefit;
 DELETE FROM tblFranchise;
 DELETE FROM tblMember;
-
+DELETE FROM tblCommission;
+DELETE FROM tblDepositWithdrawal;
+DELETE FROM tblInterestRate;
+DELETE FROM tblBankBookProduct;
+DELETE FROM tblBankBook;
 
 -- DROP TABLE
 DROP TABLE tblBankFavorite;
@@ -39,7 +43,11 @@ DROP TABLE tblEvent;
 DROP TABLE tblBenefit;
 DROP TABLE tblFranchise;
 DROP TABLE tblMember;
-
+DROP TABLE tblCommission;
+DROP TABLE tblDepositWithdrawal;
+DROP TABLE tblInterestRate;
+DROP TABLE tblBankBookProduct;
+DROP TABLE tblBankBook;
 
 -- DROP SEQUENCE
 DROP SEQUENCE bank_seq;
@@ -58,7 +66,11 @@ DROP SEQUENCE event_seq;
 DROP SEQUENCE benefit_seq;
 DROP SEQUENCE franchise_seq;
 DROP SEQUENCE member_seq;
-
+DROP SEQUENCE bank_book_product_seq;
+DROP SEQUENCE interest_rate_seq;
+DROP SEQUENCE bank_book_seq;
+DROP SEQUENCE deposit_withdrawal_seq;
+DROP SEQUENCE commission_seq;
 
 -- CREATE TABLE
 /* 회원 테이블 */
@@ -227,6 +239,59 @@ CREATE TABLE tblComment (
     FOREIGN KEY (news_seq) REFERENCES tblNews(news_seq)
 );
 
+CREATE TABLE tblBankBookProduct (
+	bank_book_product_seq NUMBER PRIMARY KEY, -- 통장 상품 번호
+    name VARCHAR2(200),
+    sim_info VARCHAR2(2000),
+	type NUMBER ,     -- 예금 종류
+	info VARCHAR2(2000),     -- 상품설명
+	join_info VARCHAR2(2000),      -- 가입조건
+    join_date_info VARCHAR2(2000),
+    join_fee NUMBER
+   
+);
+
+-- 금리
+CREATE TABLE tblInterestRate (
+	interest_rate_seq NUMBER PRIMARY KEY, -- 금리 번호
+	bank_book_product_seq NUMBER,     -- 통장 상품 번호
+	interest_rate NUMBER,     -- 금리
+	info VARCHAR2(2000),      -- 금리설명
+    
+    CONSTRAINT tblInterestRate_seq_FK FOREIGN KEY (bank_book_product_seq) REFERENCES tblBankBookProduct(bank_book_product_seq)
+);
+
+-- 통장
+CREATE TABLE tblBankBook (
+	bank_book_seq NUMBER PRIMARY KEY, -- 통장 번호
+	bank_book_product_seq NUMBER,     -- 통장 상품 번호
+	account_number VARCHAR2(300),     -- 계좌 번호
+	join_date DATE,     -- 가입 날짜
+	maturity_date DATE,     -- 만기 날짜
+	balance NUMBER,      -- 잔액
+    member_seq NUMBER,      -- 회원번호
+    
+    CONSTRAINT tblBankBook_product_seq_FK FOREIGN KEY (bank_book_product_seq) REFERENCES tblBankBookProduct(bank_book_product_seq),
+    CONSTRAINT tblBankBook_member_seq_FK FOREIGN KEY (member_seq) REFERENCES tblMember(member_seq)
+);
+
+-- 입출금 내역
+CREATE TABLE tblDepositWithdrawal (
+	deposit_withdrawal_seq NUMBER PRIMARY KEY, -- 입출금 번호
+	bank_book_seq NUMBER,     -- 통장 번호
+	deposit_withdrawa_amount NUMBER,     -- 입출금 금액
+	dw_date DATE,      -- 날짜
+    
+    CONSTRAINT tblDepositWithdrawal_seq_FK FOREIGN KEY (bank_book_seq) REFERENCES tblBankBook(bank_book_seq)
+);
+
+-- 수수료
+CREATE TABLE tblCommission (
+	commission_seq NUMBER PRIMARY KEY, -- 수수료 번호
+	commission NUMBER ,     -- 수수료
+	info NUMBER      -- 종류
+);
+
 
 -- CREATE SEQUENCE
 CREATE SEQUENCE member_seq;
@@ -245,3 +310,8 @@ CREATE SEQUENCE eventparticipation_seq;
 CREATE SEQUENCE benefit_seq;
 CREATE SEQUENCE checkAttendance_seq;
 CREATE SEQUENCE comment_seq;
+CREATE SEQUENCE bank_book_product_seq;
+CREATE SEQUENCE interest_rate_seq;
+CREATE SEQUENCE bank_book_seq;
+CREATE SEQUENCE deposit_withdrawal_seq;
+CREATE SEQUENCE commission_seq;

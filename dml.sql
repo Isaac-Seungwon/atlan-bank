@@ -1177,8 +1177,46 @@ commit;
 
 
 
+-- tblBankBookProduct 
+insert into tblBankBookProduct 
+		values (bank_book_product_seq.nextVal, 'Atlan 예금', 'Atlan 대표 예금', 1, 'Atlan 대표 정기예금으로, 자동 만기관리부터 분할인출까지 가능한 편리한 온라인 전용 정기예금입니다', '개인 및 사업자', '1개월 이상 36개월 이하', '1000000');
+insert into tblBankBookProduct 
+		values (bank_book_product_seq.nextVal, 'UP정기 예금', '목돈 굴리는 예금', 1, '1개월 단위로 이율이 상승하는 계단식 금리구조 및 일부인출 서비스를 통해 거래편의성을 높이고 Atlan은행 및 Atlan카드 상품 거래시 우대이율을 제공하는 월복리 정기예금', '제한없음', '12개월', '3000000');
+insert into tblBankBookProduct 
+		values (bank_book_product_seq.nextVal, '드림 예금', '미래를 달리는 예금', 1, '계약기간 및 가입금액이 자유롭고 자동재예치를 통해 자금관리가 가능한 Atlan 전용 정기예금', '제한없음', '1개월 이상 36개월 이하', '1000000');
 
 
+-- tblInterestRate 
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 1, 1.65, '1개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 1, 2.00, '3개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 1, 2.30, '6개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 1, 2.55, '12개월 이상'); 
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 1, 2.60, '24개월 이상');        
+
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 2, 1.85, '1개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 2, 2.35, '3개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 2, 2.65, '6개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 2, 2.95, '12개월 이상'); 
+  
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 3, 2.85, '6개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 3, 3.00, '12개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 3, 3.20, '18개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 3, 3.40, '24개월 이상');
+insert into tblInterestRate 
+		values (interest_rate_seq.nextVal, 3, 3.60, '36개월 이상');
 
 
 
