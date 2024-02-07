@@ -76,7 +76,7 @@ public class UserCardController {
 		//debitCard
 		CardDTO dto = service.getDebitCard(seq);
 		
-		model.addAttribute("dto", dto);
+		model.addAttribute("card", dto);
 		return "user/card/debitCardDetail";
 	}
 
