@@ -52,7 +52,23 @@ public class CardService {
 	}
 
 	public List<CardDTO> getNewCreditCardList() {
-		return dao.getNewCreditCardList();
+		
+		List<CardDTO> list = dao.getNewCreditCardList();
+		
+		//Add annualFeeList to CardDTOList
+		for (CardDTO card : list) {
+			List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
+			
+			//thousands separator
+			for (CardAnnualFeeDTO f : feeList) {
+				int fee = Integer.parseInt(f.getAnnualFee());
+				String newFee = String.format("%,d", fee);
+				f.setAnnualFee(newFee);
+			}
+			card.setFeeList(feeList);
+		}
+		
+		return list;
 	}
 
 	public CardDTO getCreditCard(String seq) {
