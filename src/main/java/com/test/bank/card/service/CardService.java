@@ -36,17 +36,27 @@ public class CardService {
 		
 		//Add annualFeeList to CardDTOList
 		for (CardDTO card : list) {
-			List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
 			
+		    List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
+		    
 			//thousands separator
-			for (CardAnnualFeeDTO f : feeList) {
-				int fee = Integer.parseInt(f.getAnnualFee());
-				String newFee = String.format("%,d", fee);
-				f.setAnnualFee(newFee);
-			}
-			
-			card.setFeeList(feeList);
-			//System.out.println(card.toString());
+		    for (CardAnnualFeeDTO f : feeList) {
+		        String annualFeeStr = f.getAnnualFee();
+		        if (annualFeeStr != null && !annualFeeStr.isEmpty()) {
+		            try {
+		                int fee = Integer.parseInt(annualFeeStr);
+		                String newFee = String.format("%,d", fee);
+		                f.setAnnualFee(newFee);
+		            } catch (NumberFormatException e) {
+		                // 정수로 변환할 수 없는 경우 처리
+		                // 예를 들어 로깅 또는 다른 예외 처리 로직 추가
+		                e.printStackTrace();
+		            }
+		        }
+		    }
+		    
+		    card.setFeeList(feeList);
+		    //System.out.println(card.toString());
 		}
 		
 		return list;
@@ -81,10 +91,19 @@ public class CardService {
 		
 		//thousands separator
 		for (CardAnnualFeeDTO f : feeList) {
-			int fee = Integer.parseInt(f.getAnnualFee());
-			String newFee = String.format("%,d", fee);
-			f.setAnnualFee(newFee);
-		}
+	        String annualFeeStr = f.getAnnualFee();
+	        if (annualFeeStr != null && !annualFeeStr.isEmpty()) {
+	            try {
+	                int fee = Integer.parseInt(annualFeeStr);
+	                String newFee = String.format("%,d", fee);
+	                f.setAnnualFee(newFee);
+	            } catch (NumberFormatException e) {
+	                // 정수로 변환할 수 없는 경우 처리
+	                // 예를 들어 로깅 또는 다른 예외 처리 로직 추가
+	                e.printStackTrace();
+	            }
+	        }
+	    }
 		
 		dto.setFeeList(feeList);
 		
