@@ -38,6 +38,7 @@ public class CardService {
 		for (CardDTO card : list) {
 			List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
 			
+			//thousands separator
 			for (CardAnnualFeeDTO f : feeList) {
 				int fee = Integer.parseInt(f.getAnnualFee());
 				String newFee = String.format("%,d", fee);
@@ -78,6 +79,7 @@ public class CardService {
 		//Add annualFeeList to CardDTO
 		List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(seq);
 		
+		//thousands separator
 		for (CardAnnualFeeDTO f : feeList) {
 			int fee = Integer.parseInt(f.getAnnualFee());
 			String newFee = String.format("%,d", fee);
