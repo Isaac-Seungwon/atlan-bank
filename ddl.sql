@@ -109,6 +109,7 @@ DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE payment_seq;
 DROP SEQUENCE forex_seq;
 
+
 -- CREATE SEQUENCE
 CREATE SEQUENCE member_seq;
 CREATE SEQUENCE bank_seq;
@@ -142,6 +143,7 @@ CREATE SEQUENCE member_card_seq;
 CREATE SEQUENCE member_card_history_seq;
 CREATE SEQUENCE payment_seq;
 CREATE SEQUENCE forex_seq;
+
 
 -- CREATE TABLE
 /* 회원 테이블 */
@@ -472,4 +474,3 @@ CREATE TABLE tblForex(
     buy_basic_rate number not null,  --매매 기준율
     usd_change_rate number not null  -- 미화 환산율
 );    
-
