@@ -10,7 +10,6 @@
 	<groupId>com.test</groupId>
 	<artifactId>bank</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>AtlanBank</name>
 	<description>Atlan Bank project for Spring Boot</description>
 	<properties>
@@ -137,7 +136,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>web-services</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
