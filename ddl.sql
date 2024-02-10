@@ -404,7 +404,7 @@ CREATE TABLE tblAnnualFee (
 /* 카드연회비 */
 CREATE TABLE tblCardAnnualFee (
 	card_annual_fee_seq NUMBER PRIMARY KEY, /* 카드연회비번호 */
-	annual_fee_no VARCHAR2(50) REFERENCES tblAnnualFee(annual_fee_no) NOT NULL,
+	annual_fee_no VARCHAR2(50) REFERENCES tblAnnualFee(annual_fee_no) NOT NULL, /* 연회비번호 */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL /* 카드종류번호 */
 );
 

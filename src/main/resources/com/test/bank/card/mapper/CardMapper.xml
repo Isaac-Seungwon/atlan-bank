@@ -9,7 +9,11 @@
 	</select>
 	
 	<select id="getAnnualFeeList" parameterType="String" resultType="com.test.bank.card.domain.CardAnnualFeeDTO">
-		select * from tblCardAnnualFee where card_seq = #{seq}
+		select a.card_annual_fee_seq, b.annual_fee_no, b.brand, b.annual_fee, a.card_seq
+		from tblCardAnnualFee a
+		inner join tblAnnualFee b
+		on b.annual_fee_no = a.annual_fee_no
+		where card_seq = #{seq}
 	</select>
 	
 	<select id="getNewCreditCardList" resultType="com.test.bank.card.domain.CardDTO">

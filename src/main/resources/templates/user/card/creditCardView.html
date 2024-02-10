@@ -251,9 +251,10 @@
 	
 	.button-container > button:last-child {
 		border: 0;
-		background: #039be5;
+		background: #0d6efd;
 		width: 116px;
 		height: 46px;
+		color: #FFF;
 	}
 	
 	/* responsive */
@@ -356,7 +357,7 @@
 										<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
 										<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
 									</span>
-									<span th:text="${fee.annualFee}"></span>
+									<span th:text="${fee.annualFee} == 0 ? '연회비 없음' : ${fee.annualFee}"></span>
 								</div>
 							</div>
 							<div class="button-container">
@@ -434,6 +435,7 @@
 				
 				let brand = obj.brand;
 				let fee = obj.annualFee;
+				let newFee = (fee == 0) ? '연회비 없음' : fee;
 				let imgSrc = brandImg[brand];
 				
 				$('#m-table').append(`
@@ -441,14 +443,12 @@
 						<td style="width: 20%; text-align: center; padding: 5px;">
 							<img src="${imgSrc}">
 						</td>
-						<td style="width: 60%;">${brand}</td>
-						<td style="width: 20%;">${fee}</td>
+						<td style="width: 55%;">${brand}</td>
+						<td style="width: 25%; text-align: right; padding-right: 5px;">${newFee}</td>
 					</tr>
 				`);
 				
 			});
-			
-			
 			
 			$('#annualFeeModal').modal('show');
 		}

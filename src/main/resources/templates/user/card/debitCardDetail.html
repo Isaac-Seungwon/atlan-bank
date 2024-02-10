@@ -70,11 +70,22 @@
 		padding-top: 20px;
 	}
 	
+	.card-detail-box > div:first-child {
+		display: flex;
+		justify-content: center;
+	}
+	
 	.card-detail-box h3 {
-		font-size: 20px;
+		/* font-size: 20px;
 		text-align: center;
 		padding: 20px;
-		font-weight: bold;
+		font-weight: bold; */
+		display: inline-block;
+		background: rgba(0, 0, 0, .15);
+		border-radius: 13px;
+		padding: 5px 10px;
+		font-weight: 400;
+		font-size: 18px;
 	}
 	
 	.card-detail-summary {
@@ -175,7 +186,7 @@
 					<ol>
 						<li><a href="/atlanbank/index.do">Home</a></li>
 						<li><a href="/atlanbank/user/card/view.do">Card</a></li>
-						<li><a href="/atlanbank/user/card/credit/view.do">Credit Card</a></li>
+						<li><a href="/atlanbank/user/card/debit/view.do">Debit Card</a></li>
 						<li th:text="${card.name}"></li>
 					</ol>
 				</div>
@@ -192,7 +203,7 @@
 			
 			<div class="card-detail-box">
 				<div>
-					<h3>신용카드</h3>
+					<h3>체크카드</h3>
 				</div>
 				
 				<div class="card-detail-summary">

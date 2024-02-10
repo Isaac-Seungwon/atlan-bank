@@ -2433,9 +2433,57 @@ INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALU
 INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK12', 68);
 INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D8', 69);
 INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V8', 69);
-
-
-
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 70);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 70);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 71);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 71);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 71);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 72);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 72);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 73);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 74);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 74);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 75);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 75);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 76);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 76);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 77);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 77);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 78);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 78);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 79);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 79);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 80);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 80);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 81);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 82);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 82);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 82);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 83);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 83);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 83);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 84);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 84);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 85);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 85);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 86);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 87);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 88);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 88);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 89);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 90);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 90);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 90);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 91);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 91);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 92);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 92);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 93);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 94);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 95);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 96);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 96);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 97);
 
 --tblCardUsageGuide
 INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '전월 이용실적 기준', '전월 1일 ~ 말일까지 알뜰교통플러스카드의 일시불 및 할부 승인 금액 기준
