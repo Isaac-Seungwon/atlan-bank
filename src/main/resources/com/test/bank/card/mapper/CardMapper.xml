@@ -29,11 +29,11 @@
 	</select>
 	
 	<select id="getBenefitList" parameterType="String" resultType="com.test.bank.card.domain.BenefitsDTO">
-		select a.card_benefit_seq, a.card_seq, b.benefits_seq, b.type, b.subject, b.content, b.prev_month_perf, b.rate, b.limit
-		from tblCardBenefit a
-		inner join tblBenefits b
-		on b.benefits_seq = a.benefits_seq
-		where card_seq = #{seq}
+		select a.benefits_no, a.type, a.subject, a.content, a.rate, a.limit, a.prev_month_perf, a.img, b.card_benefit_seq, b.card_seq
+		from tblBenefits a
+		inner join tblCardBenefit b
+		on a.benefits_no = b.benefits_no
+		where b.card_seq = #{seq}
 	</select>
 	
 </mapper>

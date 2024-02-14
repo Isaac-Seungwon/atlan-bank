@@ -432,7 +432,7 @@ CREATE TABLE tblBenefits (
 CREATE TABLE tblCardBenefit (
 	card_benefit_seq NUMBER PRIMARY KEY, /* 카드혜택번호 */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
-    benefits_no NUMBER REFERENCES tblBenefits(benefits_no) NOT NULL /* 혜택번호 */
+    benefits_no VARCHAR2(50) REFERENCES tblBenefits(benefits_no) NOT NULL /* 혜택번호 */
 );
 
 /* 회원카드 */

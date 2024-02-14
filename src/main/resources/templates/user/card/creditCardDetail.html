@@ -68,13 +68,25 @@
 		background: #F1F4F8;
 		height: auto;
 		padding-top: 20px;
+		border-radius: 12px;
+	}
+	
+	.card-detail-box > div:first-child {
+		display: flex;
+		justify-content: center;
 	}
 	
 	.card-detail-box h3 {
-		font-size: 20px;
+		/* font-size: 20px;
 		text-align: center;
 		padding: 20px;
-		font-weight: bold;
+		font-weight: bold; */
+		display: inline-block;
+		background: rgba(0, 0, 0, .15);
+		border-radius: 13px;
+		padding: 5px 10px;
+		font-weight: 400;
+		font-size: 18px;
 	}
 	
 	.card-detail-summary {
@@ -151,6 +163,77 @@
 		display: block;
 	}
 	
+	/* Common Notice */
+	.consumer-right-container {
+		margin: 30px 0 15px 0;
+	}
+	
+	.consumer-right-content {
+		border: 1px solid #e1e1e1;
+		border-radius: 10px;
+	}
+	
+	.consumer-right-content h4 {
+		font-size: 16px;
+		font-weight: bold;
+	    padding-bottom: 0.7rem;
+	}
+	
+	.consumer-right-content ul {
+		list-style: none;
+		width: 100%;
+		overflow: hidden;
+		margin-bottom: 0;
+	}
+	
+	.consumer-right-content ul li {
+		float: left;
+		width: 50%;
+		padding: 30px;
+	}
+	
+	.consumer-right-content ul li:nth-child(2) {
+		border-left: 1px solid #e1e1e1;
+		
+	}
+	
+	.consumer-right-content ul li:nth-child(3) {
+		border-top: 1px solid #e1e1e1;
+	}
+	
+	.consumer-right-content ul li:nth-child(4) {
+		border-left: 1px solid #e1e1e1;
+		border-top: 1px solid #e1e1e1;
+	}
+	
+	.consumer-right-content ul li a {
+		border: 1px solid rgba(0, 0, 0, 0.6);
+	    padding: 5px;
+	    border-radius: 10px;
+	    font-size: 14px;
+	    color: rgba(0, 0, 0, 0.87);
+	}
+	
+	.common-notice-container {
+		padding: 15px 0;
+	}
+	
+	.common-notice-content {
+		border: 1px solid #e1e1e1;
+		background: #f9f9f9;
+		border-radius: 10px;
+		padding: 15px 35px;
+	}
+	
+	.common-notice-content > p {
+		margin-bottom: 5px;
+		font-size: 15px;
+		font-weight: 600;
+	}
+	
+	.common-notice-container > p {
+		text-align: right;
+	}
 
 </style>
 </head>
@@ -306,6 +389,43 @@
 							단, KB국민카드 스타샵 가맹점에서 제공해드리는 포인트는 적립됩니다.
 						</p>
 					</div>
+					
+				</div>
+				
+				<!-- Credit Card Common Notice Part -->
+				<!-- Consumer's right -->
+				<div class="consumer-right-container">
+					<h3>금융소비자권리</h3>
+					<div class="consumer-right-content">
+						<ul>
+							<li>
+								<h4>금리인하요구권 관련 안내</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>할부거래의 소비자 권리</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>위법계약해지권</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>FAQ</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Common Notice -->
+				<div class="common-notice-container">
+					<div class="common-notice-content">
+						<p>"상환능력에 비해 신용카드 사용액이 과도할 경우 귀하의 개인신용평점이 하락할 수 있습니다."</p>
+						<p>"개인신용평점 하락 시 금융거래 관련된 불이익이 발생할 수 있습니다."</p>
+						<p>"일정기간 원리금을 연체할 경우, 모든 원리금을 변제할 의무가 발생할 수 있습니다."</p>
+					</div>
+					<p>준법감시인 심의필 230608-02046-HPP(2023.06.08)</p>
 				</div>
 			</div>
 		
