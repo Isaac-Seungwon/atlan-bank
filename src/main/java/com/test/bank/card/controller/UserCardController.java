@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
+import com.test.bank.card.domain.CardUsageGuideDTO;
 import com.test.bank.card.service.CardService;
 
 /**

@@ -5,6 +5,7 @@ import java.util.List;
 import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
+import com.test.bank.card.domain.CardUsageGuideDTO;
 
 public interface CardMapper {
 
@@ -19,5 +20,7 @@ public interface CardMapper {
 	List<CardDTO> getCategoryDebitCardList(String category);
 
 	List<BenefitsDTO> getBenefitList(String seq);
+
+	List<CardUsageGuideDTO> getCardUsageGuideList(String seq);
 
 }

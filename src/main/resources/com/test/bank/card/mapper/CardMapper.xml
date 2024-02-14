@@ -35,5 +35,11 @@
 		on a.benefits_no = b.benefits_no
 		where b.card_seq = #{seq}
 	</select>
+		
+	<select id="getCardUsageGuideList" parameterType="String" resultType="com.test.bank.card.domain.CardUsageGuideDTO">
+		select *
+		from tblCardUsageGuide
+		where card_seq = #{seq}
+	</select>
 	
 </mapper>

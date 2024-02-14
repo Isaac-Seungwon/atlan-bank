@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
+import com.test.bank.card.domain.CardUsageGuideDTO;
 import com.test.bank.card.repository.CardDAO;
 
 @Service
@@ -86,7 +87,7 @@ public class CardService {
 		
 		CardDTO dto = dao.getCard(seq);
 		
-		//Add annualFeeList to CardDTO
+		//1. Add annualFeeList to CardDTO
 		List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(seq);
 		
 		//thousands separator
@@ -107,11 +108,27 @@ public class CardService {
 		
 		dto.setFeeList(feeList);
 		
-		//Add benefitList to CardDTO
+		//2. Add benefitList to CardDTO
 		List<BenefitsDTO> benefitList = dao.getBenefitList(seq);
+		
+		//'/r/n' or '/r' or '/n' replace to <br>
+		for (BenefitsDTO bdto : benefitList) {
+			String newContent = bdto.getContent().replaceAll("(\r\n|\r|\n)", "<br>");
+			bdto.setContent(newContent);
+		}
+		
 		dto.setBenefitList(benefitList);
 		
-		//System.out.println(benefitList.toString());
+		//3. Add guideList to CardDTO
+		List<CardUsageGuideDTO> GuideList = dao.getCardUsageGuideList(seq);
+		
+		//'/r/n' or '/r' or '/n' replace to <br>
+		for (CardUsageGuideDTO gdto : GuideList) {
+			String newContent = gdto.getContent().replaceAll("(\r\n|\r|\n)", "<br>");
+			gdto.setContent(newContent);
+		}
+		
+		dto.setCardUsageGuideList(GuideList);
 		
 		return dto; 
 	}
