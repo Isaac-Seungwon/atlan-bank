@@ -116,7 +116,7 @@
 		width: 50%;
 	}
 	
-	.card-detail-summary ul span {
+	.card-detail-summary ul span.bold {
 		font-weight: bold;
 	}
 	
@@ -286,7 +286,7 @@
 						<ul>
 							<li th:each="benefit : ${card.benefitList}">
 								<span th:text="${benefit.subject}"></span>
-								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
+								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|" class="bold"></span>
 								<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
 								<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
 								<span th:if="${benefit.type == '3'}">마일 적립</span>

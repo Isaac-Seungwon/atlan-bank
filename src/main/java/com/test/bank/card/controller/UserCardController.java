@@ -28,16 +28,24 @@ public class UserCardController {
 	private CardService service;
 
 	@GetMapping(value = "/view.do")
-	public String view(Model model) {
+	public String view(String word, Model model) {
+		
+		//check search status
+		String searchStatus = (word == null || word.equals("")) ? "n" : "y";
 		
 		//New Card List(only credit card)
 		List<CardDTO> newCreditCardList = service.getNewCreditCardList();
 		
 		model.addAttribute("newCreditCardList", newCreditCardList);
 		
-		return "user/card/view";
+		if (searchStatus.equalsIgnoreCase("n")) {
+			return "user/card/view";
+		} else {
+			return "user/card/search";
+		}
+		
 	}
-
+	
 	@GetMapping(value = "/credit/view.do")
 	public String creditView(@RequestParam(defaultValue = "적립/할인")String category, Model model) {
 		
