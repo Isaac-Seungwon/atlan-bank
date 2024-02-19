@@ -439,7 +439,7 @@ CREATE TABLE tblCardBenefit (
 CREATE TABLE tblMemberCard (
 	member_card_seq NUMBER PRIMARY KEY, /* 회원카드번호 */
 	member_seq NUMBER REFERENCES tblMember(member_seq) NOT NULL, /* 회원번호 */
-    card_no NUMBER NOT NULL, /* 카드번호(16자리) */
+    card_no NUMBER UNIQUE NOT NULL, /* 카드번호(16자리) */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
 	exp DATE NOT NULL, /* 만료일 */
 	cvc NUMBER NOT NULL, /* 카드인증코드 */
