@@ -42,4 +42,8 @@
 		where card_seq = #{seq}
 	</select>
 	
+	<select id="getSearchCardList" parameterType="String" resultType="com.test.bank.card.domain.CardDTO">
+		select * from tblCard where name like '%' || #{word} || '%'
+	</select>
+	
 </mapper>

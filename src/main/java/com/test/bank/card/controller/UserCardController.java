@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
-import com.test.bank.card.domain.CardUsageGuideDTO;
 import com.test.bank.card.service.CardService;
 
 /**
@@ -28,22 +26,27 @@ public class UserCardController {
 	private CardService service;
 
 	@GetMapping(value = "/view.do")
-	public String view(String word, Model model) {
-		
-		//check search status
-		String searchStatus = (word == null || word.equals("")) ? "n" : "y";
+	public String view(Model model) {
 		
 		//New Card List(only credit card)
 		List<CardDTO> newCreditCardList = service.getNewCreditCardList();
 		
 		model.addAttribute("newCreditCardList", newCreditCardList);
 		
-		if (searchStatus.equalsIgnoreCase("n")) {
-			return "user/card/view";
-		} else {
-			return "user/card/search";
-		}
+		return "user/card/view";
 		
+	}
+	
+	@GetMapping(value = "/search.do")
+	public String search(String word, Model model) {
+		
+		//Search Result Card List
+		List<CardDTO> searchCardList = service.getSearchCardList(word);
+		
+		model.addAttribute("word", word);
+		model.addAttribute("searchCardList", searchCardList);
+		
+		return "user/card/search";
 	}
 	
 	@GetMapping(value = "/credit/view.do")

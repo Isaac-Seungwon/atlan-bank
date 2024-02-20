@@ -23,4 +23,6 @@ public interface CardDAO {
 
 	List<CardUsageGuideDTO> getCardUsageGuideList(String seq);
 
+	List<CardDTO> getSearchCardList(String word);
+
 }

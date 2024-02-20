@@ -13,6 +13,43 @@
 		max-width: 1200px;
 	}
 	
+	/* ===== search bar ===== */
+	#search-bar {
+		background: #EFF2F7;
+		padding: 50px 150px;
+		border-radius: 5px;
+	}
+	
+	#search-bar h3 {
+		font-size: 1.2rem;
+		padding-bottom: 10px;
+	}
+	
+	#search-bar form div {
+		position: relative;
+	}
+	
+	#search-bar form div i {
+		position: absolute;
+		right: 10px;
+		top: 8px;
+		cursor: pointer;
+	}
+
+	#search-box {
+		border: 1px solid black;
+		width: 100%;
+		height: 40px;
+		border-radius: 3px;
+	}
+	
+	/* tag */
+	.tag {
+		display: inline-block;
+		margin-top: 5px;
+		margin-right: 10px;
+	}
+	
 	/* card benefits list */
 	ul {
 		list-style: none;
@@ -59,6 +96,14 @@
 	}
 
 	/* card list */
+	.sub-title {
+		font-size: 18px;
+	}
+	
+	.sub-title span.bold {
+		font-weight: 600;
+	}
+	
 	.card-container {
 		display: flex;
 		flex-direction: column;
@@ -299,16 +344,37 @@
 		</div>
 		<!-- End Breadcrumbs -->
 		
+		<!-- Search Card Section -->
+		<section>
+			<h2>카드검색</h2>
+			
+			<div id="search-bar">
+				<h3>일상 속의 특별한 혜택을 만날 수 있는 아틀란카드를 검색해 보세요.</h3>
+				
+				<form id="form-search" method="GET" action="/atlanbank/user/card/search.do">
+					<div>
+						<input type="text" id="search-box" name="word" placeholder="카드명 또는 혜택을 입력하세요." th:value="${word}">
+						<i class="bi bi-search" onclick="submit();"></i>
+					</div>
+				</form>
+				<a href="/atlanbank/user/card/credit/view.do" class="tag">#신용카드</a>
+				<a href="/atlanbank/user/card/debit/view.do" class="tag">#체크카드</a>
+		
+		
+			</div>
+			
+		</section> <!--End Search Card Section -->
+		
 		<!-- Card List Section -->
 		<section>
-			<h2>카드 검색 결과</h2>
+			<p class="sub-title">'<span th:text="${word}"></span>'(으)로 검색된 카드 <span th:text="|${#lists.size(searchCardList)}건|" class="bold"></span></p>
 			
 			<div class="card-container">
 				
 				<div class="card-row">
 				
 					<!-- Card 1개 -->
-					<div class="card-box" th:each="card : ${creditCardList}">
+					<div class="card-box" th:each="card : ${searchCardList}">
 						<!-- front -->
 						<div class="card-box-item front">
 							<div class="card-title" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">

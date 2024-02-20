@@ -52,5 +52,10 @@ public class CardDAOImpl implements CardDAO {
 		return mapper.getCardUsageGuideList(seq);
 	}
 
+	@Override
+	public List<CardDTO> getSearchCardList(String word) {
+		return mapper.getSearchCardList(word);
+	}
+
 	
 }
