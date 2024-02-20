@@ -93,7 +93,7 @@ public class UserForexController {
 	@GetMapping(value="/application.do")
 	public String application(Model model) {
 		
-		
+		model.addAttribute("exchangelist", service.exchangeList());
 		return "user/forex/application";
 	}
 	
