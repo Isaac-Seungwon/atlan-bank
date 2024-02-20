@@ -8,24 +8,29 @@
 tr, th, td {
 	border: 1px solid #c1bdba;
 }
+
 th {
 	text-align: center;
 }
+
 table {
 	width: 100%;
 	margin-top: 20px;
 	margin-bottom: 80px;
 }
+
 thead tr {
-    background-color: #0d47a1;
-    color: #ffffff;
- }
- tbody tr:nth-child(2n) {
-    background-color: #bbdefb;
- }
- tbody tr:nth-child(2n+1) {
-    background-color: #e3f2fd;
- }
+	background-color: #0d47a1;
+	color: #ffffff;
+}
+
+tbody tr:nth-child(2n) {
+	background-color: #bbdefb;
+}
+
+tbody tr:nth-child(2n+1) {
+	background-color: #e3f2fd;
+}
 </style>
 
 </head>
@@ -36,7 +41,7 @@ thead tr {
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs">
 			<div class="page-header d-flex align-items-center"
-				style="background-image: url('assets/img/forex/main.png');">
+				style="background-image: url('/atlanbank/assets/img/forex/main.png');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
@@ -69,8 +74,9 @@ thead tr {
 						style="color: #007297; align-items: left;"></h6>
 					현찰 사실 때 환율 : 매매기준율 * (1+외화현찰 사실 때 스프레드율)<br> 현찰 파실 때 환율 :
 					매매기준율 * (1-외화현찰 파실 때 스프레드율)<br>
+					<hr style="width:86%;">
 				</div>
-				
+
 				<script>
 					Date.prototype.format = function(f) {
 						if (!this.valueOf())

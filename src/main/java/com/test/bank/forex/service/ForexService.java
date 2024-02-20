@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.test.bank.forex.domain.ChartDTO;
 import com.test.bank.forex.domain.ForexDTO;
 import com.test.bank.forex.repository.ForexDAO;
 
@@ -69,5 +70,6 @@ public class ForexService {
 		return exchangeList;
 
 	}
+
 	
 }

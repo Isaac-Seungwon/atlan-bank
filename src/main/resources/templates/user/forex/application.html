@@ -13,7 +13,7 @@
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs">
 			<div class="page-header d-flex align-items-center"
-				style="background-image: url('assets/img/page-header.jpg');">
+				style="background-image: url('/atlanbank/assets/img/forex/main.png');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
@@ -34,6 +34,7 @@
 		</div>
 		<!-- End Breadcrumbs -->
 		
+		<!-- 계산기 -->
 		<div class="modal fade" id="Modal" tabindex="-1"
       aria-labelledby="ModalLabel" aria-hidden="true" style="box-shadow: 5px 10px 30px grey;background: #4a4747cc">
       <div class="modal-dialog">
@@ -46,10 +47,7 @@
             </div>
             <div style="border-top:2px solid #99b7b4;margin-left:5px;margin-right:5px">
             <div class="modal-body"  style="border-radius: 0.25em;margin-top:15px;margin-left:11px">
-<!--             style="background-color: #f3f3f3;margin-left:25px;border: 5px solid #74a4a4;border-radius: 0.25em;" -->
-            <!-- 계산식을 div안으로 묶어볼 수 있음 묶어서 해보기-->
             <div class="d-flex" style="margin-left:25px;">
-            <!-- 수수료 선택 -->
             <div class="_mb10" style="text-align:left;display:block">
             <select class="me-2" id="sel_account_01" onclick="autoCal2()" style="width:118px;height:40px;">
                <option value="1">매매기준율</option>
@@ -70,7 +68,6 @@
                   <option value="일본엔(JPY)">일본</option>
                   <option value="유럽유로(EUR)">유럽</option>
                   <option value="중국위안(CNY)">중국</option>
-<!--                   <option value="캐나다달러(CAD)">캐나다</option> -->
                   </select>
                </div>
             </div>
@@ -82,10 +79,8 @@
                   title="환율계산할 금액 입력" value="1"
                   onkeyup="setNumeric(this); autoCal2();" style="width:154px" /> 
                   <div class="unit" id="unit" style="margin-top:5px;margin-left:7px;font-family:Pretendard-Regular">달러</div>
-               <!-- 20160722 텍스트 겹침현상으로 위치 및 class속성값 수정 -->
             </div>
             </div>
-
             </div>
 
             <span class="exchange" style="background-color:#fff"><span class="blind" style="margin-left:226px;margin-bottom:80px;font-family: 'Noto Sans KR', sans-serif;margin-right:10px;justify-content:center;color:#0c8b8b;size:100px">  </span></span>
@@ -93,10 +88,7 @@
             <i class="fa-solid fa-arrow-down" style="width:500px;margin-left:-10px">
             </i>
             
-               <!--         
-       <hr style="border: 1px solid black"> -->
             <!-- 외화 영역 -->
-            
             <div style="border-bottom: 0.25em;">
             <div class="currency-info d-flex" style="background-color: #fff;margin-left:30px;border-radius: 0.5em;margin-top:7px">
             <div class="select-currency d-flex">
@@ -105,10 +97,9 @@
                </div>
                <div class="currency KRW" style="margin-top:8px;font-size:11px;font-family:Pretendard-Regular;margin-left:0px">대한민국KRW&nbsp;</div>
             </div>
-            <div class="input-money" style="background-color:#fff";>
+            <div class="input-money" style="background-color:#fff">
                <input type="text" id="calc_krwAmt" name="calc_krwAmt" style="width:231px; height:40px; margin-left:6px"  title="한화 금액 입력" /> 
                <span class="unit">원</span>
-               
             </div>
             </div>
          <div class="date" id="set_date" style="text-align:center;background-color:#fff;color:#99b7b4;margin-top:20px;border-bottom:2px solid #99b7b4;padding-bottom:20px"></div>
@@ -139,329 +130,63 @@
 
             document.getElementById("set_date").innerHTML = new Date().format("yyyy년 MM월 dd일 a/p hh시 mm분 ss초");
          </script>
-               <ul class="list_type1 s2" style="background-color:#f7ffff;margin-bottom:3px">
-                  <div class="smallfont" style="background-color:#f7ffff;margin-top:10px">
-                  <li>환율계산기는 단순 참고용으로 위 계산결과는 환율변동 또는 우대율 적용에 따라<br>  실제 거래 시
+               <ul class="list_type1 s2" style="background-color:#f7ffff;margin-bottom:3px;">
+                  <li>환율계산기는 단순 참고용으로 위 계산결과는 환율변동 또는<br> 우대율 적용에 따라 실제 거래 시
                      적용되는 환율과 다를 수 있습니다.</li>
-                  <li>현재 고시된 환율은 미달러 기준 1만 달러 상당액 미만 시 적용되는 환율입니다.<br>(단,
+                  <li>현재 고시된 환율은 미달러 기준 1만 달러 상당액 미만 시 <br>적용되는 환율입니다.<br>(단,
                      USD, EUR, JPY, GBP, CAD, NZD, AUD, CNY, CHF, HKD, SGD, AED,
-                     THB를 <br> 제외한  기타 통화는 미달러 기준 5만 달러 상당액 미만)
+                     THB를 제외한 기타 통화는 미달러 기준 5만 달러 <br>상당액 미만)
                   </li>
-                  </div>
                </ul>
             
             <div class="modal-footer" style="background-color:#f7ffff">
                <button type="button" class="btn btn-secondary"
                   data-bs-dismiss="modal" >취소</button>
                <button type="button" class="btn btn-secondary"
-                  onclick="nextStep()" style="margin-right:150px">확인</button>
+                  onclick="nextStep();" style="margin-right:150px">확인</button>
             </div>
             </div>
          </div>
       </div>
-   </div>
- 
-     </div>
 
-</div>
-
-   <div class="modal fade" id="exampleModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-         <div class="modal-content" style="border: 0.5rem solid #0c8b8b;margin-left: 40px">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-            <div class="basicfont" style="color:#00b19a;">환전하기</div>
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"
-            aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <div class="font">지금 환전하시겠습니까?</div>
-            <Br>
-            <div class="smallfont">'예'를 누르시면 환전이 완료되어 완료된 거래는 취소할 수 없습니다.</div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary"
-               data-bs-dismiss="modal">취소</button>
-            <button type="button" class="btn btn-secondary"
-               onclick="nextStep2()" style="margin-right:140px">환전</button>
-            </div>
-            </div>
-         </div>
-      </div>
-   </div>
-
-
- <div class="container" style="margin-right:170px;margin-top:0px">
- 	<h2 style="font-family: 'Noto Sans KR', sans-serif; margin-left: 510px; margin-top:100px; display:inline-block">
+ <div class="container" style="margin-right:170px;margin-top:0px; margin-bottom:50px;">
+ 	<h2 style="font-family: 'Noto Sans KR', sans-serif; margin-left: 600px; margin-top:100px; display:inline-block">
 			외화환전</h2>
          <div class="row gtr-uniform">
             <div align="center">
             <div class="container">
             <br>
-
-          
             <br>
-
-   
             <div style="box-shadow: 5px 10px 30px grey;">
                <dl>
-                  <div class="exchange_main_bn" style="color:grey"></div>
+                  <div class="exchange_main_bn" style="color:grey">
                   <div class="padding_top">
                   
                   <div class="text_style"  style="color:black;margin-left:20px">
                      환율 계산기
-                     </dt>
-                     <dd>외화 환전 예상금액을 계산해 보아요</dd>
+                     <p>외화 환전 예상금액을 계산해 보세요.</p>
+                  </div>
+                  </div>
                   </div>
                </dl>
       
-               <button type="button" class="btn " data-bs-toggle="modal"
+               <button type="button" class="btn" data-bs-toggle="modal"
                   data-bs-target="#Modal" style="margin-left: 20px; background-color:#b5b5b5;color:#fff">계산하기</button>
             </div>
 
             </div>
-
-            <div class="container">
-            <form method="post" action="${pageContext.request.contextPath }/exchange/ResultOfExchange"  role="form">
-                     <br> <br> <br> <br>
-                     <table class="table">
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">통화종류</th>
-                        <td><select name="currency" id="sel_account_02" onchange=""
-                        class="form-control">
-                           <option value="a" selected disabled>환전할 통화를 선택하세요</option>
-                           <option value="미국달러(USD)">미국달러(USD)</option>
-                           <option value="일본엔(JPY)">일본엔(JPY)</option>
-                           <option value="유럽유로(EUR)">유럽유로(EUR)</option>
-                           <option value="중국위안(CNY)">중국위안(CNY)</option>
-                           <option value="홍콩달러(HKD)">홍콩달러(HKD)</option>
-                           <option value="호주달러(AUD)">호주달러(AUD)</option>
-                           <option value="영국파운드(GBP)">영국파운드(GBP)</option>
-                           <option value="캐나다달러(CAD)">캐나다달러(CAD)</option>
-                           <option value="스위스프랑(CHF)">스위스프랑(CHF)</option>
-                           <option value="싱가포르달러(SGD)">싱가폴달러(SGD)</option>
-                           <option value="뉴질랜드달러(NZD)">뉴질랜드달러(NZD)</option>
-                           <option value="태국바트(THB)">태국바트(THB)</option>
-                        </select></td>
-                     </tr>
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">사는금액(외화)</th>
-                        <td><input type="text" autocomplete="off"
-                        class="form-control" id="forAmt_01" name="forAmt_01"
-                        placeholder="금액을 입력하세요" style="background-color:white" onkeyup="setNumeric(this); autoCal()" /></td>
-                        
-                     </tr>
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">현찰 살 때(고시환율)</th>    
-                        <td><input  autocomplete="off" class="form-control" id="krwAmtTxt" style="background-color:white" name="krwAmtTxt" readonly></input> <span class="unit"></span></td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">우대율(%)</th>
-                        <td><input autocomplete="off"  class="form-control" id="ex_per" name="ex_per" value="85" style="background-color:white" readonly></input><span></span></td>
-                        
-                     </tr>
-                     <!-- <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">쿠폰 할인율(%)</th>
-                        <td>
-                        <div id="percentCoupon" style="margin-left:10px"></div>
-                        <button class="btn nextBtn " type="button"
-                           data-bs-toggle="modal" 
-                           style="margin-left: 230px;  background-color:#b5b5b5;color:#fff" id="useCoupon" onclick="percent()" data-bs-target="#couponModal">쿠폰사용</button>
-                     </tr> -->
-                     
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">총 우대율(%)</th>
-                        <td>
-                        <input class="form-control" id="R_ex_per" name="R_ex_per" readonly style="background-color:white"></input><span></span>
-                        </td>
-                     </tr>
-                     
-                     <tr>
-                        <th style="width: 270px; background-color: #f4f4f4">우대적용환율</th>       
-                        <td><input class="form-control" id="basicEx" name="basicEx" readonly style="background-color:white"></input> <span class="unit"></span></td>
-                        
-                     </tr>
-                     <tr> 
-                        <th style="width: 270px; background-color: #f4f4f4">통화당 우대금액</th>       
-                        <td>
-                        <input class="form-control" id="preferentialAmount" name="preferentialAmount" readonly style="background-color:white"></input> <span class="unit"></span>
-                        </td>
-                     </tr>
-                     
-
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">출금금액(원)</th>
-                        <td><input class="form-control"
-                        id="exchangecharge" name="exchangecharge"
-                        value="" readonly style="background-color:white" /><span class="unit" readonly></input></td>
-                     </tr>
-                     </table>
-
-                      
-                     <table class="table">
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">수령인</th>
-                        <td><input class="form-control"
-                        type="hidden" id="name" name="name" 
-                        value="${loginVO.name }" /><div style="margin-left:10px">${loginVO.name}</div></td>
-                     </tr>
-                     <tr>
-                        <th style="width: 270px; background-color: #f4f4f4">수령희망지점</th>
-                        <td>
-                        
-                        <select name="location" id=""
-                        class="form-control"
-                        onchange="categoryChange(this)" class="form-control" >
-                         
-                           <option value="a" selected disabled>영업점을 선택하세요 </option>
-                           <option value="인천국제공항">인천국제공항</option>
-                           <option value="김포공항">김포국제공항</option>
-                           <option value="김해공항">김해국제공항</option>
-                           <option value="여의도점">여의도점</option>
-                           <option value="명동점">명동점</option>
-                           <option value="강남지점">강남지점</option>  
-                           <option value="하남점">하남점</option>
-                           <option value="평택점">평택점</option>
-                           <option value="은평점">은평점</option>
-                        </select>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">수령희망일</th>
-                        <td><input type="date" id=""  name="pickupdate"  
-                        class="form-control"   
-                        max="2022-12-31" /></td>
-                     </tr>
-                     
-                      </table>
-                    
-                  
-                   
-                    <table class="table ">
-                     <tr>
-                        <th style="width: 270px; background-color:  #f4f4f4">출금계좌번호</th>
-                        <td>
-                        <div id="make" name="" class=""></div>
-                         <select name="showAccount"
-                        id="showAccount" class="form-control" 
-                        aria-describedby="inputGroupSuccess1Status">
-                              
-                  <option value="account" >계좌를 선택하세요</option>
-                  <c:forEach items="${ allaccount }" var="account">
-                  <option value="account">${account.accountNo}</option>
-                  </c:forEach>
-            
-
-                        </select>
-                        </td>
-                     </tr>
-                     
-                     
-                     <tr>
-                        <th style="width: 270px; background-color: #f4f4f4">비밀번호</th>
-                        <td><input type="password" id="" name=""
-                        class="form-control"
-                        aria-describedby="inputGroupSuccess1Status"
-                        placeholder="비밀번호 4자리를 입력하세요" /> <input type="hidden"
-                        id="pwd" name="pwd"></td>
-                     </tr>
-                     
-                     </table>
-                     <input type="hidden" id="" name="" value="${loginVO.id}">
-                     <input class="btn" type="submit" button type="button" class="btn3" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 62px;margin-top:-10px; background-color:#b5b5b5;color:#fff" value="환전하기" ></button>
-                  </div>
-                  </div>
-               </div>
-               
-            </form>
-            
             </div>
             </div>
-            </section>
-
-            <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-            <!-- Core theme JS-->
-            <script src="/js/jquery-3.6.0.min.js"></script>
-            <script src="js/scripts.js"></script>
-            <script>
-               async function process() {
-                   $.LoadingOverlay("show", {
-                      image :"",
-                      text : "상담사 매칭 중 입니다."
-                   });
-                   
-                   setTimeout(function(){
-                      $.LoadingOverlay("text", "잠시만 기다려 주십시오");
-                   }, 2000);
-                }
-                
-               function btn(){
-                  setTimeout(function() { 
-                   $('#bloodModal').hide();
-                   }, 5000),
-                    Swal.fire({
-                       title: '환전하시겠습니까',
-                       width: 600,
-                       padding: '2em',
-                       /* margin-left:100, */
-                       color: '#5d6666',
-                       background: '#fff url(/img/trees.png)',
-                       backdrop: `
-                        rgba(0,0,0,0.65)
-                         url("/images/nyan-cat.gif")
-                         left top
-                         no-repeat
-                       `
-                     })
-               
-               }
-               </script>
+</div>
                
                   <script>
                   var cashbuy = 0; // 현찰 사실때
                   var coupon_per = 0; // 쿠폰적용환율
-               
                   var preferential_fee = 0; // 우대수수료
          
                   function nextStep() {
-                     location.href = "${ pageContext.request.contextPath}/exchange/doExchange"
-                  }   
-               
-  
-                  function login() {
-                     location.href = "${pageContext.request.contextPath}/login"
-                  }
-               
-   
-                  function nextStep2() {
-                     location.href = "${ pageContext.request.contextPath}/exchange/ResultOfExchange"
-                  }
-               
-          
-                  function percent() {
-                     $('#useCoupon').css('display','none');
-                        $.ajax({
-                           url : '${pageContext.request.contextPath}/coupon/useCoupon',
-                           method : 'get',
-                           data :  {
-                           id :  '${loginVO.id}',
-                           },
-                           success : displayCoupon
-                           ,error : function(){
-                           alert('실패');
-                        },
-                        
-                           
-                        })    
-                     
-                     
-                  }
-               
-                 
+                	    alert('완료되었습니다.');
+                	}
                   function displayCoupon(result){
                      let list = result
                      let str =''
@@ -469,9 +194,6 @@
       
                      $('#rate').text(result.pop().RATE)
                   }
-                  
-                  
-              
                   function displaySelectedCoupon(){
                     let input=$('#rate').text()*1  
                      $('#percentCoupon').empty();     
@@ -481,25 +203,21 @@
                      coupon_per = input;
                      change_ex_per();
                   }
-                  
                   function showSelectedCoupon(){
                      $('#percentCoupon').css('display','block');
                      coupon_per = $('#rate').text()*1 
                      console.log(coupon_per);
                   }
-                  
                   function setNumeric(num) {
                      var numeric = Number(num.value);
                      num.value = numeric;
                   }
                
-               
-                  var num2 = 0;
-
-                  function autoCal2(){
+                  var num2 = 0
                   
+                  
+                  function autoCal2(){
                   var currency = 0; 
-               
                   var current = 0;
                   var current2 = 0;
                   var calc_total = 0;
@@ -511,7 +229,7 @@
                   var type = $("#sel_account_01 option:selected").val();
                
                   if(type=="1"){
-                  <c:forEach items="${exchangelist}" var="item">
+                  <c:forEach items="list : ${exchangelist}">
                      result.push("${item.buyBasicRate}");
                   </c:forEach>
                   }
@@ -561,8 +279,6 @@
                      current2 = result2[8];
                   }
                
-               
-               
                   $('#calc_forAmt').each(function(){
                      calc_total = Number($(this).val())*current;
                      num2 = Number($(this).val());
@@ -571,22 +287,15 @@
                   });
                   }
                
-                  
                   function autoCal(){
-                  
                   var currency = 0; 
-                  
                   var total = 0;
                   var total2 = 0;
-               
                   var current = 0;
                   var current2 = 0;
                   var current3 = 0;
-               
-               
                   var commission = 0;
                   var per3 = 0;
-               
                
                   var result = new Array();
                   var result2 = new Array();
@@ -708,11 +417,9 @@
                   if(type!='1'){
                   $('input[name="R_krwAmt"]').val(((1-per3/100)+current3)*num2);
                   }
-               
                   
                   $('input[name="exchangecharge"]').val((preferential_exchange_rate*num3).toFixed(2));
                   }
-                  
        
                   function selectCountry(value) {
                      $('#unit').empty();
@@ -730,10 +437,6 @@
                      }
                      if (value == '중국위안(CNY)') {
                         $('#unit').append('위안');
-                        autoCal2();
-                     }
-                     if (value == '캐나다달러(CAD)') {
-                        $('#unit').append('달러');
                         autoCal2();
                      }
                
