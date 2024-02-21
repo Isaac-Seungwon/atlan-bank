@@ -3016,5 +3016,24 @@ INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, 
 INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, card_payment_date, status) VALUES (member_card_seq.nextVal, 3, 3124574225399547, 67, TO_DATE('2031-12-31', 'yyyy-mm-dd'), 769, 7, 'y');
 
 -- tblMemberCardHistory
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-02', 'yyyy-mm-dd'), 3000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-03', 'yyyy-mm-dd'), 5000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-03', 'yyyy-mm-dd'), 10000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-10', 'yyyy-mm-dd'), 500000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-12', 'yyyy-mm-dd'), 1250000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-02-02', 'yyyy-mm-dd'), 7000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-01-02', 'yyyy-mm-dd'), 9500, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-01-03', 'yyyy-mm-dd'), 1300, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-01-04', 'yyyy-mm-dd'), 150000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-02-02', 'yyyy-mm-dd'), 2000000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-05', 'yyyy-mm-dd'), 900000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-06', 'yyyy-mm-dd'), 60000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-07', 'yyyy-mm-dd'), 85000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-08', 'yyyy-mm-dd'), 600000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-02-05', 'yyyy-mm-dd'), 5000000, 1);
+
 -- tblPayment
+--INSERT INTO tblPayment (payment_seq, member_card_history_seq, payment_date, amount) VALUES (payment_seq.nextVal, , TO_DATE('', 'yyyy-mm-dd'), );
+
+
 commit;
