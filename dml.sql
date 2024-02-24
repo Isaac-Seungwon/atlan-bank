@@ -1084,6 +1084,16 @@ INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.n
 commit;
 
 -- tblNews
+-- 소식 테이블에 데이터 삽입
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (1, '청년 주택드림 청약통장 출시 및 전환 안내',
+'항상 KB국민은행을 이용해주시는 고객 여러분께 진심으로 감사드립니다.
+
+「청년 주택드림 청약통장」이 출시됨에 따라 기존 「청년우대형 주택청약종합저축」은 「청년 주택드림 청약통장」 상품으로 일괄 전환되며 「주택청약종합저축」의 경우 조건이 충족되는 경우 전환이 가능함을 안내 드리니 아래 내용을 참고하시기 바랍니다. (2024.2.21일 기준)',
+NULL,
+TO_DATE('2024-02-22', 'YYYY-MM-DD'),
+3013);
+
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'Atlan Bank가 탄생헀습니다!', '고객님들의 많은 이용 부탁드립니다.', 'news_img1.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), 12507);
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '「인천공항에서 받기」 환전 서비스 신설 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img2.png', TO_DATE('2024-01-14', 'YYYY-MM-DD'), 4831);
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img3.png', TO_DATE('2024-01-18', 'YYYY-MM-DD'), 5839);
@@ -1092,6 +1102,8 @@ INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br>신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.<br>점검일시<br>2024.1.20(토) 21:00 ~ 2024.1.21(일) 04:00 (7시간)<br>점검영향<br>점검시간 내 신용관리서비스 순단 및 단절(1분 내외) 발생<br>보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다.<br>감사합니다.<br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img6.png', TO_DATE('2024-01-23', 'YYYY-MM-DD'), 1251);
 
 SELECT TO_CHAR(regdate, 'YYYY-MM-DD') AS regdate FROM tblNews; -- 날짜만 출력 (시간은 생략)
+
+SELECT * FROM tblNews;
 
 commit;
 
