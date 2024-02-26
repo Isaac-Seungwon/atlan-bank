@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
+import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.mapper.TicketMapper;
 
 @Repository
@@ -28,5 +30,34 @@ public class TicketDAOImpl implements TicketDAO{
 	public List<BankDTO> searchedBankList(String location) {
 		return mapper.searchedBankList(location);
 	}
+	
+	@Override
+	public TicketWaitingStatusDTO selectStandBy100(String bankSeq) {
+		return mapper.selectStandBy100(bankSeq);
+	}
+	
+	@Override
+	public TicketWaitingStatusDTO selectStandBy200(String bankSeq) {
+		return mapper.selectStandBy200(bankSeq);
+	}
+	
+	@Override
+	public TicketWaitingStatusDTO selectStandBy300(String bankSeq) {
+		return mapper.selectStandBy300(bankSeq);
+	}
 
+	@Override
+	public TicketWaitingStatusDTO selectStandBy400(String bankSeq) {
+		return mapper.selectStandBy400(bankSeq);
+	}
+	
+	@Override
+	public List<WorkListDTO> selectWorkList(String bankSeq) {
+		return mapper.selectWorkList(bankSeq);
+	}
+	
+	@Override
+	public List<WorkListDTO> getWorkList(String bankSeq, String type) {
+		return mapper.getWorkList(bankSeq, type);
+	}
 }
