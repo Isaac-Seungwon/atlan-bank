@@ -42,5 +42,10 @@
 	<select id="getWorkList" parameterType="String" resultType="com.test.bank.ticket.domain.WorkListDTO">
 		select * from vwWorkList where bank_seq = #{bankSeq} and work_seq = #{type}
 	</select>
+	
+	<select id="getWaitingNumber" parameterType="String" resultType="integer">
+		select coalesce(max(ticket_waiting_status_seq), 0)
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = #{type}
+	</select>
 
 </mapper>

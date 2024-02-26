@@ -4,6 +4,13 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>지점 현황</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
 
 <style>
 	table td, th{
@@ -25,7 +32,29 @@
 		padding: 20px !important;
 	}
 	
+	.ax5-ui-dialog {
+		width: 400px !important; 
+	}
+	
+	.ax5-ui-dialog .ax-dialog-header{
+		background: #31BB9E;
+		color: #fff;
+		border: none;
+		
+	}
+	
+	.ax5-ui-dialog table td, th{
+		border:1px solid rgba(0,0,0,.1);
+	}
+	
+	.ax5-ui-dialog table th{
+		width: 30%;
+	}
+	
+	
 </style>
+
+
 </head>
 
 <body>
@@ -77,22 +106,22 @@
 				<tr>
 			    <th class="type" th:name="100">입출금 업무</th>
 			    <td th:text="${nt100 != null ? nt100.standby : 0} + ' 명'"></td>
-			    <td id="100" class="tdBtn">번호표발급</td>
+			    <td id="100" class="tdBtn" th:name="입출금">번호표발급</td>
 				</tr>
 				<tr>
 			    <th class="type" th:name="200">대출 업무</th>
 			    <td th:text="${nt200 != null ? nt200.standby : 0} + ' 명'"></td>
-			    <td id="200" class="tdBtn">번호표발급</td>
+			    <td id="200" class="tdBtn" th:name="대출">번호표발급</td>
 				</tr>
 				<tr>
 			    <th class="type" th:name="300">외환 업무</th>
 			    <td th:text="${nt300 != null ? nt300.standby : 0} + ' 명'"></td>
-			    <td id="300" class="tdBtn">번호표발급</td>
+			    <td id="300" class="tdBtn" th:name="외환">번호표발급</td>
 				</tr>    
 				<tr>
 			    <th class="type" th:name="400" >기업 업무</th>
 			    <td th:text="${nt400 != null ? nt400.standby : 0} + ' 명'"></td>
-			    <td id="400" class="tdBtn">번호표발급</td>
+			    <td id="400" class="tdBtn" th:name="기업">번호표발급</td>
 				</tr>
 			</table>
 		
@@ -161,13 +190,28 @@
 	}
 	
 	$(document).on('click', ".tdBtn", function() {
-		let service = $(this).attr('id');
+		const dialog = new ax5.ui.dialog();
+		const type = $(this).attr('id');
+		
+		const bankName = "[[${bankName}]]";
+		const work = $(this).attr('name');
+		
+		let waitingNum = 0;
+		if (type == 100) {
+			waitingNum = "[[${nt100.standby}]]";
+		} else if (type == 200) {
+			waitingNum = "[[${nt200.standby}]]";
+		} else if (type == 300) {
+			waitingNum = "[[${nt300.standby}]]";
+		} else if (type == 400) {
+			waitingNum = "[[${nt400.standby}]]";
+		}
 		
 		$.ajax({
 			url: '/atlanbank/ticket/waiting/' + bankSeq + '/' + type,
 			type: 'get',
-			succes: function (data) {
-				let json = JSON.parse(data)['data'];
+			success: function (data) {
+				//let json = JSON.parse(data)['data'];
 				let tableTag = "";
 				tableTag += '<table style="width: 100%;">';
 			
@@ -177,36 +221,39 @@
    			tableTag+='</colgroup>';
    			tableTag+='<tr>';
    			tableTag+='<th>지점</th>';
-   			tableTag+='<td>'+json['bankName']+'</td>';
+   			tableTag+='<td>'+ bankName +'</td>';
    			tableTag+='</tr>';
    			
    			tableTag+='<tr>';
    			tableTag+='<th>창구</th>';
-   			tableTag+='<td>'+json['workName']+'</td>';
+   			tableTag+='<td>'+ work +'</td>';
    			tableTag+='</tr>';
    			
    			tableTag+='<tr>';
    			tableTag+='<th>번호</th>';
-   			tableTag+='<td>'+json['ticketWaitingStatusSeq']+'</td>';
+   			tableTag+='<td>'+ data +'</td>';
    			tableTag+='</tr>';
    			
    			tableTag+='<tr>';
    			tableTag+='<th>대기인원</th>';
-   			tableTag+='<td>'+(json['standby']-1)+'명</td>';
+   			tableTag+='<td>'+ waitingNum +'명</td>';
    			tableTag+='</tr>';
    			
    			tableTag+='<tr>';
    			tableTag+='<th>예상시간</th>';
-   			tableTag+='<td>약'+json['standbyTime']+'분</td>';
+   			tableTag+='<td>약 '+ waitingNum*10 +'분</td>';
    			tableTag+='</tr>';
    			tableTag+='</table>';
    			dialog.alert(tableTag);
    			
-   			console.log(json['numberticketNumber']);
-   			let number = (json['numberticketNumber']);
+   			//console.log(json['numberticketNumber']);
+   			//let number = (json['numberticketNumber']);
    			
    			//sendLink(number);    			
 				
+			},
+			error: function(xhr, status, error) {
+				alert('로그인이 필요한 서비스입니다.');
 			}
 		});
 	});

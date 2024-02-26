@@ -25,4 +25,8 @@ public interface TicketDAO {
 	List<WorkListDTO> selectWorkList(String bankSeq);
 
 	List<WorkListDTO> getWorkList(String bankSeq, String type);
+
+	int getWaitingNumber(String bankSeq, String type);
+
+	
 }

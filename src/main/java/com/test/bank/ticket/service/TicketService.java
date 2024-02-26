@@ -98,6 +98,11 @@ public class TicketService {
 		
 		return workMap;
 	}
+
+	public int getWaitingNumber(String bankSeq, String type) {
+		int number = dao.getWaitingNumber(bankSeq, type);
+		return number + 1;
+	}
 	
 	
 }

@@ -60,4 +60,9 @@ public class TicketDAOImpl implements TicketDAO{
 	public List<WorkListDTO> getWorkList(String bankSeq, String type) {
 		return mapper.getWorkList(bankSeq, type);
 	}
+	
+	@Override
+	public int getWaitingNumber(String bankSeq, String type) {
+		return mapper.getWaitingNumber(bankSeq, type);
+	}
 }
