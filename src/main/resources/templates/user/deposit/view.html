@@ -153,12 +153,12 @@
 		    </tr>
 		    </thead>
 		    <tbody>
-		    <tr>
+		    <tr th:each="list : ${list}">
 		        <td>
 		        	<div class="container">
 		        		<div class="row">
 		        			<div class="col-10">
-		        				<span class="badge text-bg-success">입출금이 자유로운 예금</span> <span>영업점/인터넷</span>
+		        				<span th:text"${list.name}" class="badge text-bg-success">입출금이 자유로운 예금</span> <span>영업점/인터넷</span>
 		        				<h3>일반 예금</h3>
 		        				<p>일반통장~~~</p>
 		        			</div>
@@ -170,15 +170,7 @@
 		        	</div>
 		        </td>
 		    </tr>
-		    <tr>
-		        <td>Johnny</td>
-		    </tr>
-		    <tr>
-		        <td>Susan</td>
-		    </tr>
-		    <tr>
-		        <td>Tracy</td>
-		    </tr>
+		    
 		    </tbody>
 		</table>
 		</div>

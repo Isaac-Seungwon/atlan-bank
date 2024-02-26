@@ -18,5 +18,9 @@ public class DepositService {
 		
 		return dao.getList();
 	}
+
+	public String get() {
+		return dao.get();
+	}
 	
 }

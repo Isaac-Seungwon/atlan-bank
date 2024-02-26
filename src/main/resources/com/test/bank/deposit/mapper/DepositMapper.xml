@@ -6,4 +6,8 @@
 		<!-- select * from tblBankBookProduct -->
 	</select>
 
+	<select id="get">
+		SELECT SYSDATE FROM DUAL
+	</select>
+
 </mapper>
