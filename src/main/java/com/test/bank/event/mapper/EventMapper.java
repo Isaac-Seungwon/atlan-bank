@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.test.bank.event.domain.EventDTO;
+import com.test.bank.event.domain.FranchiseDTO;
 
 @Mapper
 public interface EventMapper {
@@ -17,4 +18,7 @@ public interface EventMapper {
 	List<EventDTO> getLatestEvents();
 
 	EventDTO getEventBySeq(int eventSeq);
+
+	FranchiseDTO getFranchiseBySeq(int franchiseSeq);
+	
 }

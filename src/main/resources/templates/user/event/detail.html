@@ -40,7 +40,32 @@
 
 .event-img img {
 	width: 70%;
+}
+
+.franchise-info {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.franchise-info table {
+	margin: 0 auto;
+	width: 60%;
+	border-collapse: collapse;
 	margin-bottom: 50px;
+}
+
+.franchise-info th, .franchise-info td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+
+.franchise-info th {
+	background-color: #f2f2f2;
+}
+
+.franchise-info img {
+	width: 100px;
+	height: auto;
 }
 </style>
 
@@ -99,7 +124,24 @@
 			</div>
 		</div>
 		<!-- End Event Content -->
-		
+
+		<!-- Start Franchise Information -->
+		<div class="franchise-info">
+			<table>
+				<tr>
+					<th>이름</th>
+					<th>가맹점</th>
+					<th>연락처</th>
+				</tr>
+				<tr>
+					<td th:text="${franchise.name}"></td>
+					<td><img th:src="@{/assets/img/franchise/{imgName}(imgName=${franchise.img})}" alt="Franchise Image"></td>
+					<td th:text="${franchise.tel}"></td>
+				</tr>
+			</table>
+		</div>
+		<!-- End Franchise Information -->
+
 	</main>
 	<!-- End Main -->
 	

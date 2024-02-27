@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.bank.event.domain.EventDTO;
+import com.test.bank.event.domain.FranchiseDTO;
 import com.test.bank.event.mapper.EventMapper;
 
 @Repository
@@ -33,6 +34,11 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public EventDTO getEventBySeq(int eventSeq) {
 		return mapper.getEventBySeq(eventSeq);
+	}
+	
+	@Override
+	public FranchiseDTO getFranchiseBySeq(int franchiseSeq) {
+		return mapper.getFranchiseBySeq(franchiseSeq);
 	}
 	
 }

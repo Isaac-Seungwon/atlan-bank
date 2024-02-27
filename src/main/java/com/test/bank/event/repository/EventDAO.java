@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.test.bank.event.domain.EventDTO;
+import com.test.bank.event.domain.FranchiseDTO;
 
 public interface EventDAO {
 	
@@ -14,4 +15,7 @@ public interface EventDAO {
     List<EventDTO> getLatestEvents();
 
 	EventDTO getEventBySeq(int eventSeq);
+
+	FranchiseDTO getFranchiseBySeq(int franchiseSeq);
+	
 }
