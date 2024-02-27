@@ -13,8 +13,8 @@
   <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
 
 <style>
-	table td, th{
-		/* border:1px solid rgba(0,0,0,.1); */
+	table th, td{
+		border:1px solid rgba(0,0,0,.1);
 		padding: 20px !important;
 	}
 	
@@ -52,12 +52,20 @@
 	}
 	*/
 	
-	#issueTicketModal table th, td {
+	#issueTicketModal table th, #issueTicketModal table td {
 		border: 0px;
 	}
 	
 	#issueTicketModal table th {
 		border-right-width: 1px solid black;
+	}
+	
+	.modal-footer {
+		justify-content: center;
+	}
+	
+	.modal-footer button {
+		width: 30%;
 	}
 	
 </style>
@@ -114,27 +122,27 @@
 				<tr>
 			    <th class="type" th:name="100">입출금 업무</th>
 			    <td th:text="${nt100 != null ? nt100.standby : 0} + ' 명'"></td>
-			    <td id="100" class="tdBtn" th:name="입출금" data-bs-toggle="modal" data-bs-target="#issueTicketModal">번호표 발급</td>
+			    <td id="100" class="tdBtn" th:name="입출금" data-bs-toggle="modal">번호표 발급</td>
 				</tr>
 				<tr>
 			    <th class="type" th:name="200">대출 업무</th>
 			    <td th:text="${nt200 != null ? nt200.standby : 0} + ' 명'"></td>
-			    <td id="200" class="tdBtn" th:name="대출" data-bs-toggle="modal" data-bs-target="#issueTicketModal">번호표 발급</td>
+			    <td id="200" class="tdBtn" th:name="대출" data-bs-toggle="modal">번호표 발급</td>
 				</tr>
 				<tr>
 			    <th class="type" th:name="300">외환 업무</th>
 			    <td th:text="${nt300 != null ? nt300.standby : 0} + ' 명'"></td>
-			    <td id="300" class="tdBtn" th:name="외환" data-bs-toggle="modal" data-bs-target="#issueTicketModal">번호표 발급</td>
+			    <td id="300" class="tdBtn" th:name="외환" data-bs-toggle="modal">번호표 발급</td>
 				</tr>    
 				<tr>
 			    <th class="type" th:name="400" >기업 업무</th>
 			    <td th:text="${nt400 != null ? nt400.standby : 0} + ' 명'"></td>
-			    <td id="400" class="tdBtn" th:name="기업" data-bs-toggle="modal" data-bs-target="#issueTicketModal">번호표 발급</td>
+			    <td id="400" class="tdBtn" th:name="기업" data-bs-toggle="modal">번호표 발급</td>
 				</tr>
 			</table>
 			
 			<!-- Modal -->
-			<div class="modal fade" id="issueTicketModal" tabindex="-1" aria-labelledby="issueTicketModalLabel" aria-hidden="true">
+			<div class="modal fade" id="issueTicketModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="issueTicketModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -154,7 +162,7 @@
 			        		</tr>
 			        		<tr>
 			        			<th class="table-light">번호</th>
-			        			<td>false</td>
+			        			<td id="number"></td>
 			        		</tr>
 			        		<tr>
 			        			<th class="table-light">대기인원</th>
@@ -169,11 +177,29 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-			        <button type="button" class="btn btn-primary">발급</button>
+			        <button type="button" class="btn btn-primary" id="issueTicket">발급</button>
 			      </div>
 			    </div>
 			  </div>
 			</div> <!-- End Modal -->
+	
+			<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5" id="exampleModalLabel">알림</h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        로그인이 필요한 서비스입니다.
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-primary">Login</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 	
 		</div>
 
@@ -192,8 +218,12 @@
 </main><!-- End #main -->
   
  <script>
+	 var token = $("meta[name='_csrf']").attr("content");
+	 var header = $("meta[name='_csrf_header']").attr("content");
+	 $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
   
   const bankSeq = "[[${bankSeq}]]";
+  let globalType = '';
   
 	window.onload = function(){
 		getWorkList(100);
@@ -239,24 +269,63 @@
 	}
 	
   $(document).on('click', ".tdBtn", function() {
-  	
-   	const work = $(this).attr('name'); //창구
-  	$('#work').text(work);
-    
-  	const type = $(this).attr('id');
-		let waitingNum = 0;
-		if (type == 100) {
-			waitingNum = "[[${nt100.standby}]]";
-		} else if (type == 200) {
-			waitingNum = "[[${nt200.standby}]]";
-		} else if (type == 300) {
-			waitingNum = "[[${nt300.standby}]]";
-		} else if (type == 400) {
-			waitingNum = "[[${nt400.standby}]]";
-		}
-		$('#waitingNum').text(waitingNum + '명');
-		$('#waitingTime').text('약 ' + waitingNum*10 + '분');
-		
+	  const userId = "[[${userId}]]";
+	  globalType = $(this).attr('id'); 
+	  if (userId !== "null") {
+			//창구
+	   	const work = $(this).attr('name'); 
+	  	$('#work').text(work);
+	    
+	   	//대기인원 및 시간
+	  	const type = $(this).attr('id');
+			let waitingNum = 0;
+			if (type == 100) {
+				waitingNum = "[[${nt100.standby}]]";
+			} else if (type == 200) {
+				waitingNum = "[[${nt200.standby}]]";
+			} else if (type == 300) {
+				waitingNum = "[[${nt300.standby}]]";
+			} else if (type == 400) {
+				waitingNum = "[[${nt400.standby}]]";
+			}
+			$('#waitingNum').text(waitingNum + '명');
+			$('#waitingTime').text('약 ' + waitingNum*10 + '분');
+			
+			//번호
+			$.ajax({
+				url: '/atlanbank/ticket/waiting/' + bankSeq + '/' + type,
+				type: 'get',
+				success: function (data) {
+				  	$('#number').text(data);
+				}
+			});
+			
+		  $('#alertModal').modal('hide');
+		  $('#issueTicketModal').modal('show');
+
+	  } else {
+		  console.log('userId 없음');
+		  $('#issueTicketModal').modal('hide');
+		  $('#alertModal').modal('show');
+	  }
+	  
+
+  });
+  
+  $(document).on('click', "#issueTicket", function() {
+	  console.log('globalType',globalType)
+	  $.ajax({
+		  url: '/atlanbank/ticket/addticket/' + bankSeq + '/' + globalType,
+		  type: 'post',
+		  success: function() {
+			  console.log('success')
+			  alert('발급완료')
+			  location.reload()
+		  },
+		  error: function() {
+			  alert('발급 실패')
+		  }
+	  })
   });
 	
 	/*

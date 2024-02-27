@@ -47,5 +47,10 @@
 		select coalesce(max(ticket_waiting_status_seq), 0)
 		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = #{type}
 	</select>
+	
+	<insert id="addTicket" parameterType="String">
+		insert into tblTicketWaitingStatus (ticket_waiting_status_seq, bank_seq, work_seq, member_seq, regdate, time, is_complete) values
+		(nvl((SELECT max(ticket_waiting_status_seq) FROM tblTicketWaitingStatus), 0) + 1, #{bankSeq}, #{type}, 1, default, TO_DATE('9:00', 'HH24:MI'), default)
+	</insert>
 
 </mapper>

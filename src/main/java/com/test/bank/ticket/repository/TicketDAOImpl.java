@@ -65,4 +65,9 @@ public class TicketDAOImpl implements TicketDAO{
 	public int getWaitingNumber(String bankSeq, String type) {
 		return mapper.getWaitingNumber(bankSeq, type);
 	}
+	
+	@Override
+	public int addTicket(String bankSeq, String type, String userId) {
+		return mapper.addTicket(bankSeq, type, userId);
+	}
 }

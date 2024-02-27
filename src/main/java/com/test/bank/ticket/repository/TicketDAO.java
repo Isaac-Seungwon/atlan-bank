@@ -28,5 +28,8 @@ public interface TicketDAO {
 
 	int getWaitingNumber(String bankSeq, String type);
 
+	int addTicket(String bankSeq, String type, String userId);
+
+
 	
 }

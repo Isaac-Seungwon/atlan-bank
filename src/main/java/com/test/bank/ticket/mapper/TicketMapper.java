@@ -27,6 +27,8 @@ public interface TicketMapper {
 	List<WorkListDTO> getWorkList(String bankSeq, String type);
 
 	int getWaitingNumber(String bankSeq, String type);
+
+	int addTicket(String bankSeq, String type, String userId);
 	
 	
 	
