@@ -1086,20 +1086,67 @@ commit;
 -- tblNews
 -- 소식 테이블에 데이터 삽입
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
-VALUES (1, '청년 주택드림 청약통장 출시 및 전환 안내',
-'항상 KB국민은행을 이용해주시는 고객 여러분께 진심으로 감사드립니다.
-
-「청년 주택드림 청약통장」이 출시됨에 따라 기존 「청년우대형 주택청약종합저축」은 「청년 주택드림 청약통장」 상품으로 일괄 전환되며 「주택청약종합저축」의 경우 조건이 충족되는 경우 전환이 가능함을 안내 드리니 아래 내용을 참고하시기 바랍니다. (2024.2.21일 기준)',
+VALUES (news_seq.nextVal,
+'Atlan Bank가 탄생헀습니다!',
+'고객님들의 많은 이용 부탁드립니다.',
 NULL,
-TO_DATE('2024-02-22', 'YYYY-MM-DD'),
-3013);
+TO_DATE('2024-01-01', 'YYYY-MM-DD'),
+16312);
 
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'Atlan Bank가 탄생헀습니다!', '고객님들의 많은 이용 부탁드립니다.', 'news_img1.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), 12507);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '「인천공항에서 받기」 환전 서비스 신설 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img2.png', TO_DATE('2024-01-14', 'YYYY-MM-DD'), 4831);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img3.png', TO_DATE('2024-01-18', 'YYYY-MM-DD'), 5839);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!', '고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」<br>평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님!<br>Atlan Bank 의팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!', 'news_img4.png', TO_DATE('2024-01-21', 'YYYY-MM-DD'), 4213);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '러시아 루블화(RUB) 외환거래 잠정중단 사전 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br>2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.<br>금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.<br>잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.<br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img5.png', TO_DATE('2024-01-21', 'YYYY-MM-DD'), 3551);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br>신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.<br>점검일시<br>2024.1.20(토) 21:00 ~ 2024.1.21(일) 04:00 (7시간)<br>점검영향<br>점검시간 내 신용관리서비스 순단 및 단절(1분 내외) 발생<br>보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다.<br>감사합니다.<br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img6.png', TO_DATE('2024-01-23', 'YYYY-MM-DD'), 1251);
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'전세사기 피해자 지원 안내',
+'전세사기 피해로 힘든 시간을 겪고 있는 피해자들이
+평화로운 일상을 되찾을 수 있도록 KB국민은행이 함께합니다.',
+'news_01_content.jpg',
+TO_DATE('2024-01-03', 'YYYY-MM-DD'),
+14503);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'청년 주택드림 청약통장 출시 및 전환 안내',
+'항상 KB국민은행을 이용해주시는 고객 여러분께 진심으로 감사드립니다.
+「청년 주택드림 청약통장」이 출시됨에 따라 기존 「청년우대형 주택청약종합저축」은 「청년 주택드림 청약통장」 상품으로 일괄 전환되며 「주택청약종합저축」의 경우 조건이 충족되는 경우 전환이 가능함을 안내 드리니 아래 내용을 참고하시기 바랍니다. (2024.2.21일 기준)',
+'news_02_content.png',
+TO_DATE('2024-01-14', 'YYYY-MM-DD'),
+8301);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.
+※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.',
+NULL,
+TO_DATE('2024-01-22', 'YYYY-MM-DD'),
+5839);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
+'고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」
+평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님!<br>Atlan Bank 의팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
+NULL,
+TO_DATE('2024-02-07', 'YYYY-MM-DD'),
+4213);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'러시아 루블화(RUB) 외환거래 잠정중단 사전 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.
+2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.
+금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.
+잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.
+※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.',
+NULL,
+TO_DATE('2024-02-15', 'YYYY-MM-DD'),
+3551);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.
+신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.
+보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다. 감사합니다.
+※ 기타 자세한 내용은 Atlan Bank 고객센터 또는 가까운 영업점으로 문의하시기 바랍니다.',
+NULL,
+TO_DATE('2024-02-28', 'YYYY-MM-DD'),
+1251);
 
 SELECT TO_CHAR(regdate, 'YYYY-MM-DD') AS regdate FROM tblNews; -- 날짜만 출력 (시간은 생략)
 

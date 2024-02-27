@@ -4,7 +4,6 @@ import java.util.Date;
 
 import lombok.Data;
 
-
 @Data
 public class EventDTO {
 	private int eventSeq; // 이벤트번호

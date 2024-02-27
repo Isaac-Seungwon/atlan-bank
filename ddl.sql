@@ -263,22 +263,22 @@ CREATE TABLE tblNews (
 );
 
 /* 소식 세부 정보 테이블 */
-CREATE TABLE tblNewsDetail (
-	news_detail_seq number PRIMARY KEY, /* 소식세부정보번호 */
-    attribute_name VARCHAR2(200), /* 속성명 */
-    attribute_value VARCHAR2(1000), /* 속성값 */
-    news_seq number NOT NULL, /* 소식번호 */
-    FOREIGN KEY (news_seq) REFERENCES News(news_seq)
-);
+--CREATE TABLE tblNewsDetail (
+--	news_detail_seq number PRIMARY KEY, /* 소식세부정보번호 */
+--    attribute_name VARCHAR2(200), /* 속성명 */
+--    attribute_value VARCHAR2(1000), /* 속성값 */
+--    news_seq number NOT NULL, /* 소식번호 */
+--    FOREIGN KEY (news_seq) REFERENCES News(news_seq)
+--);
 
 /* 소식 표 정보 테이블 */
-CREATE TABLE tblNewsTableInfo (
-    table_info_seq NUMBER PRIMARY KEY, /* 표정보번호 */
-    table_name VARCHAR2(200) NOT NULL, /* 표명 */
-    table_content VARCHAR2(1000) NOT NULL, /* 표내용 */
-    news_detail_seq number NOT NULL, /* 소식세부정보번호 */
-    FOREIGN KEY (news_detail_seq) REFERENCES tblNewsDetail(news_detail_seq)
-);
+--CREATE TABLE tblNewsTableInfo (
+--    table_info_seq NUMBER PRIMARY KEY, /* 표정보번호 */
+--    table_name VARCHAR2(200) NOT NULL, /* 표명 */
+--    table_content VARCHAR2(1000) NOT NULL, /* 표내용 */
+--    news_detail_seq number NOT NULL, /* 소식세부정보번호 */
+--    FOREIGN KEY (news_detail_seq) REFERENCES tblNewsDetail(news_detail_seq)
+--);
 
 /* 이벤트 테이블 */
 CREATE TABLE tblEvent (
