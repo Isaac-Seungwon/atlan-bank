@@ -10,5 +10,7 @@ public interface NewsDAO {
 	int getTotalCount(Map<String, String> map);
 
 	public List<NewsDTO> getNewsWithPaging(Map<String, String> map);
+
+	NewsDTO getNewsBySeq(int newsSeq);
 	
 }

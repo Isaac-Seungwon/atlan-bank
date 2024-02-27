@@ -1088,41 +1088,54 @@ commit;
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
 VALUES (news_seq.nextVal,
 'Atlan Bank가 탄생헀습니다!',
-'고객님들의 많은 이용 부탁드립니다.',
-NULL,
+'Atlan Bank, 금융 혁신의 새로운 시작!\n
+Atlan Bank가 새로운 길을 개척하며 도약합니다. 고객 여러분의 많은 이용을 기대합니다.\n
+고객 여러분의 소중한 자산을 지키는 데 최선을 다하겠습니다.
+고객 중심의 혁신적인 금융 서비스를 제공하며 편리한 금융 서비스로 여러분의 일상을 더욱 즐겁게 만들어 드리겠습니다.\n
+여러분의 미래를 함께 준비하고 금융의 변화를 이끄는 Atlan Bank가 되겠습니다.',
+'news_01_content.png',
 TO_DATE('2024-01-01', 'YYYY-MM-DD'),
 16312);
 
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
 VALUES (news_seq.nextVal,
 '전세사기 피해자 지원 안내',
-'전세사기 피해로 힘든 시간을 겪고 있는 피해자들이
-평화로운 일상을 되찾을 수 있도록 KB국민은행이 함께합니다.',
-'news_01_content.jpg',
+'전세사기 피해로 힘든 시간을 겪고 있는 피해자들이 평화로운 일상을 되찾을 수 있도록 Atlan Bank가 함께합니다.\n
+집행권원(지급명령, 전세보증금반환청구소송) 확보에 소요된 법률 비용과 경·공매 대행 서비스(HUG) 본인 부담 수수료를 지원합니다.\n
+- 지원문의 : HUG 경·공매지원센터\n
+- 안내전화 : 1588-1663\n',
+'news_02_content.jpg',
 TO_DATE('2024-01-03', 'YYYY-MM-DD'),
 14503);
 
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
 VALUES (news_seq.nextVal,
 '청년 주택드림 청약통장 출시 및 전환 안내',
-'항상 KB국민은행을 이용해주시는 고객 여러분께 진심으로 감사드립니다.
-「청년 주택드림 청약통장」이 출시됨에 따라 기존 「청년우대형 주택청약종합저축」은 「청년 주택드림 청약통장」 상품으로 일괄 전환되며 「주택청약종합저축」의 경우 조건이 충족되는 경우 전환이 가능함을 안내 드리니 아래 내용을 참고하시기 바랍니다. (2024.2.21일 기준)',
-'news_02_content.png',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+「청년 주택드림 청약통장」이 출시됨에 따라 기존 「청년우대형 주택청약종합저축」은 「청년 주택드림 청약통장」 상품으로 일괄 전환되며 「주택청약종합저축」의 경우 조건이 충족되는 경우 전환이 가능함을 안내 드리니 아래 내용을 참고하시기 바랍니다.\n
+- 기존 주택청약종합저축 가입자는 가입자격 충족 시 전환 가능 (영업점 방문)\n
+ㅇ 기존 주택청약종합저축을 전환해약 하고 「청년 주택드림 청약통장」으로 전환 신규\n
+ㅇ 전환 해약일 현재 기존계좌의 청약관련 인정금액(회차), 가입일은 전환계좌에서도 인정\n
+※ 기타 자세한 내용은 「청년 주택드림 청약통장」 약관을 확인하시거나 KB국민은행 고객센터(1599-1771) 또는 가까운 영업점으로 문의하시기 바랍니다.\n',
+'news_03_content.png',
 TO_DATE('2024-01-14', 'YYYY-MM-DD'),
 8301);
 
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
 VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내',
-'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.
-※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.',
-NULL,
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.\n
+Atlan Bank > 전체메뉴 > 자산관리 > 해당 기관과 관련된 업무를 중단합니다.\n
+보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다.\n
+감사합니다.',
+'news_04_content.png',
 TO_DATE('2024-01-22', 'YYYY-MM-DD'),
 5839);
 
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
 VALUES (news_seq.nextVal, '제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
-'고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」
-평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님!<br>Atlan Bank 의팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
+'고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」\n
+평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님! Atlan Bank의 팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
 NULL,
 TO_DATE('2024-02-07', 'YYYY-MM-DD'),
 4213);
@@ -1130,19 +1143,35 @@ TO_DATE('2024-02-07', 'YYYY-MM-DD'),
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
 VALUES (news_seq.nextVal,
 '러시아 루블화(RUB) 외환거래 잠정중단 사전 안내',
-'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.
-2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.
-금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.
-잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.\n
+금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.\n
+잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.\n
 ※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.',
 NULL,
 TO_DATE('2024-02-15', 'YYYY-MM-DD'),
 3551);
 
 INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
-VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.
-신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.
-보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다. 감사합니다.
+VALUES (news_seq.nextVal, '「소상공인·자영업자 상생지원금」 안내',
+'✔️신청 기간\n
+2024.03.01(금) 09:00 ~ 03.29(금) 17:00까지\n
+\n
+✔️신청 방법\n
+‘소상공인 상생지원금 홈페이지’(소상공인상생지원.kr)에서 신청\n
+[Microsoft Edge / Google Chrome / Naver Whale 브라우저로 접속]\n
+\n
+✔️현재 사업을 영위하고 있는 소상공인·자영업자로서 서민금융대출 및 고금리 취약차주 중 성실 상환자\n
+[KB국민은행 또는 서민금융진흥원으로부터 지원대상자로 선정되어 사전 안내(카카오톡 또는 LMS)를 받은 자에 한함]\n',
+'news_07_content.png',
+TO_DATE('2024-02-22', 'YYYY-MM-DD'),
+2456);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.\n
+보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다. 감사합니다.\n
 ※ 기타 자세한 내용은 Atlan Bank 고객센터 또는 가까운 영업점으로 문의하시기 바랍니다.',
 NULL,
 TO_DATE('2024-02-28', 'YYYY-MM-DD'),

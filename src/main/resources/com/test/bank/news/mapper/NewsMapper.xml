@@ -30,4 +30,9 @@
 		) WHERE rnum BETWEEN #{startIndex} AND #{endIndex}
 	</select>
 	
+	<select id="getNewsBySeq" parameterType="Integer" resultType="com.test.bank.news.domain.NewsDTO">
+	    SELECT * FROM tblNews
+	    WHERE news_seq = #{newsSeq}
+	</select>
+	
 </mapper>

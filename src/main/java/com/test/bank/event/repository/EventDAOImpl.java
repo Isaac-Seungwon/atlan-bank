@@ -34,4 +34,5 @@ public class EventDAOImpl implements EventDAO {
 	public EventDTO getEventBySeq(int eventSeq) {
 		return mapper.getEventBySeq(eventSeq);
 	}
+	
 }

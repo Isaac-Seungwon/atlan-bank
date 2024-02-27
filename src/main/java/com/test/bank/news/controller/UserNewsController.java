@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.bank.news.domain.NewsDTO;
 import com.test.bank.news.service.NewsService;
 
 @Controller
@@ -34,5 +35,14 @@ public class UserNewsController {
         
 		return "user/news/view";
 	}
-	
+
+    @GetMapping(value = "/detail.do")
+    public String detail(@RequestParam int seq, Model model) {
+        NewsDTO news = service.getNewsBySeq(seq);
+
+        model.addAttribute("news", news);
+
+        return "user/news/detail";
+    }
+
 }

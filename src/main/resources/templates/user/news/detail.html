@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>News</title>
+</head>
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
+<style>
+#news {
+	text-align: center;
+}
+
+#news-name {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#news-content {
+	text-align: left;
+	font-size: 1.1rem;
+	margin-bottom: 40px;
+}
+
+#news-date {
+	margin-top: 5px;
+}
+
+.container {
+	align-content: center;
+}
+
+.news-img img {
+	width: 70%;
+	margin-bottom: 50px;
+}
+</style>
+
+<body>
+	<!-- Start Main -->
+	<main id="news">
+	
+		<!-- Start Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/news/news_main.png');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>소식</h2>
+							<p>Atlan Bank 정보광장에서 새로운 소식을 확인하세요.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a th:href="@{/index.do}">Home</a></li>
+						<li><a th:href="@{/user/news/view.do}">소식</a></li>
+						<li>소식 상세정보</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- Start News Content -->
+		<div class="container">
+			<!-- 소식명 -->
+			<h2 id="news-name" th:text="${news.name}"></h2>
+			
+			<!-- 소식 작성일 -->
+			<h4 id="news-date" th:text="${#dates.format(news.regdate, 'yyyy.MM.dd.')}"></h4>
+			
+			<!-- Display Images -->
+			<div class="news-img">
+				<img th:if="${news.img != null}" th:src="@{/assets/img/news/{imgName}(imgName=${news.img})}" alt="News Image">
+			</div>
+			
+			<!-- 소식 콘텐츠 -->
+			<p id="news-content" th:utext="${news.content.replace('\n', '<br>')}"></p>
+			
+		</div>
+		<!-- End News Content -->
+		
+	</main>
+	<!-- End Main -->
+	
+</body>
+</html>

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.test.bank.event.domain.EventDTO;
 import com.test.bank.news.domain.NewsDTO;
 import com.test.bank.news.mapper.NewsMapper;
 
@@ -23,6 +24,11 @@ public class NewsDAOImpl implements NewsDAO {
 	@Override
 	public List<NewsDTO> getNewsWithPaging(Map<String, String> map) {
 		return mapper.getNewsWithPaging(map);
+	}
+
+	@Override
+	public NewsDTO getNewsBySeq(int newsSeq) {
+		return mapper.getNewsBySeq(newsSeq);
 	}
 	
 }

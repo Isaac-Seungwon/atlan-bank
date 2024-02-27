@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.test.bank.event.domain.EventDTO;
 import com.test.bank.news.domain.NewsDTO;
 import com.test.bank.news.repository.NewsDAO;
 
@@ -47,6 +48,10 @@ public class NewsService {
 
 	public List<NewsDTO> getNewsWithPaging(Map<String, String> map) {
 		return dao.getNewsWithPaging(map);
+	}
+
+	public NewsDTO getNewsBySeq(int newsSeq) {
+		return dao.getNewsBySeq(newsSeq);
 	}
 	
 }
