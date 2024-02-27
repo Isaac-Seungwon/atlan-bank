@@ -1069,7 +1069,7 @@ INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.n
 INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo_logo.jpg', '010-6789-0123');
 INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang_logo.png', '010-7897-1264');
 INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24_logo.png', '010-8901-2745');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu_logo.png', '010-9012-3356');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu_logo.jpg', '010-9012-3356');
 INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven_logo.png', '010-0123-4567');
 INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop_logo.jpg', '010-1533-5668');
 INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart_logo.jpg', '010-8345-6789');
@@ -1221,7 +1221,7 @@ TO_DATE('2024-01-21', 'YYYY-MM-DD'), TO_DATE('2024-02-21', 'YYYY-MM-DD'),
 INSERT INTO tblEvent (event_seq, name, content, visual_img, content_img, caution_img, start_date, end_date, hits_count, franchise_seq) VALUES (event_seq.nextVal,
 '[단 20일 한정]「AtlanBank 쿠폰북적금」with 이마트 가입 시 이마트 7천원 할인쿠폰 바로 지급!',
 'Atlan Bank 고객님 누구나! 할인쿠폰 받기 클릭하면 즉시 쿠폰함으로 이마트 할인 쿠폰이 지급됩니다.',
-'event_05_visual.jpg', 'event_05_content.png', NULL,
+'event_05_visual.jpg', 'event_05_content.jpg', NULL,
 TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-14', 'YYYY-MM-DD'),
 11832, 12);
 
