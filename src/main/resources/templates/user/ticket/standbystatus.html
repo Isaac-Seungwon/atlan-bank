@@ -31,27 +31,7 @@
 	#workTable {
 		padding: 20px !important;
 	}
-	/*
-	.ax5-ui-dialog {
-		width: 400px !important; 
-	}
-	
-	.ax5-ui-dialog .ax-dialog-header{
-		background: #31BB9E;
-		color: #fff;
-		border: none;
-		
-	}
-	
-	.ax5-ui-dialog table td, th{
-		border:1px solid rgba(0,0,0,.1);
-	}
-	
-	.ax5-ui-dialog table th{
-		width: 30%;
-	}
-	*/
-	
+
 	#issueTicketModal table th, #issueTicketModal table td {
 		border: 0px;
 	}
@@ -319,101 +299,15 @@
 		  type: 'post',
 		  success: function() {
 			  console.log('success')
-			  alert('발급완료')
+			  alert('발급이 완료되었습니다.')
 			  location.reload()
 		  },
 		  error: function() {
-			  alert('발급 실패')
+			  alert('발급이 실패하였습니다. 실패가 계속된다면 고객센터에 문의 바랍니다.')
 		  }
 	  })
   });
 	
-	/*
-	$(document).on('click', ".tdBtn", function() {
-		const dialog = new ax5.ui.dialog();
-		const type = $(this).attr('id');
-		
-		const bankName = "[[${bankName}]]";
-		const work = $(this).attr('name');
-		
-		let waitingNum = 0;
-		if (type == 100) {
-			waitingNum = "[[${nt100.standby}]]";
-		} else if (type == 200) {
-			waitingNum = "[[${nt200.standby}]]";
-		} else if (type == 300) {
-			waitingNum = "[[${nt300.standby}]]";
-		} else if (type == 400) {
-			waitingNum = "[[${nt400.standby}]]";
-		}
-		
-		$.ajax({
-			url: '/atlanbank/ticket/waiting/' + bankSeq + '/' + type,
-			type: 'get',
-			success: function (data) {
-				//let json = JSON.parse(data)['data'];
-				let tableTag = "";
-				tableTag += '<table style="width: 100%;">';
-			
-   			tableTag+='<colgroup>';
-   			tableTag+='<col style="width:100px;">';
-   			tableTag+='<col>';
-   			tableTag+='</colgroup>';
-   			tableTag+='<tr>';
-   			tableTag+='<th>지점</th>';
-   			tableTag+='<td>'+ bankName +'</td>';
-   			tableTag+='</tr>';
-   			
-   			tableTag+='<tr>';
-   			tableTag+='<th>창구</th>';
-   			tableTag+='<td>'+ work +'</td>';
-   			tableTag+='</tr>';
-   			
-   			tableTag+='<tr>';
-   			tableTag+='<th>번호</th>';
-   			tableTag+='<td>'+ data +'</td>';
-   			tableTag+='</tr>';
-   			
-   			tableTag+='<tr>';
-   			tableTag+='<th>대기인원</th>';
-   			tableTag+='<td>'+ waitingNum +'명</td>';
-   			tableTag+='</tr>';
-   			
-   			tableTag+='<tr>';
-   			tableTag+='<th>예상시간</th>';
-   			tableTag+='<td>약 '+ waitingNum*10 +'분</td>';
-   			tableTag+='</tr>';
-   			tableTag+='</table>';
-   			alert(tableTag);
-			},
-			error: function(xhr, status, error) {
-				alert('로그인이 필요한 서비스입니다.');
-			}
-		});
-	});
-	*/
-	
-/* 	
- 카카오톡 전송 기능 보류
-
-	function sendLink(number) {
-		console.log(number)
-	    Kakao.Link.sendCustom({
-	        templateId: 37293,
-	        templateArgs: {
-	        	title:
-	                '${loginVO.name}',
-	            description:
-	                '${locations}',
-	            number:
-	            	number
-	        },	
-	        callback: function(){
-	       	alert("번호표 안내가 전송되었습니다");
-	       	}
-	      })
-		}
-	 */
 	
   </script>
 
