@@ -2,5 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.test.bank.news.mapper.NewsMapper">
-
+	<resultMap id="NewsResultMap" type="com.test.bank.news.domain.NewsDTO">
+	    <id column="news_seq" property="newsSeq"/>
+	    <result column="name" property="name"/>
+	    <result column="content" property="content"/>
+	    <result column="img" property="img"/>
+	    <result column="regdate" property="regdate"/>
+	    <result column="hits_count" property="hitsCount"/>
+	</resultMap>
+    
+	<select id="getTotalCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*) FROM tblNews
+	    <if test="solting == 'user' and searchStatus == 'y'.toString()">
+		WHERE UPPER(${category}) LIKE '%' || UPPER(#{word}) || '%'
+	    </if>
+	</select>
+	
+	<select id="getNewsWithPaging" parameterType="map" resultType="com.test.bank.news.domain.NewsDTO">
+		SELECT * FROM (
+			SELECT n.*, ROWNUM AS rnum FROM (
+				SELECT *
+				FROM tblNews
+				ORDER BY tblNews.news_seq DESC) n
+			<if test="solting == 'user' and searchStatus == 'y'.toString()">
+			 WHERE UPPER(${category}) LIKE '%' || UPPER(#{word}) || '%'
+			</if>
+		) WHERE rnum BETWEEN #{startIndex} AND #{endIndex}
+	</select>
+	
 </mapper>
