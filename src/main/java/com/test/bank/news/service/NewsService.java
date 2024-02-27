@@ -50,8 +50,28 @@ public class NewsService {
 		return dao.getNewsWithPaging(map);
 	}
 
+	public List<NewsDTO> getLatestNews() {
+		List<NewsDTO> latestNews = dao.getLatestNews();
+		for (NewsDTO news : latestNews) {
+			String content = news.getContent();
+			int firstIndex = content.indexOf("\n");
+			if (firstIndex != -1) {
+				int secondIndex = content.indexOf("\n", firstIndex + 1);
+				if (secondIndex != -1) {
+					String trimmedContent = content.substring(0, secondIndex);
+					if (trimmedContent.length() > 3) {
+						news.setContent(trimmedContent.substring(0, trimmedContent.length() - 3));
+					} else {
+						news.setContent(trimmedContent);
+					}
+				}
+			}
+		}
+		return latestNews;
+	}
+
 	public NewsDTO getNewsBySeq(int newsSeq) {
 		return dao.getNewsBySeq(newsSeq);
 	}
-	
+
 }

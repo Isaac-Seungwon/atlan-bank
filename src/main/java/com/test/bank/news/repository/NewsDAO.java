@@ -11,6 +11,8 @@ public interface NewsDAO {
 
 	public List<NewsDTO> getNewsWithPaging(Map<String, String> map);
 
-	NewsDTO getNewsBySeq(int newsSeq);
+	List<NewsDTO> getLatestNews();
 	
+	NewsDTO getNewsBySeq(int newsSeq);
+
 }

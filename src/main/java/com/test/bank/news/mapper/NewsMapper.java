@@ -11,6 +11,8 @@ public interface NewsMapper {
 
 	public List<NewsDTO> getNewsWithPaging(Map<String, String> map);
 
+	List<NewsDTO> getLatestNews();
+	
 	NewsDTO getNewsBySeq(int newsSeq);
 
 }

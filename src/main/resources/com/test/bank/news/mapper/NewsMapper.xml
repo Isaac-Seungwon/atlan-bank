@@ -30,6 +30,13 @@
 		) WHERE rnum BETWEEN #{startIndex} AND #{endIndex}
 	</select>
 	
+	<select id="getLatestNews" resultType="com.test.bank.news.domain.NewsDTO">
+	    SELECT * FROM (
+	        SELECT * FROM tblNews
+	        ORDER BY news_seq DESC
+	    ) WHERE ROWNUM &lt;= 3
+	</select>
+	
 	<select id="getNewsBySeq" parameterType="Integer" resultType="com.test.bank.news.domain.NewsDTO">
 	    SELECT * FROM tblNews
 	    WHERE news_seq = #{newsSeq}

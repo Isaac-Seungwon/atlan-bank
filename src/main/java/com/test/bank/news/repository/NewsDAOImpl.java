@@ -25,6 +25,11 @@ public class NewsDAOImpl implements NewsDAO {
 	public List<NewsDTO> getNewsWithPaging(Map<String, String> map) {
 		return mapper.getNewsWithPaging(map);
 	}
+	
+	@Override
+	public List<NewsDTO> getLatestNews() {
+		return mapper.getLatestNews();
+	}
 
 	@Override
 	public NewsDTO getNewsBySeq(int newsSeq) {
