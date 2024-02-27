@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,6 +77,27 @@ public class TicketAjaxController {
 		}
 		return service.addTicket(bankSeq, type, userId, resp);
 	}
+	
+	//즐겨찾기 삭제
+	@DeleteMapping("/ticket/delfavorite/{bankSeq}")
+	public int delFavorite(@PathVariable("bankSeq") String bankSeq, HttpSession session) {
+		String userId = (String) session.getAttribute("id");
+		if (userId == null) {
+			return 0;
+		}
+		return service.delFavorite(bankSeq, userId);
+	}
+	
+	//즐겨찾기 추가
+	@PostMapping("/ticket/addfavorite/{bankSeq}")
+	public int addFavorite(@PathVariable("bankSeq") String bankSeq, HttpSession session) {
+		String userId = (String) session.getAttribute("id");
+		if (userId == null) {
+			return 0;
+		}
+		return service.addFavorite(bankSeq, userId);
+	}
+	
 	
 	
 	

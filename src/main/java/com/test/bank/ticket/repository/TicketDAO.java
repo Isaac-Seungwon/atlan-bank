@@ -30,6 +30,12 @@ public interface TicketDAO {
 
 	int addTicket(String bankSeq, String type, String userId);
 
+	int addFavorite(String bankSeq, String userId);
+
+	int findFavorite(String bankSeq, String userId);
+
+	int delFavorite(String bankSeq, String userId);
+
 
 	
 }

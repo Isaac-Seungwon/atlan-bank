@@ -121,6 +121,19 @@ public class TicketService {
 		return null;
 	}
 	
+	public int delFavorite(String bankSeq, String userId) {
+		return dao.delFavorite(bankSeq, userId);
+	}
+	
+	public int addFavorite(String bankSeq, String userId) {
+		return dao.addFavorite(bankSeq, userId);
+	}
+	
+	public int findFavorite(String bankSeq, String userId) {
+		return dao.findFavorite(bankSeq, userId);
+	}
+	
+	
 	public void redirectWithMessage(HttpServletResponse resp, String message) {
 		System.out.println("test");
 		resp.setContentType("text/html; charset=UTF-8");
@@ -132,6 +145,7 @@ public class TicketService {
 			e.printStackTrace();
 		}
 	}
+
 	
 	
 }

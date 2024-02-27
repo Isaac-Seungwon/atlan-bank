@@ -66,6 +66,9 @@ public class TicketController {
 		//session.removeAttribute("id");
 		if (userId == null) userId = "null";
 		
+		int bankFavorite = service.findFavorite(bankSeq, userId);
+		System.out.println("ticketcontroller bankfavoite: " + bankFavorite);
+		
 		mav.addObject("userId", userId);
 		mav.addObject("bankSeq", bankSeq);
 		mav.addObject("bankName", bankName);
@@ -74,6 +77,7 @@ public class TicketController {
 		mav.addObject("nt300", nt300);
 		mav.addObject("nt400", nt400);
 		mav.addObject("workList", workList);
+		mav.addObject("bankFavorite", bankFavorite);
 		mav.setViewName("user/ticket/standbystatus");
 		return mav;
 	}	

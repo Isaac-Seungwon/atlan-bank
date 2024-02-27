@@ -48,6 +48,48 @@
 		width: 30%;
 	}
 	
+	.bank-favorite-wrap {
+		display: inline-flex;
+		justify-content: center;
+		border: 1px solid black;
+		border-radius: 5px;
+		width: 200px;
+		
+	}
+	
+	.bank-favorite-wrap span {
+		display: flex;
+		font-size: 1.3em;
+		font-weight: 700;
+		align-items: center;
+	}
+	
+	.bank-favorite {
+		background-color: #fff;
+		border: 0px;
+	}
+	.bank-favorite:hover {
+		background-color: #fff;
+	}
+	
+	.bank-favorite:hover .favoiteBtn{
+		color:red;
+	}
+	
+	.favoiteBtn {
+		color: black;
+		border: none;
+		border-radius: 4px;
+		font-size: 40px;
+		cursor: pointer;
+		text-align: right; 
+		color:  #ccc;
+	}
+	
+	.fa-solid {
+		color: red;
+	}
+	
 </style>
 
 
@@ -84,7 +126,14 @@
    <div class="container" style="text-align: center">
     <div style="text-align: center">
 	    <h2 style="font-weight: 700" th:text="${bankName} + ' 지점 현황'"></h2>
-			<button id="${bankSeq}" class="btn btn-primary mt-3" style="height: 40px;" th:text="'즐겨찾기에 등록'"></button>
+	    <div class="bank-favorite-wrap p-2 mt-3">
+	    	<span>즐겨찾기</span>
+				<button class="bank-favorite" th:onclick="togglefavorite()">
+			    <i th:class="${bankFavorite > 0 ? 'fa-solid fa-heart favoiteBtn' : 'fa-regular fa-heart favoiteBtn'}"></i>
+				</button>
+			</div>
+
+			
 		</div>
 		
 		<div class="row">
@@ -307,6 +356,67 @@
 		  }
 	  })
   });
+	
+  /*
+	$(document).on('click', ".bank-favorite", function() {
+		$.ajax({
+			url: '/atlanbank/ticket/togglefavorite/' + bankSeq,
+			type: 'post',
+			success: function() {
+				alert('즐겨찾기 추가되었습니다.')
+			  location.reload()
+			},
+			error: function() {
+			  alert('즐겨찾기 추가에 실패하였습니다. 실패가 계속된다면 고객센터에 문의 바랍니다.')
+		  }
+		})
+	})
+	*/
+	//좋아요 버튼
+	function togglefavorite() {
+
+		var currentClass = $(event.target).hasClass("fa-regular") ? "fa-regular" : "fa-solid";
+
+		// 토글하여 반대 클래스를 적용합니다.
+		var newClass = currentClass === "fa-regular" ? "fa-solid" : "fa-regular";
+		
+		// 버튼의 클래스를 변경하여 색상을 토글합니다.
+		$(event.target).removeClass(currentClass).addClass(newClass);
+
+		if ($(event.target).hasClass("fa-regular")) {
+			$.ajax({
+				type: 'DELETE',
+				url: '/atlanbank/ticket/delfavorite/' + bankSeq,
+		  	success: result =>{
+		  		if (result == 1) {
+		  			alert('즐겨찾기에서 삭제되었습니다.');
+		  		} else {
+		  			alert('로그인이 필요한 서비스입니다.');
+		  		}
+		  	},
+		  	error : (a,b,c) => {
+		  		console.log(a,b,c,);
+		  	}
+			});
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: '/atlanbank/ticket/addfavorite/' + bankSeq,
+		  	success: result =>{
+		  		if (result == 1) {
+		  			alert('즐겨찾기에 추가되었습니다.');
+		  		} else {
+		  			alert('로그인이 필요한 서비스입니다.');
+		  		}
+		  	},
+		  	error : (a,b,c) => {
+		  		console.log(a,b,c);
+		  	}
+			});
+		}
+	}
+	
+	
 	
 	
   </script>
