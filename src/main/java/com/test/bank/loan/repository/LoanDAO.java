@@ -2,6 +2,7 @@ package com.test.bank.loan.repository;
 
 import java.util.List;
 
+import com.test.bank.loan.domain.AccountTransferDTO;
 import com.test.bank.loan.domain.InterestRateDTO;
 import com.test.bank.loan.domain.LoanCautionDTO;
 import com.test.bank.loan.domain.LoanDTO;
@@ -32,6 +33,8 @@ public interface LoanDAO {
 	List<LoanStatusDTO> getmemberloanstatus(String memberSeq);
 
 	void insertloanstatus(LoanStatusDTO dto);
+
+	AccountTransferDTO getaccounttransfer(int userseq);
 	
 	
 }

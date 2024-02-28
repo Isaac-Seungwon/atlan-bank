@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.test.bank.loan.domain.AccountTransferDTO;
 import com.test.bank.loan.domain.LoanCautionDTO;
 import com.test.bank.loan.domain.LoanDTO;
 import com.test.bank.loan.domain.LoanStatusDTO;
@@ -147,6 +148,17 @@ public class UserLoanController {
 		model.addAttribute("loanstatuslist", loanstatuslist);
 
 		return "user/loan/myloan";
+	}
+	
+	@GetMapping(value="/accountTransfer.do")
+	public String accountTransfer(Model model) {
+		
+		AccountTransferDTO dto = service.getaccounttransfer(userseq);
+		
+		model.addAttribute("accounttransferdto", dto);
+		System.out.println(dto.toString());
+		
+		return "user/loan/accountTransfer";
 	}
 	
 }

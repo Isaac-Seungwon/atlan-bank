@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.test.bank.loan.domain.AccountTransferDTO;
 import com.test.bank.loan.domain.InterestRateDTO;
 import com.test.bank.loan.domain.LoanCautionDTO;
 import com.test.bank.loan.domain.LoanDTO;
@@ -80,6 +81,11 @@ public class LoanDAOImpl implements LoanDAO {
 		dto.setMoney(dto.getMoney().replace(",",""));
 		dto.setMaxMoney(dto.getMaxMoney().replace(",",""));
 		mapper.insertloanstatus(dto);
+	}
+
+	@Override
+	public AccountTransferDTO getaccounttransfer(int userseq) {
+		return mapper.getaccounttransfer(userseq);
 	}
 	
 }

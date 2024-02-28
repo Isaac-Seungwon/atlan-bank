@@ -52,5 +52,9 @@
 	        (seqLoanStatus.nextVal, #{money}, to_date(#{startDate}, 'YYYY-MM-DD'), to_date(#{endDate}, 'YYYY-MM-DD'), #{loanInterestrate}, #{type}, #{interestrate}, #{maxMoney}, #{memberSeq}, #{loanSeq})
 	</insert>
 
+	<select id="getaccounttransfer" resultType="com.test.bank.loan.domain.AccountTransferDTO" parameterType="integer">
+		select * from tblbankbook where member_seq = #{userseq}
+	</select>
+
 
 </mapper>

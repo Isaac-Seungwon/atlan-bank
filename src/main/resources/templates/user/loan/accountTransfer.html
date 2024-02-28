@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>대출 신청</title>
+
+</head>
+<style>
+	.section-header h2 {
+		font-size: 32px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    padding-bottom: 0;
+	    color: #001973;
+	    position: relative;
+	    z-index: 2;
+	    padding-bottom: 20px;
+	    position: relative;
+	}
+	.section-header h2:after {
+	    content: "";
+	    position: absolute;
+	    display: block;
+	    width: 45px;
+	    height: 3px;
+	    background: var(--color-primary);
+	    bottom: 0;
+	    margin: auto;
+	}
+	.section-header h2 {
+	    padding-bottom: 20px;	
+	}
+	
+	/* new card list section */
+	.card-container {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.card-row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.card-box {
+		width: 50%;
+		height: 466px;
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 1000;
+	}
+	
+	.card-container .card-box:last-child {
+		padding-right: 0;
+	}
+	
+	.card-box-item {
+		width: 100%;
+		height: 100%;
+		border-radius: 12px;
+		padding: 24px;
+		position: relative;
+		top: 0;
+		left: 0;
+		backface-visibility: hidden;
+		transition: all .5s;
+	}
+	
+	.card-box-item.front::after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 50%;
+		bottom: 56px;
+		width: 202px;
+		height: 202px;
+		margin-left: -101px;
+		border-radius: 100%;
+		background: #FFF;
+		
+	}
+	
+	.card-title {
+		cursor: pointer;
+	}
+	
+	.front {
+		position: relative;
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
+		background: #F1F4F8;
+	}
+	
+	.back {
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+		background: #FFF;
+		border: 1px solid rgba(0, 0, 0, 0.16);
+	}
+	
+	.card-box:hover > .front {
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+	}
+	
+	.card-box:hover > .back {
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
+	}
+	
+	.card-img {
+		position: absolute;
+		left: 50%;
+		top: 245px;
+		width: 202px;
+		height: 128px;
+		margin-left: -101px;
+		z-index: 1;
+	}
+	
+	.card-img img {
+		max-width: 202px;
+		max-height: 202px;
+	}
+	
+	.vertical {
+		transform: rotate(90deg);
+	}
+	
+	/* card annual fee */
+	.card-annual-fee {
+		padding: 10px 0;
+		font-size: .9rem;
+	}
+	
+	.card-annual-fee-sub-title > span:first-child {
+		float: left;
+	}
+	
+	.card-annual-fee-sub-title > span:last-child {
+		float: right;
+	}
+	
+	.card-annual-fee-sub-title::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	.card-annual-fee-sub-title span {
+		margin-bottom: 0;
+		font-weight: bold;
+	}
+	
+	.card-annual-fee-sub-title span:nth-child(2) {
+		cursor: pointer;
+	}
+	
+	.card-annual-fee > hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	.card-annual-fee-box {
+		display: inline-block;
+		width: 49%;
+	}
+	
+	.card-annual-fee-box span {
+		font-weight: 500;
+	}
+</style>
+<body>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>대출</h2>
+              <p>돈이 필요한 순간 Atlan Bank 대출</p>
+              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="/atlanbank/index.do">Home</a></li>
+            <li><a href="#">계좌이체</a></li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="service" class="services pt-0" style="margin-top: 20px;">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <span>대출상품</span>
+          <h2>대출상품</h2>
+        </div>
+
+        <div class="card-container">
+			<div class="card-row">
+				<div class="card-box">
+					<!-- front -->
+					<div class="card-box-item front">
+						<div class="card-title">
+							<h3 th:text="${accounttransferdto.bankBookSeq}"></h3>
+							<p th:text="${accounttransferdto.bankBookSeq}"></p>
+						</div>
+						<div class="card-img">
+							123
+						</div>
+					</div>
+						
+					<!-- back -->
+					<div class="card-box-item back">
+						<div class="card-title">
+							<h3>123</h3>
+							<p>123</p>
+						</div>
+						<div class="card-annual-fee">
+							<div class="card-annual-fee-sub-title">
+								<span>연회비</span>
+								<span>자세히보기<i class="bi bi-caret-right-fill"></i></span>
+							</div>
+							<hr>
+							<div class="card-annual-fee-box">
+								<span>
+									123
+								</span>
+								<span></span>
+							</div>
+						</div>
+						<div class="button-container">
+							<button type="button">상세보기</button>
+							<button type="button">카드신청</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+
+      </div>
+    </section><!-- End Services Section -->
+</main><!-- End #main -->
+</body>
+<script>
+
+</script>
+</html>
