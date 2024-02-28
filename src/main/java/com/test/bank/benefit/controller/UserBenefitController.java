@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.test.bank.benefit.service.BenefitService;
 
 @Controller
-@RequestMapping(value = "/benefit")
+@RequestMapping(value = "/user/benefit")
 public class UserBenefitController {
 
 	@Autowired
 	private BenefitService service;
 
-	@GetMapping(value="/view.do")
+	@GetMapping(value = "/view.do")
 	public String view(Model model) {
-		
+
 		return "user/benefit/view";
 	}
 
