@@ -15,6 +15,13 @@
         <result column="franchise_seq" property="franchiseSeq"/>
     </resultMap>
     
+    <resultMap id="FranchiseResultMap" type="com.test.bank.event.domain.FranchiseDTO">
+	    <id column="franchise_seq" property="franchiseSeq"/>
+	    <result column="name" property="name"/>
+	    <result column="img" property="img"/>
+	    <result column="tel" property="tel"/>
+	</resultMap>
+    
 	<select id="getTotalCount" parameterType="map" resultType="int">
 	    SELECT COUNT(*) FROM tblEvent
 	    <if test="solting == 'user' and searchStatus == 'y'.toString()">
@@ -44,6 +51,11 @@
 	<select id="getEventBySeq" parameterType="Integer" resultType="com.test.bank.event.domain.EventDTO">
 	    SELECT * FROM tblEvent
 	    WHERE event_seq = #{eventSeq}
+	</select>
+
+	<select id="getFranchiseBySeq" parameterType="Integer" resultType="com.test.bank.event.domain.FranchiseDTO">
+		SELECT * FROM tblFranchise
+		WHERE franchise_seq = #{franchiseSeq}
 	</select>
 	
 </mapper>

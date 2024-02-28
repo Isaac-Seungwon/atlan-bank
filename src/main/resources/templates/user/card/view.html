@@ -6,6 +6,17 @@
 <title>카드</title>
 
 <style>
+	/* Font */
+	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+	
+	body {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+
 	/* section empty space */
 	section {
 		margin: 20px 135px;
@@ -50,7 +61,7 @@
 		margin-right: 10px;
 	}
 	
-	/* ===== new card list ===== */
+	/* new card list section */
 	.card-container {
 		display: flex;
 		flex-direction: column;
@@ -154,6 +165,7 @@
 		transform: rotate(90deg);
 	}
 	
+	/* card annual fee */
 	.card-annual-fee {
 		padding: 10px 0;
 		font-size: .9rem;
@@ -178,11 +190,45 @@
 		font-weight: bold;
 	}
 	
+	.card-annual-fee-sub-title span:nth-child(2) {
+		cursor: pointer;
+	}
+	
 	.card-annual-fee > hr {
 		margin: 10px 1px;
 		opacity: .1;
 	}
 	
+	.card-annual-fee-box {
+		display: inline-block;
+		width: 49%;
+	}
+	
+	.card-annual-fee-box span {
+		font-weight: 500;
+	}
+	
+	/* annual fee modal */
+	.modal-content {
+		width: 80%;
+	}
+	
+	.modal-dialog-centered {
+		justify-content: center;
+	}
+	
+	button.close {
+		border: 0;
+		background: #FFF;
+		font-size: 30px;
+	}
+	
+	.modal-footer {
+		border-top: 0;
+		justify-content: center;
+	}
+	
+	/* card button */
 	.card-box-item.back .button-container {
 		position: absolute;
 		left: 0;
@@ -208,9 +254,10 @@
 	
 	.button-container > button:last-child {
 		border: 0;
-		background: #039be5;
+		background: #0d6efd;
 		width: 116px;
 		height: 46px;
+		color: #FFF;
 	}
 	
 	/* card benefits list */
@@ -350,9 +397,9 @@
 			<div id="search-bar">
 				<h3>일상 속의 특별한 혜택을 만날 수 있는 아틀란카드를 검색해 보세요.</h3>
 				
-				<form id="form-search" method="" action="">
+				<form id="form-search" method="GET" action="/atlanbank/user/card/search.do">
 					<div>
-						<input type="text" id="search-box">
+						<input type="text" id="search-box" name="word" placeholder="카드명을 입력하세요.">
 						<i class="bi bi-search" onclick="submit();"></i>
 					</div>
 				</form>
@@ -394,10 +441,10 @@
 							<div class="card-annual-fee">
 								<div class="card-annual-fee-sub-title">
 									<span>연회비</span>
-									<span>자세히보기<i class="bi bi-caret-right-fill"></i></span><!-- 추후 연회비 모달 추가 필요 -->
+									<span th:onclick="openModal([[${card.name}]], [[${card.feeList}]])">자세히보기<i class="bi bi-caret-right-fill"></i></span>
 								</div>
 								<hr>
-								<div th:each="fee : ${card.feeList}">
+								<div class="card-annual-fee-box" th:each="fee : ${card.feeList}">
 									<span>
 										<img th:if="${fee.brand} == '국내 전용'" th:src="@{/assets/img/card/logo-domestic.png}">
 										<img th:if="${fee.brand} == 'VISA'" th:src="@{/assets/img/card/logo-visa.png}">
@@ -407,7 +454,7 @@
 										<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
 										<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
 									</span>
-									<span th:text="${fee.annualFee}"></span>
+									<span th:text="${fee.annualFee} == 0 ? '연회비 없음' : ${fee.annualFee}"></span>
 								</div>
 							</div>
 							<div class="button-container">
@@ -417,6 +464,27 @@
 						</div>
 					</div>
 
+				</div>
+			</div>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="annualFeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modal"></h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+						<div class="modal-body">
+							<h5 style="font-size: 1rem; font-weight: 600;">연회비 안내</h5>
+							<table id="m-table" style="width: 100%;"></table>
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeModal()">확인</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			
@@ -603,6 +671,55 @@
 			}
 			
 		});
+		
+		/* Modal */
+		function openModal(name, feeList) {
+			
+			//init fee table
+			$('#m-table').html('');
+			
+			//add card name
+			$('#modal').text(name);
+			
+			//add fee table
+			feeList.forEach(function(obj) {
+				
+				let brand = obj.brand;
+				let fee = obj.annualFee;
+				let newFee = (fee == 0) ? '연회비 없음' : fee;
+				let imgSrc = brandImg[brand];
+				
+				$('#m-table').append(`
+					<tr style="width: 100%; border-top: 1px solid rgba(0, 0, 0, .15); border-bottom: 1px solid rgba(0, 0, 0, .15);">
+						<td style="width: 20%; text-align: center; padding: 5px;">
+							<img src="${imgSrc}">
+						</td>
+						<td style="width: 55%;">${brand}</td>
+						<td style="width: 25%; text-align: right; padding-right: 5px;">${newFee}</td>
+					</tr>
+				`);
+				
+			});
+			
+			$('#annualFeeModal').modal('show');
+		}
+		
+		function closeModal() {
+			$('#annualFeeModal').modal('hide');
+		}
+		
+		//brand img mapping
+		const brandImg = {
+			'국내 전용' : '/atlanbank/assets/img/card/logo-domestic.png',
+			'VISA' : '/atlanbank/assets/img/card/logo-visa.png',
+			'MASTER' : '/atlanbank/assets/img/card/logo-mastercard.png',
+			'AMEX' : '/atlanbank/assets/img/card/logo-americanexpress.png',
+			'JCB' : '/atlanbank/assets/img/card/logo-jcb.png',
+			'UPI(K-WORLD)' : '/atlanbank/assets/img/card/logo-unionpay-kworld.png',
+			'JCB(K-WORLD)' : '/atlanbank/assets/img/card/logo-jcb-kworld.png'
+		};
+		
+		
 	</script>
 
 

@@ -32,6 +32,7 @@ DELETE FROM tblMemberCardHistory;
 DELETE FROM tblMemberCard;
 DELETE FROM tblCardUsageGuide;
 DELETE FROM tblCardAnnualFee;
+DELETE FROM tblAnnualFee;
 DELETE FROM tblCard;
 DELETE FROM tblBenefits;
 DELETE FROM tblMember;
@@ -61,12 +62,14 @@ DROP TABLE tblLoanUsageGuide;
 DROP TABLE tblLoanCaution;
 DROP TABLE tblLoanProductGuide;
 DROP TABLE tblInterestRate;
+DROP TABLE tblPerformanceBenefit;
 DROP TABLE tblCardBenefit;
 DROP TABLE tblPayment;
 DROP TABLE tblMemberCardHistory;
 DROP TABLE tblMemberCard;
 DROP TABLE tblCardUsageGuide;
 DROP TABLE tblCardAnnualFee;
+DROP TABLE tblAnnualFee;
 DROP TABLE tblCard;
 DROP TABLE tblBenefits;
 DROP TABLE tblMember;
@@ -100,12 +103,49 @@ DROP SEQUENCE seqLoanCaution;
 DROP SEQUENCE card_seq;
 DROP SEQUENCE card_annual_fee_seq;
 DROP SEQUENCE card_usage_guide_seq;
-DROP SEQUENCE benefits_seq;
+--DROP SEQUENCE benefits_seq;
+DROP SEQUENCE performance_benefit_seq;
 DROP SEQUENCE card_benefit_seq;
 DROP SEQUENCE member_card_seq;
 DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE payment_seq;
 DROP SEQUENCE forex_seq;
+
+
+-- CREATE SEQUENCE
+CREATE SEQUENCE member_seq;
+CREATE SEQUENCE bank_seq;
+CREATE SEQUENCE work_seq;
+CREATE SEQUENCE detail_work_seq;
+CREATE SEQUENCE bank_work_seq;
+CREATE SEQUENCE doc_seq;
+CREATE SEQUENCE work_doc_seq;
+CREATE SEQUENCE bank_favorite_seq;
+CREATE SEQUENCE ticket_waiting_status_seq;
+CREATE SEQUENCE franchise_seq;
+CREATE SEQUENCE news_seq;
+CREATE SEQUENCE event_seq;
+CREATE SEQUENCE eventparticipation_seq;
+CREATE SEQUENCE benefit_seq;
+CREATE SEQUENCE checkAttendance_seq;
+CREATE SEQUENCE comment_seq;
+CREATE SEQUENCE seqLoanStatus;
+CREATE SEQUENCE seqRepayment;
+CREATE SEQUENCE seqLoan;
+CREATE SEQUENCE seqLoanProductGuide;
+CREATE SEQUENCE seqInterestRate;
+CREATE SEQUENCE seqLoanUsageGuide;
+CREATE SEQUENCE seqLoanCaution;
+CREATE SEQUENCE card_seq;
+CREATE SEQUENCE card_annual_fee_seq;
+CREATE SEQUENCE card_usage_guide_seq;
+--CREATE SEQUENCE benefits_seq;
+CREATE SEQUENCE card_benefit_seq;
+CREATE SEQUENCE member_card_seq;
+CREATE SEQUENCE member_card_history_seq;
+CREATE SEQUENCE payment_seq;
+CREATE SEQUENCE forex_seq;
+
 
 -- CREATE TABLE
 /* 회원 테이블 */
@@ -212,11 +252,29 @@ CREATE TABLE tblFranchise (
 CREATE TABLE tblNews (
     news_seq NUMBER PRIMARY KEY, /* 소식번호 */
     name VARCHAR2(200) NOT NULL, /* 소식명 */
-    content VARCHAR2(1000) NOT NULL, /* 소식내용 */ 
+    content CLOB NOT NULL, /* 소식내용 */ 
     img VARCHAR2(100), /* 소식이미지 */
     regdate DATE DEFAULT TRUNC(SYSDATE) NOT NULL, /* 작성시각 */
     hits_count NUMBER DEFAULT 0 NOT NULL /* 조회수 */
 );
+
+/* 소식 세부 정보 테이블 */
+--CREATE TABLE tblNewsDetail (
+--	news_detail_seq number PRIMARY KEY, /* 소식세부정보번호 */
+--    attribute_name VARCHAR2(200), /* 속성명 */
+--    attribute_value VARCHAR2(1000), /* 속성값 */
+--    news_seq number NOT NULL, /* 소식번호 */
+--    FOREIGN KEY (news_seq) REFERENCES News(news_seq)
+--);
+
+/* 소식 표 정보 테이블 */
+--CREATE TABLE tblNewsTableInfo (
+--    table_info_seq NUMBER PRIMARY KEY, /* 표정보번호 */
+--    table_name VARCHAR2(200) NOT NULL, /* 표명 */
+--    table_content VARCHAR2(1000) NOT NULL, /* 표내용 */
+--    news_detail_seq number NOT NULL, /* 소식세부정보번호 */
+--    FOREIGN KEY (news_detail_seq) REFERENCES tblNewsDetail(news_detail_seq)
+--);
 
 /* 이벤트 테이블 */
 CREATE TABLE tblEvent (
@@ -345,7 +403,6 @@ CREATE TABLE tblLoanStatus (
 	member_seq        NUMBER REFERENCES tblMember (member_seq) NOT NULL  -- 회원번호
 );
 
---=============================== Card ===================================--
 /* 카드 */
 CREATE TABLE tblCard (
 	card_seq NUMBER PRIMARY KEY, /* 카드종류번호 */
@@ -357,11 +414,17 @@ CREATE TABLE tblCard (
     orientation NUMBER DEFAULT 0 NOT NULL /* 이미지방향(0: horizontal, 1: vertical) */
 );
 
+/* 연회비 */
+CREATE TABLE tblAnnualFee (
+	annual_fee_no VARCHAR2(50) PRIMARY KEY, /* 연회비번호 */
+	brand VARCHAR2(100) NOT NULL, /* 브랜드 */
+	annual_fee NUMBER NOT NULL /* 연회비 */
+);
+
 /* 카드연회비 */
 CREATE TABLE tblCardAnnualFee (
 	card_annual_fee_seq NUMBER PRIMARY KEY, /* 카드연회비번호 */
-	brand VARCHAR2(100) NOT NULL, /* 브랜드 */
-	annual_fee NUMBER NOT NULL, /* 연회비 */
+	annual_fee_no VARCHAR2(50) REFERENCES tblAnnualFee(annual_fee_no) NOT NULL, /* 연회비번호 */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL /* 카드종류번호 */
 );
 
@@ -375,27 +438,28 @@ CREATE TABLE tblCardUsageGuide (
 
 /* 카드혜택 */
 CREATE TABLE tblBenefits (
-    benefits_seq NUMBER PRIMARY KEY, /* 혜택번호 */
+    benefits_no VARCHAR2(50) PRIMARY KEY, /* 혜택번호 */
     type NUMBER NOT NULL, /* 혜택종류(1: 할인, 2: 적립, 3: 항공마일리지적립) */
     subject VARCHAR2(200) NOT NULL, /* 혜택명 */
     content VARCHAR2(2000) NOT NULL, /* 혜택 상세 */
-    prev_month_perf NUMBER NOT NULL, /* 전월실적(실적별 구분 30/50/100, 단위: 만원) */ --실적 1개로 통일
 	rate NUMBER NOT NULL, /* 할인/적립율 */
-	limit NUMBER NOT NULL /* 월 할인/적립 한도 */
+	limit NUMBER NOT NULL, /* 월 할인/적립 한도 */
+    prev_month_perf NUMBER NOT NULL, /* 전월실적(실적별 구분 30/50/100, 단위: 만원) */ --실적 1개로 통일
+    img VARCHAR2(200) NOT NULL /* 혜택 이미지 */
 );
 
 /* 카드별혜택 */
 CREATE TABLE tblCardBenefit (
 	card_benefit_seq NUMBER PRIMARY KEY, /* 카드혜택번호 */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
-    benefits_seq NUMBER REFERENCES tblBenefits(benefits_seq) NOT NULL /* 혜택번호 */
+    benefits_no VARCHAR2(50) REFERENCES tblBenefits(benefits_no) NOT NULL /* 혜택번호 */
 );
 
 /* 회원카드 */
 CREATE TABLE tblMemberCard (
 	member_card_seq NUMBER PRIMARY KEY, /* 회원카드번호 */
 	member_seq NUMBER REFERENCES tblMember(member_seq) NOT NULL, /* 회원번호 */
-    card_no NUMBER NOT NULL, /* 카드번호(16자리) */
+    card_no NUMBER UNIQUE NOT NULL, /* 카드번호(16자리) */
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
 	exp DATE NOT NULL, /* 만료일 */
 	cvc NUMBER NOT NULL, /* 카드인증코드 */
@@ -431,40 +495,3 @@ CREATE TABLE tblForex(
     buy_basic_rate number not null,  --매매 기준율
     usd_change_rate number not null  -- 미화 환산율
 );    
-
-
-
--- CREATE SEQUENCE
-CREATE SEQUENCE member_seq;
-CREATE SEQUENCE bank_seq;
-CREATE SEQUENCE work_seq;
-CREATE SEQUENCE detail_work_seq;
-CREATE SEQUENCE bank_work_seq;
-CREATE SEQUENCE doc_seq;
-CREATE SEQUENCE work_doc_seq;
-CREATE SEQUENCE bank_favorite_seq;
-CREATE SEQUENCE ticket_waiting_status_seq;
-CREATE SEQUENCE franchise_seq;
-CREATE SEQUENCE news_seq;
-CREATE SEQUENCE event_seq;
-CREATE SEQUENCE eventparticipation_seq;
-CREATE SEQUENCE benefit_seq;
-CREATE SEQUENCE checkAttendance_seq;
-CREATE SEQUENCE comment_seq;
-CREATE SEQUENCE seqLoanStatus;
-CREATE SEQUENCE seqRepayment;
-CREATE SEQUENCE seqLoan;
-CREATE SEQUENCE seqLoanProductGuide;
-CREATE SEQUENCE seqInterestRate;
-CREATE SEQUENCE seqLoanUsageGuide;
-CREATE SEQUENCE seqLoanCaution;
---카드
-CREATE SEQUENCE card_seq;
-CREATE SEQUENCE card_annual_fee_seq;
-CREATE SEQUENCE card_usage_guide_seq;
-CREATE SEQUENCE benefits_seq;
-CREATE SEQUENCE card_benefit_seq;
-CREATE SEQUENCE member_card_seq;
-CREATE SEQUENCE member_card_history_seq;
-CREATE SEQUENCE payment_seq;
-CREATE SEQUENCE forex_seq;

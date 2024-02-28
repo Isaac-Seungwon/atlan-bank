@@ -15,9 +15,12 @@ public class CardDTO {
 	private String img;
 	private String orientation;
 	
-	//연회비
+	//Card Annual Fee
 	private List<CardAnnualFeeDTO> feeList;
 	
-	//혜택
+	//Card Benefits
 	private List<BenefitsDTO> benefitList;
+	
+	//Card Usage Guide
+	private List<CardUsageGuideDTO> cardUsageGuideList;
 }

@@ -6,6 +6,17 @@
 <title>카드</title>
 
 <style>
+	/* Font */
+	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+	
+	body {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
 	/* section empty space */
 	section {
 		margin: 20px 135px;
@@ -68,13 +79,25 @@
 		background: #F1F4F8;
 		height: auto;
 		padding-top: 20px;
+		border-radius: 12px;
+	}
+	
+	.card-detail-box > div:first-child {
+		display: flex;
+		justify-content: center;
 	}
 	
 	.card-detail-box h3 {
-		font-size: 20px;
+		/* font-size: 20px;
 		text-align: center;
 		padding: 20px;
-		font-weight: bold;
+		font-weight: bold; */
+		display: inline-block;
+		background: rgba(0, 0, 0, .15);
+		border-radius: 12px;
+		padding: 5px 10px;
+		font-weight: 400;
+		font-size: 16px;
 	}
 	
 	.card-detail-summary {
@@ -104,7 +127,7 @@
 		width: 50%;
 	}
 	
-	.card-detail-summary ul span {
+	.card-detail-summary ul span.bold {
 		font-weight: bold;
 	}
 	
@@ -144,14 +167,116 @@
 	}
 	
 	.tabs div {
-		display: none;
+		/* display: none; */
 	}
 	
 	.on {
 		display: block;
 	}
 	
+	/* Common Notice */
+	.consumer-right-container {
+		margin: 30px 0 15px 0;
+	}
+	
+	.consumer-right-content {
+		border: 1px solid #e1e1e1;
+		border-radius: 10px;
+	}
+	
+	.consumer-right-content h4 {
+		font-size: 16px;
+		font-weight: bold;
+	    padding-bottom: 0.7rem;
+	}
+	
+	.consumer-right-content ul {
+		list-style: none;
+		width: 100%;
+		overflow: hidden;
+		margin-bottom: 0;
+	}
+	
+	.consumer-right-content ul li {
+		float: left;
+		width: 50%;
+		padding: 30px;
+	}
+	
+	.consumer-right-content ul li:nth-child(2) {
+		border-left: 1px solid #e1e1e1;
+		
+	}
+	
+	.consumer-right-content ul li:nth-child(3) {
+		border-top: 1px solid #e1e1e1;
+	}
+	
+	.consumer-right-content ul li:nth-child(4) {
+		border-left: 1px solid #e1e1e1;
+		border-top: 1px solid #e1e1e1;
+	}
+	
+	.consumer-right-content ul li a {
+		border: 1px solid rgba(0, 0, 0, 0.6);
+	    padding: 5px;
+	    border-radius: 10px;
+	    font-size: 14px;
+	    color: rgba(0, 0, 0, 0.87);
+	}
+	
+	.common-notice-container {
+		padding: 15px 0;
+	}
+	
+	.common-notice-content {
+		border: 1px solid #e1e1e1;
+		background: #f9f9f9;
+		border-radius: 10px;
+		padding: 15px 35px;
+	}
+	
+	.common-notice-content > p {
+		margin-bottom: 5px;
+		font-size: 15px;
+		font-weight: 600;
+	}
+	
+	.common-notice-container > p {
+		text-align: right;
+	}
+	
+	/* Main Benefits */
+	.main-benefit-box {
+		border: 1px solid #F9FAFC;
+		border-radius: 5px;
+		width: 50%;
+		display: flex;
+		align-items: center;
+		padding: 10px;
+	}
+	
+	.main-benefit-box div:first-child {
+		margin-right: 10px;
+	}
 
+	/* Annual Fee */
+	.annual-fee-table {
+		width: 100%;
+		border: 1px solid #e1e1e1;
+		text-align: center;
+		border-radius: 10px;
+	}
+	
+	.annual-fee-table th,
+	.annual-fee-table td {
+		padding: 10px;
+		border: 1px solid #e1e1e1;
+	}
+	
+	.annual-fee-table th {
+		background: #f9f9f9;
+	}
 </style>
 </head>
 
@@ -175,7 +300,7 @@
 					<ol>
 						<li><a href="/atlanbank/index.do">Home</a></li>
 						<li><a href="/atlanbank/user/card/view.do">Card</a></li>
-						<li><a href="/atlanbank/user/card/credit/view.do">Credit Card</a></li>
+						<li><a href="/atlanbank/user/card/debit/view.do">Debit Card</a></li>
 						<li th:text="${card.name}"></li>
 					</ol>
 				</div>
@@ -192,7 +317,7 @@
 			
 			<div class="card-detail-box">
 				<div>
-					<h3>신용카드</h3>
+					<h3>체크카드</h3>
 				</div>
 				
 				<div class="card-detail-summary">
@@ -200,11 +325,13 @@
 						<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 					</div>
 					<div>
-						<ul>
+						<ul style="width: 100%;">
 							<li th:each="benefit : ${card.benefitList}">
 								<span th:text="${benefit.subject}"></span>
-								<span th:text="|${benefit.rate}%|"></span>
-								<span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|" class="bold"></span>
+								<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+								<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+								<span th:if="${benefit.type == '3'}">마일 적립</span>
 							</li>
 						</ul>
 					</div>
@@ -212,6 +339,10 @@
 				
 				<div class="hr">
 					<hr>
+				</div>
+				
+				<div style="display: flex; justify-content: center;">
+					<h5 style="font-size: 14px; font-weight: 400; margin: 5px 53px 0 53px; display: inline-block; background: rgba(0, 0, 0, .15); border-radius: 12px; padding: 5px 10px;">연회비</h5>
 				</div>
 				
 				<div class="card-annual-fee-container">
@@ -235,77 +366,129 @@
 			
 			<div class="card-detail-contents">
 				<ul>
-					<li><a href="javascript:void(0);" data-value="main-benefit-tab">주요혜택</a></li>
-					<li><a href="javascript:void(0);" data-value="detail-benefit-tab">상세혜택</a></li>
-					<li><a href="javascript:void(0);" data-value="annual-fee-tab">연회비</a></li>
-					<li><a href="javascript:void(0);" data-value="usage-guide-tab">확인사항</a></li>
+					<li><a href="javascript:void(0);" data-value="main-benefit-tab" onclick="switchMenu('main-benefit-tab')">주요혜택</a></li>
+					<li><a href="javascript:void(0);" data-value="detail-benefit-tab" onclick="switchMenu('detail-benefit-tab')">상세혜택</a></li>
+					<li><a href="javascript:void(0);" data-value="annual-fee-tab" onclick="switchMenu('annual-fee-tab')">연회비</a></li>
+					<li><a href="javascript:void(0);" data-value="usage-guide-tab" onclick="switchMenu('usage-guide-tab')">확인사항</a></li>
 				</ul>
 			
 				<div class="tabs">
-					<!-- 주요혜택 탭 -->
+					<!-- Main Benefits Tab -->
 					<div id="main-benefit-tab">
 						<h3>주요혜택</h3>
-						<div th:each="benefit : ${card.benefitList}">
-							<span th:text="${benefit.subject}"></span>
-							<span th:text="|${benefit.rate}%|"></span>
-							<span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+						
+						<!-- 1 Main Benefits -->
+						<div style="display: flex; flex-wrap: wrap;">
+							<div th:each="benefit : ${card.benefitList}" class="main-benefit-box">
+								<div>
+									<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
+								</div>
+								
+								<div>
+									<span th:text="${benefit.subject}"></span>
+									<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
+									<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+									<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+									<span th:if="${benefit.type == '3'}">마일 적립</span>
+								</div>
+							</div>
 						</div>
 					
 					</div>
 					
-					<!-- 상세혜택 탭 -->
+					<!-- Benefits Detail Tab -->
 					<div id="detail-benefit-tab">
 						<h3>상세혜택</h3>
 					
+						<!-- 1 Card Detail Benefits -->
+						<div th:each="benefit : ${card.benefitList}" style="margin: 25px 0; border-bottom: 1px solid #e1e1e1;">
+							<div style="display: flex; align-items: center;">
+								<div style="margin-right: 15px;">
+									<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
+								</div>
+								<h4>
+									<span th:text="${benefit.subject}"></span>
+									<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
+									<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+									<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+									<span th:if="${benefit.type == '3'}">마일 적립</span>
+								</h4>
+							</div>
+							<div style="margin: 15px 20px;">
+								<p th:utext="${benefit.content}"></p>
+								<!-- <ul>
+									<li>전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</li>
+									<li>월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</li>
+								</ul> -->
+								<p>* 전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</p>
+								<p>* 월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</p>
+							</div>
+						</div>
 					</div>
 				
-					<!-- 연회비 탭 -->
+					<!-- Annual Fee Tab -->
 					<div id="annual-fee-tab">
 						<h3>연회비</h3>
-					
+						<p style="padding-left: 5px;">연회비 없음</p>
+						<!-- <table class="annual-fee-table">
+							<tr>
+								<th>브랜드</th>
+								<th>연회비</th>
+							</tr>
+							<tr th:each="fee : ${card.feeList}">
+								<td th:text="${fee.brand}"></td>
+								<td th:text="${fee.annualFee}"></td>
+							</tr>
+						</table> -->
 					</div>
 				
-					<!-- 확인사항 탭 -->
+					<!-- Card Notice Tab -->
 					<div id="usage-guide-tab">
 						<h3>확인사항</h3>
-						<p>
-							전월 이용 실적 기준
-							전월 1일 ~ 말일까지 KB국민 알뜰교통플러스카드의 일시불 및 할부 승인 금액 기준
-							해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입 완료 기준
-							취소 금액은 취소 전표가 당사에 접수된 월의 실적에서 차감
-							전월 이용 실적 제외 대상
-							KB국민 알뜰교통플러스카드로 청구할인 서비스를 적용 받은 이용건(해당 매출 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 아파트관리비, 초/중/고 학교납입금 전체(수업료/교육비/현장학습비/급식비 등), 대학(원)등록금, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 무승인전표(대중교통, 공항버스, 자판기, 터널통행료, 항공기내 이용 등), 취소금액
-							할인 제외 대상
-							무이자할부, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 연체료, 취소금액
-							연체이자율
-							연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
-							단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
-							일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
-							무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용
-							해외 이용 확인사항
-							해외 이용시(해외사이트 거래 포함) 미화(USD)기준 거래미화금액에 접수일의(KB국민은행) 최초고시 전신환 매도율을 적용한 후, 국제브랜드사가 부과하는 국제브랜드 수수료(VISA 1.1%)와 KB국민카드가 부과하는 해외서비스 수수료 (0.25%)를 포함하여 원화로 청구됩니다. 이 경우 KB국민카드의 해외서비스 수수료는 국제브랜드 수수료를 제외하고 산정됩니다.
-							해외 이용시 청구금액 산출방법
-							해외 이용시 청구금액 = (거래미화금액 X 전신환매도율¹) + 국제브랜드 수수료² + 해외서비스 수수료³
-							
-							전신환 매도율 : 접수일의 KB국민은행 최초고시 전신환매도율
-							국제브랜드 수수료 = (거래미화금액 X 국제브랜드 이용수수료율) X 전신환매도율
-							해외서비스 수수료 = (거래미화금액 X 해외서비스 수수료율) X 전신환매도율
-							해당 내용은 해외원화결제(DCC) 서비스 수수료가 없는 경우이며, 해외원화결제(DCC) 서비스 이용 시 추가 수수료가 발생할 수 있으니 유의하시기 바랍니다.
-							
-							해외원화결제(DCC) 차단 서비스 이용방법 : KB국민카드 홈페이지/모바일앱 > 서비스 > 해외이용서비스 > 해외원화결제차단서비스
-							기타
-							KB국민 알뜰교통플러스카드 업종에 따른 청구 할인서비스는 대상 가맹점이 KB국민카드의 업종분류기준 상 해당 업종에 한하여 제공합니다.
-							별도 전용 가맹점번호로 승인되는 PG(결제대행)업체 또는 일부 간편결제(Pay) 이용 시 할인대상에서 제외될 수 있습니다.
-							KB국민 알뜰교통플러스카드 할인 서비스 대상 업종은 해당 가맹점 사업자번호로 당사 영업점 및 고객센터 1588-1688, KB국민은행 영업점을 통해 확인이 가능합니다.
-							전표 매입 순서대로 월간 할인한도내 서비스가 적용되며, 잔여 할인한도는 이월되지 않습니다.
-							할인 받은 이용 건을 취소할 경우 취소전표가 실시간 접수되지 않아 할인 한도가 즉시 복원되지 않을 수 있습니다.
-							결제계좌 개설 기관의 영업 마감시간(16시) 이후 결제계좌에 입금된 금액에 대해서는 결제계좌 개설 기관의 사정에 따라 당일 출금하지 못하여 연체로 처리될 수 있으므로 유의하시기 바랍니다. 자동이체 업무 마감시간 이후 당사 홈페이지/모바일* 등에서 바로출금(즉시결제) 또는 가상계좌 입금(송금납부)을 통해 당일 결제가 가능합니다.
-							세부내용 : KB국민카드 홈페이지 > MY KB > 바로출금결제 또는 가상계좌결제 참조
-							
-							KB국민 알뜰교통플러스카드는 기본 포인트리가 적립되지 않습니다.
-							단, KB국민카드 스타샵 가맹점에서 제공해드리는 포인트는 적립됩니다.
-						</p>
+						
+						<!-- 1 Card Usage Guide -->
+						<div th:each="guide : ${card.cardUsageGuideList}">
+							<h4 th:text="${guide.type}" style="font-size: 1.2rem;"></h4>
+							<p th:utext="${guide.content}"></p>
+						</div>
 					</div>
+					
+				</div>
+				
+				<!-- Credit Card Common Notice Part -->
+				<!-- Consumer's right -->
+				<div class="consumer-right-container">
+					<h3>금융소비자권리</h3>
+					<div class="consumer-right-content">
+						<ul>
+							<li>
+								<h4>금리인하요구권 관련 안내</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>할부거래의 소비자 권리</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>위법계약해지권</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>FAQ</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Common Notice -->
+				<div class="common-notice-container">
+					<div class="common-notice-content">
+						<p>"상환능력에 비해 신용카드 사용액이 과도할 경우 귀하의 개인신용평점이 하락할 수 있습니다."</p>
+						<p>"개인신용평점 하락 시 금융거래 관련된 불이익이 발생할 수 있습니다."</p>
+						<p>"일정기간 원리금을 연체할 경우, 모든 원리금을 변제할 의무가 발생할 수 있습니다."</p>
+					</div>
+					<p>준법감시인 심의필 230608-02046-HPP(2023.06.08)</p>
 				</div>
 			</div>
 		
@@ -317,23 +500,16 @@
 	<!-- End Main -->
 
 	<!-- Script -->
-	<script>
-		//Add 'on' class to the '#main-benefit-tab' upon page load
+		<script>
 		$(document).ready(function() {
-			$('#main-benefit-tab').addClass('on');
+			$('.tabs > div').css('display', 'none');
+			$('#main-benefit-tab').css('display', 'block');
 		});
 		
-		//Tab toggle
-		$('.card-detail-contents ul a').click(function() {
-			
-			$('.tabs div').removeClass('on');
-			
-			let id = $(this).data('value');
-			
-			$('#' + id).addClass('on');
-			
-		});
-		
+		function switchMenu(dataValue) {
+			$('.tabs > div').css('display', 'none');
+			$('#' + dataValue).css('display', 'block');
+		}
 		
 	</script>
 </body>

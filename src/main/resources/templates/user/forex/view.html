@@ -8,13 +8,28 @@
 tr, th, td {
 	border: 1px solid #c1bdba;
 }
-th{
-	text-align:center;
+
+th {
+	text-align: center;
 }
+
 table {
-	width:100%;
+	width: 100%;
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 80px;
+}
+
+thead tr {
+	background-color: #0d47a1;
+	color: #ffffff;
+}
+
+tbody tr:nth-child(2n) {
+	background-color: #bbdefb;
+}
+
+tbody tr:nth-child(2n+1) {
+	background-color: #e3f2fd;
 }
 </style>
 
@@ -26,7 +41,7 @@ table {
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs">
 			<div class="page-header d-flex align-items-center"
-				style="background-image: url('assets/img/page-header.jpg');">
+				style="background-image: url('/atlanbank/assets/img/forex/main.png');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
@@ -47,76 +62,103 @@ table {
 		</div>
 		<!-- End Breadcrumbs -->
 
-		 <div class="container">
-   		<h2 style="margin-left: 600px; margin-top:100px; display:inline-block">실시간 환율 조회</h2>
-       <div  style="color:#657c9d;"></div>   
-      <div class="hanafont" style="margin-left: 250px; margin-top: 30px">
+		<div class="container">
+			<h2
+				style="margin-left: 600px; margin-top: 50px; display: inline-block; font-style: inherit;">실시간
+				환율 조회</h2>
+			<div style="color: #657c9d;"></div>
+			<div class="hanafont" style="margin-left: 250px; margin-top: 30px">
 
-         <div style="padding-left: -700px;">
-            <h6 class="tar s1" id="set_date" style="color: #007297; align-items:left;"></h6>
-            현찰 사실 때 환율 : 매매기준율 * (1+외화현찰 사실 때 스프레드율)<br> 현찰 파실 때 환율 : 매매기준율
-            * (1-외화현찰 파실 때 스프레드율)<br>
+				<div style="padding-left: -700px;">
+					<h6 class="tar s1" id="set_date"
+						style="color: #007297; align-items: left;"></h6>
+					현찰 사실 때 환율 : 매매기준율 * (1+외화현찰 사실 때 스프레드율)<br> 현찰 파실 때 환율 :
+					매매기준율 * (1-외화현찰 파실 때 스프레드율)<br>
+					<hr style="width:86%;">
+				</div>
 
-         </div>
-         <script>
-      
-            Date.prototype.format = function(f) {
-                   if (!this.valueOf()) return " ";
-                   var d = this;
-                   return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {
-                          switch ($1) {
-                                 case "yyyy": return d.getFullYear();
-                                 case "yy": return (d.getFullYear() % 1000).zf(2);
-                                 case "MM": return (d.getMonth() + 1).zf(2);
-                                 case "dd": return d.getDate().zf(2);
-                                 case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
-                                 case "mm": return d.getMinutes().zf(2);
-                                 case "ss": return d.getSeconds().zf(2);
-                                 case "a/p": return d.getHours() < 12 ? "오전" : "오후";
-                                 default: return $1;
-                          }
-                   });
-            };
-             String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s += this; } return s;};
-             String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
-             Number.prototype.zf = function(len){return this.toString().zf(len);};
+				<script>
+					Date.prototype.format = function(f) {
+						if (!this.valueOf())
+							return " ";
+						var d = this;
+						return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi,
+								function($1) {
+									switch ($1) {
+									case "yyyy":
+										return d.getFullYear();
+									case "yy":
+										return (d.getFullYear() % 1000).zf(2);
+									case "MM":
+										return (d.getMonth() + 1).zf(2);
+									case "dd":
+										return d.getDate().zf(2);
+									case "hh":
+										return ((h = d.getHours() % 12) ? h
+												: 12).zf(2);
+									case "mm":
+										return d.getMinutes().zf(2);
+									case "ss":
+										return d.getSeconds().zf(2);
+									case "a/p":
+										return d.getHours() < 12 ? "오전" : "오후";
+									default:
+										return $1;
+									}
+								});
+					};
+					String.prototype.string = function(len) {
+						var s = '', i = 0;
+						while (i++ < len) {
+							s += this;
+						}
+						return s;
+					};
+					String.prototype.zf = function(len) {
+						return "0".string(len - this.length) + this;
+					};
+					Number.prototype.zf = function(len) {
+						return this.toString().zf(len);
+					};
 
-            document.getElementById("set_date").innerHTML = new Date().format("yyyy년 MM월 dd일 a/p hh시 mm분 ss초");
-      </script>
-        
-      </div>
+					document.getElementById("set_date").innerHTML = new Date()
+							.format("현재시간 : yyyy년 MM월 dd일 a/p hh시 mm분 ss초");
+				</script>
 
-      <div style="margin-left: 250px;">
-         <table class="tg" style="width:900px;">
-            <thead>
-               <tr>
-                  <th class="tg-zs35" rowspan="2" style="border-top: solid;border-top: solid;border-left:none">통화</th>
-                  <th class="tg-zs35" colspan="2" style="border-top: solid">현찰</th>
-                  <th class="tg-zs35" colspan="2" style="border-top: solid">송금</th>
-                  <th class="tg-zs35" rowspan="2" style="border-top: solid">매매기준율</th>
-                  <th class="tg-zs35" rowspan="2" style="border-top: solid">미화환산율</th>
-               </tr>
-               <tr>
-                  <th class="tg-zs35" style="width:100px">사실때</th>
-                  <th class="tg-zs35" style="width:100px">파실때</th>
-                  <th class="tg-zs35" style="width:100px">보낼때</th>
-                  <th class="tg-zs35" style="width:100px">받을때</th>
-               </tr>
-            </thead>
-            <tbody>
-            	<tr th:each="list : ${exchangelist}">
-            		<td class="tg-0pky" style="border-left: none">${list.nationKr}</td>
-                     <td class="tg-0pky">${list.cashBuyRate}</td>
-                     <td class="tg-0pky">${list.cashSellRate}</td>
-                     <td class="tg-0pky">${list.transferSendRate}</td>
-                     <td class="tg-0pky">${list.transferReceiveRate}</td>
-                     <td class="tg-0pky">${list.buyBasicRate}</td>
-                     <td class="tg-0pky" style="border-right: none">${list.usdChangeRate}</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-   </div>
+			</div>
+
+			<div style="margin-left: 250px;">
+				<table class="tg" style="width: 900px;">
+					<thead>
+						<tr>
+							<th class="tg-zs35" rowspan="2"
+								style="border-top: solid; border-top: solid; border-left: none">통화</th>
+							<th class="tg-zs35" colspan="2" style="border-top: solid">현찰</th>
+							<th class="tg-zs35" colspan="2" style="border-top: solid">송금</th>
+							<th class="tg-zs35" rowspan="2" style="border-top: solid">매매기준율</th>
+							<th class="tg-zs35" rowspan="2" style="border-top: solid">미화환산율</th>
+						</tr>
+						<tr>
+							<th class="tg-zs35" style="width: 100px">사실때</th>
+							<th class="tg-zs35" style="width: 100px">파실때</th>
+							<th class="tg-zs35" style="width: 100px">보낼때</th>
+							<th class="tg-zs35" style="width: 100px">받을때</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="list : ${exchangelist}">
+							<td style="border-left: none" th:text="${list.nationKr}"></td>
+							<td th:text="${list.cashBuyRate}"></td>
+							<td th:text="${list.cashSellRate}"></td>
+							<td th:text="${list.transferSendRate}"></td>
+							<td th:text="${list.transferReceiveRate}"></td>
+							<td th:text="${list.buyBasicRate}"></td>
+							<td style="border-right: none" th:text="${list.usdChangeRate}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
 	</main>
 	<!-- End Main -->

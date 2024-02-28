@@ -10,4 +10,13 @@ public class MemberCardHistoryDTO {
 	private String transactionDate;
 	private String amount;
 	private String installmentMonths;
+	
+	//tblMemberCard
+	private String memberSeq;
+	private String cardNo;
+	private String cardSeq;
+	private String exp;
+	private String cvc;
+	private String paymentDate;
+	private String status;
 }

@@ -9,4 +9,8 @@ public class CardAnnualFeeDTO {
 	private String brand;
 	private String annualFee;
 	private String cardSeq;
+	
+	//tblAnnualFee
+	private String annualFeeNo;
+	
 }

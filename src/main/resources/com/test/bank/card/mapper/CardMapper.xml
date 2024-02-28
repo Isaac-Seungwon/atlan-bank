@@ -9,7 +9,11 @@
 	</select>
 	
 	<select id="getAnnualFeeList" parameterType="String" resultType="com.test.bank.card.domain.CardAnnualFeeDTO">
-		select * from tblCardAnnualFee where card_seq = #{seq}
+		select a.card_annual_fee_seq, b.annual_fee_no, b.brand, b.annual_fee, a.card_seq
+		from tblCardAnnualFee a
+		inner join tblAnnualFee b
+		on b.annual_fee_no = a.annual_fee_no
+		where card_seq = #{seq}
 	</select>
 	
 	<select id="getNewCreditCardList" resultType="com.test.bank.card.domain.CardDTO">
@@ -25,11 +29,56 @@
 	</select>
 	
 	<select id="getBenefitList" parameterType="String" resultType="com.test.bank.card.domain.BenefitsDTO">
-		select a.card_benefit_seq, a.card_seq, b.benefits_seq, b.type, b.subject, b.content, b.prev_month_perf, b.rate, b.limit
-		from tblCardBenefit a
-		inner join tblBenefits b
-		on b.benefits_seq = a.benefits_seq
+		select a.benefits_no, a.type, a.subject, a.content, a.rate, a.limit, a.prev_month_perf, a.img, b.card_benefit_seq, b.card_seq
+		from tblBenefits a
+		inner join tblCardBenefit b
+		on a.benefits_no = b.benefits_no
+		where b.card_seq = #{seq}
+	</select>
+		
+	<select id="getCardUsageGuideList" parameterType="String" resultType="com.test.bank.card.domain.CardUsageGuideDTO">
+		select *
+		from tblCardUsageGuide
 		where card_seq = #{seq}
+	</select>
+	
+	<select id="getSearchCardList" parameterType="String" resultType="com.test.bank.card.domain.CardDTO">
+		select * from tblCard where name like '%' || #{word} || '%'
+	</select>
+	
+	<select id="getPrevMonthCardHistory" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select
+		    a.member_seq,
+		    (select name from tblMember where member_seq = a.member_seq) as name,
+		    a.member_card_seq,
+		    a.card_no,
+		    a.card_seq,
+		    b.member_card_history_seq,
+		    b.transaction_date,
+		    b.amount,
+		    b.installment_months
+		  from tblMemberCard a
+		 inner join tblMemberCardHistory b
+		    on a.member_card_seq = b.member_card_seq
+		 where 1=1 and
+		       b.member_card_history_seq not in (select member_card_history_seq from tblPayment) and
+		       member_seq = #{memberSeq} and
+		       to_char(transaction_date, 'yyyy-mm') = to_char(sysdate, 'yyyy-mm')
+	</select>
+	
+	<select id="getHistoryList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select
+		    b.member_seq,
+		    a.member_card_history_seq,
+		    a.member_card_seq,
+		    to_char(a.transaction_date, 'YYYY-MM-DD HH:MI') as transaction_date,
+		    a.amount,
+		    a.installment_months
+		  from tblMemberCardHistory a
+		 inner join tblMemberCard b
+		    on b.member_card_seq = a.member_card_seq
+		 where member_seq = #{memberSeq}
+		 order by transaction_date desc
 	</select>
 	
 </mapper>

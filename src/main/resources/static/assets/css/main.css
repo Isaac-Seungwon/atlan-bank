@@ -677,7 +677,7 @@ section {
 }
 
 .featured-services .service-item .icon i {
-	color: #001f8d;
+	color: #068dff;
 	font-size: 48px;
 	transition: 0.3s;
 }
@@ -1207,7 +1207,7 @@ section {
 --------------------------------------------------------------*/
 .testimonials {
 	padding: 80px 0;
-	background: url("../img/testimonials-bg.jpg") no-repeat;
+	/* background: url("../img/testimonials-bg.jpg") no-repeat; */
 	background-position: center center;
 	background-size: cover;
 	position: relative;
