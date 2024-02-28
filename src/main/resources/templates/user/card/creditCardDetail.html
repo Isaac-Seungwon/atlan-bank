@@ -6,6 +6,17 @@
 <title>카드</title>
 
 <style>
+	/* Font */
+	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+	
+	body {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
 	/* section empty space */
 	section {
 		margin: 20px 135px;
@@ -234,7 +245,38 @@
 	.common-notice-container > p {
 		text-align: right;
 	}
+	
+	/* Main Benefits */
+	.main-benefit-box {
+		border: 1px solid #F9FAFC;
+		border-radius: 5px;
+		width: 50%;
+		display: flex;
+		align-items: center;
+		padding: 10px;
+	}
+	
+	.main-benefit-box div:first-child {
+		margin-right: 10px;
+	}
 
+	/* Annual Fee */
+	.annual-fee-table {
+		width: 100%;
+		border: 1px solid #e1e1e1;
+		text-align: center;
+		border-radius: 10px;
+	}
+	
+	.annual-fee-table th,
+	.annual-fee-table td {
+		padding: 10px;
+		border: 1px solid #e1e1e1;
+	}
+	
+	.annual-fee-table th {
+		background: #f9f9f9;
+	}
 </style>
 </head>
 
@@ -283,7 +325,7 @@
 						<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 					</div>
 					<div>
-						<ul>
+						<ul style="width: 100%;">
 							<li th:each="benefit : ${card.benefitList}">
 								<span th:text="${benefit.subject}"></span>
 								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|" class="bold"></span>
@@ -324,10 +366,10 @@
 			
 			<div class="card-detail-contents">
 				<ul>
-					<li><a href="javascript:void(0);" data-value="main-benefit-tab">주요혜택</a></li>
-					<li><a href="javascript:void(0);" data-value="detail-benefit-tab">상세혜택</a></li>
-					<li><a href="javascript:void(0);" data-value="annual-fee-tab">연회비</a></li>
-					<li><a href="javascript:void(0);" data-value="usage-guide-tab">확인사항</a></li>
+					<li><a href="javascript:void(0);" data-value="main-benefit-tab" onclick="switchMenu('main-benefit-tab')">주요혜택</a></li>
+					<li><a href="javascript:void(0);" data-value="detail-benefit-tab" onclick="switchMenu('detail-benefit-tab')">상세혜택</a></li>
+					<li><a href="javascript:void(0);" data-value="annual-fee-tab" onclick="switchMenu('annual-fee-tab')">연회비</a></li>
+					<li><a href="javascript:void(0);" data-value="usage-guide-tab" onclick="switchMenu('usage-guide-tab')">확인사항</a></li>
 				</ul>
 			
 				<div class="tabs">
@@ -336,17 +378,19 @@
 						<h3>주요혜택</h3>
 						
 						<!-- 1 Main Benefits -->
-						<div th:each="benefit : ${card.benefitList}">
-							<div>
-								<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
-							</div>
-							
-							<div>
-								<span th:text="${benefit.subject}"></span>
-								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
-								<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
-								<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
-								<span th:if="${benefit.type == '3'}">마일 적립</span>
+						<div style="display: flex; flex-wrap: wrap;">
+							<div th:each="benefit : ${card.benefitList}" class="main-benefit-box">
+								<div>
+									<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
+								</div>
+								
+								<div>
+									<span th:text="${benefit.subject}"></span>
+									<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
+									<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+									<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+									<span th:if="${benefit.type == '3'}">마일 적립</span>
+								</div>
 							</div>
 						</div>
 					
@@ -357,31 +401,35 @@
 						<h3>상세혜택</h3>
 					
 						<!-- 1 Card Detail Benefits -->
-						<div th:each="benefit : ${card.benefitList}">
-							<div>
-								<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
+						<div th:each="benefit : ${card.benefitList}" style="margin: 25px 0; border-bottom: 1px solid #e1e1e1;">
+							<div style="display: flex; align-items: center;">
+								<div style="margin-right: 15px;">
+									<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
+								</div>
+								<h4>
+									<span th:text="${benefit.subject}"></span>
+									<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
+									<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+									<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+									<span th:if="${benefit.type == '3'}">마일 적립</span>
+								</h4>
 							</div>
-							<h4>
-								<span th:text="${benefit.subject}"></span>
-								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
-								<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
-								<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
-								<span th:if="${benefit.type == '3'}">마일 적립</span>
-							</h4>
-							<p th:utext="${benefit.content}"></p>
-							<!-- <ul>
-								<li>전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</li>
-								<li>월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</li>
-							</ul> -->
-							<p>* 전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</p>
-							<p>* 월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</p>
+							<div style="margin: 15px 20px;">
+								<p th:utext="${benefit.content}"></p>
+								<!-- <ul>
+									<li>전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</li>
+									<li>월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</li>
+								</ul> -->
+								<p>* 전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</p>
+								<p>* 월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</p>
+							</div>
 						</div>
 					</div>
 				
 					<!-- Annual Fee Tab -->
 					<div id="annual-fee-tab">
 						<h3>연회비</h3>
-						<table>
+						<table class="annual-fee-table">
 							<tr>
 								<th>브랜드</th>
 								<th>연회비</th>
@@ -399,7 +447,7 @@
 						
 						<!-- 1 Card Usage Guide -->
 						<div th:each="guide : ${card.cardUsageGuideList}">
-							<h4 th:text="${guide.type}"></h4>
+							<h4 th:text="${guide.type}" style="font-size: 1.2rem;"></h4>
 							<p th:utext="${guide.content}"></p>
 						</div>
 					</div>
@@ -452,22 +500,15 @@
 
 	<!-- Script -->
 	<script>
-		//Add 'on' class to the '#main-benefit-tab' upon page load
 		$(document).ready(function() {
-			$('#main-benefit-tab').addClass('on');
+			$('.tabs > div').css('display', 'none');
+			$('#main-benefit-tab').css('display', 'block');
 		});
 		
-		//Tab toggle
-		$('.card-detail-contents ul a').click(function() {
-			
-			$('.tabs div').removeClass('on');
-			
-			let id = $(this).data('value');
-			
-			$('#' + id).addClass('on');
-			
-		});
-		
+		function switchMenu(dataValue) {
+			$('.tabs > div').css('display', 'none');
+			$('#' + dataValue).css('display', 'block');
+		}
 		
 	</script>
 </body>

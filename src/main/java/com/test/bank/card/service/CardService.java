@@ -9,6 +9,7 @@ import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.domain.CardUsageGuideDTO;
+import com.test.bank.card.domain.MemberCardHistoryDTO;
 import com.test.bank.card.repository.CardDAO;
 
 @Service
@@ -184,6 +185,29 @@ public class CardService {
 		}
 		
 		return list;
+	}
+
+	public List<MemberCardHistoryDTO> getPrevMonthCardHistory(String memberSeq) {
+		return dao.getPrevMonthCardHistory(memberSeq);
+	}
+
+	public String getThisMonthAmount(String memberSeq) {
+
+		List<MemberCardHistoryDTO> list = dao.getPrevMonthCardHistory(memberSeq);
+		
+		int sum = 0;
+		
+		for (MemberCardHistoryDTO dto : list) {
+			sum += Integer.parseInt(dto.getAmount()); 
+		}
+		
+		String newSum = String.format("%,d", sum);
+		
+		return newSum;
+	}
+
+	public List<MemberCardHistoryDTO> getHistoryList(String memberSeq) {
+		return dao.getHistoryList(memberSeq);
 	}
 
 	
