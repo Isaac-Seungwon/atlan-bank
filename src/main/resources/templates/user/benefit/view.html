@@ -9,8 +9,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	margin-top: 50px !important;
-	margin-bottom: 50px !important;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 .benefit-item {
@@ -49,11 +49,22 @@
 	}
 }
 
-.container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 15px;
+.in-progress {
+	color: var(--color-primary);
 }
+
+.completed {
+	color: var(--color-secondary);
+}
+
+.upcoming {
+	color: #059652;
+}
+
+.in-progress, .completed, .upcoming {
+    font-size: 0.9rem;
+}
+
 </style>
 </head>
 <meta name="_csrf" th:content="${_csrf.token}">
@@ -64,13 +75,12 @@
 
 		<!-- Start Breadcrumbs -->
 		<div class="breadcrumbs">
-			<div class="page-header d-flex align-items-center"
-				style="background-image: url('/atlanbank/assets/img/benefit/benefit_main.png');">
+			<div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/benefit/benefit_main.png');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
 							<h2>혜택</h2>
-							<p>Atlan Bank 사용하고 혜택받자!</p>
+							<p>Atlan Bank 사용하면 혜택이 팡팡!</p>
 						</div>
 					</div>
 				</div>
@@ -95,6 +105,17 @@
 					<p>
 						<span th:text="${#dates.format(benefit.startDate, 'yyyy-MM-dd')}"></span>
 						~ <span th:text="${#dates.format(benefit.endDate, 'yyyy-MM-dd')}"></span>
+						
+						<!-- 혜택 진행 여부 -->
+						<span class="in-progress"
+						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(benefit.startDate, 'yyyy-MM-dd HH:mm:ss')
+						and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(benefit.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행중</span>
+						<span class="completed"
+						th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(benefit.endDate, 'yyyy-MM-dd HH:mm:ss')}">마감</span>
+						<span class="upcoming"
+						th:unless="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(benefit.startDate, 'yyyy-MM-dd HH:mm:ss')
+						and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(benefit.endDate, 'yyyy-MM-dd HH:mm:ss')
+						or #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(benefit.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행예정</span>
 					</p>
 				</div>
 				<div class="franchise-image">
