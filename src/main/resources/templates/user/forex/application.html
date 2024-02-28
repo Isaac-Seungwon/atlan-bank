@@ -44,7 +44,7 @@
 		<!-- End Breadcrumbs -->
 		
 		<div class="container" style="margin-right: 170px; margin-top: 0px; margin-bottom: 100px;">
-			<h2 style="margin-top: 50px; text-align: center; margin-bottom: 30px;">외화환전</h2>
+			<h2 style="margin-top: 50px; text-align: center; margin-bottom: 30px;">외화 환전</h2>
 			<div style="box-shadow: 5px 10px 30px grey; text-align: center; padding: 20px 0 20px 0;">
 				<p style="color: black;">외화 환전 예상금액을 계산해 보세요.</p>
 				<button type="button" class="btn" data-bs-toggle="modal" id="calculate"
@@ -90,8 +90,23 @@
                </div>
             </div>
             </div>
-            
-            <!-- 입력창 -->
+            <!-- 
+			<div class="exchange-rate">
+				<div class="currency-info">
+					<div class="select-currency">
+						<select class="me-2" id="sel_account" name="currency" style="width: 60px; height: 40px;"
+								onchange="selectCountry(this.value);">
+							<th:block th:each="list : ${exchangelist}">
+                    			<option th:if="${list.nationKr.contains('일본')}" th:text="${#strings.substring(list.nationKr, 0, #strings.length(list.nationKr)-9)}" th:value="${list.nationKr}"></option>
+                    			<option th:unless="${list.nationKr.contains('일본')}" th:text="${#strings.substring(list.nationKr, 0, #strings.length(list.nationKr)-3)}" th:value="${list.nationKr}"></option>
+                			</th:block>
+						</select>
+					</div>
+				</div>
+			</div>
+			 -->
+
+			<!-- 입력창 -->
             <div class="input-money d-flex">
                <input type="text" id="calc_forAmt" name="calc_forAmt" maxlength="15" 
                   title="환율계산할 금액 입력" value="1"
@@ -170,7 +185,6 @@
       </div>
       
 		<script>
-			var cashbuy = 0; // 현찰 사실때
 		
 			function Confirm() {  //환전완료
 				alert('완료되었습니다.');
@@ -183,7 +197,7 @@
 			
 			function selectCountry(value) {
 				$('#unit').empty();
-				if (value == '미국달러(USD)') {
+				if (value == '미국') {
 					$('#unit').append('달러');
 					autoCal2();
 				}
@@ -200,6 +214,28 @@
 					autoCal2();
 				}
 			}
+			/*
+			function selectCountry(value) {
+				//console.log(value);  //뒤에 단위까지 전부 나옴
+			    $('#unit').empty();
+			    
+			    console.log(exchangelist);
+			    // exchangelist 배열에서 선택한 나라에 해당하는 객체 찾기
+			    var selectedCountry = exchangelist.find(function(item) {
+			        return item.nationKr==value;
+			    });
+			    console.log(selectedCountry); // 선택된 나라의 정보 확인
+			    
+			    if (selectedCountry) { //선택한 나라 있으면
+			        var unitValue = selectedCountry.nationKr.slice(-3);  //nationKr에서 뒤에서 3자리 가져오기
+			        
+			        console.log(unitValue); // 가져온 단위 값 확인
+			        
+			        $('#unit').append(unitValue);
+			        autoCal2();
+			    }
+			} 
+			*/
 
 			var num2 = 0
 			
