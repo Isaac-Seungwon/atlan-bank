@@ -1061,37 +1061,131 @@ INSERT INTO tblWorkDoc (work_doc_seq, detail_work_seq, doc_seq) values (work_doc
 commit;
 
 -- tblFranchise
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Samsung', 'samsung.png', '010-1264-5178');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Apple', 'apple.png', '010-2315-6181');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '카카오', 'kakao.png', '010-3456-7190');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '네이버', 'naver.png', '010-4567-8501');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '배달의민족', 'baemin.png', '010-5648-9012');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo.png', '010-6789-0123');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang.png', '010-7897-1264');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24.png', '010-8901-2745');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu.png', '010-9012-3356');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven.png', '010-0123-4567');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop.png', '010-1533-5668');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart.png', '010-8345-6789');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'SONY', 'sony.png', '010-3456-7890');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '스타벅스', 'starbucks.png', '010-4567-8911');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '투썸플레이스', 'twosome.png', '010-5678-9012');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '롯데시네마', 'lottecinema.png', '010-6589-0223');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '맥도날드', 'mcdonalds.png', '010-7270-1234');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '버거킹', 'burgerking.png', '010-1012-3456');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '인천국제공항', 'icn.png', '010-1574-5178');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Samsung', 'samsung_logo.png', '010-1264-5178');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Apple', 'apple_logo.png', '010-2315-6181');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '카카오', 'kakao_logo.png', '010-3456-7190');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '네이버', 'naver_logo.png', '010-4567-8501');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '배달의민족', 'baemin_logo.jpg', '010-5648-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo_logo.jpg', '010-6789-0123');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang_logo.png', '010-7897-1264');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24_logo.png', '010-8901-2745');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu_logo.jpg', '010-9012-3356');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven_logo.png', '010-0123-4567');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop_logo.jpg', '010-1533-5668');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart_logo.jpg', '010-8345-6789');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'SONY', 'sony_logo.png', '010-3456-7890');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '스타벅스', 'starbucks_logo.png', '010-4567-8911');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '투썸플레이스', 'twosome_logo.png', '010-5678-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '롯데시네마', 'lottecinema_logo.png', '010-6589-0223');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '맥도날드', 'mcdonalds_logo.png', '010-7270-1234');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '버거킹', 'burgerking_logo.png', '010-1012-3456');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '인천국제공항', 'icn_logo.jpg', '010-1574-5178');
+
+select * from tblFranchise;
 
 commit;
 
 -- tblNews
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'Atlan Bank가 탄생헀습니다!', '고객님들의 많은 이용 부탁드립니다.', 'news_img1.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), 12507);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '「인천공항에서 받기」 환전 서비스 신설 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img2.png', TO_DATE('2024-01-14', 'YYYY-MM-DD'), 4831);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img3.png', TO_DATE('2024-01-18', 'YYYY-MM-DD'), 5839);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!', '고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」<br>평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님!<br>Atlan Bank 의팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!', 'news_img4.png', TO_DATE('2024-01-21', 'YYYY-MM-DD'), 4213);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '러시아 루블화(RUB) 외환거래 잠정중단 사전 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br>2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.<br>금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.<br>잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.<br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img5.png', TO_DATE('2024-01-21', 'YYYY-MM-DD'), 3551);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br>신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.<br>점검일시<br>2024.1.20(토) 21:00 ~ 2024.1.21(일) 04:00 (7시간)<br>점검영향<br>점검시간 내 신용관리서비스 순단 및 단절(1분 내외) 발생<br>보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다.<br>감사합니다.<br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img6.png', TO_DATE('2024-01-23', 'YYYY-MM-DD'), 1251);
+-- 소식 테이블에 데이터 삽입
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'Atlan Bank가 탄생헀습니다!',
+'Atlan Bank, 금융 혁신의 새로운 시작!\n
+Atlan Bank가 새로운 길을 개척하며 도약합니다. 고객 여러분의 많은 이용을 기대합니다.\n
+고객 여러분의 소중한 자산을 지키는 데 최선을 다하겠습니다.
+고객 중심의 혁신적인 금융 서비스를 제공하며 편리한 금융 서비스로 여러분의 일상을 더욱 즐겁게 만들어 드리겠습니다.\n
+여러분의 미래를 함께 준비하고 금융의 변화를 이끄는 Atlan Bank가 되겠습니다.',
+'news_01_content.png',
+TO_DATE('2024-01-01', 'YYYY-MM-DD'),
+16312);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'전세사기 피해자 지원 안내',
+'전세사기 피해로 힘든 시간을 겪고 있는 피해자들이 평화로운 일상을 되찾을 수 있도록 Atlan Bank가 함께합니다.\n
+집행권원(지급명령, 전세보증금반환청구소송) 확보에 소요된 법률 비용과 경·공매 대행 서비스(HUG) 본인 부담 수수료를 지원합니다.\n
+- 지원문의 : HUG 경·공매지원센터\n
+- 안내전화 : 1588-1663\n',
+'news_02_content.jpg',
+TO_DATE('2024-01-03', 'YYYY-MM-DD'),
+14503);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'청년 주택드림 청약통장 출시 및 전환 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+「청년 주택드림 청약통장」이 출시됨에 따라 기존 「청년우대형 주택청약종합저축」은 「청년 주택드림 청약통장」 상품으로 일괄 전환되며 「주택청약종합저축」의 경우 조건이 충족되는 경우 전환이 가능함을 안내 드리니 아래 내용을 참고하시기 바랍니다.\n
+- 기존 주택청약종합저축 가입자는 가입자격 충족 시 전환 가능 (영업점 방문)\n
+ㅇ 기존 주택청약종합저축을 전환해약 하고 「청년 주택드림 청약통장」으로 전환 신규\n
+ㅇ 전환 해약일 현재 기존계좌의 청약관련 인정금액(회차), 가입일은 전환계좌에서도 인정\n
+※ 기타 자세한 내용은 「청년 주택드림 청약통장」 약관을 확인하시거나 KB국민은행 고객센터(1599-1771) 또는 가까운 영업점으로 문의하시기 바랍니다.\n',
+'news_03_content.png',
+TO_DATE('2024-01-14', 'YYYY-MM-DD'),
+8301);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.\n
+Atlan Bank > 전체메뉴 > 자산관리 > 해당 기관과 관련된 업무를 중단합니다.\n
+보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다.\n
+감사합니다.',
+'news_04_content.png',
+TO_DATE('2024-01-22', 'YYYY-MM-DD'),
+5839);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
+'고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」\n
+평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님! Atlan Bank의 팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
+NULL,
+TO_DATE('2024-02-07', 'YYYY-MM-DD'),
+4213);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'러시아 루블화(RUB) 외환거래 잠정중단 사전 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.\n
+금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.\n
+잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.\n
+※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.',
+NULL,
+TO_DATE('2024-02-15', 'YYYY-MM-DD'),
+3551);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '「소상공인·자영업자 상생지원금」 안내',
+'현재 사업을 영위하고 있는 소상공인·자영업자 분들께 상생지원금을 지급합니다!\n
+단, Atlan Bank 또는 서민금융진흥원으로부터 지원대상자로 선정되어 사전 안내(카카오톡 또는 LMS)를 받은 자에 한합니다.\n
+\n
+✔️신청 기간\n
+2024.03.01(금) 09:00 ~ 03.29(금) 17:00까지\n
+\n
+✔️신청 방법\n
+‘소상공인 상생지원금 홈페이지’(소상공인상생지원.kr)에서 신청\n
+[Microsoft Edge / Google Chrome / Naver Whale 브라우저로 접속]\n
+\n
+✔️신청 대상\n
+️현재 사업을 영위하고 있는 소상공인·자영업자로서 서민금융대출 및 고금리 취약차주 중 성실 상환자\n
+[KB국민은행 또는 서민금융진흥원으로부터 지원대상자로 선정되어 사전 안내(카카오톡 또는 LMS)를 받은 자에 한함]\n',
+'news_07_content.png',
+TO_DATE('2024-02-22', 'YYYY-MM-DD'),
+2456);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.\n
+보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다. 감사합니다.\n
+※ 기타 자세한 내용은 Atlan Bank 고객센터 또는 가까운 영업점으로 문의하시기 바랍니다.',
+NULL,
+TO_DATE('2024-02-28', 'YYYY-MM-DD'),
+1251);
 
 SELECT TO_CHAR(regdate, 'YYYY-MM-DD') AS regdate FROM tblNews; -- 날짜만 출력 (시간은 생략)
+
+SELECT * FROM tblNews;
 
 commit;
 
@@ -1127,7 +1221,7 @@ TO_DATE('2024-01-21', 'YYYY-MM-DD'), TO_DATE('2024-02-21', 'YYYY-MM-DD'),
 INSERT INTO tblEvent (event_seq, name, content, visual_img, content_img, caution_img, start_date, end_date, hits_count, franchise_seq) VALUES (event_seq.nextVal,
 '[단 20일 한정]「AtlanBank 쿠폰북적금」with 이마트 가입 시 이마트 7천원 할인쿠폰 바로 지급!',
 'Atlan Bank 고객님 누구나! 할인쿠폰 받기 클릭하면 즉시 쿠폰함으로 이마트 할인 쿠폰이 지급됩니다.',
-'event_05_visual.jpg', 'event_05_content.png', NULL,
+'event_05_visual.jpg', 'event_05_content.jpg', NULL,
 TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-14', 'YYYY-MM-DD'),
 11832, 12);
 
@@ -1195,9 +1289,70 @@ INSERT INTO tblEventParticipation (eventparticipation_seq, regdate, member_seq, 
 
 commit;
 
+
+-- tblFranchise
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Samsung', 'samsung_logo.png', '010-1264-5178');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Apple', 'apple_logo.png', '010-2315-6181');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '카카오', 'kakao_logo.png', '010-3456-7190');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '네이버', 'naver_logo.png', '010-4567-8501');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '배달의민족', 'baemin_logo.jpg', '010-5648-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo_logo.jpg', '010-6789-0123');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang_logo.png', '010-7897-1264');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24_logo.png', '010-8901-2745');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu_logo.jpg', '010-9012-3356');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven_logo.png', '010-0123-4567');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop_logo.jpg', '010-1533-5668');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart_logo.jpg', '010-8345-6789');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'SONY', 'sony_logo.png', '010-3456-7890');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '스타벅스', 'starbucks_logo.png', '010-4567-8911');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '투썸플레이스', 'twosome_logo.png', '010-5678-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '롯데시네마', 'lottecinema_logo.png', '010-6589-0223');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '맥도날드', 'mcdonalds_logo.png', '010-7270-1234');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '버거킹', 'burgerking_logo.png', '010-1012-3456');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '인천국제공항', 'icn_logo.jpg', '010-1574-5178');
+
 -- tblBenefit
-INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq) VALUES (benefit_seq.nextVal, '혜택1', '혜택1 내용', 'event_img2.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 1);
-INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq) VALUES (benefit_seq.nextVal, '혜택2', '혜택2 내용', 'event_img2.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 2);
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '특정 품목 현장할인', 'Samsung 제품의 특정 품목을 현장할인', NULL, TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 1);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '모바일 7% 청구할인', 'Coupang 모바일에서 결제하면 7% 청구할인', NULL, TO_DATE('2024-01-02', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 7);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '최대 7.5만원 즉시할인', '인천국제공항 이용시 최대 7.5만원 즉시할인', NULL, TO_DATE('2024-01-02', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 19);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '5% 청구할인', 'Naver에서 결제하면 5% 청구할인', NULL, TO_DATE('2024-01-14', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 4);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '할인 및 상품권 증정', '이마트에서 구매시 할인 및 상품권 증정', NULL, TO_DATE('2024-01-26', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 12);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '특정 품목 현장할인', '롯데시네마 제품 특정 품목 현장할인', NULL, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 16);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '5% 즉시할인', 'CU에서 구매하면 5% 즉시할인', NULL, TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-14', 'YYYY-MM-DD'), 9);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '7% 즉시할인', '스타벅스 특정 품복 즉시 할인', NULL, TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 14);
+
+select * from tblBenefit;
+
+SELECT 
+    b.benefit_seq,
+    b.name AS benefit_name,
+    b.content,
+    b.img AS benefit_img,
+    b.start_date,
+    b.end_date,
+    b.franchise_seq,
+    f.name AS franchise_name,
+    f.img AS franchise_img,
+    f.tel
+FROM 
+    tblBenefit b
+INNER JOIN 
+    tblFranchise f ON b.franchise_seq = f.franchise_seq;
 
 commit;
 
