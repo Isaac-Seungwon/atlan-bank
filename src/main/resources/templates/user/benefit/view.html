@@ -3,15 +3,109 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
-<title>Benefit</title>
+<title>Event</title>
+<style>
+.benefit-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 50px !important;
+	margin-bottom: 50px !important;
+}
 
+.benefit-item {
+	display: flex;
+	flex-wrap: wrap;
+	width: 48%;
+	margin-bottom: 20px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-info {
+	flex: 2;
+	padding: 20px;
+}
+
+.franchise-image {
+	flex: 1;
+	text-align: center;
+	padding: 20px;
+	width: 50%;
+	align-self: center;
+}
+
+.franchise-image img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+	.benefit-item {
+		width: 100%;
+	}
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+</style>
 </head>
-
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
 <body>
-	<main id="main">
-	
+	<!-- Start Main -->
+	<main id="benefit">
+
+		<!-- Start Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/atlanbank/assets/img/benefit/benefit_main.png');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>혜택</h2>
+							<p>Atlan Bank 사용하고 혜택받자!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a th:href="@{/index.do}">Home</a></li>
+						<li>혜택</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+
+		<div class="benefit-container container">
+			<div th:each="benefit,iterStat : ${benefitList}" class="benefit-item">
+				<div th:if="${iterStat.index % 1 == 0}" class="benefit-info">
+					<h3 th:text="${benefit.franchiseName}"></h3>
+					<p th:text="${benefit.benefitName}"></p>
+					<p th:text="${benefit.content}"></p>
+					<p>
+						<span th:text="${#dates.format(benefit.startDate, 'yyyy-MM-dd')}"></span>
+						~ <span th:text="${#dates.format(benefit.endDate, 'yyyy-MM-dd')}"></span>
+					</p>
+				</div>
+				<div class="franchise-image">
+					<img
+						th:src="@{/assets/img/franchise/{imgName}(imgName=${benefit.franchiseImg})}"
+						alt="Franchise Image">
+				</div>
+			</div>
+		</div>
 	</main>
-	<!-- End #main -->
+	<!-- End Main -->
 
 </body>
 </html>
