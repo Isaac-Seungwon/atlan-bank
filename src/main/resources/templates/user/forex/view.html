@@ -75,6 +75,7 @@ tbody tr:nth-child(2n+1) {
 					현찰 사실 때 환율 : 매매기준율 * (1+외화현찰 사실 때 스프레드율)<br> 현찰 파실 때 환율 :
 					매매기준율 * (1-외화현찰 파실 때 스프레드율)<br>
 					<hr style="width:86%;">
+					<div style="width:86%; text-align:right; color:gray; font-size: 13px; margin:-8px 0 -13px 0;">(단위 : 원)</div>
 				</div>
 
 				<script>
@@ -148,12 +149,12 @@ tbody tr:nth-child(2n+1) {
 					<tbody>
 						<tr th:each="list : ${exchangelist}">
 							<td style="border-left: none" th:text="${list.nationKr}"></td>
-							<td th:text="${list.cashBuyRate}"></td>
-							<td th:text="${list.cashSellRate}"></td>
-							<td th:text="${list.transferSendRate}"></td>
-							<td th:text="${list.transferReceiveRate}"></td>
-							<td th:text="${list.buyBasicRate}"></td>
-							<td style="border-right: none" th:text="${list.usdChangeRate}"></td>
+							<td style="text-align:right;" th:text="${list.cashBuyRate}"></td>
+							<td style="text-align:right;" th:text="${list.cashSellRate}"></td>
+							<td style="text-align:right;" th:text="${list.transferSendRate}"></td>
+							<td style="text-align:right;" th:text="${list.transferReceiveRate}"></td>
+							<td style="text-align:right;" th:text="${list.buyBasicRate}"></td>
+							<td style="border-right: none; text-align:right;" th:text="${list.usdChangeRate}"></td>
 						</tr>
 					</tbody>
 				</table>
