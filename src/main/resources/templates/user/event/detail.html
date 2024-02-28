@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+	layout:decorate="~{common/layout/layout}"
+	layout:fragment="Content">
 <head>
 <title>Event</title>
-</head>
 <meta name="_csrf" th:content="${_csrf.token}">
 <meta name="_csrf_header" th:content="${_csrf.headerName}">
 <style>
@@ -80,7 +80,7 @@
 	height: 80px;
 }
 </style>
-
+</head>
 <body>
 	<!-- Start Main -->
 	<main id="event">
@@ -156,6 +156,5 @@
 
 	</main>
 	<!-- End Main -->
-	
 </body>
 </html>

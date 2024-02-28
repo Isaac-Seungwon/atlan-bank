@@ -4,7 +4,6 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>News</title>
-</head>
 <meta name="_csrf" th:content="${_csrf.token}">
 <meta name="_csrf_header" th:content="${_csrf.headerName}">
 <style>
@@ -36,7 +35,7 @@
 	margin-bottom: 50px;
 }
 </style>
-
+</head>
 <body>
 	<!-- Start Main -->
 	<main id="news">
@@ -86,6 +85,5 @@
 		
 	</main>
 	<!-- End Main -->
-	
 </body>
 </html>

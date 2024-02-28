@@ -5,7 +5,6 @@
 	layout:fragment="Content">
 <head>
 <title>News</title>
-</head>
 <meta name="_csrf" th:content="${_csrf.token}">
 <meta name="_csrf_header" th:content="${_csrf.headerName}">
 <style>
@@ -124,7 +123,7 @@
 	font-size: 50px;
 }
 </style>
-
+</head>
 <body>
 	<!-- Start Main -->
 	<main id="news">
@@ -255,6 +254,5 @@
 				}
 			});
 	</script>
-
 </body>
 </html>

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+	layout:decorate="~{common/layout/layout}" 
+	layout:fragment="Content">
 <head>
 <title>Event</title>
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
 <style>
 .benefit-container {
 	display: flex;
@@ -64,11 +67,8 @@
 .in-progress, .completed, .upcoming {
     font-size: 0.9rem;
 }
-
 </style>
 </head>
-<meta name="_csrf" th:content="${_csrf.token}">
-<meta name="_csrf_header" th:content="${_csrf.headerName}">
 <body>
 	<!-- Start Main -->
 	<main id="benefit">
@@ -127,6 +127,5 @@
 		</div>
 	</main>
 	<!-- End Main -->
-
 </body>
 </html>
