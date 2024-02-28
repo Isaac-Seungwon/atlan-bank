@@ -1289,9 +1289,70 @@ INSERT INTO tblEventParticipation (eventparticipation_seq, regdate, member_seq, 
 
 commit;
 
+
+-- tblFranchise
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Samsung', 'samsung_logo.png', '010-1264-5178');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Apple', 'apple_logo.png', '010-2315-6181');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '카카오', 'kakao_logo.png', '010-3456-7190');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '네이버', 'naver_logo.png', '010-4567-8501');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '배달의민족', 'baemin_logo.jpg', '010-5648-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo_logo.jpg', '010-6789-0123');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang_logo.png', '010-7897-1264');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24_logo.png', '010-8901-2745');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu_logo.jpg', '010-9012-3356');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven_logo.png', '010-0123-4567');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop_logo.jpg', '010-1533-5668');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart_logo.jpg', '010-8345-6789');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'SONY', 'sony_logo.png', '010-3456-7890');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '스타벅스', 'starbucks_logo.png', '010-4567-8911');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '투썸플레이스', 'twosome_logo.png', '010-5678-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '롯데시네마', 'lottecinema_logo.png', '010-6589-0223');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '맥도날드', 'mcdonalds_logo.png', '010-7270-1234');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '버거킹', 'burgerking_logo.png', '010-1012-3456');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '인천국제공항', 'icn_logo.jpg', '010-1574-5178');
+
 -- tblBenefit
-INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq) VALUES (benefit_seq.nextVal, '혜택1', '혜택1 내용', 'event_img2.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 1);
-INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq) VALUES (benefit_seq.nextVal, '혜택2', '혜택2 내용', 'event_img2.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 2);
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '특정 품목 현장할인', 'Samsung 제품의 특정 품목을 현장할인', NULL, TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 1);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '모바일 7% 청구할인', 'Coupang 모바일에서 결제하면 7% 청구할인', NULL, TO_DATE('2024-01-02', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 7);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '최대 7.5만원 즉시할인', '인천국제공항 이용시 최대 7.5만원 즉시할인', NULL, TO_DATE('2024-01-02', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 19);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '5% 청구할인', 'Naver에서 결제하면 5% 청구할인', NULL, TO_DATE('2024-01-14', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 4);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '할인 및 상품권 증정', '이마트에서 구매시 할인 및 상품권 증정', NULL, TO_DATE('2024-01-26', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 12);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '특정 품목 현장할인', '롯데시네마 제품 특정 품목 현장할인', NULL, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 16);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '5% 즉시할인', 'CU에서 구매하면 5% 즉시할인', NULL, TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-14', 'YYYY-MM-DD'), 9);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '7% 즉시할인', '스타벅스 특정 품복 즉시 할인', NULL, TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 14);
+
+select * from tblBenefit;
+
+SELECT 
+    b.benefit_seq,
+    b.name AS benefit_name,
+    b.content,
+    b.img AS benefit_img,
+    b.start_date,
+    b.end_date,
+    b.franchise_seq,
+    f.name AS franchise_name,
+    f.img AS franchise_img,
+    f.tel
+FROM 
+    tblBenefit b
+INNER JOIN 
+    tblFranchise f ON b.franchise_seq = f.franchise_seq;
 
 commit;
 
