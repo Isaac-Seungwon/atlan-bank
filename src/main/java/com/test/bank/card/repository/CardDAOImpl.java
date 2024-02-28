@@ -9,6 +9,7 @@ import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.domain.CardUsageGuideDTO;
+import com.test.bank.card.domain.MemberCardHistoryDTO;
 import com.test.bank.card.mapper.CardMapper;
 
 @Repository
@@ -55,6 +56,16 @@ public class CardDAOImpl implements CardDAO {
 	@Override
 	public List<CardDTO> getSearchCardList(String word) {
 		return mapper.getSearchCardList(word);
+	}
+
+	@Override
+	public List<MemberCardHistoryDTO> getPrevMonthCardHistory(String memberSeq) {
+		return mapper.getPrevMonthCardHistory(memberSeq);
+	}
+
+	@Override
+	public List<MemberCardHistoryDTO> getHistoryList(String memberSeq) {
+		return mapper.getHistoryList(memberSeq);
 	}
 
 	

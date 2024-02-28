@@ -18,31 +18,31 @@ public class UserNewsController {
 
 	@Autowired
 	private NewsService service;
-	
-	@GetMapping(value="/view.do")
+
+	@GetMapping(value = "/view.do")
 	public String view(String category, String word, @RequestParam(defaultValue = "1") int page, Model model) {
-		
+
 		String solting = "user";
-        String searchStatus = (category == null && word == null) || (category.equals("") && word.equals("")) ? "n" : "y";
+		String searchStatus = (category == null && word == null) || (category.equals("") && word.equals("")) ? "n" : "y";
 
-        Map<String, String> map = service.paging(solting, searchStatus, category, word, page, 10);
+		Map<String, String> map = service.paging(solting, searchStatus, category, word, page, 10);
 
-        model.addAttribute("currentPage", page);
-        model.addAttribute("map", map);
-        model.addAttribute("category", category);
-        model.addAttribute("word", word);
-        model.addAttribute("newsList", service.getNewsWithPaging(map));
-        
+		model.addAttribute("currentPage", page);
+		model.addAttribute("map", map);
+		model.addAttribute("category", category);
+		model.addAttribute("word", word);
+		model.addAttribute("newsList", service.getNewsWithPaging(map));
+
 		return "user/news/view";
 	}
 
-    @GetMapping(value = "/detail.do")
-    public String detail(@RequestParam int seq, Model model) {
-        NewsDTO news = service.getNewsBySeq(seq);
+	@GetMapping(value = "/detail.do")
+	public String detail(@RequestParam int seq, Model model) {
+		NewsDTO news = service.getNewsBySeq(seq);
 
-        model.addAttribute("news", news);
+		model.addAttribute("news", news);
 
-        return "user/news/detail";
-    }
+		return "user/news/detail";
+	}
 
 }
