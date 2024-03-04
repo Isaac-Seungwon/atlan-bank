@@ -60,4 +60,29 @@ public class TicketDAOImpl implements TicketDAO{
 	public List<WorkListDTO> getWorkList(String bankSeq, String type) {
 		return mapper.getWorkList(bankSeq, type);
 	}
+	
+	@Override
+	public int getWaitingNumber(String bankSeq, String type) {
+		return mapper.getWaitingNumber(bankSeq, type);
+	}
+	
+	@Override
+	public int addTicket(String bankSeq, String type, String userId) {
+		return mapper.addTicket(bankSeq, type, userId);
+	}
+	
+	@Override
+	public int addFavorite(String bankSeq, String userId) {
+		return mapper.addFavorite(bankSeq, userId);
+	}
+	
+	@Override
+	public int findFavorite(String bankSeq, String userId) {
+		return mapper.findFavorite(bankSeq, userId);
+	}
+	
+	@Override
+	public int delFavorite(String bankSeq, String userId) {
+		return mapper.delFavorite(bankSeq, userId);
+	}
 }

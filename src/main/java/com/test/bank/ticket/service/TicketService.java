@@ -1,5 +1,7 @@
 package com.test.bank.ticket.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +14,8 @@ import com.test.bank.ticket.domain.BankDTO;
 import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.repository.TicketDAO;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @Service
 public class TicketService {
@@ -98,6 +102,50 @@ public class TicketService {
 		
 		return workMap;
 	}
+
+	public int getWaitingNumber(String bankSeq, String type) {
+		int number = dao.getWaitingNumber(bankSeq, type);
+		return number + 1;
+	}
+
+	public String addTicket(String bankSeq, String type, String userId, HttpServletResponse resp) {
+		
+		int result = dao.addTicket(bankSeq, type, userId);
+		System.out.println("결과: "+ result);
+		if (result == 1) {
+			this.redirectWithMessage(resp, "발급 완료");
+		} else {
+			this.redirectWithMessage(resp, "작성실패");
+		}
+		
+		return null;
+	}
+	
+	public int delFavorite(String bankSeq, String userId) {
+		return dao.delFavorite(bankSeq, userId);
+	}
+	
+	public int addFavorite(String bankSeq, String userId) {
+		return dao.addFavorite(bankSeq, userId);
+	}
+	
+	public int findFavorite(String bankSeq, String userId) {
+		return dao.findFavorite(bankSeq, userId);
+	}
+	
+	
+	public void redirectWithMessage(HttpServletResponse resp, String message) {
+		System.out.println("test");
+		resp.setContentType("text/html; charset=UTF-8");
+		try {
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('" + message + "');history.back();</script>");
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 	
 }

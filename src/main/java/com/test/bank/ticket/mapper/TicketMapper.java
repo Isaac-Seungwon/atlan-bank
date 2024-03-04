@@ -25,6 +25,18 @@ public interface TicketMapper {
 	List<WorkListDTO> selectWorkList(String bankSeq);
 
 	List<WorkListDTO> getWorkList(String bankSeq, String type);
+
+	int getWaitingNumber(String bankSeq, String type);
+
+	int addTicket(String bankSeq, String type, String userId);
+
+	int addFavorite(String bankSeq, String userId);
+
+	int findFavorite(String bankSeq, String userId);
+
+	int delFavorite(String bankSeq, String userId);
+	
+	
 	
 	
 }

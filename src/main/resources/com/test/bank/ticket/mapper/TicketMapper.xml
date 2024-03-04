@@ -42,5 +42,29 @@
 	<select id="getWorkList" parameterType="String" resultType="com.test.bank.ticket.domain.WorkListDTO">
 		select * from vwWorkList where bank_seq = #{bankSeq} and work_seq = #{type}
 	</select>
+	
+	<select id="getWaitingNumber" parameterType="String" resultType="integer">
+		select coalesce(max(ticket_waiting_status_seq), 0)
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = #{type}
+	</select>
+	
+	<insert id="addTicket" parameterType="String">
+		insert into tblTicketWaitingStatus (ticket_waiting_status_seq, bank_seq, work_seq, member_seq, regdate, time, is_complete) values
+		(nvl((SELECT max(ticket_waiting_status_seq) FROM tblTicketWaitingStatus), 0) + 1, #{bankSeq}, #{type}, 1, default, TO_DATE('9:00', 'HH24:MI'), default)
+	</insert>
+	
+	<insert id="addFavorite" parameterType="String">
+		insert into tblBankFavorite (bank_favorite_seq, bank_seq, member_seq) values 
+		(nvl((SELECT max(bank_favorite_seq) FROM tblBankFavorite), 0) + 1, #{bankSeq}, 1)
+	</insert>
+	
+	<select id="findFavorite" parameterType="String" resultType="integer">
+		select count(*)
+		from tblBankFavorite where bank_seq = #{bankSeq} and member_seq = 1
+	</select>
+	
+	<delete id="delFavorite" parameterType="String">
+		delete from tblBankFavorite where bank_seq = #{bankSeq} and member_seq = 1
+	</delete>
 
 </mapper>
