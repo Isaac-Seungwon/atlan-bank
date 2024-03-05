@@ -4,13 +4,6 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>지점 현황</title>
-  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
-  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
-  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
-  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.min.js"></script>
-  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
 
 <style>
 	table th, td{
@@ -126,19 +119,19 @@
 			    <td id="100" class="tdBtn" th:name="입출금" data-bs-toggle="modal">번호표 발급</td>
 				</tr>
 				<tr>
-			    <th class="type" th:name="200">대출 업무</th>
+			    <th class="type" th:name="200">개인종합(대출) 업무</th>
 			    <td th:text="${nt200 != null ? nt200.standby : 0} + ' 명'"></td>
-			    <td id="200" class="tdBtn" th:name="대출" data-bs-toggle="modal">번호표 발급</td>
+			    <td id="200" class="tdBtn" th:name="개인종합" data-bs-toggle="modal">번호표 발급</td>
 				</tr>
 				<tr>
-			    <th class="type" th:name="300">외환 업무</th>
+			    <th class="type" th:name="300">기업종합 업무</th>
 			    <td th:text="${nt300 != null ? nt300.standby : 0} + ' 명'"></td>
-			    <td id="300" class="tdBtn" th:name="외환" data-bs-toggle="modal">번호표 발급</td>
+			    <td id="300" class="tdBtn" th:name="기업" data-bs-toggle="modal">번호표 발급</td>
 				</tr>    
 				<tr>
-			    <th class="type" th:name="400" >기업 업무</th>
+			    <th class="type" th:name="400" >외환 업무</th>
 			    <td th:text="${nt400 != null ? nt400.standby : 0} + ' 명'"></td>
-			    <td id="400" class="tdBtn" th:name="기업" data-bs-toggle="modal">번호표 발급</td>
+			    <td id="400" class="tdBtn" th:name="외환" data-bs-toggle="modal">번호표 발급</td>
 				</tr>
 			</table>
 			
@@ -328,21 +321,6 @@
 	  })
   });
 	
-  /*
-	$(document).on('click', ".bank-favorite", function() {
-		$.ajax({
-			url: '/atlanbank/ticket/togglefavorite/' + bankSeq,
-			type: 'post',
-			success: function() {
-				alert('즐겨찾기 추가되었습니다.')
-			  location.reload()
-			},
-			error: function() {
-			  alert('즐겨찾기 추가에 실패하였습니다. 실패가 계속된다면 고객센터에 문의 바랍니다.')
-		  }
-		})
-	})
-	*/
 	//좋아요 버튼
 	function togglefavorite() {
 
@@ -354,8 +332,6 @@
 		// 버튼의 클래스를 변경하여 색상을 토글합니다.
 		$(event.target).removeClass(currentClass).addClass(newClass);
 		
-		
-
 		if ($(event.target).hasClass("del")) {
 			$.ajax({
 				type: 'DELETE',
@@ -393,9 +369,6 @@
     $(event.target).text(buttonText);
 		
 	}
-	
-	
-	
 	
   </script>
 

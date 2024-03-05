@@ -45,7 +45,7 @@
 	
 	<select id="getWaitingNumber" parameterType="String" resultType="integer">
 		select coalesce(max(ticket_waiting_status_seq), 0)
-		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = #{type}
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq}
 	</select>
 	
 	<insert id="addTicket" parameterType="String">
