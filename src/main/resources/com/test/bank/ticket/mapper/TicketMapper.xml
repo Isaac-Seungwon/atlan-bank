@@ -66,5 +66,13 @@
 	<delete id="delFavorite" parameterType="String">
 		delete from tblBankFavorite where bank_seq = #{bankSeq} and member_seq = 1
 	</delete>
+	
+	<select id="getfavoriteBanks" parameterType="String" resultType="com.test.bank.ticket.domain.FavoriteBankDTO">
+		select b.bank_name as bankName, b.bank_seq as bankSeq
+			from tblBank b
+			    join tblBankFavorite bf
+			        on b.bank_seq = bf.bank_seq
+			where bf.member_seq = #{userSeq}
+	</select>
 
 </mapper>

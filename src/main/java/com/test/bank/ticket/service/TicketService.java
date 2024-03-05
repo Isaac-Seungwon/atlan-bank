@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.FavoriteBankDTO;
 import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.repository.TicketDAO;
@@ -144,6 +145,12 @@ public class TicketService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<FavoriteBankDTO> getfavoriteBanks(String userId) {
+		List<FavoriteBankDTO> favoriteBanks = dao.getfavoriteBanks(userId);
+		
+		return favoriteBanks;
 	}
 
 	

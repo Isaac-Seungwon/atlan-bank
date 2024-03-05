@@ -3,6 +3,7 @@ package com.test.bank.ticket.mapper;
 import java.util.List;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.FavoriteBankDTO;
 import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 
@@ -35,6 +36,8 @@ public interface TicketMapper {
 	int findFavorite(String bankSeq, String userId);
 
 	int delFavorite(String bankSeq, String userId);
+
+	List<FavoriteBankDTO> getfavoriteBanks(String userId);
 	
 	
 	

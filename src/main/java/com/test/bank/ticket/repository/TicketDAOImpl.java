@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.FavoriteBankDTO;
 import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.mapper.TicketMapper;
@@ -84,5 +85,10 @@ public class TicketDAOImpl implements TicketDAO{
 	@Override
 	public int delFavorite(String bankSeq, String userId) {
 		return mapper.delFavorite(bankSeq, userId);
+	}
+	
+	@Override
+	public List<FavoriteBankDTO> getfavoriteBanks(String userId) {
+		return mapper.getfavoriteBanks(userId);
 	}
 }

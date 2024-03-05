@@ -15,7 +15,17 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 ======================================================== -->
-
+	<style type="text/css">
+		table {
+			font-size: larger;
+		}
+		
+		.tdBtn{
+			background-color: #31BB9E !important;
+			color: #fff !important;
+			cursor: pointer !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -116,6 +126,32 @@
 				</div>
 			</div>
 		</section>
+		
+		<section th:if="${favoriteBanks != null and #lists.size(favoriteBanks) > 0}">
+	    <div class="features container" data-aos="fade-up" data-aos-delay="300">
+	        <div class="feature-box">
+	            <h2><i class="fa-solid fa-star"></i> 즐겨찾기 리스트</h2>
+	            <table class="table table-hover mt-3" style="text-align:center">
+	                <thead>
+	                    <tr>
+	                        <th>즐겨찾는 지점</th>
+	                        <th>번호표 발급</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <!-- Iterate over bankList to dynamically generate rows -->
+	                    <th:block th:each="bank : ${favoriteBanks}">
+	                        <tr>
+	                            <td th:text="${bank.bankName}"></td> <!-- Assuming you have a property 'name' in Bank class -->
+	                            <td><button th:id="${bank.bankSeq}" class="tdBtn btn btn-main">번호표 발급</button></td>
+	                        </tr>
+	                    </th:block>
+	                </tbody>
+	            </table>
+	        </div>
+	    </div>
+	</section>
+		
 		
 		<main id="main">
 			<!-- Start Event Section -->
@@ -256,5 +292,13 @@
 
 	</div>
 </body>
+
+<script>
+	$(document).on('click', ".tdBtn", function() {
+		let bankSeq = $(this).attr('id')
+		location.href = "/atlanbank/ticket/reservation/" + bankSeq
+	})
+
+</script>
 
 </html>
