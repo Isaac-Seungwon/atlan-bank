@@ -82,5 +82,20 @@ public class TicketController {
 		return mav;
 	}	
 	
+	//번호표 확인 페이지
+	@GetMapping(value="/myticket.do")
+	public String myTicket(Model model, HttpSession session) {
+		
+		session.setAttribute("id", "test1");
+		session.setAttribute("seq", "1");
+		String userId = (String) session.getAttribute("id");
+		String userSeq = (String) session.getAttribute("seq");
+		
+		List<TicketWaitingStatusDTO> ticketList = service.getTicketList(userSeq);
+		model.addAttribute("ticketList", ticketList);
+		
+		return "member/ticket/myticket";
+	}
+	
 	
 }

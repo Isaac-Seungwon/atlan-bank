@@ -38,6 +38,10 @@ public interface TicketMapper {
 	int delFavorite(String bankSeq, String userId);
 
 	List<FavoriteBankDTO> getfavoriteBanks(String userId);
+
+	List<TicketWaitingStatusDTO> getTicketList(String userSeq);
+
+	int delTicket(String watingSeq);
 	
 	
 	

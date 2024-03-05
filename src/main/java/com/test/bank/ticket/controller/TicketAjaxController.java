@@ -98,7 +98,16 @@ public class TicketAjaxController {
 		return service.addFavorite(bankSeq, userId);
 	}
 	
-	
+	//번호표 삭제
+	@DeleteMapping("/ticket/delticket/{ticketWaitingStatusSeq}")
+	public int delTicket(@PathVariable("ticketWaitingStatusSeq") String watingSeq, HttpSession session) {
+		String userId = (String) session.getAttribute("id");
+		System.out.println("userId");
+		if (userId == null) {
+			return 0;
+		}
+		return service.delTicket(watingSeq);
+	}
 	
 	
 }

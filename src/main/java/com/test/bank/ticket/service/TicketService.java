@@ -152,6 +152,19 @@ public class TicketService {
 		
 		return favoriteBanks;
 	}
+	
+	//번호표 발급 목록 조회
+	public List<TicketWaitingStatusDTO> getTicketList(String userSeq) {
+		List<TicketWaitingStatusDTO> ticketList = dao.getTicketList(userSeq);
+		
+		return ticketList;
+	}
+	
+	//번호표 취소
+	public int delTicket(String watingSeq) {
+		System.out.println("watingSeq" + watingSeq);
+		return dao.delTicket(watingSeq);
+	}
 
 	
 	

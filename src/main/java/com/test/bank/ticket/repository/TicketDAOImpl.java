@@ -91,4 +91,14 @@ public class TicketDAOImpl implements TicketDAO{
 	public List<FavoriteBankDTO> getfavoriteBanks(String userId) {
 		return mapper.getfavoriteBanks(userId);
 	}
+	
+	@Override
+	public List<TicketWaitingStatusDTO> getTicketList(String userSeq) {
+		return mapper.getTicketList(userSeq);
+	}
+	
+	@Override
+	public int delTicket(String watingSeq) {
+		return mapper.delTicket(watingSeq);
+	}
 }

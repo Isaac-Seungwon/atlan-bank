@@ -39,6 +39,10 @@ public interface TicketDAO {
 
 	List<FavoriteBankDTO> getfavoriteBanks(String userId);
 
+	List<TicketWaitingStatusDTO> getTicketList(String userSeq);
+
+	int delTicket(String watingSeq);
+
 
 	
 }

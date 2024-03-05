@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>번호표 확인</title>
+
+<style>
+	table {
+			font-size: larger;
+		}
+		
+	table th {
+		font-size: 1.2em;
+	}
+	
+	table th:nth-child(1) { width:30%; }
+	table th:nth-child(2) { width:10%; }
+	table th:nth-child(3) { width:10%; }
+	table th:nth-child(4) { width:20%; }
+	table th:nth-child(5) { width:20%; }
+	table th:nth-child(6) { width:10%; }
+</style>
+
+
+</head>
+
+<body>
+
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>번호표 확인</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="/atlanbank/ticket/myticket.do">번호표 확인</a></li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Pricing Section ======= -->
+  <section id="pricing" class="pricing">
+   <div class="container" style="text-align: center">
+    <div style="text-align: center">
+	    <h2 style="font-weight: 700">번호표 발급 목록</h2>
+			<div style="min-height: 500px;">
+				<table class="table table-hover mt-5">
+					<thead>
+						<tr>
+							<th>지점</th>
+							<th>업무</th>
+							<th>번호</th>
+							<th>일자</th>
+							<th>발급시간</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody th:if="${ticketList != null and #lists.size(ticketList) > 0}">
+						<th:block th:each="list : ${ticketList}">
+							<tr>
+								<td valign="middle" th:text="${list.bankName}"></td>
+								<td valign="middle" th:text="${list.workName}"></td>
+								<td valign="middle" th:text="${list.ticketWaitingStatusSeq}"></td>
+								<td valign="middle" th:text="${list.regdate}"></td>
+								<td valign="middle" th:text="${list.time}"></td>
+								<td><button class="btn btn-danger cancelBtn" th:id="${list.ticketWaitingStatusSeq}">취소</button></td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+ 
+ 	</div>  <!-- End class="row justify-content-center" -->
+ 
+ </section>   <!-- End section -->
+
+</main><!-- End #main -->
+</body>
+
+<script>
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
+
+	$(document).on('click', ".cancelBtn", function() {
+		const ticketWaitingStatusSeq = $(this).attr('id'); 
+		$.ajax({
+			type:'DELETE',
+			url: '/atlanbank/ticket/delticket/' + ticketWaitingStatusSeq,
+			success: result =>{
+	  		if (result == 1) {
+	  			alert('즐겨찾기에서 삭제되었습니다.');
+	  		} else {
+	  			alert('로그인이 필요한 서비스입니다.');
+	  		}
+	  		location.reload();
+	  	},
+	  	error : (a,b,c) => {
+	  		console.log(a,b,c,);
+	  	}
+		})
+		
+		
+		
+	})
+</script>
+</html>
