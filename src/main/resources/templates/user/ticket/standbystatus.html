@@ -6,9 +6,9 @@
 <title>지점 현황</title>
 
 <style>
-	table td, th{
-		/* border:1px solid rgba(0,0,0,.1); */
-		padding: 20px;
+	table th, td{
+		border:1px solid rgba(0,0,0,.1);
+		padding: 20px !important;
 	}
 	
 	.type{
@@ -16,110 +16,208 @@
 	}
 	
 	.tdBtn{
-		background: #31BB9E;
-		color: #fff;
-		cursor: pointer;
-	}
-	
-	.ax5-ui-dialog .ax-dialog-header,.btn-default,.btn-default:hover,.btn-default:focus{
-		background: #31BB9E;
-		color: #fff;
-		border: none;
+		background-color: #31BB9E !important;
+		color: #fff !important;
+		cursor: pointer !important;
 	}
 	
 	#workTable {
-		padding: 20px;
+		padding: 20px !important;
+	}
+
+	#issueTicketModal table th, #issueTicketModal table td {
+		border: 0px;
 	}
 	
+	#issueTicketModal table th {
+		border-right-width: 1px solid black;
+	}
+	
+	.modal-footer {
+		justify-content: center;
+	}
+	
+	.modal-footer button {
+		width: 30%;
+	}
+	
+	.bank-favorite-wrap span {
+		display: flex;
+		font-size: 1.3em;
+		align-items: center;
+	}
+	
+	.bank-favorite {
+		background-color: #fff;
+		border: 0px;
+	}
+	.bank-favorite:hover {
+		background-color: #fff;
+	}
+	
+	
 </style>
+
+
 </head>
 
 <body>
 
-  <main id="main">
+<main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
-        <div class="container position-relative">
-          <div class="row d-flex justify-content-center">
-            <div class="col-lg-6 text-center">
-              <h2>번호표 발급</h2>
-            </div>
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/page-header.jpg');">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>번호표 발급</h2>
           </div>
         </div>
       </div>
-      <nav>
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="/atlanbank/ticket/searchbank.do">지점 검색</a></li>
-            <li th:text="${bankName} + ' 번호표 발급'"></li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Breadcrumbs -->
+    </div>
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="/atlanbank/ticket/searchbank.do">지점 검색</a></li>
+          <li th:text="${bankName} + ' 번호표 발급'"></li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
 
     <!-- ======= Pricing Section ======= -->
   <section id="pricing" class="pricing">
-   <div class="container" style="text-align: center;">
-    
-    <h2 th:text="${bankName} + ' 지점 현황'"></h2>
-	<button id="${bankSeq}" class="btn btn-main mb-2 basket" style="height: 40px;" th:text="'즐겨찾기에 등록'"></button>
-	<hr>
-	<div class="row">
-	<div style="width: 100%;height:85%;float: left;">
+   <div class="container" style="text-align: center">
+    <div style="text-align: center">
+	    <h2 style="font-weight: 700" th:text="${bankName} + ' 지점 현황'"></h2>
+	    <div class="bank-favorite-wrap p-2 mt-3">
+				<button type="button" class="btn btn-primary" th:onclick="togglefavorite()">
+					<span id="favoite" th:class="${bankFavorite > 0 ? 'favoiteBtn add' : 'favoiteBtn del'}" th:text="${bankFavorite > 0 ? '즐겨찾기 삭제' : '즐겨찾기 추가'}"></span>
+				</button>
+			</div>
+
+			
+		</div>
 		
-		<h2 style="text-align: center;">대기 손님 현황</h2>
-		<hr>
-		<table id="workTable" class="table table-bordered" style="width: 100%;">
-			<tr>
-				<th colspan="3">
-					<span style="color: red;">원하시는 업무</span>를 선택해주세요
-				</th>
-			</tr>
-			<tr>
+		<div class="row">
+			
+			<div class="section-header mt-5">
+        <h3>대기 손님 현황</h3>
+      </div>
+      
+			<table class="table table-bordered">
+				<tr>
+					<th colspan="3">
+						<span style="color: red;">원하시는 업무</span>를 선택해주세요
+					</th>
+				</tr>
+				<tr>
 			    <th class="type" th:name="100">입출금 업무</th>
 			    <td th:text="${nt100 != null ? nt100.standby : 0} + ' 명'"></td>
-			    <td id="100" class="tdBtn">번호표발급</td>
-			</tr>
-			<tr>
-			    <th class="type" th:name="200">대출 업무</th>
+			    <td id="100" class="tdBtn" th:name="입출금" data-bs-toggle="modal">번호표 발급</td>
+				</tr>
+				<tr>
+			    <th class="type" th:name="200">개인종합(대출) 업무</th>
 			    <td th:text="${nt200 != null ? nt200.standby : 0} + ' 명'"></td>
-			    <td id="200" class="tdBtn">번호표발급</td>
-			</tr>
-			<tr>
-			    <th class="type" th:name="300">외환 업무</th>
+			    <td id="200" class="tdBtn" th:name="개인종합" data-bs-toggle="modal">번호표 발급</td>
+				</tr>
+				<tr>
+			    <th class="type" th:name="300">기업종합 업무</th>
 			    <td th:text="${nt300 != null ? nt300.standby : 0} + ' 명'"></td>
-			    <td id="300" class="tdBtn">번호표발급</td>
-			</tr>    
-			<tr>
-			    <th class="type" th:name="400" >기업 업무</th>
+			    <td id="300" class="tdBtn" th:name="기업" data-bs-toggle="modal">번호표 발급</td>
+				</tr>    
+				<tr>
+			    <th class="type" th:name="400" >외환 업무</th>
 			    <td th:text="${nt400 != null ? nt400.standby : 0} + ' 명'"></td>
-			    <td id="400" class="tdBtn">번호표발급</td>
-			</tr>
-		</table>
+			    <td id="400" class="tdBtn" th:name="외환" data-bs-toggle="modal">번호표 발급</td>
+				</tr>
+			</table>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="issueTicketModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="issueTicketModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5" id="issueTicketModalLabel">번호표 발급</h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			      	<div class="row justify-content-center">
+				        <table class="table">
+				        	<tr>
+				        		<th class="table-light">지점</th>
+				        		<td th:text="${bankName}"></td>
+				        	</tr>
+				        	<tr>
+				        		<th class="table-light">창구</th>
+				        		<td id="work"></td>
+			        		</tr>
+			        		<tr>
+			        			<th class="table-light">번호</th>
+			        			<td id="number"></td>
+			        		</tr>
+			        		<tr>
+			        			<th class="table-light">대기인원</th>
+			        			<td id="waitingNum"></td>
+			        		</tr>
+		        			<tr>
+		        				<th class="table-light">예상시간</th>
+		        				<td id="waitingTime"></td>
+	        				</tr>
+	       				</table>
+       				</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-primary" id="issueTicket">발급</button>
+			      </div>
+			    </div>
+			  </div>
+			</div> <!-- End Modal -->
 	
+			<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5" id="exampleModalLabel">알림</h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        로그인이 필요한 서비스입니다.
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-primary">Login</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	
+		</div>
 
-	</div>
- </div>
-
-	<div style="width: 100%; float: left; height: 85%;">
-		<h2 style="text-align: center;">구비서류</h2>
-		<hr>
-		<div id="docs"></div>
-	</div>
+		<div style="width: 100%; float: left; height: 85%;">
+		
+			<div class="section-header mt-5">
+      	<h3>구비서류</h3>
+      </div>
+			<div id="docs"></div>
+		</div>
  
- </div>  <!-- End class="row justify-content-center" -->
+ 	</div>  <!-- End class="row justify-content-center" -->
  
  </section>   <!-- End section -->
-    
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
   
  <script>
+	 var token = $("meta[name='_csrf']").attr("content");
+	 var header = $("meta[name='_csrf_header']").attr("content");
+	 $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
   
   const bankSeq = "[[${bankSeq}]]";
+  let globalType = '';
   
 	window.onload = function(){
 		getWorkList(100);
@@ -132,14 +230,14 @@
 	
 	function getWorkList(type) {
 		$.ajax({
-			url: '/atlanbank/ticket/' + bankSeq + '/' + type,
+			url: '/atlanbank/ticket/worklist/' + bankSeq + '/' + type,
 			type: 'get',
 			success: function(data) {
 				$('#docs').empty();
 				
 				let content = '';
 			   
-			  content += '<table class="table">'
+			  content += '<table class="table table-bordered">'
 				content += '	<tr>'
 				content += '		<th style="width: 30%;">업무명</th>'
 				content += '		<th>필요서류</th>'
@@ -162,6 +260,114 @@
 		  	}
 			
 		});
+	}
+	
+  $(document).on('click', ".tdBtn", function() {
+	  const userId = "[[${userId}]]";
+	  globalType = $(this).attr('id'); 
+	  if (userId !== "null") {
+			//창구
+	   	const work = $(this).attr('name'); 
+	  	$('#work').text(work);
+	    
+	   	//대기인원 및 시간
+	  	const type = $(this).attr('id');
+			let waitingNum = 0;
+			if (type == 100) {
+				waitingNum = "[[${nt100.standby}]]";
+			} else if (type == 200) {
+				waitingNum = "[[${nt200.standby}]]";
+			} else if (type == 300) {
+				waitingNum = "[[${nt300.standby}]]";
+			} else if (type == 400) {
+				waitingNum = "[[${nt400.standby}]]";
+			}
+			$('#waitingNum').text(waitingNum + '명');
+			$('#waitingTime').text('약 ' + waitingNum*10 + '분');
+			
+			//번호
+			$.ajax({
+				url: '/atlanbank/ticket/waiting/' + bankSeq + '/' + type,
+				type: 'get',
+				success: function (data) {
+				  	$('#number').text(data);
+				}
+			});
+			
+		  $('#alertModal').modal('hide');
+		  $('#issueTicketModal').modal('show');
+
+	  } else {
+		  console.log('userId 없음');
+		  $('#issueTicketModal').modal('hide');
+		  $('#alertModal').modal('show');
+	  }
+	  
+
+  });
+  
+  $(document).on('click', "#issueTicket", function() {
+	  console.log('globalType',globalType)
+	  $.ajax({
+		  url: '/atlanbank/ticket/addticket/' + bankSeq + '/' + globalType,
+		  type: 'post',
+		  success: function() {
+			  alert('발급이 완료되었습니다.')
+			  location.reload()
+		  },
+		  error: function() {
+			  alert('발급이 실패하였습니다. 실패가 계속된다면 고객센터에 문의 바랍니다.')
+		  }
+	  })
+  });
+	
+	//좋아요 버튼
+	function togglefavorite() {
+
+		const currentClass = $(event.target).hasClass("add") ? "add" : "del";
+
+		// 토글하여 반대 클래스를 적용합니다.
+		const newClass = currentClass === "add" ? "del" : "add";
+		
+		// 버튼의 클래스를 변경하여 색상을 토글합니다.
+		$(event.target).removeClass(currentClass).addClass(newClass);
+		
+		if ($(event.target).hasClass("del")) {
+			$.ajax({
+				type: 'DELETE',
+				url: '/atlanbank/ticket/delfavorite/' + bankSeq,
+		  	success: result =>{
+		  		if (result == 1) {
+		  			alert('즐겨찾기에서 삭제되었습니다.');
+		  		} else {
+		  			alert('로그인이 필요한 서비스입니다.');
+		  		}
+		  	},
+		  	error : (a,b,c) => {
+		  		console.log(a,b,c,);
+		  	}
+			});
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: '/atlanbank/ticket/addfavorite/' + bankSeq,
+		  	success: result =>{
+		  		if (result == 1) {
+		  			alert('즐겨찾기에 추가되었습니다.');
+		  		} else {
+		  			alert('로그인이 필요한 서비스입니다.');
+		  		}
+		  	},
+		  	error : (a,b,c) => {
+		  		console.log(a,b,c);
+		  	}
+			});
+		}
+		
+		// 버튼의 텍스트를 변경합니다.
+    const buttonText = newClass === "del" ? "즐겨찾기 추가" : "즐겨찾기 삭제";
+    $(event.target).text(buttonText);
+		
 	}
 	
   </script>

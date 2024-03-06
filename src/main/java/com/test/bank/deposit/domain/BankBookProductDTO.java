@@ -24,6 +24,10 @@ public class BankBookProductDTO {
 	private String joinInfo;
 	private String joinDateInfo;
 	private String joinFee;
+
+	private String interestRate;
+	
+	
 	
 	
 }

@@ -18,6 +18,8 @@ import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.service.TicketService;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping(value = "/ticket")
@@ -48,7 +50,7 @@ public class TicketController {
 	}
 	
 	@RequestMapping("/reservation/{bankSeq}")
-	public ModelAndView reservation(@PathVariable("bankSeq") String bankSeq){
+	public ModelAndView reservation(@PathVariable("bankSeq") String bankSeq, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		TicketWaitingStatusDTO nt100 = service.selectStandBy100(bankSeq);
 		TicketWaitingStatusDTO nt200 = service.selectStandBy200(bankSeq);
@@ -58,6 +60,16 @@ public class TicketController {
 		List<WorkListDTO> workList = service.selectWorkList(bankSeq);
 		String bankName = service.selectBankName(workList);
 		
+		//임시 id 발급
+		session.setAttribute("id", "test1");
+		String userId = (String) session.getAttribute("id");
+		//session.removeAttribute("id");
+		if (userId == null) userId = "null";
+		
+		int bankFavorite = service.findFavorite(bankSeq, userId);
+		System.out.println("ticketcontroller bankfavoite: " + bankFavorite);
+		
+		mav.addObject("userId", userId);
 		mav.addObject("bankSeq", bankSeq);
 		mav.addObject("bankName", bankName);
 		mav.addObject("nt100", nt100);
@@ -65,9 +77,25 @@ public class TicketController {
 		mav.addObject("nt300", nt300);
 		mav.addObject("nt400", nt400);
 		mav.addObject("workList", workList);
+		mav.addObject("bankFavorite", bankFavorite);
 		mav.setViewName("user/ticket/standbystatus");
 		return mav;
 	}	
+	
+	//번호표 확인 페이지
+	@GetMapping(value="/myticket.do")
+	public String myTicket(Model model, HttpSession session) {
+		
+		session.setAttribute("id", "test1");
+		session.setAttribute("seq", "1");
+		String userId = (String) session.getAttribute("id");
+		String userSeq = (String) session.getAttribute("seq");
+		
+		List<TicketWaitingStatusDTO> ticketList = service.getTicketList(userSeq);
+		model.addAttribute("ticketList", ticketList);
+		
+		return "member/ticket/myticket";
+	}
 	
 	
 }

@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	ul {
+		padding-left: 14px;
+	}
+	.img-safe {
+		float: left;
+		margin-bottom: 20px;
+		margin-right: 5px;
+	}
 	
 </style>
 </head>
@@ -31,7 +39,7 @@
         <div class="container">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Services</li>
+            <li>예금</li>
           </ol>
         </div>
       </nav>
@@ -57,20 +65,20 @@
 		    <div class="bg-body-tertiary p-5 rounded border">
 		      <div class="col-sm-8 py-5 mx-auto">
 		      	<div class="border-bottom">
-		        	<h1 class="display-5 fw-normal">수진 정기예금</h1>
-		        	<p class="fs-5">설명 설명 설명</p>
+		        	<h1 class="display-5 fw-normal" th:text="${dto.name}">수진 정기예금</h1>
+		        	<p class="fs-5" th:text="${dto.simInfo}">설명 설명 설명</p>
 		        </div>
 		        <div class="container">
 				     <div class="row border-top py-3">
 						<div class="col-4">
 				          <div class="row">
 					        <div class="col-4 col-sm-4">
-					          <i class="bi bi-calendar-check fs-1"></i>
+					          <img src="https://oimg1.kbstar.com/img/ocommon/2018/product/icon_info1.png" >
 					        </div>
 					        <div class="col-8 col-sm-8">
 					          <div class="row row-cols-1 pt-2">
 							    <div class="col">기간</div>
-							    <div class="col fw-bold">1~60개월</div>
+							    <div class="col fw-bold" th:utext="${dateInfo}">1~60개월</div>
 							  </div>
 					        </div>
 					      </div>
@@ -79,12 +87,12 @@
 						<div class="col-4">
 				          <div class="row">
 					        <div class="col-4 col-sm-4">
-					          <i class="bi bi-cash fs-1"></i>
+								<img src="https://oimg1.kbstar.com/img/ocommon/2018/product/icon_info2.png" >
 					        </div>
 					        <div class="col-8 col-sm-8">
 					          <div class="row row-cols-1 pt-2">
 							    <div class="col">금액</div>
-							    <div class="col fw-bold">10만원 이상</div>
+							    <div class="col fw-bold" th:text="${dto.joinFee}">10만원 이상</div>
 							  </div>
 					        </div>
 					      </div>
@@ -93,12 +101,12 @@
 				       	<div class="col-4">
 				          <div class="row">
 					        <div class="col-4 col-sm-4">
-					          <i class="bi bi-graph-up-arrow fs-1"></i>
+								<img src="https://oimg1.kbstar.com/img/ocommon/2018/product/icon_info3.png" >
 					        </div>
 					        <div class="col-8 col-sm-8">
 					          <div class="row row-cols-1 pt-2">
 							    <div class="col">금리</div>
-							    <div class="col fw-bold">연 3%</div>
+							    <div class="col fw-bold" th:text="${dto.interestRate + '%'}">연 3%</div>
 							  </div>
 					        </div>
 					      </div>
@@ -145,12 +153,12 @@
 			        <div class="row border-top border-bottom py-2">
 					  <div class="col-3">
 					  	<div>
-							<h5>상품 특징</h5>		  	
+							<h5 class="fw-bold">상품 특징</h5>		  	
 					  	</div>
 					  </div>
 					
 					  <div class="col-9">
-			          	<div>
+			          	<div th:text="${dto.info}">
 			          		목돈을 일정기간동안 예치하여 안정적인 수익을 목적으로 하는 일시예치식 예금입니다.
 			          	</div>
 			          </div>
@@ -159,27 +167,12 @@
                     <div class="row border-bottom py-2">
 					  <div class="col-3">
 					  	<div>
-							<h5>가입 대상</h5>		  	
+							<h5 class="fw-bold">가입 대상</h5>		  	
 					  	</div>
 					  </div>
 					
 					  <div class="col-9">
-			          	<div>
-			          		목돈을 일정기간동안 예치하여 안정적인 수익을 목적으로 하는 일시예치식 예금입니다.
-			          	</div>
-			          </div>
-                    </div>
-                    
-                    
-                    <div class="row border-bottom py-2">
-					  <div class="col-3">
-					  	<div>
-							<h5>계약 기간</h5>		  	
-					  	</div>
-					  </div>
-					
-					  <div class="col-9">
-			          	<div>
+			          	<div th:text="${dto.joinInfo}">
 			          		목돈을 일정기간동안 예치하여 안정적인 수익을 목적으로 하는 일시예치식 예금입니다.
 			          	</div>
 			          </div>
@@ -189,12 +182,27 @@
                     <div class="row border-bottom py-2">
 					  <div class="col-3">
 					  	<div>
-							<h5>가입 금액</h5>		  	
+							<h5 class="fw-bold">계약 기간</h5>		  	
 					  	</div>
 					  </div>
 					
 					  <div class="col-9">
-			          	<div>
+			          	<div th:text="${dto.joinDateInfo}">
+			          		목돈을 일정기간동안 예치하여 안정적인 수익을 목적으로 하는 일시예치식 예금입니다.
+			          	</div>
+			          </div>
+                    </div>
+                    
+                    
+                    <div class="row border-bottom py-2">
+					  <div class="col-3">
+					  	<div>
+							<h5 class="fw-bold">가입 금액</h5>		  	
+					  	</div>
+					  </div>
+					
+					  <div class="col-9">
+			          	<div th:text="${dto.joinFee}">
 			          		목돈을 일정기간동안 예치하여 안정적인 수익을 목적으로 하는 일시예치식 예금입니다.
 			          	</div>
 			          </div>
@@ -216,7 +224,33 @@
                 </h3>
                 <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                   <div class="accordion-body">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+					  
+					<div>
+						<p>조회일 기준, 세금공제전, 단위: 연%</p>
+					<table class="table table-bordered text-center">
+						<thead class="table-success">
+						    <tr>
+								<th>
+									기간
+								</th>
+								<th>
+									만기지급식(확정금리)
+								</th>
+							</tr>
+						</thead>
+						<tbody th:each="list : ${rateList}">
+						    <tr>
+								<td th:text="${list.info}">
+									1개월이상~3개월미만
+								</td>
+								<td th:text="${list.interestRate}">
+									1.65
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+					  
                   </div>
                 </div>
               </div><!-- # Faq item-->
@@ -230,7 +264,67 @@
                 </h3>
                 <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                   <div class="accordion-body">
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                    <div class="container">
+						
+		        		<div class="row border-bottom border-top py-2" >
+		        			<div class="col-3">
+		        				<div>예금유의사항</div>
+		        			</div>
+		        			<div class="col-9">
+								<ul>
+									<li>
+										이 금융상품을 가입하시기 전에 상품설명서 및 약관을 읽어보시기 바랍니다.
+									</li>
+									<li>
+										금융소비자는 해당 상품 또는 서비스에 대하여 설명받을 권리가 있습니다.
+									</li>
+									<li>
+										만기 전 해지할 경우 계약에서 정한 이율보다 낮은 중도해지이율이 적용됩니다.
+									</li>
+									<li>
+										계좌에 압류, 가압류 등이 등록될 경우 원금 및 이자 지급이 제한될 수 있습니다.
+									</li>
+								</ul>
+		        			</div>
+		        		</div>
+		        		
+		        		<div class="row border-bottom py-2" >
+		        			<div class="col-3">
+		        				<div>세제혜택</div>
+		        			</div>
+		        			<div class="col-9">
+								<div>비과세종합저축으로 가입 가능</div>
+								<div>※ 관련 세법이 개정될 경우 세율이 변경되거나 세금이 부과될 수 있음</div>
+								<div>※ 계약기간 만료일 이후의 이자는 과세됨</div>
+		        			</div>
+		        		</div>
+		        		
+		        		<div class="row border-bottom py-2" >
+		        			<div class="col-3">
+		        				<div>예금자보호여부</div>
+		        			</div>
+		        			<div class="col-9">
+								<div>
+									<div class="img-safe"><img src="https://image.kebhana.com/cont/common/img/mall/kdic_logo_new.png"></div>
+									<div>이 예금은 예금자보호법에 따라 예금보험공사가 보호하되, 보호 한도는 본 은행에 있는 귀하의 모든 예금보호 대상 금융상품의 원금과 소정의 이자를 합하여 1인당 “최고 5천만원”이며, 5천만원을 초과하는 나머지 금액은 보호하지 않습니다</span>
+					        		
+					        	</div>
+					        	<br>
+					        	<div>
+									<ul>
+										<li>
+											준법감시인 심의필 제2023-4161-6호(2023.10.20)
+										</li>
+										<li>
+											본 공시내용의 유효기간 : 2023.10.27~2025.01.25까지
+										</li>
+									</ul>
+								</div>
+		        			</div>
+		        		</div>
+		        		
+		        		
+		        	</div>
                   </div>
                 </div>
               </div><!-- # Faq item-->
@@ -253,270 +347,7 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
-      <div class="container">
-
-        <div class="row gy-4 align-items-center features-item" data-aos="fade-up">
-
-          <div class="col-md-5">
-            <img src="assets/img/features-1.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check"></i> Ullam est qui quos consequatur eos accusamus.</li>
-            </ul>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item" data-aos="fade-up">
-          <div class="col-md-5 order-1 order-md-2">
-            <img src="assets/img/features-2.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7 order-2 order-md-1">
-            <h3>Corporis temporibus maiores provident</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item" data-aos="fade-up">
-          <div class="col-md-5">
-            <img src="assets/img/features-3.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7">
-            <h3>Sunt consequatur ad ut est nulla consectetur reiciendis animi voluptas</h3>
-            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
-            <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check"></i> Facilis ut et voluptatem aperiam. Autem soluta ad fugiat.</li>
-            </ul>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item" data-aos="fade-up">
-          <div class="col-md-5 order-1 order-md-2">
-            <img src="assets/img/features-4.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7 order-2 order-md-1">
-            <h3>Quas et necessitatibus eaque impedit ipsum animi consequatur incidunt in</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div><!-- Features Item -->
-
-      </div>
-    </section><!-- End Features Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-      <div class="container">
-
-        <div class="slides-1 swiper" data-aos="fade-up">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <span>Frequently Asked Questions</span>
-          <h2>Frequently Asked Questions</h2>
-
-        </div>
-
-        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-lg-10">
-
-            <div class="accordion accordion-flush" id="faqlist">
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Non consectetur a erat nam at lectus urna duis?
-                  </button>
-                </h3>
-                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
-                  </button>
-                </h3>
-                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
-                  </button>
-                </h3>
-                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-                  </button>
-                </h3>
-                <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
-                  </button>
-                </h3>
-                <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    
 
   </main><!-- End #main -->
 </body>
