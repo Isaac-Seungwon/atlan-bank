@@ -71,8 +71,16 @@ public class LoanService {
 		dao.insertloanstatus(dto);
 	}
 
-	public AccountTransferDTO getaccounttransfer(int userseq) {
+	public List<AccountTransferDTO> getaccounttransfer(int userseq) {
 		return dao.getaccounttransfer(userseq);
+	}
+
+	public void insertDepositWithdrawal(AccountTransferDTO dto) {
+		dao.insertDepositWithdrawal(dto);
+	}
+
+	public void updateAccountTransfer(AccountTransferDTO dto) {
+		dao.updateAccountTransfer(dto);
 	}
 	
 }

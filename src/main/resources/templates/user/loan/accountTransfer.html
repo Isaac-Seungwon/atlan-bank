@@ -3,10 +3,22 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
-<title>대출 신청</title>
+<!-- <link rel="stylesheet" href="/atlanbank/assets/css/jquery.fullpage.css">
+<script src="/atlanbank/assets/js/jquery.fullpage.js"></script>
+ -->
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<title>계좌이체</title>
 
 </head>
 <style>
+	.card-container {
+		margin-left: 20%;
+		width: 60%;
+	}
 	.section-header h2 {
 		font-size: 32px;
 	    font-weight: 700;
@@ -38,17 +50,13 @@
 		flex-direction: column;
 	}
 	
-	.card-row {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	
 	.card-box {
 		width: 50%;
-		height: 466px;
+		height: 200px;
 		position: relative;
 		transform-style: preserve-3d;
 		perspective: 1000;
+		margin: 10px 0;
 	}
 	
 	.card-container .card-box:last-child {
@@ -67,51 +75,16 @@
 		transition: all .5s;
 	}
 	
-	.card-box-item.front::after {
-		content: '';
-		display: block;
-		position: absolute;
-		left: 50%;
-		bottom: 56px;
-		width: 202px;
-		height: 202px;
-		margin-left: -101px;
-		border-radius: 100%;
-		background: #FFF;
-		
-	}
-	
 	.card-title {
 		cursor: pointer;
 	}
 	
 	.front {
-		position: relative;
-		z-index: 2;
-		opacity: 1;
-		transform: rotateY(0);
-		background: #F1F4F8;
-	}
-	
-	.back {
 		position: absolute;
 		z-index: 1;
-		opacity: 0;
-		transform: rotateY(180deg);
-		background: #FFF;
-		border: 1px solid rgba(0, 0, 0, 0.16);
-	}
-	
-	.card-box:hover > .front {
-		z-index: 1;
-		opacity: 0;
-		transform: rotateY(180deg);
-	}
-	
-	.card-box:hover > .back {
-		z-index: 2;
 		opacity: 1;
 		transform: rotateY(0);
+		background: #FFF;
 	}
 	
 	.card-img {
@@ -175,6 +148,80 @@
 	.card-annual-fee-box span {
 		font-weight: 500;
 	}
+	
+	.none_select {
+		-webkit-touch-callout: none; /* iOS Safari */
+	    -webkit-user-select: none; /* Safari */
+	    -ms-user-select: none; /* 인터넷익스플로러 */
+	    user-select: none;
+	    pointer-events : none;
+	    caret-color: transparent;
+	}
+	.slick-prev:before, .slick-next:before {
+		color: #000;
+	}
+	.display_center {
+		 display: flex;
+		 align-items: center;
+		 margin-left: 20%;
+		 width: 60%;
+		 margin-bottom: 20px;
+	}
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}
+	.modal{
+         position:absolute;
+         display:none;
+         
+         justify-content: center;
+         
+         width:100%;
+         height:135%;
+         
+         background-color: rgba(0,0,0,0.4);
+         align-items: center;
+     }
+     .modal-buttons {
+     	display: flex;
+     	margin: 10% 30%;
+     	justify-content: space-evenly;
+     }
+     .modal_body > h2{
+     	width: 60%;
+     	margin: 5% 20%;
+     	margin-top: 10%;
+     	text-align: center;
+     }
+     .modal_body > p{
+     	width: 60%;
+     	margin: 0 20%;
+     	text-align: center;
+     	
+     }
+     .modal_body {
+     	background-color: #fff;
+     	width: 50%; 
+     	height: 50%;
+        border-radius: 10px;
+     }
+     .modal_body input{
+     	border: 0;
+     }
+     .btn-open-modal, .btn-close-modal, .btn-next-modal{
+	    background: #0d42ff;
+	    border: 0;
+	    padding: 10px 30px;
+	    color: #fff;
+	    transition: 0.4s;
+	    border-radius: 4px;
+	}
+	.btn-open-modal{
+		background: #999999;
+	}
+
 </style>
 <body>
 <main id="main">
@@ -185,7 +232,7 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>대출</h2>
+              <h2>계좌이체</h2>
               <p>돈이 필요한 순간 Atlan Bank 대출</p>
               <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
             </div>
@@ -202,61 +249,235 @@
       </nav>
     </div><!-- End Breadcrumbs -->
 
-    <section id="service" class="services pt-0" style="margin-top: 20px;">
+    <section id="get-a-quote" class="get-a-quote" style="margin-top: 20px; padding: 0 0;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <span>대출상품</span>
-          <h2>대출상품</h2>
+          <h2>계좌이체</h2>
         </div>
-
+		<form action="/atlanbank/accountTransferComplete.do" method="get" class="php-email-form" style="margin-bottom: 50px;">
+		<h3>계좌 선택</h3>
         <div class="card-container">
-			<div class="card-row">
-				<div class="card-box">
+			<div class="card-row slider">
+				<div class="card-box slide" th:each="accounttransferdto, account:${accounttransferdto}" th:id="'account'+${account.index}" th:value="${accounttransferdto.bankBookSeq}">
 					<!-- front -->
+					<input type="hidden" class="accountBalance" th:value="${accounttransferdto.balance}">
+					<input type="hidden" class="accountNumber" th:value="${accounttransferdto.accountNumber}">
 					<div class="card-box-item front">
-						<div class="card-title">
-							<h3 th:text="${accounttransferdto.bankBookSeq}"></h3>
-							<p th:text="${accounttransferdto.bankBookSeq}"></p>
-						</div>
-						<div class="card-img">
-							123
-						</div>
-					</div>
-						
-					<!-- back -->
-					<div class="card-box-item back">
-						<div class="card-title">
-							<h3>123</h3>
-							<p>123</p>
-						</div>
-						<div class="card-annual-fee">
-							<div class="card-annual-fee-sub-title">
-								<span>연회비</span>
-								<span>자세히보기<i class="bi bi-caret-right-fill"></i></span>
-							</div>
-							<hr>
-							<div class="card-annual-fee-box">
-								<span>
-									123
-								</span>
-								<span></span>
+						<div class="card-title none_select">
+							<div class="card-title none_select">
+								<h3 th:text="${accounttransferdto.name}"></h3>
+								<p th:text="${accounttransferdto.info}"></p>
 							</div>
 						</div>
-						<div class="button-container">
-							<button type="button">상세보기</button>
-							<button type="button">카드신청</button>
+						<div class="card-annual-fee none_select">
+							<div class="card-annual-fee-sub-title none_select">
+								<span>계좌번호</span>
+								<span th:text="${accounttransferdto.accountNumber}"></span>
+							</div>
+							<div class="card-annual-fee-sub-title none_select">
+								<span>잔액</span>
+								<span th:text="${accounttransferdto.balance}"></span>
+							</div>
+							<div class="card-annual-fee-sub-title none_select">
+								<span>만료일</span>
+								<span th:text="${#strings.substring(accounttransferdto.maturityDate,0,10)}"></span>
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
-
+		</div>
+		<h3 style="margin-top: 50px; margin-bottom: 20px;">누구에게 보내시겠습니까?</h3>
+		<div class="row gy-4">
+			<div class="col-md-12">
+			  	<div class="display_center">
+			  		<span style="width: 120px;">은행</span>
+			    	<select name="bank" id="bankchoice"class="form-control">
+					    <option value="atlan">아틀란은행</option>
+					    <option value="kb">KB국민은행</option>
+					    <option value="hana">하나은행</option>
+					    <option value="sinhan">신한은행</option>
+					    <option value="woori">우리은행</option>
+					    <option value="ibk">IBK은행</option>
+					    <option value="nonghyup">NH농협은행</option>
+					    <option value="kdb">KDB산업은행</option>
+					    <option value="sc">SC제일은행</option>
+					    <option value="bnk">BNK부산은행</option>
+					    <option value="dgb">DGB대구은행</option>
+					    <option value="suhyup">수협은행</option>
+					    <option value="kakao">카카오은행</option>
+					    <option value="bnk">BNK경남은행</option>
+					    <option value="citi">한국씨티은행</option>
+					    <option value="kwangju">광주은행</option>
+					    <option value="toss">토스은행</option>
+					    <option value="jeonbuk">전북은행</option>
+					    <option value="k">케이은행</option>
+					    <option value="jeju">제주은행</option>
+					</select>
+			  	</div>
+			  	<div class="display_center">
+			  		<span style="width: 120px;">계좌번호</span>
+				    <input type="text" id="address" class="form-control" placeholder="계좌번호 입력해 주세요." required>			  	
+			  	</div>
+			  	<div class="display_center">
+			  		<span style="width: 120px;">보낼금액(원)</span>
+				    <input type="text" id="money" class="form-control" placeholder="보내실 금액을 입력해 주세요." required onkeyup="inputNumberFormat(this);">			  	
+			  	</div>
+			  	<button type="button" class="btn-open-modal" style="margin: 0 40%; width: 20%;" disabled="true">보내기</button>
+			  	
+			</div>
+		</div>
+		<div class="modal">
+	        <div class="modal_body">
+	            <h2>송금확인</h2>
+	            <p>아래의 정보로 이체를 진행하시겠습니까?</p>
+	            <hr style="width: 80%; margin: 5% 10%;">
+				<div class="display_center">
+			  		<span style="width: 120px;">출금계좌</span>
+			  		<input type="hidden" name="out-bank" id="out-bank" readonly>	
+			  		<span id="out-bank-view"></span>  	
+			  	</div>
+				<div class="display_center insert-account">
+			  		<span style="width: 120px;">받는계좌</span>
+			  		<input type="hidden" name="insert-bank" id="insert-bank" readonly>	
+			  		<input type="hidden" name="insert-address" id="insert-address" readonly>	  	
+			  		<span id="insert-bank-view" style="margin-right: 10px;"></span>		
+			  		<span id="insert-address-view"></span>	 	
+			  	</div>
+				<div class="display_center">
+			  		<span style="width: 120px;">수수료</span>
+		            <span>아틀란은행에서는 수수료가 무료!</span>
+			  	</div>
+				<div class="display_center">
+			  		<span style="width: 120px;">보내는 금액</span>
+		            <input type="hidden" name="depositWithdrawaAmount" id="depositWithdrawaAmount" readonly>
+			  		<input type="hidden" name="bankBookSeq" id="bankBookSeq" readonly>	  	
+		            <span id="depositWithdrawaAmount-view"></span>
+			  	</div>
+				<div class="display_center">
+			  		<span style="width: 120px;">이체후 잔액</span>
+		            <!-- <input type="hidden" name="balance" id="balance"></span> -->
+		            <span id="myMoney-view"></span>
+			  	</div>
+	            <div class="modal-buttons">
+				  	<button type="submit" class="btn-next-modal">확인</button>
+				  	<button type="button" class="btn-close-modal">닫기</button>
+	            </div>
+	        </div>
+	    </div>
+		</form>		
       </div>
     </section><!-- End Services Section -->
 </main><!-- End #main -->
 </body>
 <script>
+var balance = 0;
+var accountNum = 0;
+$( document ).ready( function() {
+	$('.slider').slick({
+		infinite: false
+	});
+	var currentValue = $('.slick-active').attr('value');
+	$('#bankBookSeq').val(currentValue);
+	currentValue = $('.slick-active > .accountBalance').attr('value');
+	var item = document.getElementById("money");
+	item.setAttribute('max',currentValue);
+	balance = currentValue;
+	if($("#address").val() == '' || $("#money").val() == '') {
+		$(".btn-open-modal").attr("disabled", true);
+		$(".btn-open-modal").css("background-color","#999999");
+	} else {
+		$(".btn-open-modal").attr("disabled", false);
+		$(".btn-open-modal").css("background-color","#0d42ff");
+	}
+  });
+  
+$('.slider').on('afterChange', function(event, slick, currentSlide){
+	var currentValue = $('.slick-active').attr('value');
+	$('#bankBookSeq').val(currentValue);
+	currentValue = $('.slick-active > .accountBalance').attr('value');
+	var item = document.getElementById("money");
+	item.setAttribute('max',currentValue);
+	balance = currentValue;
+});
 
+/* $('#money').on('keyup', function() {
+
+    this.value = this.value.replace(/\D/g, '');
+
+    if (this.value > balance) {
+    	this.value = balance;
+    	alert("잔액을 초과한 금액은 입력할 수 없습니다.");
+    }
+
+}); */
+
+$(function() {
+	$("#address, #money").on('input', function() {
+		if($("#address").val() == '' || $("#money").val() == '') {
+			$(".btn-open-modal").attr("disabled", true);
+			$(".btn-open-modal").css("background-color","#999999");
+		} else {
+			$(".btn-open-modal").attr("disabled", false);
+			$(".btn-open-modal").css("background-color","#0d42ff");
+		}
+	})
+})
+
+const modal = document.querySelector('.modal');
+const btnOpenModal=document.querySelector('.btn-open-modal');
+const btnCloseModal=document.querySelector('.btn-close-modal');
+
+btnOpenModal.addEventListener("click", ()=>{
+	var accountNumber = $('.slick-active > .accountNumber').attr('value');
+	$('#insert-bank').val($('#bankchoice').val());
+	$('#insert-address').val($('#address').val());
+	$('#depositWithdrawaAmount').val(uncomma($('#money').val()));
+	$('#out-bank').val(accountNumber);
+	
+	
+	$('#insert-bank-view').text($('#bankchoice option:checked').text());
+	$('#insert-address-view').text($('#address').val());
+	$('#depositWithdrawaAmount-view').text($('#money').val()+'원');
+	$('#out-bank-view').text(accountNumber);
+	
+	
+	
+	var accountBalance = parseInt(uncomma($('.slick-active > .accountBalance').attr('value')));
+	var outmoney = parseInt(uncomma($('#money').val()));
+
+	/* $('#balance').text(accountBalance - outmoney); */
+	$('#myMoney-view').text(comma(accountBalance - outmoney) +'원');
+	
+    modal.style.display="flex";
+});
+btnCloseModal.addEventListener("click", ()=>{
+    modal.style.display="";
+});
+
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+} 
+
+function inputNumberFormat(obj) {
+	obj.value = uncomma(obj.value);
+	
+    if (parseInt(obj.value) > parseInt(balance)) {
+    	obj.value = balance;
+    	alert("잔액을 초과한 금액은 입력할 수 없습니다.");
+    } 
+    obj.value = comma(obj.value);
+}
+
+function inputOnlyNumberFormat(obj) {
+    obj.value = onlynumber(uncomma(obj.value));
+}
 </script>
 </html>

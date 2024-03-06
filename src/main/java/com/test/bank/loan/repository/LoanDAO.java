@@ -34,7 +34,11 @@ public interface LoanDAO {
 
 	void insertloanstatus(LoanStatusDTO dto);
 
-	AccountTransferDTO getaccounttransfer(int userseq);
+	List<AccountTransferDTO> getaccounttransfer(int userseq);
+
+	void insertDepositWithdrawal(AccountTransferDTO dto);
+
+	void updateAccountTransfer(AccountTransferDTO dto);
 	
 	
 }

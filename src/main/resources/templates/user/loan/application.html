@@ -152,7 +152,6 @@
     <section id="get-a-quote" class="get-a-quote" style="padding-top: 50px;">
       <div class="container" data-aos="fade-up">
     	<div class="section-header">
-	    	<span>신청정보 입력</span>
 			<h2>신청정보 입력</h2>
 	    </div>
         <div class="row g-0">
@@ -681,10 +680,18 @@
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	var creditRate = '';
 
 	window.onload=function(){
+		creditRate = $("input:text[name=creditRate]").val();
 		//실행할 내용
-		var creditRate = parseInt($("input:text[name=creditRate]").val());
+		if (creditRate == 'A') {
+			creditRate = 1;
+		}else if (creditRate == 'B') {
+			creditRate = 2;
+		}else if (creditRate == 'C') {
+			creditRate = 3;
+		}
 		$("#member_credit_rate").val(5.12+creditRate*0.18);
 	};
 	
@@ -738,8 +745,6 @@
 		$('.interestrate_list label[for='+$(event.target).attr("id")+']').removeClass('checked');
 		if (!$('input:radio[name=interestratechoice]').is(':checked')) $('input:radio[name=interestratechoice]').trigger('click');
 		var choice = $(event.target).val();
-		console.log(choice);
-		var creditRate = parseInt($("input:text[name=creditRate]").val());
 		
 		if (choice == '1') {
 			$("#member_credit_rate").val(5.12+creditRate*0.18);

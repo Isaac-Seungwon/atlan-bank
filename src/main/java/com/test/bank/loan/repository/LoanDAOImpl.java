@@ -84,8 +84,18 @@ public class LoanDAOImpl implements LoanDAO {
 	}
 
 	@Override
-	public AccountTransferDTO getaccounttransfer(int userseq) {
+	public List<AccountTransferDTO> getaccounttransfer(int userseq) {
 		return mapper.getaccounttransfer(userseq);
+	}
+
+	@Override
+	public void insertDepositWithdrawal(AccountTransferDTO dto) {
+		mapper.insertDepositWithdrawal(dto);
+	}
+
+	@Override
+	public void updateAccountTransfer(AccountTransferDTO dto) {
+		mapper.updateAccountTransfer(dto);
 	}
 	
 }

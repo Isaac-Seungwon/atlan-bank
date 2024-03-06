@@ -53,8 +53,26 @@
 	</insert>
 
 	<select id="getaccounttransfer" resultType="com.test.bank.loan.domain.AccountTransferDTO" parameterType="integer">
-		select * from tblbankbook where member_seq = #{userseq}
+		select bb.bank_book_seq, bb.bank_book_product_seq, bb.account_number, bb.join_date, bb.maturity_date, bb.balance, bb.member_seq,
+		        bbp.name, bbp.sim_info, bbp.type, bbp.info, bbp.join_info, bbp.join_date_info, bbp.join_fee
+		from tblbankbook bb
+		    inner join tblbankbookproduct bbp
+		        on bb.bank_book_product_seq = bbp.bank_book_product_seq
+       		where bb.member_seq = #{userseq}
 	</select>
+	
+	<insert id="insertDepositWithdrawal" parameterType="com.test.bank.loan.domain.AccountTransferDTO">
+		INSERT INTO 
+			tbldepositwithdrawal (DEPOSIT_WITHDRAWAL_SEQ, BANK_BOOK_SEQ, DEPOSIT_WITHDRAWA_AMOUNT, DW_DATE)
+		VALUES
+			(DEPOSIT_WITHDRAWAL_SEQ.nextVal, #{bankBookSeq}, #{depositWithdrawaAmount}, to_date(#{date}, 'YYYY-MM-DD HH24:MI:SS'))
+	</insert>
+	
+	<update id="updateAccountTransfer" parameterType="com.test.bank.loan.domain.AccountTransferDTO">
+		UPDATE tblbankbook bb
+			set balance = (select balance from tblbankbook b  where b.bank_book_seq = #{bankBookSeq}) - #{depositWithdrawaAmount}
+			where bb.bank_book_seq = #{bankBookSeq}
+	</update>
 
 
 </mapper>

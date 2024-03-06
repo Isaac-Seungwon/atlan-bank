@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>대출 신청</title>
+
+</head>
+<style>
+	.display_center {
+		 display: flex;
+		 align-items: center;
+	}
+	.form-control {
+		margin: 3px 5px;
+	}
+	.complete_page{
+		text-align: center;
+	}
+	.complete_page_name{
+		font-size: 45px;
+		font-weight: bold;
+	}
+	.complete_page p{
+		font-size: 20px;
+	}
+	.buy-btn {
+	    display: inline-block;
+	    padding: 12px 40px;
+	    border-radius: 4px;
+	    color: #fff;
+	    background-color: var(--color-primary);
+	    border: 2px solid var(--color-primary);
+	    transition: none;
+	    font-size: 16px;
+	    font-weight: 500;
+	    transition: 0.3s;
+	    font-family: var(--font-primary);
+	}
+	.buy-btn:hover {
+	    background: #406aff;
+	    border-color: #406aff;
+	}
+	a:hover {
+	    color: #fff;
+	    text-decoration: none;
+	}
+	.sample-page {
+		margin: 0 25%;
+	}
+	.complete_page:nth-child(1) {
+		max-width: 100%;
+		border: 1px solid #0e1d3426;
+		border-radius: 10px;
+		padding: 55px 0;
+		margin-bottom: 20px;
+		background-image: url('/atlanbank/assets/img/loan/complete.png');
+		background-size: 100%;
+		position: relative;
+	}
+	.complete_page:nth-child(1) div{
+		position: relative!important;
+	}
+	.complete_page:nth-child(1) p, .complete_page:nth-child(1) span{
+		color: #fff;
+	}
+	.complete_page:nth-child(1)::before {
+	    content: "";
+	    position: absolute;
+	    inset: 0;
+	    background: rgba(14, 29, 52, 0.7);
+	}
+</style>
+<body>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>계좌이체</h2>
+              <p>돈이 필요한 순간 Atlan Bank 대출</p>
+              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="/atlanbank/index.do">Home</a></li>
+            <li><a href="#">계좌이체</a></li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <section class="sample-page">
+      <div class="container complete_page" data-aos="fade-up">
+      	<div>
+	      	<span class="complete_page_name" th:text="${memberdto.name+'님'}"></span>
+	        <p>계좌이체가 완료되었습니다.</p>
+      	</div>
+      </div>
+      <div class="container complete_page" data-aos="fade-up">
+      	<div class="text-center">
+      		<a class="buy-btn" href="/atlanbank/accountTransfer.do">내 입출금 내역</a>
+      		<a class="buy-btn" href="/atlanbank/accountTransfer.do">계좌이체</a>
+      	</div>      	
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+</body>
+<script>
+
+</script>
+</html>
