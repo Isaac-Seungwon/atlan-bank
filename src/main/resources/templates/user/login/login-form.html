@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
-<title>Event</title>
+<title>Login</title>
 <style>
 #event {
 	text-align: center;
@@ -83,7 +83,7 @@
 }
 
 .in-progress, .completed {
-    font-size: 0.9rem;
+	font-size: 0.9rem;
 }
 
 #page-bar {
@@ -133,131 +133,81 @@
 <body>
 	<!-- Start Main -->
 	<main id="event">
-	
-	<!-- Start Breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="page-header d-flex align-items-center"
-			style="background-image: url('assets/img/page-header.jpg');">
-			<div class="container position-relative">
-				<div class="row d-flex justify-content-center">
-					<div class="col-lg-6 text-center">
-						<h2>Event</h2>
-						<p>event page</p>
+
+		<!-- Start Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>Login</h2>
+						</div>
 					</div>
 				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="index.do">Home</a></li>
+						<li>Login</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+
+		<div class="container">
+
+			<!-- 전체 이벤트 -->
+			<div layout:fragment="content" class="container my-3">
+				<form th:action="@{/user/login}" method="post">
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">사용자ID 또는 비밀번호를 확인해 주세요.</div>
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">사용자ID</label> <input
+							type="text" name="username" id="username" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="password" class="form-label">비밀번호</label> <input
+							type="password" name="pw" id="password" class="form-control">
+					</div>
+					<button type="submit" class="btn btn-primary">로그인</button>
+				</form>
 			</div>
 		</div>
-		<nav>
-			<div class="container">
-				<ol>
-					<li><a href="index.do">Home</a></li>
-					<li>Event</li>
-				</ol>
-			</div>
-		</nav>
-	</div>
-	<!-- End Breadcrumbs -->
-
-	<div class="container">
-		<div class="row">
-			<div class="col-2">
-				<div class="sub-menu" style="background-color: #CCC;">
-					서브 메뉴 자리
-				</div>
-			</div>
-			
-			<div class="col-10">
-				<ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist" style="margin-top: 10px;">
-					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true">전체 이벤트</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">진행중인 이벤트</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="end-tab" data-bs-toggle="tab" data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">종료한 이벤트</button>
-					</li>
-				</ul>
-				
-				<!-- 전체 이벤트 -->
-				<div class="tab-content pt-2" id="borderedTabContent" style="padding-top: 0 !important;">
-					<div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab">
-						<!-- Event List -->
-						<table id="event-list">
-							<thead>
-								<tr>
-									<th>번호</th>
-									<th>제목</th>
-									<th>조회수</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="eventList, status : ${eventList}">
-									<td th:text="${eventList.eventSeq}"></td>
-									<td><a th:href="@{/user/event/detail.do(seq=${eventList.eventSeq})}"
-										th:text="${eventList.name}"></a> <span class="in-progress"
-										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss') and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행 중</span> <span class="completed"
-										th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">종료</span>
-									<td th:text="${eventList.hitsCount}"></td>
-								</tr>
-							</tbody>
-						</table>
-						
-						<!-- Search -->
-						<form method="GET" action="/atlanbank/user/event/view.do" id="search-form">
-							<select name="category" id="category">
-								<option value="name">제목</option>
-								<option value="content">내용</option>
-							</select> <input type="text" name="word" id="search-field" size="60" pattern=".{2,}" placeholder="두 글자 이상의 단어를 입력하세요." required>
-							<button type="submit" id="search-button">
-								<span class="material-symbols-outlined">search</span>
-							</button>
-						</form>
-						
-						<!-- Paging -->
-						<nav id="page-bar" aria-label="Page navigation example">
-							<ul class="pagination justify-content-center">
-								<li class="page-item">
-								    <a class="page-link" th:href="@{/user/event/view.do(page=${currentPage - 1}, category=${map.category}, word=${map.word})}" th:if="${currentPage > 1}">
-								        <span aria-hidden="true">&laquo;</span>
-								    </a>
-								</li>
-
-					            <li th:each="pageNumber : ${#numbers.sequence(1, map.totalPages)}" th:class="${pageNumber} == ${currentPage} ? 'page-item active' : 'page-item'">
-					                <a class="page-link" th:href="@{/user/event/view.do(page=${pageNumber}, category=${map.category}, word=${map.word})}" th:text="${pageNumber}"></a>
-					            </li>
-						        
-						        <li class="page-item">
-								    <a class="page-link" th:href="@{/user/event/view.do(page=${currentPage + 1}, category=${map.category}, word=${map.word})}" th:if="${currentPage >= 1}">
-								        <span aria-hidden="true">&raquo;</span>
-								    </a>
-								</li>
-						    </ul>
-						</nav>
-					</div>
-					
-					<div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="progress-tab">
-						진행중인 이벤트
-					</div>
-					
-					<div class="tab-pane fade" id="bordered-contact" role="tabpanel" aria-labelledby="end-tab">
-						종료한 이벤트
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	</main>
 	<!-- End Main -->
 
 	<script>
-		document.addEventListener('keydown',
-			function(event) {
-				if (event.key === 'F5' || ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
-					location.href = '/atlanbank/user/event/view.do';
-				}
-			});
+		document
+				.addEventListener(
+						'keydown',
+						function(event) {
+							if (event.key === 'F5'
+									|| ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
+								location.href = '/atlanbank/user/event/view.do';
+							}
+						});
 	</script>
 
+	<!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 폼 제출 동작을 중지합니다.
+
+            const username = document.getElementById('username').value;
+            const pw = document.getElementById('password').value;
+
+            console.log('ID:', username);
+            console.log('Password:', pw);
+
+            // 나머지 로그인 처리 코드를 이곳에 추가합니다.
+            // 예: form.submit();
+        });
+    });
+</script> -->
 </body>
 </html>
