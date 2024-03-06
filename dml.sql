@@ -3166,9 +3166,9 @@ INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (car
 INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 14, 'C1OS10A');
 
 -- tblMemberCard
-INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, card_payment_date, status) VALUES (member_card_seq.nextVal, 1, 5678491679463164, 68, TO_DATE('2028-01-31', 'yyyy-mm-dd'), 267, 14, 'y');
-INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, card_payment_date, status) VALUES (member_card_seq.nextVal, 2, 6985236482456362, 69, TO_DATE('2030-06-30', 'yyyy-mm-dd'), 235, 10, 'y');
-INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, card_payment_date, status) VALUES (member_card_seq.nextVal, 3, 3124574225399547, 67, TO_DATE('2031-12-31', 'yyyy-mm-dd'), 769, 7, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 1, 5678491679463164, 68, TO_DATE('2028-01-31', 'yyyy-mm-dd'), 267, 1111, 14, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 2, 6985236482456362, 69, TO_DATE('2030-06-30', 'yyyy-mm-dd'), 235, 1111, 10, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 3, 3124574225399547, 67, TO_DATE('2031-12-31', 'yyyy-mm-dd'), 769, 1111, 7, 'y');
 
 -- tblMemberCardHistory
 INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, name, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-02 09:00', 'YYYY-MM-DD HH24:MI'), '후원금', 3000, 1);

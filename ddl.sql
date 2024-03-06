@@ -463,6 +463,7 @@ CREATE TABLE tblMemberCard (
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
 	exp DATE NOT NULL, /* 만료일 */
 	cvc NUMBER NOT NULL, /* 카드인증코드 */
+    password NUMBER NOT NULL, /* 카드 비밀번호 */
 	card_payment_date NUMBER NOT NULL, /* 카드 대금결제일 */
     status CHAR(1) NOT NULL /* 사용 여부 */
 );
