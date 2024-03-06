@@ -472,6 +472,7 @@ CREATE TABLE tblMemberCardHistory (
 	member_card_history_seq NUMBER PRIMARY KEY, /* 회원카드이용내역번호 */
 	member_card_seq NUMBER REFERENCES tblMemberCard(member_card_seq) NOT NULL, /* 회원카드번호 */
 	transaction_date DATE NOT NULL, /* 결제일 */
+    name VARCHAR2(200) NOT NULL, /* 가맹점 */
 	amount NUMBER NOT NULL, /* 금액 */
 	installment_months NUMBER NOT NULL /* 할부 개월수 */
 );
