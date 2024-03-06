@@ -207,7 +207,24 @@ public class CardService {
 	}
 
 	public List<MemberCardHistoryDTO> getHistoryList(String memberSeq) {
-		return dao.getHistoryList(memberSeq);
+		List<MemberCardHistoryDTO> list = dao.getHistoryList(memberSeq);
+		
+		//thousands separator
+	    for (MemberCardHistoryDTO h : list) {
+	        if (h.getAmount() != null && !h.getAmount().isEmpty()) {
+	            try {
+	                int amount = Integer.parseInt(h.getAmount());
+	                String newAmount = String.format("%,d", amount);
+	                h.setAmount(newAmount);
+	            } catch (NumberFormatException e) {
+	                // 정수로 변환할 수 없는 경우 처리
+	                // 예를 들어 로깅 또는 다른 예외 처리 로직 추가
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	    
+	    return list;
 	}
 
 	

@@ -6,17 +6,6 @@
 <title>카드</title>
 
 <style>
-	/* Font */
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-	
-	body {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-
 	/* section empty space */
 	section {
 		margin: 20px 135px;
@@ -101,14 +90,38 @@
 		margin-bottom: 30px;
 	}
 	
+	.history-container .title-box {
+		display: flex;
+    	justify-content: space-between;
+	}
+	
+	.title-box .btn-box a {
+	    margin-right: 15px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    padding: 5px;
+    	display: inline-block;
+	}
+	
 	.history-container .title {
 		font-size: 1.5rem;
 		font-weight: 600;
 	}
 	
-	.history-container .history ul {
-		list-style: none;
+	.history-container table {
+		width: 80%;
+		margin: 0 auto;
 	}
+	
+	.history-container table th { text-align: center; }
+	.history-container table th:first-child { width: 20%; }
+	.history-container table th:nth-child(2) { width: 60%; }
+	.history-container table th:last-child { width: 20%; }
+	
+	.history-container table td:first-child { text-align: center; }
+	.history-container table td:nth-child(2) { padding-left: 5%; }
+	.history-container table td:last-child { text-align: right; }
 	
 </style>
 </head>
@@ -207,22 +220,30 @@
 				<div class="title">결제예정금액</div>
 				<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
 				<div class="btn-box">
-					<a href="">바로결제</a>
+					<a href="/atlanbank/member/card/payment.do">바로결제</a>
 					<a href="">일부결제금액<br>이월약정(리볼빙)</a>
 				</div>
 			</div>
 			
 			<!-- 결제내역 -->
 			<div class="history-container">
-				<div class="title">결제내역</div>
+				<div class="title-box">
+					<div class="title">이용내역</div>
+					<div class="btn-box"><a href="#">자세히보기<i class="bi bi-caret-right-fill"></i></a></div>
+				</div>
 				<div class="history">
-					<ul>
-						<li th:each="history : ${historyList}">
-							<span th:text="${#strings.substring(history.transactionDate, 0, 10)}">날짜</span>
-							<span>가맹점</span>
-							<span th:text="${history.amount}">이용금액</span>
-						</li>
-					</ul>
+					<table>
+						<tr>
+							<th>이용일자</th>
+							<th>가맹점</th>
+							<th>이용금액</th>
+						</tr>
+						<tr th:each="history, historyStat : ${historyList}">
+							<td th:text="${#strings.substring(history.transactionDate, 0, 10)}"></td>
+							<td th:utext="${history.name}"></td>
+							<td th:text="${history.amount}"></td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			

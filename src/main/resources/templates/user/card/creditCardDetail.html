@@ -6,17 +6,6 @@
 <title>카드</title>
 
 <style>
-	/* Font */
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-	
-	body {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
 	/* section empty space */
 	section {
 		margin: 20px 135px;
@@ -123,7 +112,6 @@
 	}
 	
 	.card-detail-summary ul {
-		list-style: disc;
 		width: 50%;
 	}
 	
@@ -325,7 +313,7 @@
 						<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 					</div>
 					<div>
-						<ul style="width: 100%;">
+						<ul style="width: 100%;" class="listStyle2">
 							<li th:each="benefit : ${card.benefitList}">
 								<span th:text="${benefit.subject}"></span>
 								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|" class="bold"></span>

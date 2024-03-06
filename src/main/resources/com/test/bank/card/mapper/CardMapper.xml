@@ -71,7 +71,8 @@
 		    b.member_seq,
 		    a.member_card_history_seq,
 		    a.member_card_seq,
-		    to_char(a.transaction_date, 'YYYY-MM-DD HH:MI') as transaction_date,
+		    to_char(a.transaction_date, 'YYYY-MM-DD HH24:MI') as transaction_date,
+		    a.name,
 		    a.amount,
 		    a.installment_months
 		  from tblMemberCardHistory a

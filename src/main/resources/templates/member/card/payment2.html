@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>카드</title>
+
+<style>
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 20px 60px;
+		max-width: 1200px;
+	}
+
+	/* responsive */
+	/* @media (max-width: 1100px) {
+		section {
+			margin: 20px 0;
+		}
+	}
+	
+	@media (max-width: 1380px) {
+		section {
+			width: 1110px;
+		}
+	} */
+	
+	/* 결제예정금액 파트 */
+	.overview-container {
+		background: #F9FAFC;
+		padding: 20px 30px;
+		border-radius: 5px;
+		margin-bottom: 30px;
+	}
+	
+	.overview-container .title {
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+	
+	.overview-container .price {
+		text-align: center;
+		font-weight: 600;
+		padding: 30px;
+	}
+	
+	.overview-container .price a {
+		color: var(--bs-body-color);
+		font-size: 1.4rem;
+	}
+	
+	.overview-container .btn-box {
+		text-align: center;
+		padding: 30px;
+		display: flex;
+		justify-content: center;
+	}
+	
+	.overview-container .btn-box a {
+		padding: 10px 20px;
+		border-radius: 5px;
+		display: inline-block;
+		width: 170px;
+	}
+	
+	.overview-container .btn-box a:first-child {
+		background: #FFF; 
+		border: 1px solid black;
+		margin-right: 15px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	.overview-container .btn-box a:last-child {
+		background: #0d6efd;
+		color: #FFF;
+		border: 0;
+		display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	/* 결제내역 파트 */
+	.history-container {
+		background: #F9FAFC;
+		padding: 20px 30px;
+		border-radius: 5px;
+		margin-bottom: 30px;
+	}
+	
+	.history-container .title-box {
+		display: flex;
+    	justify-content: space-between;
+	}
+	
+	.title-box .btn-box a {
+	    margin-right: 15px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    padding: 5px;
+    	display: inline-block;
+	}
+	
+	.history-container .title {
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+	
+	.history-container table {
+		width: 80%;
+		margin: 0 auto;
+	}
+	
+	.history-container table th { text-align: center; }
+	.history-container table th:first-child { width: 20%; }
+	.history-container table th:nth-child(2) { width: 60%; }
+	.history-container table th:last-child { width: 20%; }
+	
+	.history-container table td:first-child { text-align: center; }
+	.history-container table td:nth-child(2) { padding-left: 5%; }
+	.history-container table td:last-child { text-align: right; }
+	
+	
+	/* 공통 사용 */
+	/* 안내사항 */
+	.noticeArea {
+		border: 1px solid rgba(0, 0, 0, 0.16);
+    	border-radius: 12px;
+	}
+	
+	.noticeArea h4 {
+		padding: 15px 30px;
+	}
+	
+	.noticeArea h5 {
+		padding: 10px 30px;
+	}
+	
+	.noticeArea > h4:first-child {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+	}
+	.noticeArea .title::before {
+		content: '';
+		display: inline-block;
+		width: .8em;
+		height: .8em;
+		background-image: url('/atlanbank/assets/img/card/bookmark-star.svg');
+		background-size: contain;
+		background-repeat:no-repeat;
+		margin-right: 3px;
+	}
+	
+	ul li {
+		text-indent: -.9em;
+	}
+	
+	ul li p {
+		text-indent: 0;
+	}
+	
+	ul.listStyle1,
+	ul.listStyle2,
+	ul.listStyle3 {
+		list-style: none;
+	}
+	
+	ul.listStyle1 > li {
+		padding: 0 0 10px 10px;
+	}
+	
+	ul.listStyle1 > li::before {
+		content: '';
+		display: inline-block;
+		height: .7em;
+		width: .7em;
+		background-image: url('/atlanbank/assets/img/card/dash.svg');
+		background-size: contain;
+		background-repeat:no-repeat;
+		opacity: .5;
+		margin-right: 3px;
+	}
+	
+	ul.listStyle2 > li::before {
+		content: '';
+		display: inline-block;
+		height: .7em;
+		width: .7em;
+		background-image: url('/atlanbank/assets/img/card/dot.svg');
+		background-size: contain;
+		background-repeat:no-repeat;
+		opacity: .5;
+		margin-right: 3px;
+	}
+	
+	ul.listStyle3 > li::before {
+		content: '';
+		display: inline-block;
+		height: .7em;
+		width: .7em;
+		background-image: url('/atlanbank/assets/img/card/asterisk.svg');
+		background-size: contain;
+		background-repeat:no-repeat;
+		opacity: .5;
+		margin-right: 3px;
+	}
+	
+	p.example {
+		margin-top: 3px !important;
+		font-size: 12px;
+	}
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/atlanbank/assets/img/card/credit-card-851502_1280.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>나의 카드</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="#">MyPage</a></li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- My Info Section -->
+		<!-- <section>
+			<div>
+				<div th:text="|${dto.name}님|"></div>
+				<div style="display: flex; flex-direction: column; background: #F9FAFC; border-radius: 5px; padding: 20px 30px;">
+					<div style="display: flex; justify-content: space-around;">
+						<div>명세서수령</div>
+						<div>스마트폰앱(카카오)</div>
+					</div>
+					<div style="display: flex; justify-content: space-around;">
+						<div>카드사용알림</div>
+						<div>PUSH(무료)</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</section> --> <!--End My Info Section -->
+		
+		<!-- Mypage Card Section -->
+		<section>
+			<h2>바로출금결제</h2>
+			
+			<!-- 바로출금결제 과정 순서도 -->
+			<div class="mt-30">
+				<div class="process-box">
+					<div class="step1 completed"><strong>1. 정보입력</strong></div>
+					<div class="step2 now">2. 본인인증</div>
+					<div class="step3">3. 정보확인</div>
+					<div class="step4">4. 완료</div>
+				</div>
+			</div>
+			 
+			<!-- 카드 및 결제방식 선택 -->
+			<form method="POST" action="">
+				<div>
+					<h3>카드 및 결제방식 선택</h3>
+					<table>
+						<tr>
+							<th>카드구분</th>
+							<td>
+								<div>
+									<select>
+										<option>신용카드</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>결제범위</th>
+							<td>
+								<div>
+									<div>
+										<input type="radio" id="thisMonthAmount" name="range" value="1" checked>
+										<label>이번달 결제금액</label>
+									</div>
+									<div>
+										<input type="radio" id="allAmount" name="range" onclick="return false;" value="2">
+										<label>전체 결제금액</label>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>결제방식</th>
+							<td>
+								<div>
+									<div>
+										<input type="radio" id="payAllAmount" name="method" value="1" checked>
+										<label>전체 금액 결제</label>
+									</div>
+									<div>
+										<input type="radio" id="paySpecificAmount" name="method" value="2">
+										<label>이용건별 결제</label>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div>
+					<button>조회</button>
+				</div>
+				<div>
+					<ul class="listStyle2">
+						<li>일부결제금액이월약정은 이월할 때만 수수료가 발생합니다.<br>
+							단, 해외수수료는 이월하지 않아도 표기합니다.
+						</li>
+					</ul>
+				</div>
+			</form>
+			
+			
+			<form method="POST" action="">
+				<input type="hidden" name="" value="">
+			</form>
+			
+			<div style="display: flex; justify-content:space-between;">
+				<div>일시불</div>
+				<div th:text="|${thisMonthAmount}원|"></div> <!-- 이거 일시불 금액만으로 바꾸기 -->
+				<div>결제하기 </div>
+			</div>
+			
+			<!-- 결제예정금액 -->
+			<div class="overview-container">
+				<div class="title">결제예정금액</div>
+				<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
+				<div class="btn-box">
+					<a href="">바로결제</a>
+					<a href="">일부결제금액<br>이월약정(리볼빙)</a>
+				</div>
+			</div>
+			
+			<!-- 결제내역 -->
+			<div class="history-container">
+				<div class="title-box">
+					<div class="title">이용내역</div>
+					<div class="btn-box"><a href="#">자세히보기<i class="bi bi-caret-right-fill"></i></a></div>
+				</div>
+				<div class="history">
+					<table>
+						<tr>
+							<th>이용일자</th>
+							<th>가맹점</th>
+							<th>이용금액</th>
+						</tr>
+						<tr th:each="history, historyStat : ${historyList}">
+							<td th:text="${#strings.substring(history.transactionDate, 0, 10)}"></td>
+							<td th:utext="${history.name}"></td>
+							<td th:text="${history.amount}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+		</section> <!-- End Mypage Card Section -->
+		
+		<!-- 안내사항 Section -->
+		<section>
+			<div class="noticeArea">
+				<h4 class="title">안내사항</h4>
+				<p>고객님께서 이용하신 내역에 대해서 결제일 이전에 원하는만큼 미리 결제할 수 있는 서비스 입니다.</p>
+				<h5 class="title2">이용가능 결제기관</h5>
+				<ul class="listStyle1">
+					<li>KB국민은행, 우리은행, SC제일은행, 삼성증권, IBK기업은행, NH농협, 신한은행, 하나은행, 우체국, KDB산업은행, 한국씨티은행, DGB대구은행, BNK부산은행, 광주은행, 제주은행, 전북은행, BNK경남은행, MG새마을금고, 신협, 카카오뱅크, 케이뱅크, 토스뱅크, 유안타증권</li>
+					<li>이 외 결제기관의 경우 오픈뱅킹 서비스 등록 고객에 한하여 가능합니다.
+						<ul class="listStyle2">
+							<li>오픈뱅킹 서비스 등록 [Atlan Pay > 뱅킹 > 오픈뱅킹 등록]</li>
+						</ul>
+					</li>
+				</ul>
+				<h5 class="title2">결제 가능 대상</h5>
+				<ul class="listStyle1">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</section>
+		<!-- //End 안내사항 Section -->
+		
+		
+	</main>
+	<!-- End Main -->
+
+	<!-- Script -->
+	<script>
+		
+	</script>
+
+
+</body>
+</html>

@@ -2071,3 +2071,165 @@ section {
 .footer .credits a {
 	color: #fff;
 }
+
+/*--------------------------------------------------------------
+# Narae's Card Common CSS
+--------------------------------------------------------------*/
+.mt-30 {
+	margin-top: 30px;
+}
+
+.title {
+	
+}
+
+.title2 {
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+
+/* 안내사항 */
+.noticeArea {
+	border: 1px solid rgba(0, 0, 0, 0.16);
+   	border-radius: 12px;
+}
+
+.noticeArea h4 {
+	padding: 15px 30px;
+}
+
+.noticeArea h5 {
+	padding: 10px 30px;
+}
+
+.noticeArea > h4:first-child {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+.noticeArea .title::before {
+	content: '';
+	display: inline-block;
+	width: .8em;
+	height: .8em;
+	background-image: url('/atlanbank/assets/img/card/bookmark-star.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	margin-right: 3px;
+}
+
+ul li {
+	text-indent: -.9em;
+}
+
+ul li p {
+	text-indent: 0;
+}
+
+ul.listStyle1,
+ul.listStyle2,
+ul.listStyle3 {
+	list-style: none;
+}
+
+ul.listStyle1 > li {
+	padding: 0 0 10px 10px;
+}
+
+ul.listStyle1 > li::before {
+	content: '';
+	display: inline-block;
+	height: .7em;
+	width: .7em;
+	background-image: url('/atlanbank/assets/img/card/dash.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	opacity: .5;
+	margin-right: 3px;
+}
+
+ul.listStyle2 > li::before {
+	content: '';
+	display: inline-block;
+	height: .7em;
+	width: .7em;
+	background-image: url('/atlanbank/assets/img/card/dot.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	opacity: .5;
+	margin-right: 3px;
+}
+
+ul.listStyle3 > li::before {
+	content: '';
+	display: inline-block;
+	height: .7em;
+	width: .7em;
+	background-image: url('/atlanbank/assets/img/card/asterisk.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	opacity: .5;
+	margin-right: 3px;
+}
+
+p.example {
+	margin-top: 3px !important;
+	font-size: 12px;
+}
+
+/* 바로출금결제 진행과정 */
+.process-box {
+	display: flex;
+	justify-content: space-around;
+	padding: 30px 10px;
+	border: 1px solid #e1e1e1;
+	border-radius: 12px;
+}
+
+.process-box > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.process-box > div::before {
+	content: '';
+	display: block;
+	width: 28px;
+	height: 28px;
+	font-size: 18px;
+	line-height: 23px;
+	border: 3px solid #e1e1e1;
+	border-radius: 40px;
+	text-align: center;
+	margin-bottom: 3px;
+}
+
+.process-box > div.step1::before {
+	content: '1';
+}
+
+.process-box > div.step2::before {
+	content: '2';
+}
+
+.process-box > div.step3::before {
+	content: '3';
+}
+
+.process-box > div.step4::before {
+	content: '4';
+}
+
+.process-box > div.now::before {
+	background: #666;
+	border-color: #666;
+	color: #FFF;
+}
+
+.process-box > div.completed::before {
+	content: '';
+	border-color: #666;
+	background-image: url('/atlanbank/assets/img/card/check.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
