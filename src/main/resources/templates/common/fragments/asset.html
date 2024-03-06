@@ -12,7 +12,11 @@
         <meta name="viewport"
               content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0"/>
         <meta content="" name="description">
-		<meta content="" name="keywords">
+				<meta content="" name="keywords">
+				
+				<meta name="_csrf" th:content="${_csrf.token}">
+				<meta name="_csrf_header" th:content="${_csrf.headerName}">
+				
         <title></title>
 		        
     	<!-- Favicon -->
@@ -52,6 +56,7 @@
 		
 		<!-- Template Main JS File -->
 		<script th:src="@{/assets/js/main.js}"></script>
+		
 
 </head>
 </html>

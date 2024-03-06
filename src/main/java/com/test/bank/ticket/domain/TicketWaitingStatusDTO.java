@@ -13,4 +13,7 @@ public class TicketWaitingStatusDTO {
 	private int isComplete;
 	private int standby;
 	private int standbyTime;
+	
+	private String bankName;
+	private String workName;
 }

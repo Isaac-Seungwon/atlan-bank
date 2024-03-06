@@ -3,6 +3,7 @@ package com.test.bank.ticket.repository;
 import java.util.List;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.FavoriteBankDTO;
 import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 
@@ -25,4 +26,23 @@ public interface TicketDAO {
 	List<WorkListDTO> selectWorkList(String bankSeq);
 
 	List<WorkListDTO> getWorkList(String bankSeq, String type);
+
+	int getWaitingNumber(String bankSeq, String type);
+
+	int addTicket(String bankSeq, String type, String userId);
+
+	int addFavorite(String bankSeq, String userId);
+
+	int findFavorite(String bankSeq, String userId);
+
+	int delFavorite(String bankSeq, String userId);
+
+	List<FavoriteBankDTO> getfavoriteBanks(String userId);
+
+	List<TicketWaitingStatusDTO> getTicketList(String userSeq);
+
+	int delTicket(String watingSeq);
+
+
+	
 }
