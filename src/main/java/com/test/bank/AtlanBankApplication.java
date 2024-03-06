@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@SpringBootApplication
 @MapperScan(basePackages = { "com.test.bank.event.mapper", "com.test.bank.benefit.mapper", "com.test.bank.news.mapper", "com.test.bank.member.mapper", "com.test.bank.ticket.mapper", "com.test.bank.card.mapper", "com.test.bank.forex.mapper", "com.test.bank.loan.mapper", "com.test.bank.deposit.mapper" })
 public class AtlanBankApplication extends SpringBootServletInitializer {
 
