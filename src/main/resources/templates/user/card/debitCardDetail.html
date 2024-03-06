@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>카드</title>
+
+<style>
+	/* Font */
+	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+	
+	body {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 0 60px;
+	}
+	
+	section a {
+		color: inherit;
+	}
+	
+	/* card benefits list */
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+	
+	ul.benefits-menu li {
+		width: 150px;
+		height: 50px;
+		float: left;
+		border: 1px solid #777;
+		margin: 5px 10px;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu li a {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		color: inherit;
+	}
+	
+	ul.benefits-menu li a:hover {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+
+	ul.benefits-menu li a:focus {
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+	
+	ul.benefits-menu::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	/* ===== card detail section ===== */
+	.card-detail-title {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.card-detail-box {
+		background: #F1F4F8;
+		height: auto;
+		padding-top: 20px;
+		border-radius: 12px;
+	}
+	
+	.card-detail-box > div:first-child {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.card-detail-box h3 {
+		/* font-size: 20px;
+		text-align: center;
+		padding: 20px;
+		font-weight: bold; */
+		display: inline-block;
+		background: rgba(0, 0, 0, .15);
+		border-radius: 12px;
+		padding: 5px 10px;
+		font-weight: 400;
+		font-size: 16px;
+	}
+	
+	.card-detail-summary {
+		display: flex;
+		padding: 40px;
+	}
+	
+	.card-detail-summary div {
+		width: 50%;
+		padding: 30px;
+		/* 아래는 우측 혜택 설명용 */
+		display: flex;
+		align-items: center;
+		font-size: 1.2rem;
+	}
+	
+	.card-detail-summary div img {
+		max-width: 100%;
+	}
+	
+	.vertical {
+		transform: rotate(90deg);
+	}
+	
+	.card-detail-summary ul {
+		list-style: disc;
+		width: 50%;
+	}
+	
+	.card-detail-summary ul span.bold {
+		font-weight: bold;
+	}
+	
+	.card-detail-box .hr {
+		padding: 0 30px;
+	}
+	
+	.card-detail-box hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	/* card annual fee */
+	.card-annual-fee-container {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 15px 50px;
+	}
+	
+	.card-annual-fee-box {
+		display: inline-block;
+		width: 49%;
+	}
+	
+	/* card detail contents */
+	.card-detail-contents {
+		margin: 30px 0;
+	}
+	
+	.card-detail-contents ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.card-detail-contents ul li {
+		padding: 0 15px;
+	}
+	
+	.tabs div {
+		/* display: none; */
+	}
+	
+	.on {
+		display: block;
+	}
+	
+	/* Common Notice */
+	.consumer-right-container {
+		margin: 30px 0 15px 0;
+	}
+	
+	.consumer-right-content {
+		border: 1px solid #e1e1e1;
+		border-radius: 10px;
+	}
+	
+	.consumer-right-content h4 {
+		font-size: 16px;
+		font-weight: bold;
+	    padding-bottom: 0.7rem;
+	}
+	
+	.consumer-right-content ul {
+		list-style: none;
+		width: 100%;
+		overflow: hidden;
+		margin-bottom: 0;
+	}
+	
+	.consumer-right-content ul li {
+		float: left;
+		width: 50%;
+		padding: 30px;
+	}
+	
+	.consumer-right-content ul li:nth-child(2) {
+		border-left: 1px solid #e1e1e1;
+		
+	}
+	
+	.consumer-right-content ul li:nth-child(3) {
+		border-top: 1px solid #e1e1e1;
+	}
+	
+	.consumer-right-content ul li:nth-child(4) {
+		border-left: 1px solid #e1e1e1;
+		border-top: 1px solid #e1e1e1;
+	}
+	
+	.consumer-right-content ul li a {
+		border: 1px solid rgba(0, 0, 0, 0.6);
+	    padding: 5px;
+	    border-radius: 10px;
+	    font-size: 14px;
+	    color: rgba(0, 0, 0, 0.87);
+	}
+	
+	.common-notice-container {
+		padding: 15px 0;
+	}
+	
+	.common-notice-content {
+		border: 1px solid #e1e1e1;
+		background: #f9f9f9;
+		border-radius: 10px;
+		padding: 15px 35px;
+	}
+	
+	.common-notice-content > p {
+		margin-bottom: 5px;
+		font-size: 15px;
+		font-weight: 600;
+	}
+	
+	.common-notice-container > p {
+		text-align: right;
+	}
+	
+	/* Main Benefits */
+	.main-benefit-box {
+		border: 1px solid #F9FAFC;
+		border-radius: 5px;
+		width: 50%;
+		display: flex;
+		align-items: center;
+		padding: 10px;
+	}
+	
+	.main-benefit-box div:first-child {
+		margin-right: 10px;
+	}
+
+	/* Annual Fee */
+	.annual-fee-table {
+		width: 100%;
+		border: 1px solid #e1e1e1;
+		text-align: center;
+		border-radius: 10px;
+	}
+	
+	.annual-fee-table th,
+	.annual-fee-table td {
+		padding: 10px;
+		border: 1px solid #e1e1e1;
+	}
+	
+	.annual-fee-table th {
+		background: #f9f9f9;
+	}
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/atlanbank/assets/img/card/credit-card-851502_1280.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>카드</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="/atlanbank/user/card/view.do">Card</a></li>
+						<li><a href="/atlanbank/user/card/debit/view.do">Debit Card</a></li>
+						<li th:text="${card.name}"></li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- Card Detail Section -->
+		<section>
+			<div class="card-detail-title">
+				<h1 th:text="${card.name}"></h1>
+				<p th:text="${card.info}"></p>
+			</div>
+			
+			<div class="card-detail-box">
+				<div>
+					<h3>체크카드</h3>
+				</div>
+				
+				<div class="card-detail-summary">
+					<div>
+						<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
+					</div>
+					<div>
+						<ul style="width: 100%;">
+							<li th:each="benefit : ${card.benefitList}">
+								<span th:text="${benefit.subject}"></span>
+								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|" class="bold"></span>
+								<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+								<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+								<span th:if="${benefit.type == '3'}">마일 적립</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="hr">
+					<hr>
+				</div>
+				
+				<div style="display: flex; justify-content: center;">
+					<h5 style="font-size: 14px; font-weight: 400; margin: 5px 53px 0 53px; display: inline-block; background: rgba(0, 0, 0, .15); border-radius: 12px; padding: 5px 10px;">연회비</h5>
+				</div>
+				
+				<div class="card-annual-fee-container">
+					
+					<!-- 1 Annual Fee Brand -->
+					<div class="card-annual-fee-box" th:each="fee : ${card.feeList}">
+						<span>
+							<img th:if="${fee.brand} == '국내 전용'" th:src="@{/assets/img/card/logo-domestic.png}">
+							<img th:if="${fee.brand} == 'VISA'" th:src="@{/assets/img/card/logo-visa.png}">
+							<img th:if="${fee.brand} == 'MASTER'" th:src="@{/assets/img/card/logo-mastercard.png}">
+							<img th:if="${fee.brand} == 'AMEX'" th:src="@{/assets/img/card/logo-americanexpress.png}">
+							<img th:if="${fee.brand} == 'JCB'" th:src="@{/assets/img/card/logo-jcb.png}">
+							<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
+							<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
+						</span>
+						<span th:text="${fee.annualFee}"></span>
+					</div>
+				</div>
+			
+			</div>
+			
+			<div class="card-detail-contents">
+				<ul>
+					<li><a href="javascript:void(0);" data-value="main-benefit-tab" onclick="switchMenu('main-benefit-tab')">주요혜택</a></li>
+					<li><a href="javascript:void(0);" data-value="detail-benefit-tab" onclick="switchMenu('detail-benefit-tab')">상세혜택</a></li>
+					<li><a href="javascript:void(0);" data-value="annual-fee-tab" onclick="switchMenu('annual-fee-tab')">연회비</a></li>
+					<li><a href="javascript:void(0);" data-value="usage-guide-tab" onclick="switchMenu('usage-guide-tab')">확인사항</a></li>
+				</ul>
+			
+				<div class="tabs">
+					<!-- Main Benefits Tab -->
+					<div id="main-benefit-tab">
+						<h3>주요혜택</h3>
+						
+						<!-- 1 Main Benefits -->
+						<div style="display: flex; flex-wrap: wrap;">
+							<div th:each="benefit : ${card.benefitList}" class="main-benefit-box">
+								<div>
+									<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
+								</div>
+								
+								<div>
+									<span th:text="${benefit.subject}"></span>
+									<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
+									<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+									<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+									<span th:if="${benefit.type == '3'}">마일 적립</span>
+								</div>
+							</div>
+						</div>
+					
+					</div>
+					
+					<!-- Benefits Detail Tab -->
+					<div id="detail-benefit-tab">
+						<h3>상세혜택</h3>
+					
+						<!-- 1 Card Detail Benefits -->
+						<div th:each="benefit : ${card.benefitList}" style="margin: 25px 0; border-bottom: 1px solid #e1e1e1;">
+							<div style="display: flex; align-items: center;">
+								<div style="margin-right: 15px;">
+									<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
+								</div>
+								<h4>
+									<span th:text="${benefit.subject}"></span>
+									<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|"></span>
+									<span th:if="${benefit.type == '3'}" th:text="|1,000원 당 ${benefit.rate}|"></span>
+									<span th:if="${benefit.type != '3'}" th:text="${benefit.type} == 1 ? '할인' : '적립'"></span>
+									<span th:if="${benefit.type == '3'}">마일 적립</span>
+								</h4>
+							</div>
+							<div style="margin: 15px 20px;">
+								<p th:utext="${benefit.content}"></p>
+								<!-- <ul>
+									<li>전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</li>
+									<li>월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</li>
+								</ul> -->
+								<p>* 전월실적: <span th:text="${benefit.prevMonthPerf}"></span>만원 이상</p>
+								<p>* 월 최대 <span th:text="${benefit.type} == 1 ? '할인' : '적립'"></span> 한도: <span th:text="${benefit.limit}"></span>원</p>
+							</div>
+						</div>
+					</div>
+				
+					<!-- Annual Fee Tab -->
+					<div id="annual-fee-tab">
+						<h3>연회비</h3>
+						<p style="padding-left: 5px;">연회비 없음</p>
+						<!-- <table class="annual-fee-table">
+							<tr>
+								<th>브랜드</th>
+								<th>연회비</th>
+							</tr>
+							<tr th:each="fee : ${card.feeList}">
+								<td th:text="${fee.brand}"></td>
+								<td th:text="${fee.annualFee}"></td>
+							</tr>
+						</table> -->
+					</div>
+				
+					<!-- Card Notice Tab -->
+					<div id="usage-guide-tab">
+						<h3>확인사항</h3>
+						
+						<!-- 1 Card Usage Guide -->
+						<div th:each="guide : ${card.cardUsageGuideList}">
+							<h4 th:text="${guide.type}" style="font-size: 1.2rem;"></h4>
+							<p th:utext="${guide.content}"></p>
+						</div>
+					</div>
+					
+				</div>
+				
+				<!-- Credit Card Common Notice Part -->
+				<!-- Consumer's right -->
+				<div class="consumer-right-container">
+					<h3>금융소비자권리</h3>
+					<div class="consumer-right-content">
+						<ul>
+							<li>
+								<h4>금리인하요구권 관련 안내</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>할부거래의 소비자 권리</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>위법계약해지권</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+							<li>
+								<h4>FAQ</h4>
+								<a href="#" target="_blank">자세히보기</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Common Notice -->
+				<div class="common-notice-container">
+					<div class="common-notice-content">
+						<p>"상환능력에 비해 신용카드 사용액이 과도할 경우 귀하의 개인신용평점이 하락할 수 있습니다."</p>
+						<p>"개인신용평점 하락 시 금융거래 관련된 불이익이 발생할 수 있습니다."</p>
+						<p>"일정기간 원리금을 연체할 경우, 모든 원리금을 변제할 의무가 발생할 수 있습니다."</p>
+					</div>
+					<p>준법감시인 심의필 230608-02046-HPP(2023.06.08)</p>
+				</div>
+			</div>
+		
+		
+		</section> <!-- End Card Detail Section -->
+		
+		
+	</main>
+	<!-- End Main -->
+
+	<!-- Script -->
+		<script>
+		$(document).ready(function() {
+			$('.tabs > div').css('display', 'none');
+			$('#main-benefit-tab').css('display', 'block');
+		});
+		
+		function switchMenu(dataValue) {
+			$('.tabs > div').css('display', 'none');
+			$('#' + dataValue).css('display', 'block');
+		}
+		
+	</script>
+</body>
+</html>

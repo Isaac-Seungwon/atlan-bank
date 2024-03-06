@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.test.bank.deposit.domain.BankBookProductDTO;
+import com.test.bank.deposit.domain.InterestRateDTO;
 import com.test.bank.deposit.service.DepositService;
 
 
@@ -21,15 +22,32 @@ public class UserDepositController {
 	
 	@GetMapping(value = "/view.do")
 	public String view(Model model ) {
-		List<BankBookProductDTO> list=service.getList();
 		
-		System.out.println(list.toString());
+		List<BankBookProductDTO> getList=service.getList();
+		
+		System.out.println(getList.toString());
+		model.addAttribute("list", getList);
 		
 		return "user/deposit/view";
 	}
 	
 	@GetMapping(value = "/detail.do")
-	public String detail(Model model) {
+	public String detail(Model model, String seq) {
+		System.out.println(seq);
+		
+		BankBookProductDTO dto=service.getDto(seq);
+		
+		String dateInfo=service.chageDateInfo(dto.getJoinDateInfo());
+		
+		List<InterestRateDTO> rateList=service.getRateList(seq);
+		
+		//System.out.println(dto);
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("dateInfo", dateInfo);
+		model.addAttribute("rateList", rateList);
+		
+		
 		return "user/deposit/detail";
 	}
 	

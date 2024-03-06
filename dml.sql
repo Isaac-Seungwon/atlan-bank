@@ -1061,37 +1061,131 @@ INSERT INTO tblWorkDoc (work_doc_seq, detail_work_seq, doc_seq) values (work_doc
 commit;
 
 -- tblFranchise
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Samsung', 'samsung.png', '010-1264-5178');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Apple', 'apple.png', '010-2315-6181');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '카카오', 'kakao.png', '010-3456-7190');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '네이버', 'naver.png', '010-4567-8501');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '배달의민족', 'baemin.png', '010-5648-9012');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo.png', '010-6789-0123');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang.png', '010-7897-1264');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24.png', '010-8901-2745');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu.png', '010-9012-3356');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven.png', '010-0123-4567');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop.png', '010-1533-5668');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart.png', '010-8345-6789');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'SONY', 'sony.png', '010-3456-7890');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '스타벅스', 'starbucks.png', '010-4567-8911');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '투썸플레이스', 'twosome.png', '010-5678-9012');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '롯데시네마', 'lottecinema.png', '010-6589-0223');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '맥도날드', 'mcdonalds.png', '010-7270-1234');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '버거킹', 'burgerking.png', '010-1012-3456');
-INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '인천국제공항', 'icn.png', '010-1574-5178');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Samsung', 'samsung_logo.png', '010-1264-5178');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Apple', 'apple_logo.png', '010-2315-6181');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '카카오', 'kakao_logo.png', '010-3456-7190');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '네이버', 'naver_logo.png', '010-4567-8501');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '배달의민족', 'baemin_logo.jpg', '010-5648-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo_logo.jpg', '010-6789-0123');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang_logo.png', '010-7897-1264');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24_logo.png', '010-8901-2745');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu_logo.jpg', '010-9012-3356');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven_logo.png', '010-0123-4567');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop_logo.jpg', '010-1533-5668');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart_logo.jpg', '010-8345-6789');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'SONY', 'sony_logo.png', '010-3456-7890');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '스타벅스', 'starbucks_logo.png', '010-4567-8911');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '투썸플레이스', 'twosome_logo.png', '010-5678-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '롯데시네마', 'lottecinema_logo.png', '010-6589-0223');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '맥도날드', 'mcdonalds_logo.png', '010-7270-1234');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '버거킹', 'burgerking_logo.png', '010-1012-3456');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '인천국제공항', 'icn_logo.jpg', '010-1574-5178');
+
+select * from tblFranchise;
 
 commit;
 
 -- tblNews
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'Atlan Bank가 탄생헀습니다!', '고객님들의 많은 이용 부탁드립니다.', 'news_img1.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), 12507);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '「인천공항에서 받기」 환전 서비스 신설 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img2.png', TO_DATE('2024-01-14', 'YYYY-MM-DD'), 4831);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br><br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img3.png', TO_DATE('2024-01-18', 'YYYY-MM-DD'), 5839);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!', '고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」<br>평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님!<br>Atlan Bank 의팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!', 'news_img4.png', TO_DATE('2024-01-21', 'YYYY-MM-DD'), 4213);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, '러시아 루블화(RUB) 외환거래 잠정중단 사전 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br>2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.<br>금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.<br>잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.<br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img5.png', TO_DATE('2024-01-21', 'YYYY-MM-DD'), 3551);
-INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count) VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내', '항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.<br><br>신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.<br>점검일시<br>2024.1.20(토) 21:00 ~ 2024.1.21(일) 04:00 (7시간)<br>점검영향<br>점검시간 내 신용관리서비스 순단 및 단절(1분 내외) 발생<br>보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다.<br>감사합니다.<br><br>※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.', 'news_img6.png', TO_DATE('2024-01-23', 'YYYY-MM-DD'), 1251);
+-- 소식 테이블에 데이터 삽입
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'Atlan Bank가 탄생헀습니다!',
+'Atlan Bank, 금융 혁신의 새로운 시작!\n
+Atlan Bank가 새로운 길을 개척하며 도약합니다. 고객 여러분의 많은 이용을 기대합니다.\n
+고객 여러분의 소중한 자산을 지키는 데 최선을 다하겠습니다.
+고객 중심의 혁신적인 금융 서비스를 제공하며 편리한 금융 서비스로 여러분의 일상을 더욱 즐겁게 만들어 드리겠습니다.\n
+여러분의 미래를 함께 준비하고 금융의 변화를 이끄는 Atlan Bank가 되겠습니다.',
+'news_01_content.png',
+TO_DATE('2024-01-01', 'YYYY-MM-DD'),
+16312);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'전세사기 피해자 지원 안내',
+'전세사기 피해로 힘든 시간을 겪고 있는 피해자들이 평화로운 일상을 되찾을 수 있도록 Atlan Bank가 함께합니다.\n
+집행권원(지급명령, 전세보증금반환청구소송) 확보에 소요된 법률 비용과 경·공매 대행 서비스(HUG) 본인 부담 수수료를 지원합니다.\n
+- 지원문의 : HUG 경·공매지원센터\n
+- 안내전화 : 1588-1663\n',
+'news_02_content.jpg',
+TO_DATE('2024-01-03', 'YYYY-MM-DD'),
+14503);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'청년 주택드림 청약통장 출시 및 전환 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+「청년 주택드림 청약통장」이 출시됨에 따라 기존 「청년우대형 주택청약종합저축」은 「청년 주택드림 청약통장」 상품으로 일괄 전환되며 「주택청약종합저축」의 경우 조건이 충족되는 경우 전환이 가능함을 안내 드리니 아래 내용을 참고하시기 바랍니다.\n
+- 기존 주택청약종합저축 가입자는 가입자격 충족 시 전환 가능 (영업점 방문)\n
+ㅇ 기존 주택청약종합저축을 전환해약 하고 「청년 주택드림 청약통장」으로 전환 신규\n
+ㅇ 전환 해약일 현재 기존계좌의 청약관련 인정금액(회차), 가입일은 전환계좌에서도 인정\n
+※ 기타 자세한 내용은 「청년 주택드림 청약통장」 약관을 확인하시거나 KB국민은행 고객센터(1599-1771) 또는 가까운 영업점으로 문의하시기 바랍니다.\n',
+'news_03_content.png',
+TO_DATE('2024-01-14', 'YYYY-MM-DD'),
+8301);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '일부기관 시스템 점검에 따른 금융거래 일시중단 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.\n
+Atlan Bank > 전체메뉴 > 자산관리 > 해당 기관과 관련된 업무를 중단합니다.\n
+보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다.\n
+감사합니다.',
+'news_04_content.png',
+TO_DATE('2024-01-22', 'YYYY-MM-DD'),
+5839);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
+'고객님과 Atlan Bank의 소통창구, 「Atlan Bank 서포터즈」\n
+평소 Atlan Bank에 대해 소중한 의견을 가지고 계셨던 고객님! Atlan Bank의 팬이 되어 제 1기 「Atlan Bank 서포터즈」의 문을 두드려 주세요!',
+NULL,
+TO_DATE('2024-02-07', 'YYYY-MM-DD'),
+4213);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal,
+'러시아 루블화(RUB) 외환거래 잠정중단 사전 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+2024.2.13(화)부터 러시아 루블화(RUB) 표시 외환거래가 잠정 중단될 예정입니다.\n
+금번 거래 중단은 러시아·우크라이나 전쟁 장기화로 러시아 루블화(RUB) 대외결제가 어려울 것으로 예상됨에 따라 향후 급작스런 대금 수취 불가 등 고객 피해를 최소화 하기 위한 조치입니다.\n
+잠정적인 거래 중단으로 인해 이용에 불편을 드려 대단히 죄송합니다.\n
+※ 기타 자세한 내용은 Atlan Bank 고객센터(☎1004-1004) 또는 가까운 영업점으로 문의하시기 바랍니다.',
+NULL,
+TO_DATE('2024-02-15', 'YYYY-MM-DD'),
+3551);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, '「소상공인·자영업자 상생지원금」 안내',
+'현재 사업을 영위하고 있는 소상공인·자영업자 분들께 상생지원금을 지급합니다!\n
+단, Atlan Bank 또는 서민금융진흥원으로부터 지원대상자로 선정되어 사전 안내(카카오톡 또는 LMS)를 받은 자에 한합니다.\n
+\n
+✔️신청 기간\n
+2024.03.01(금) 09:00 ~ 03.29(금) 17:00까지\n
+\n
+✔️신청 방법\n
+‘소상공인 상생지원금 홈페이지’(소상공인상생지원.kr)에서 신청\n
+[Microsoft Edge / Google Chrome / Naver Whale 브라우저로 접속]\n
+\n
+✔️신청 대상\n
+️현재 사업을 영위하고 있는 소상공인·자영업자로서 서민금융대출 및 고금리 취약차주 중 성실 상환자\n
+[KB국민은행 또는 서민금융진흥원으로부터 지원대상자로 선정되어 사전 안내(카카오톡 또는 LMS)를 받은 자에 한함]\n',
+'news_07_content.png',
+TO_DATE('2024-02-22', 'YYYY-MM-DD'),
+2456);
+
+INSERT INTO tblNews (news_seq, name, content, img, regdate, hits_count)
+VALUES (news_seq.nextVal, 'NICE평가정보 시스템 점검에 따른 신용관리서비스 일시 중단 안내',
+'항상 Atlan Bank를 이용해주시는 고객 여러분께 진심으로 감사드립니다.\n
+신용관리서비스 이용과 관련하여, 제휴신용정보회사(NICE평가정보)의 시스템 점검이 예정되어 있어 아래와 같이 안내 드립니다.\n
+보다 안정적이고, 효율적인 시스템 운영을 위해 최선을 다하겠습니다. 감사합니다.\n
+※ 기타 자세한 내용은 Atlan Bank 고객센터 또는 가까운 영업점으로 문의하시기 바랍니다.',
+NULL,
+TO_DATE('2024-02-28', 'YYYY-MM-DD'),
+1251);
 
 SELECT TO_CHAR(regdate, 'YYYY-MM-DD') AS regdate FROM tblNews; -- 날짜만 출력 (시간은 생략)
+
+SELECT * FROM tblNews;
 
 commit;
 
@@ -1127,7 +1221,7 @@ TO_DATE('2024-01-21', 'YYYY-MM-DD'), TO_DATE('2024-02-21', 'YYYY-MM-DD'),
 INSERT INTO tblEvent (event_seq, name, content, visual_img, content_img, caution_img, start_date, end_date, hits_count, franchise_seq) VALUES (event_seq.nextVal,
 '[단 20일 한정]「AtlanBank 쿠폰북적금」with 이마트 가입 시 이마트 7천원 할인쿠폰 바로 지급!',
 'Atlan Bank 고객님 누구나! 할인쿠폰 받기 클릭하면 즉시 쿠폰함으로 이마트 할인 쿠폰이 지급됩니다.',
-'event_05_visual.jpg', 'event_05_content.png', NULL,
+'event_05_visual.jpg', 'event_05_content.jpg', NULL,
 TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-14', 'YYYY-MM-DD'),
 11832, 12);
 
@@ -1195,9 +1289,70 @@ INSERT INTO tblEventParticipation (eventparticipation_seq, regdate, member_seq, 
 
 commit;
 
+
+-- tblFranchise
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Samsung', 'samsung_logo.png', '010-1264-5178');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'Apple', 'apple_logo.png', '010-2315-6181');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '카카오', 'kakao_logo.png', '010-3456-7190');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '네이버', 'naver_logo.png', '010-4567-8501');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '배달의민족', 'baemin_logo.jpg', '010-5648-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '요기요', 'yogiyo_logo.jpg', '010-6789-0123');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '쿠팡', 'coupang_logo.png', '010-7897-1264');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'GS24', 'gs24_logo.png', '010-8901-2745');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'CU', 'cu_logo.jpg', '010-9012-3356');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '세븐일레븐', 'seveneleven_logo.png', '010-0123-4567');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '미니스톱', 'ministop_logo.jpg', '010-1533-5668');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '이마트', 'emart_logo.jpg', '010-8345-6789');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, 'SONY', 'sony_logo.png', '010-3456-7890');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '스타벅스', 'starbucks_logo.png', '010-4567-8911');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '투썸플레이스', 'twosome_logo.png', '010-5678-9012');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '롯데시네마', 'lottecinema_logo.png', '010-6589-0223');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '맥도날드', 'mcdonalds_logo.png', '010-7270-1234');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '버거킹', 'burgerking_logo.png', '010-1012-3456');
+INSERT INTO tblFranchise (franchise_seq, name, img, tel) VALUES (franchise_seq.nextVal, '인천국제공항', 'icn_logo.jpg', '010-1574-5178');
+
 -- tblBenefit
-INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq) VALUES (benefit_seq.nextVal, '혜택1', '혜택1 내용', 'event_img2.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 1);
-INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq) VALUES (benefit_seq.nextVal, '혜택2', '혜택2 내용', 'event_img2.png', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 2);
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '특정 품목 현장할인', 'Samsung 제품의 특정 품목을 현장할인', NULL, TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-31', 'YYYY-MM-DD'), 1);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '모바일 7% 청구할인', 'Coupang 모바일에서 결제하면 7% 청구할인', NULL, TO_DATE('2024-01-02', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 7);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '최대 7.5만원 즉시할인', '인천국제공항 이용시 최대 7.5만원 즉시할인', NULL, TO_DATE('2024-01-02', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 19);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '5% 청구할인', 'Naver에서 결제하면 5% 청구할인', NULL, TO_DATE('2024-01-14', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 4);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '할인 및 상품권 증정', '이마트에서 구매시 할인 및 상품권 증정', NULL, TO_DATE('2024-01-26', 'YYYY-MM-DD'), TO_DATE('2024-02-29', 'YYYY-MM-DD'), 12);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '특정 품목 현장할인', '롯데시네마 제품 특정 품목 현장할인', NULL, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 16);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '5% 즉시할인', 'CU에서 구매하면 5% 즉시할인', NULL, TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-14', 'YYYY-MM-DD'), 9);
+
+INSERT INTO tblBenefit (benefit_seq, name, content, img, start_date, end_date, franchise_seq)
+VALUES (benefit_seq.nextVal, '7% 즉시할인', '스타벅스 특정 품복 즉시 할인', NULL, TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 14);
+
+select * from tblBenefit;
+
+SELECT 
+    b.benefit_seq,
+    b.name AS benefit_name,
+    b.content,
+    b.img AS benefit_img,
+    b.start_date,
+    b.end_date,
+    b.franchise_seq,
+    f.name AS franchise_name,
+    f.img AS franchise_img,
+    f.tel
+FROM 
+    tblBenefit b
+INNER JOIN 
+    tblFranchise f ON b.franchise_seq = f.franchise_seq;
 
 commit;
 
@@ -2069,5 +2224,971 @@ VALUES (seqLoanStatus.nextVal, 3000000, to_date('2024-01-24', 'YYYY-MM-DD HH24:M
 
 INSERT INTO TBLLOANSTATUS (LOANSTATUS_SEQ, MONEY, START_DATE, END_DATE, LOAN_INTERESTRATE, TYPE, INTERESTRATE, MAX_MONEY, MEMBER_SEQ, LOAN_SEQ) 
 VALUES (seqLoanStatus.nextVal, 40000000, to_date('2024-01-24', 'YYYY-MM-DD HH24:MI:SS'), to_date('2029-01-24', 'YYYY-MM-DD HH24:MI:SS'), 5.72, '원금균등상환', '금융채6개월', 40000000, 3, 15);
+
+--========================================================================= Card =========================================================================--
+-- tblCard
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'WE:SH All 카드', 'Simple Life를 위한 모두의 카드', '(신용)위시올카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'My WE:SH 카드', '''나''의 행복을 위한 필수 혜택 카드', '(신용)마이위시카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'Our WE:SH 카드', '함께 사는 ''우리''를 위한 필수 카드', '(신용)아워위시카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'American Express Blue Card', '매일 쓰는 영역 할인으로 내 생활에 착붙!', '(신용)아멕스블루카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'American Express Rose Gold Card', '아틀란뱅크와 만나는 장밋빛 할인 혜택', '(신용)아멕스로즈골드카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'TMAP 아틀란카드', '이용은 간편하게, 할인은 넉넉하게!', '(신용)티맵카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'toss 아틀란카드', '심플하고 쉽게 토스포인트 적립하는 방법!', '(신용)토스카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', '갤러리아 아틀란카드', '갤러리아 혜택을 한 장에 담아', '(신용)갤러리아카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'LFmall 신용카드', '스마트한 쇼핑 혜택', '(신용)엘에프몰카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'Easy on 카드', 'Food on, Music on, Shopping on 모두 할인 Easy on!', '(신용)이지온카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', '마이핏카드(적립형)', '#간편결제 #택시 #편의점 #쇼핑 #배달', '(신용)마이핏적립형카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', '마이핏카드(할인형)', '#외식 #편의점 #마트 #주유 #통신 #쇼핑 #배달', '(신용)마이핏할인형카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', '톡톡 with카드', NULL, '(신용)톡톡위드카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', '가온글로벌', '글로벌한 내 스타일을 담았다!', '(신용)가온글로벌카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'Wavve 카드', 'Wavve 이용권 결제 할 땐 !', '(신용)웨이브카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '레고랜드카드', '즐거운 레고랜드에서도, 평범한 일상에서도', '(신용)레고랜드카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '레고랜드매니아카드', '레고에 진심인 분을 위한 혜택에 진심을 담은 카드', '(신용)레고랜드매니아카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '스카이패스 티타늄 카드', '대한항공 마일리지 기본적립에 해외/면세점 추가적립 혜택까지!', '(신용)스카이패스티타늄카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '아시아나 올림카드', '아시아나 마일리지 적립의 혜택을 올림', '(신용)아시아나올림카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '하나투어 아틀란카드', '신용카드와 하나투어 마일리지 클럽서비스를 하나로!', '(신용)하나투어카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '모두투어 투어마일리지 아틀란카드', NULL, '(신용)모두투어카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '제주항공 Refresh Point 아틀란카드', '합리적 여행자를 위한 Must Have 카드', '(신용)제주항공카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', 'Easy fly 티타늄카드', '여행은 Happy, 혜택은 Easy! Yes, you can fly!', '(신용)이지플라이티타늄카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', 'FINTECH카드(대한항공)', '모바일로 누리는 더 좋은 혜택! Fine thanks, 파인테크!', '(신용)핀테크대한항공카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', 'The CJ 아틀란카드', '계열사가 많은 알찬 CJ', '(신용)씨제이카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', '탄탄대로 웰컴카드', '국내 거주 외국인을 위한 일상에서 여가까지 다양한 할인 혜택!', '(신용)탄탄대로웰컴카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', '위메프페이 신용카드', '특가 대표에 국민의 힘을 더하다! (위메프포인트 적립)', '(신용)위메프페이카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', '롯데마트 아틀란카드', '행복드림 롯데마트에서 할인 혜택', '(신용)롯데마트카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', 'CHALLENGE BAG 아틀란카드', '11번가에서 SK Pay 결제하고 11% OK캐쉬백 적립!', '(신용)챌린지백카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', 'H.Point 아틀란카드', '현대백화점그룹 멤버십 혜택에 아틀란카드 혜택을 더하다!', '(신용)에이치포인트카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', 'AK 아틀란카드', '쇼핑에 강한 AK와 생활에 강한 아틀란의 특별한 만남!', '(신용)에이케이몰카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '쇼핑', 'GS SHOP 아틀란카드', 'GS SHOP 12%, 월 최대 5만원 할인!', '(신용)지에스샵카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '주유/충전', 'Easy auto 티타늄카드', '주유·정비·생활·보험! Easy하게 적립을 타고 달리는 기분!', '(신용)이지오토티타늄카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '주유/충전', '탄탄대로 온리유 티타늄카드', '주유와 오토라이프 모두 차별화된 혜택으로 UPGRADE!', '(신용)탄탄대로온리유티타늄카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '주유/충전', 'E1 LPG 아틀란카드', 'E1 충전소 할인은 기본! 풍성한 혜택으로 생활에너지 충전!', '(신용)이원엘피지카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '주유/충전', 'SK에너지 러브유 아틀란카드', '평소에는 주유비 할인 받고! 주말에는 캠핑 즐기고!', '(신용)에스케이에너지러브유카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', 'LGU+ 심플라이트카드', '아틀란카드로 통신료를 아끼자', '(신용)엘지유플러스카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', '토스모바일 아틀란카드', '통신요금 매월 할인 받는 방법!', '(신용)토스모바일카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', 'SK 7 mobile카드', '통신요금을 절약하는 방법!', '(신용)세븐모바일카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', '스마트 지킴이카드', '우리 가족의 안전을 지켜주는 스마트한 카드 생활!', '(신용)스마트지킴이카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', 'Easy ring 티타늄카드', '통신요금 할인은 기본, 다양한 혜택도 Easy!', '(신용)이지링티타늄카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', 'Liiv M 카드', '매월 Liiv M 통신비를 절약하는 방법!', '(신용)리브카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', 'LG 헬로비전 카드', 'LG 헬로비전 요금 매월 할인 받는 방법!', '(신용)헬로비전카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', 'T-economy 아틀란카드', 'SKT 통신요금을 알뜰하게 절약하는 방법!', '(신용)티이코노미카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '통신', 'kt M mobile 카드', '통신요금을 절약하는 방법!', '(신용)케이티엠카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '교육', '웅진씽크빅 카드', '웅진씽크빅 요금 매월 할인 받는 방법!', '(신용)웅진씽크빅카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '교육', '밀크T 카드', '매월 학습비를 절약하는 방법!', '(신용)밀크티카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '교육', '에듀카드', '교육비를 절약하는 현명한 선택!', '(신용)에듀카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '의료', '아틀란 펫코노미 카드', '반려동물을 사랑하는 현명한 방법!', '(신용)펫코노미카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '의료', '반려愛카드(강아지)', '반려동물을 사랑하는 마음. 아틀란 반려애카드가 함께합니다!', '(신용)반려애카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '의료', '골든라이프올림카드', '더욱 든든해진 혜택으로 당신의 골든라이프를 응원합니다!', '(신용)골든라이프올림카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '음식', '랭킹닭컴 신용카드', '랭킹은 알고 있다!!', '(신용)랭킹닭컴카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '음식', '요기패스 신용카드(가로형)', '구독료 부담은 No! 요기패스 혜택은 Yes!', '(신용)요기패스카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '렌탈', '청호나이스 Ⅱ 카드', '렌탈 요금 매월 할인 받는 방법!', '(신용)청호나이스카드2.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '렌탈', '교원 웰스 아틀란카드', '웰스로 건강한 습관 ! 아틀란카드로 알뜰한 습관 !', '(신용)교원웰스카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '렌탈', 'SK 매직 올림카드', '렌탈 요금, 스마트하게 할인 받고 영화·놀이공원 할인까지!', '(신용)에스케이매직올림카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '렌탈', '청호나이스 아틀란카드', '렌탈 요금, 스마트하게 할인 받고 영화·놀이공원 할인까지!', '(신용)청호나이스카드1.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '렌탈', 'LG전자 아틀란카드', 'LG전자 베스트샵 가전제품 / 렌탈 요금 할인!', '(신용)엘지전자카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '선택형', '톡톡 my living카드', '언제 어디서나, 나의 일상을 함께!', '(신용)톡톡마이리빙카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '선택형', 'Easy pick 티타늄카드', '주요 생활 영역부터 내가 Pick한 영역까지 모두 적립 Easy!', '(신용)이지픽티타늄카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '선택형', '탄탄대로 Biz카드', '일상에서 사업까지 탄탄한 혜택!', '(신용)탄탄대로비즈카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '공공/정부지원', '국민행복카드', '보육료 및 임신·출산 진료비 지원 등 국가바우처 지원 가능', '(신용)국민행복카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '공공/정부지원', '국방멤버쉽카드', '직업 군인과 군무원 분들에게 꼭 필요한 세심한 혜택! 아틀란 국방멤버쉽카드', '(신용)국방멤버쉽카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '공공/정부지원', '보탬e전용카드', '지방보조금 결제에 보탬이 되는', '(신용)보탬이전용카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '공공/정부지원', '아틀란 군인연금증 신용카드', '대한민국 군과 함께 풍요로운 노후', '(신용)군인연금증카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '공공/정부지원', '그린카드', '친환경 녹색실천과 에코머니포인트 적립의 기쁨을 누리는 착한 혜택의 힘', '(신용)그린카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '선택형', 'Easy pick카드', '주요 생활 영역부터 내가 Pick한 영역까지 모두 적립 Easy!', '(신용)이지픽카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '여행', '에버랜드 판다카드(푸바오 에디션)', '에버랜드 최고 인기스타 푸바오를 내 손 안에!', '(신용)에버랜드카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', '알뜰교통플러스 카드', '교통비 SAVE!! 생활서비스 할인 혜택까지~', '(신용)알뜰교통플러스카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '토심이 첵첵 체크카드', '줄 서서 발급하는 혜택 맛집!', '(체크)토심이첵첵체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '노리2 체크카드', '국민 대표 체크카드 시즌2 개막', '(체크)노리2체크카드케이비페이.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '우리동네 체크카드(키뮤)', '다 같이 돌자 동네 한 바퀴', '(체크)우리동네체크카드키뮤.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '우리동네 체크카드', '다 같이 돌자 동네 한 바퀴', '(체크)우리동네체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '노리2 체크카드(Global)', '국민 대표 체크카드 시즌2 개막', '(체크)노리2체크카드글로벌.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '위글위글 첵첵 체크카드', '줄 서서 발급하는 혜택 맛집!', '(체크)위글위글첵첵체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '펭수 노리 체크카드(펭모티콘)', '한정판 펭수 카드, 발급 챙겨', '(체크)펭수노리체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '할인', '펭수 노리 체크카드(펭카)', '한정판 펭수 카드, 발급 챙겨', '(체크)펭수노리체크카드펭카.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '적립', '카카오페이 아틀란 체크카드', '카카오페이 X 아틀란카드가 꿈꾸는 행복한 만남', '(체크)카카오페이체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '적립', '위메프페이 체크카드', '특가 대표에 국민의 혜택을 더하다!', '(체크)위메프페이체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '적립', '알뜰교통플러스 체크카드', '교통비 SAVE!! 생활서비스 이용 시 포인트리 적립 혜택 까지~', '(체크)알뜰교통플러스체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '음식', '새로이 체크카드', '새롭게 시작하는 모두에게 스마트한 혜택!', '(체크)새로이체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '음식', '음 체크카드', '맛과 여유를 음미하며, 휴식을 통해 삶을 재충전하는 당신에게 어울리는 혜택', '(체크)음체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '음식', '민 체크카드', '일상생활에 꼭 필요한 생활편의 맞춤 할인! 알뜰한 당신에게 꼭 필요한 할인 혜택', '(체크)민체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '쇼핑', '청춘대로 싱글 레터링 체크카드(긁으면)', '힙트로(Hip+Retro) 체크카드, 발급은 셀프', '(체크)청춘대로싱글레터링체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '쇼핑', '청춘대로 싱글 체크카드', '내 삶에 필요한 다양한 할인 혜택!', '(체크)청춘대로싱글체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '여행', '아시아나 체크카드', '아시아나 마일리지 기본 적립에 추가 할인까지 즐거운 혜택', '(체크)아시아나체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '통신', 'LG U+ 체크카드', 'LG U 고객을 위한 스마트한 할인혜택', '(체크)엘지유플러스체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '통신', 'Liiv M 체크카드', 'Liiv M 고객을 위한 스마트한 할인 혜택!', '(체크)리브엠체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '교육', '쏘영 체크카드', '엄마카드 말고 내카드로 딱 맞는 할인', '(체크)쏘영체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '교육', '훈 체크카드', '건강한 삶과 더 나은 미래를 꿈꾸는 20~30대를 위한 의료/교육 특화 체크카드', '(체크)훈체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '문화', '레고랜드 체크카드', '레고를 좋아한다면 꼭 체크해봐야 할 혜택!', '(체크)레고랜드체크카드.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '문화', '그린재킷 체크카드', '골퍼들이 꿈꾸는 그린재킷을 내 손에', '(체크)그린재킷체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '학생증', '아틀란 티머니 노리 학생증 체크카드(블루_세로형)', '교통/통신 할인부터 커피숍과 영화관까지. 당신이 가는 곳곳마다 놀라운 할인 혜택!', '(체크)티머니학생증체크카드블루세로형.png', 1);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '학생증', '아틀란 티머니 노리 학생증 체크카드(블루_가로형)', '교통/통신 할인부터 커피숍과 영화관까지. 당신이 가는 곳곳마다 놀라운 할인 혜택!', '(체크)티머니학생증체크카드블루가로형.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '학생증', '아틀란 티머니 노리 학생증 체크카드(퍼플_가로형)', '교통/통신 할인부터 커피숍과 영화관까지. 당신이 가는 곳곳마다 놀라운 할인 혜택!', '(체크)티머니학생증체크카드퍼플가로형.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '공공/정부지원', '국민행복체크카드', '보육료 및 임신·출산 진료비 지원 등 국가바우처 지원 가능', '(체크)국민행복체크카드.png', default);
+INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 2, '공공/정부지원', '나라사랑체크카드', '꿈꾸고 즐기는 청춘을 위한 다양한 할인 혜택', '(체크)나라사랑체크카드.png', default);
+
+--tblAnnualFee
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D0', '국내 전용', 0);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V0', 'VISA', 0);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M0', 'MASTER', 0);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A0', 'AMEX', 0);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK0', 'JCB(K-WORLD)', 0);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J0', 'JCB', 0);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK0', 'UPI(K-WORLD)', 0);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D5', '국내 전용', 5000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D8', '국내 전용', 8000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V8', 'VISA', 8000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M8', 'MASTER', 8000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A8', 'AMEX', 8000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK8', 'JCB(K-WORLD)', 8000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J8', 'JCB', 8000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK8', 'UPI(K-WORLD)', 8000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D10', '국내 전용', 10000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V10', 'VISA', 10000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M10', 'MASTER', 10000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A10', 'AMEX', 10000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK10', 'JCB(K-WORLD)', 10000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J10', 'JCB', 10000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK10', 'UPI(K-WORLD)', 10000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D12', '국내 전용', 12000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V12', 'VISA', 12000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M12', 'MASTER', 12000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A12', 'AMEX', 12000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK12', 'JCB(K-WORLD)', 12000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J12', 'JCB', 12000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK12', 'UPI(K-WORLD)', 12000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D15', '국내 전용', 15000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V15', 'VISA', 15000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M15', 'MASTER', 15000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A15', 'AMEX', 15000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK15', 'JCB(K-WORLD)', 15000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J15', 'JCB', 15000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK15', 'UPI(K-WORLD)', 15000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D19', '국내 전용', 19000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V19', 'VISA', 19000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M19', 'MASTER', 19000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A19', 'AMEX', 19000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK19', 'JCB(K-WORLD)', 19000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J19', 'JCB', 19000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK19', 'UPI(K-WORLD)', 19000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D20', '국내 전용', 20000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V20', 'VISA', 20000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M20', 'MASTER', 20000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A20', 'AMEX', 20000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK20', 'JCB(K-WORLD)', 20000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J20', 'JCB', 20000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK20', 'UPI(K-WORLD)', 20000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D25', '국내 전용', 25000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V25', 'VISA', 25000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M25', 'MASTER', 25000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A25', 'AMEX', 25000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK25', 'JCB(K-WORLD)', 25000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J25', 'JCB', 25000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK25', 'UPI(K-WORLD)', 25000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D28', '국내 전용', 28000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V28', 'VISA', 28000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M28', 'MASTER', 28000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A28', 'AMEX', 28000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK28', 'JCB(K-WORLD)', 28000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J28', 'JCB', 28000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK28', 'UPI(K-WORLD)', 28000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D30', '국내 전용', 30000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V30', 'VISA', 30000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M30', 'MASTER', 30000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A30', 'AMEX', 30000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK30', 'JCB(K-WORLD)', 30000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J30', 'JCB', 30000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK30', 'UPI(K-WORLD)', 30000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D35', '국내 전용', 35000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V35', 'VISA', 35000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M35', 'MASTER', 35000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A35', 'AMEX', 35000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK35', 'JCB(K-WORLD)', 35000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J35', 'JCB', 35000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK35', 'UPI(K-WORLD)', 35000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D40', '국내 전용', 40000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V40', 'VISA', 40000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M40', 'MASTER', 40000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A40', 'AMEX', 40000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK40', 'JCB(K-WORLD)', 40000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J40', 'JCB', 40000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK40', 'UPI(K-WORLD)', 40000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D45', '국내 전용', 45000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V45', 'VISA', 45000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M45', 'MASTER', 45000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A45', 'AMEX', 45000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK45', 'JCB(K-WORLD)', 45000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J45', 'JCB', 45000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK45', 'UPI(K-WORLD)', 45000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D50', '국내 전용', 50000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V50', 'VISA', 50000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M50', 'MASTER', 50000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A50', 'AMEX', 50000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK50', 'JCB(K-WORLD)', 50000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J50', 'JCB', 50000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK50', 'UPI(K-WORLD)', 50000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('D100', '국내 전용', 100000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('V100', 'VISA', 100000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('M100', 'MASTER', 100000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('A100', 'AMEX', 100000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('JK100', 'JCB(K-WORLD)', 100000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('J100', 'JCB', 100000);
+INSERT INTO tblAnnualFee (annual_fee_no, brand, annual_fee) VALUES ('UK100', 'UPI(K-WORLD)', 100000);
+
+--tblCardAnnualFee
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D20', 1);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V20', 1);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 2);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 2);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'A15', 2);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 3);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 3);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'A19', 4);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'A19', 5);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 6);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V15', 6);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D20', 7);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 7);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 8);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V15', 8);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 9);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 9);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK20', 10);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 10);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D30', 11);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M30', 11);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D10', 12);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M10', 12);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D12', 13);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK12', 13);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V12', 13);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 14);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 14);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 15);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK15', 15);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V15', 15);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D20', 16);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 16);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D100', 17);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M100', 17);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D45', 18);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M45', 18);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D28', 19);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M30', 19);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M10', 20);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V10', 20);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'J10', 20);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 21);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK20', 22);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK35', 23);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M35', 23);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D20', 24);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M25', 24);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D5', 25);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M10', 25);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V10', 25);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'J10', 25);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK15', 26);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M19', 26);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D20', 27);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK20', 27);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 27);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK10', 28);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'A15', 28);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 29);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 29);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK12', 30);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M12', 30);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK12', 31);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M12', 31);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D25', 32);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK25', 32);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V25', 32);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK30', 33);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M30', 33);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK30', 34);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M30', 34);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 35);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 35);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D8', 36);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M12', 36);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'J12', 36);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 37);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 37);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D20', 38);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 38);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 39);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 39);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 40);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK15', 40);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 40);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D30', 41);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M30', 41);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 42);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 42);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 42);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 43);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 43);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 43);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 44);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 44);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 44);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 45);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 45);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 46);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 46);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 46);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 47);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 47);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 47);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK35', 48);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M35', 48);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK30', 49);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M30', 49);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK8', 50);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 50);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 51);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V20', 51);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 52);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V15', 52);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 53);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK15', 53);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 53);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D15', 54);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 54);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 54);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK12', 55);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M12', 55);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK12', 56);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 56);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK12', 57);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 57);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 58);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 58);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D12', 59);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M12', 59);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK12', 60);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 60);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK15', 61);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M15', 61);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 62);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 62);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 63);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 63);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 63);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 64);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK0', 64);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 64);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 64);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'J0', 64);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK10', 65);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M10', 65);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 66);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 66);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'JK20', 67);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M20', 67);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'UK12', 68);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D8', 69);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V8', 69);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 70);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 70);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 71);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 71);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 71);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 72);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 72);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 73);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 74);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 74);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 75);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 75);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 76);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 76);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 77);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 77);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 78);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 78);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 79);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 79);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 80);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 80);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 81);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 82);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 82);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 82);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 83);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 83);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 83);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 84);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 84);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 85);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 85);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 86);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 87);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 88);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 88);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 89);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 90);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 90);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'V0', 90);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 91);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 91);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 92);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 92);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 93);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 94);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 95);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 96);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'M0', 96);
+INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 97);
+
+--tblCardUsageGuide
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '할인서비스 제외 대상', '- 무이자할부 이용금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 국세, 지방세, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 신차구매청구(환급) 할인 전표 전체, 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '전월 이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''KB국민 WE:SH All 카드'' 일시불 및 할부 승인금액 기준(가족카드 포함)
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입완료 기준
+- 취소금액은 취소전표가 KB국민카드에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '전월 이용실적 제외 대상', '- ''KB국민 WE:SH All 카드'' 자동납부(쇼핑 멤버십/OTT/이동통신) 할인 받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 국세, 지방세, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 무승인전표(교통요금/자판기/터널통행료/항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '할인서비스 제외 대상', '- 무이자할부 이용금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 교통요금, 무승인전표(자판기, 터널통행료, 항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '전월 이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''KB국민 My WE:SH 카드'' 일시불 및 할부 승인금액 기준
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입완료 기준
+- 취소금액은 취소전표가 KB국민카드에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '전월 이용실적 제외 대상', '- KB국민 My WE:SH 카드로 할인 받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 교통요금, 무승인전표(자판기, 터널통행료, 항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '선택서비스 안내사항', '- 선택서비스 변경 시 신청일 기준 다음달 1일부터 적용(월 단위 제공)
+- 변경 방법 : 모바일앱/홈페이지/고객센터(☎1588-1688)');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '가족카드 발급 관련 안내', '- KB국민 My WE:SH 카드는 가족카드 발급이 불가
+- 본인 카드만 발급 가능');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '할인서비스 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''KB국민 Our WE:SH 카드'' 일시불 및 할부 승인금액(가족카드 포함)
+- 해외이용금액은 전월 1일 ~ 말일까지 일시불 매입 완료 기준
+- 취소금액은 취소전표가 당사에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '전월 이용실적 제외 대상', '- ''KB국민 Our WE:SH 카드''로 할인 받은 이용건(해당 이용금액 전체), 취소금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 국세, 지방세, 공과금(전기/수도), 아파트관리비, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 초·중·고등학교 납입금 전체(수업료/교육비/현장학습비/급식비), 대학(대학원)등록금, 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전 금액, 교통요금, 무승인전표(자판기, 터널통행료, 항공기내 이용 등)');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 + 3%p, 최고 연 20% 이내
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '전월 이용실적 제외 대상', '- ''American Express Blue KB Kookmin Card''로 할인받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전 금액, 아파트관리비, 유치원/초·중·고 학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(원) 등록금, 국세, 지방세, 각종 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 무승인전표(자판기/터널이용료/항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '전월 이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''American Express Blue KB Kookmin Card'' 일시불 및 할부 승인금액 기준(가족카드포함)
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입완료 기준
+- 취소금액은 취소 전표가 당사에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 5, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 + 3%p, 최고 연 20% 이내
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 5, '상품 서비스 할인 제외 대상', '무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전금액, KB Pay 외 다른 결제수단 이용 건');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 5, '전월 이용실적 제외 대상', '''American Express Rose Gold KB Kookmin Card''로 할인받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전 금액, 아파트관리비, 유치원/초·중·고 학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(원) 등록금, 국세, 지방세, 각종 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 무승인전표(자판기/터널이용료/항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 6, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 6, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 7, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 7, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 8, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 8, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 9, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 9, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 10, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 10, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 11, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 11, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 12, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 12, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 13, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 13, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 14, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 14, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 15, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 15, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 16, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 16, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 17, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 17, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 18, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 18, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 19, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 19, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 20, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 20, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 21, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 21, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 22, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 22, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 23, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 23, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 24, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 24, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 25, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 25, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 26, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 26, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 27, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 27, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 28, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 28, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 29, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 29, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 30, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 30, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 31, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 31, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 32, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 32, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 33, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 33, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 34, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 34, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 35, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 35, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 36, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 36, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 37, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 37, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 38, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 38, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 39, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 39, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 40, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 40, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 41, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 41, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 42, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 42, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 43, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 43, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 44, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 44, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 45, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 45, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 46, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 46, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 47, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 47, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 48, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 48, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 49, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 49, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 50, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 50, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 51, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 51, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 52, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 52, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 53, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 53, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 54, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 54, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 55, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 55, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 56, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 56, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 57, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 57, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 58, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 58, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 59, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 59, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 60, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 60, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 61, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 61, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 62, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 62, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 63, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 63, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 64, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 64, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 65, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 65, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 66, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 66, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 67, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 67, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 68, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 68, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '전월 이용 실적 기준', '- 전월 1일 ~ 말일까지 KB국민 알뜰교통플러스카드의 일시불 및 할부 승인 금액 기준
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입 완료 기준
+- 취소 금액은 취소 전표가 당사에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '전월 이용 실적 제외 대상', '- KB국민 알뜰교통플러스카드로 청구할인 서비스를 적용 받은 이용건(해당 매출 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 아파트관리비, 초/중/고 학교납입금 전체(수업료/교육비/현장학습비/급식비 등), 대학(원)등록금, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 무승인전표(대중교통, 공항버스, 자판기, 터널통행료, 항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '할인 제외 대상', '- 무이자할부, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 연체료, 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '해외 이용 확인사항', '- 해외 이용시(해외사이트 거래 포함) 미화(USD)기준 거래미화금액에 접수일의(KB국민은행) 최초고시 전신환 매도율을 적용한 후, 국제브랜드사가 부과하는 국제브랜드 수수료(VISA 1.1%)와 KB국민카드가 부과하는 해외서비스 수수료 (0.25%)를 포함하여 원화로 청구됩니다. 이 경우 KB국민카드의 해외서비스 수수료는 국제브랜드 수수료를 제외하고 산정됩니다.
+- 해외 이용시 청구금액 산출방법
+* 해외 이용시 청구금액 = (거래미화금액 X 전신환매도율¹) + 국제브랜드 수수료² + 해외서비스 수수료³
+
+전신환 매도율 : 접수일의 KB국민은행 최초고시 전신환매도율
+국제브랜드 수수료 = (거래미화금액 X 국제브랜드 이용수수료율) X 전신환매도율
+해외서비스 수수료 = (거래미화금액 X 해외서비스 수수료율) X 전신환매도율
+해당 내용은 해외원화결제(DCC) 서비스 수수료가 없는 경우이며, 해외원화결제(DCC) 서비스 이용 시 추가 수수료가 발생할 수 있으니 유의하시기 바랍니다.
+
+- 해외원화결제(DCC) 차단 서비스 이용방법 : KB국민카드 홈페이지/모바일앱 > 서비스 > 해외이용서비스 > 해외원화결제차단서비스');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '기타', '- KB국민 알뜰교통플러스카드 업종에 따른 청구 할인서비스는 대상 가맹점이 KB국민카드의 업종분류기준 상 해당 업종에 한하여 제공합니다.
+- 별도 전용 가맹점번호로 승인되는 PG(결제대행)업체 또는 일부 간편결제(Pay) 이용 시 할인대상에서 제외될 수 있습니다.
+- KB국민 알뜰교통플러스카드 할인 서비스 대상 업종은 해당 가맹점 사업자번호로 당사 영업점 및 고객센터 1588-1688, KB국민은행 영업점을 통해 확인이 가능합니다.
+- 전표 매입 순서대로 월간 할인한도내 서비스가 적용되며, 잔여 할인한도는 이월되지 않습니다.
+- 할인 받은 이용 건을 취소할 경우 취소전표가 실시간 접수되지 않아 할인 한도가 즉시 복원되지 않을 수 있습니다.
+- 결제계좌 개설 기관의 영업 마감시간(16시) 이후 결제계좌에 입금된 금액에 대해서는 결제계좌 개설 기관의 사정에 따라 당일 출금하지 못하여 연체로 처리될 수 있으므로 유의하시기 바랍니다. 자동이체 업무 마감시간 이후 당사 홈페이지/모바일* 등에서 바로출금(즉시결제) 또는 가상계좌 입금(송금납부)을 통해 당일 결제가 가능합니다.
+* 세부내용 : KB국민카드 홈페이지 > MY KB > 바로출금결제 또는 가상계좌결제 참조
+
+- KB국민 알뜰교통플러스카드는 기본 포인트리가 적립되지 않습니다.
+- 단, KB국민카드 스타샵 가맹점에서 제공해드리는 포인트는 적립됩니다.');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '가족카드 발급 관련 안내', '- KB국민 알뜰교통플러스카드는 가족카드 발급이 불가능합니다.');
+
+-- tblBenefits
+--수정 후(혜택번호, 혜택종류(1: 할인, 2: 적립, 3: 항공 마일리지 적립), 혜택명, 혜택 상세, 할인/적립율, 월 할인/적립 한도, 전월실적, 혜택 이미지)
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PT5A', 1, '대중교통', '- 버스, 지하철 이용시 5% 할인
+※ 택시, 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 5, 3000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PT5B', 1, '대중교통', '- 버스, 지하철 이용시 5% 할인
+※ 택시, 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 5, 5000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PT10A', 1, '대중교통', '- 버스, 지하철 이용시 10% 할인
+※ 택시, 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 10, 5000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PTT10A', 1, '대중교통/택시', '- 버스, 지하철, 택시 이용시 10% 할인
+※ 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 10, 4000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PTT10B', 1, '대중교통/택시', '- 버스, 지하철, 택시 이용시 10% 할인
+※ 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 10, 5000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1AP50A', 1, '놀이공원', '- 롯데월드 어드벤처 종합이용권 50% 할인
+- 에버랜드 1일 이용권 50% 할인
+※ 전월 이용실적 30만원 이상 시 할인 제공하며, 놀이공원 현장 결제 시 실물카드 소지 필수', 50, 50000, 30, '(혜택)놀이공원.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1FR30A', 1, '패밀리레스토랑', '- 아웃백스테이크하우스
+※ 백화점/대형마트 등 일부 입점 매장 및 아웃백 딜리버리 제외', 30, 30000, 30, '(혜택)음식.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1OS10A', 1, '온라인 쇼핑', '- G마켓, 11번가, SSG.COM의 이용건
+※ 상품권, 여행, 항공권, 티켓, 도서, 별도 팝업 사이트 제외', 10, 10000, 30, '(혜택)온라인결제.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1CG100A', 1, '주유', '- SK에너지, GS칼텍스
+※ LPG, 경유, 등유는 휘발유 가격에 비례하여 할인율 적용
+※ 휘발유 가격은 SK에너지 고시 휘발유가 기준', 3, 5000, 30, '(혜택)주유.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1CS5A', 1, '편의점', '- GS25, CU
+※ 백화점/대형마트 등 일부 입점 매장 제외
+※ 오프라인 매장 일반 결제건에 한함 (온라인 가맹점 제외)', 5, 5000, 30, '(혜택)편의점.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1C5A', 1, '커피', '- 커피(커피/음료전문점 업종)
+※ 상품권(선물하기 등), 선불카드(선불전자지급수단 포함) 제외
+※ 백화점/대형마트 등 일부 입점 매장 제외', 5, 5000, 30, '(혜택)커피.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1C10A', 1, '커피', '- 커피(커피/음료전문점 업종)
+※ 상품권(선물하기 등), 선불카드(선불전자지급수단 포함) 제외
+※ 백화점/대형마트 등 일부 입점 매장 제외', 10, 5000, 30, '(혜택)커피.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1CS50A', 1, '스타벅스', '- 스타벅스(사이렌오더 포함)
+※ 상품권(선물하기 등) 및 선불카드(선불전자지급수단 포함) 충전 제외', 50, 10000, 30, '(혜택)커피.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1D5A', 1, '배달', '- 배달의민족, 요기요', 5, 5000, 30, '(혜택)음식.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1T10A', 1, '통신', '- 이동통신요금, 유선전화, 인터넷 결합상품 포함
+- 자동납부 시 10% 청구할인', 10, 5000, 30, '(혜택)통신.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C3KA1A', 3, '대한항공', '- 국내가맹점 적립 1,000원 당 1마일 기본적립', 1, 5000, 30, '(혜택)항공.gif');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+
+
+
+-- tblCardBenefit
+--주유
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 33, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 34, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 35, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 36, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 68, 'C1CG100A');
+
+--통신
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 37, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 38, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 39, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 40, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 41, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 42, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 43, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 44, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 45, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1T10A');
+
+--패밀리레스토랑
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 68, 'C1FR30A');
+
+--커피
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1C10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1C10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1C10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1CS50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1C5A');
+
+--항공
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 18, 'C3KA1A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 23, 'C3KA1A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 24, 'C3KA1A');
+
+--대중교통
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 67, 'C1PT5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1PT5B');
+
+--편의점
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 67, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1CS5A');
+
+--배달
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 11, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1D5A');
+
+--놀이공원
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 11, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 68, 'C1AP50A');
+
+--온라인쇼핑
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 4, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 5, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 10, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 11, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 14, 'C1OS10A');
+
+-- tblMemberCard
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, card_payment_date, status) VALUES (member_card_seq.nextVal, 1, 5678491679463164, 68, TO_DATE('2028-01-31', 'yyyy-mm-dd'), 267, 14, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, card_payment_date, status) VALUES (member_card_seq.nextVal, 2, 6985236482456362, 69, TO_DATE('2030-06-30', 'yyyy-mm-dd'), 235, 10, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, card_payment_date, status) VALUES (member_card_seq.nextVal, 3, 3124574225399547, 67, TO_DATE('2031-12-31', 'yyyy-mm-dd'), 769, 7, 'y');
+
+-- tblMemberCardHistory
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-02', 'yyyy-mm-dd'), 3000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-03', 'yyyy-mm-dd'), 5000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-03', 'yyyy-mm-dd'), 10000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-10', 'yyyy-mm-dd'), 500000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-12', 'yyyy-mm-dd'), 1250000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-02-02', 'yyyy-mm-dd'), 7000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-01-02', 'yyyy-mm-dd'), 9500, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-01-03', 'yyyy-mm-dd'), 1300, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-01-04', 'yyyy-mm-dd'), 150000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 2, TO_DATE('2024-02-02', 'yyyy-mm-dd'), 2000000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-05', 'yyyy-mm-dd'), 900000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-06', 'yyyy-mm-dd'), 60000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-07', 'yyyy-mm-dd'), 85000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-01-08', 'yyyy-mm-dd'), 600000, 1);
+INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, amount, installment_months) VALUES (member_card_history_seq.nextVal, 3, TO_DATE('2024-02-05', 'yyyy-mm-dd'), 5000000, 1);
+
+-- tblPayment
+--INSERT INTO tblPayment (payment_seq, member_card_history_seq, payment_date, amount) VALUES (payment_seq.nextVal, , TO_DATE('', 'yyyy-mm-dd'), );
+
 
 commit;

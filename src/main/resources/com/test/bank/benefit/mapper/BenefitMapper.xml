@@ -3,4 +3,35 @@
 
 <mapper namespace="com.test.bank.benefit.mapper.BenefitMapper">
 
+	<resultMap id="BenefitResultMap" type="com.test.bank.benefit.domain.BenefitDTO">
+	    <id column="benefit_seq" property="benefitSeq"/>
+	    <result column="benefit_name" property="benefitName"/>
+	    <result column="content" property="content"/>
+	    <result column="benefit_img" property="benefitImg"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="franchise_seq" property="franchiseSeq"/>
+	    <result column="franchise_name" property="franchiseName"/>
+	    <result column="franchise_img" property="franchiseImg"/>
+	    <result column="tel" property="tel"/>
+	</resultMap>
+	
+	<select id="getBenefits" resultType="com.test.bank.benefit.domain.BenefitDTO">
+		SELECT 
+		    b.benefit_seq,
+		    b.name AS benefit_name,
+		    b.content,
+		    b.img AS benefit_img,
+		    b.start_date,
+		    b.end_date,
+		    b.franchise_seq,
+		    f.name AS franchise_name,
+		    f.img AS franchise_img,
+		    f.tel
+		FROM 
+		    tblBenefit b
+		INNER JOIN 
+		    tblFranchise f ON b.franchise_seq = f.franchise_seq
+	</select>
+	
 </mapper>

@@ -6,21 +6,34 @@
 <title>카드</title>
 
 <style>
+	/* Font */
+	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+	
+	body {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+
 	/* section empty space */
 	section {
 		margin: 20px 135px;
-		padding: 0 60px;
+		padding: 20px 60px;
 		max-width: 1200px;
 	}
 
-	/* search bar */
+	/* ===== search bar ===== */
 	#search-bar {
 		background: #EFF2F7;
-		padding: 60px;
+		padding: 50px 150px;
+		border-radius: 5px;
 	}
 	
 	#search-bar h3 {
 		font-size: 1.2rem;
+		padding-bottom: 10px;
 	}
 	
 	#search-bar form div {
@@ -30,22 +43,43 @@
 	#search-bar form div i {
 		position: absolute;
 		right: 10px;
-		top: 2px;
+		top: 8px;
+		cursor: pointer;
 	}
 
 	#search-box {
 		border: 1px solid black;
 		width: 100%;
-		height: 30px;
+		height: 40px;
+		border-radius: 3px;
 	}
 	
-	/* card list */
+	/* tag */
+	.tag {
+		display: inline-block;
+		margin-top: 5px;
+		margin-right: 10px;
+	}
+	
+	/* new card list section */
 	.card-container {
 		display: flex;
+		flex-direction: column;
+	}
+	
+	.card-row {
+		display: flex;
+		flex-wrap: wrap;
 	}
 	
 	.card-box {
-		padding-right: calc((100% - 960px) / 2);
+		margin: 20px calc((100% - 960px) / 6);
+		width: 320px;
+		height: 466px;
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 1000;
+		/* cursor: pointer; */
 	}
 	
 	.card-container .card-box:last-child {
@@ -53,15 +87,19 @@
 	}
 	
 	.card-box-item {
-		background: #F1F4F8;
-		position: relative;
-		width: 320px;
-		height: 466px;
+		width: 100%;
+		height: 100%;
+		/* background: #F1F4F8; */
 		border-radius: 12px;
 		padding: 24px;
+		position: relative;
+		top: 0;
+		left: 0;
+		backface-visibility: hidden;
+		transition: all .5s;
 	}
 	
-	.card-box-item::after {
+	.card-box-item.front::after {
 		content: '';
 		display: block;
 		position: absolute;
@@ -73,6 +111,39 @@
 		border-radius: 100%;
 		background: #FFF;
 		
+	}
+	
+	.card-title {
+		cursor: pointer;
+	}
+	
+	.front {
+		position: relative;
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
+		background: #F1F4F8;
+	}
+	
+	.back {
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+		background: #FFF;
+		border: 1px solid rgba(0, 0, 0, 0.16);
+	}
+	
+	.card-box:hover > .front {
+		z-index: 1;
+		opacity: 0;
+		transform: rotateY(180deg);
+	}
+	
+	.card-box:hover > .back {
+		z-index: 2;
+		opacity: 1;
+		transform: rotateY(0);
 	}
 	
 	.card-img {
@@ -94,8 +165,99 @@
 		transform: rotate(90deg);
 	}
 	
-	.card-box-item.back {
-		display: none;
+	/* card annual fee */
+	.card-annual-fee {
+		padding: 10px 0;
+		font-size: .9rem;
+	}
+	
+	.card-annual-fee-sub-title > span:first-child {
+		float: left;
+	}
+	
+	.card-annual-fee-sub-title > span:last-child {
+		float: right;
+	}
+	
+	.card-annual-fee-sub-title::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	.card-annual-fee-sub-title span {
+		margin-bottom: 0;
+		font-weight: bold;
+	}
+	
+	.card-annual-fee-sub-title span:nth-child(2) {
+		cursor: pointer;
+	}
+	
+	.card-annual-fee > hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	.card-annual-fee-box {
+		display: inline-block;
+		width: 49%;
+	}
+	
+	.card-annual-fee-box span {
+		font-weight: 500;
+	}
+	
+	/* annual fee modal */
+	.modal-content {
+		width: 80%;
+	}
+	
+	.modal-dialog-centered {
+		justify-content: center;
+	}
+	
+	button.close {
+		border: 0;
+		background: #FFF;
+		font-size: 30px;
+	}
+	
+	.modal-footer {
+		border-top: 0;
+		justify-content: center;
+	}
+	
+	/* card button */
+	.card-box-item.back .button-container {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		bottom: 24px;
+	}
+	
+	.button-container {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.button-container > button {
+		padding: 10px 25px;
+		border-radius: 3px;
+	}
+	
+	.button-container > button:first-child {
+		border: 1px solid black;
+		background: #FFF;
+		margin-right: 15px;
+	}
+	
+	.button-container > button:last-child {
+		border: 0;
+		background: #0d6efd;
+		width: 116px;
+		height: 46px;
+		color: #FFF;
 	}
 	
 	/* card benefits list */
@@ -127,10 +289,10 @@
 		border-radius: 5px;
 	}
 
-	ul.benefits-menu li a:focus {
+	/* ul.benefits-menu li a:focus {
 		outline: 2px solid black;
 		border-radius: 5px;
-	}
+	} */
 	
 	ul.benefits-menu::after {
 		content: '';
@@ -146,6 +308,7 @@
 	
 	.benefits-container ul li a {
 		display: flex;
+		flex-direction: column;
 		width: 100%;
 		height: 100%;
 		justify-content: center;
@@ -154,14 +317,34 @@
 		color: inherit;
 	}
 	
+	.benefits-container span {
+		font-weight: 600;
+	}
+	
 	.benefits-container ul li a:hover {
 		background: #F1F4F8;
+	}
+	
+	.benefits-container img {
+		width: 48px;
+		display: block;
+		margin: 10px;
 	}
 	
 	.benefits-container ul::after {
 		content: '';
 		display: block;
 		clear: both;
+	}
+	
+	/* benefits menu(credit/debit) */
+	.benefits-container.debit-card {
+		display: none;
+	}
+	
+	.on {
+		outline: 2px solid black;
+		border-radius: 5px;
 	}
 	
 	/* responsive */
@@ -177,8 +360,6 @@
 		}
 	}
 	
-	
-	
 
 </style>
 </head>
@@ -189,12 +370,11 @@
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs">
 			<div class="page-header d-flex align-items-center"
-				style="background-image: url('assets/img/page-header.jpg');">
+				style="background-image: url('/atlanbank/assets/img/card/credit-card-851502_1280.jpg');">
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
 							<h2>카드</h2>
-							<p>card page</p>
 						</div>
 					</div>
 				</div>
@@ -217,14 +397,14 @@
 			<div id="search-bar">
 				<h3>일상 속의 특별한 혜택을 만날 수 있는 아틀란카드를 검색해 보세요.</h3>
 				
-				<form id="" action="">
+				<form id="form-search" method="GET" action="/atlanbank/user/card/search.do">
 					<div>
-						<input type="text" id="search-box">
-						<i class="bi bi-search"></i>
+						<input type="text" id="search-box" name="word" placeholder="카드명을 입력하세요.">
+						<i class="bi bi-search" onclick="submit();"></i>
 					</div>
 				</form>
-				<a href="/atlanbank/user/card/credit/view.do">#신용카드</a>
-				<a href="/atlanbank/user/card/debit/view.do">#체크카드</a>
+				<a href="/atlanbank/user/card/credit/view.do" class="tag">#신용카드</a>
+				<a href="/atlanbank/user/card/debit/view.do" class="tag">#체크카드</a>
 		
 		
 			</div>
@@ -236,70 +416,78 @@
 			<h2>신규 카드</h2>
 			
 			<div class="card-container">
+			
+				<div class="card-row">
 				
-				<div class="card-box">
-					<!-- front -->
-					<div class="card-box-item front">
-						<h3>알뜰교통플러스 카드</h3>
-						<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						<div class="card-img">
-							<img src="/assets/img/card/card_sample1.png">
+					<!-- Card 1개 -->
+					<div class="card-box" th:each="card : ${newCreditCardList}">
+						<!-- front -->
+						<div class="card-box-item front">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
+							</div>
+							<div class="card-img">
+								<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
+							</div>
+						</div>
+						
+						<!-- back -->
+						<div class="card-box-item back">
+							<div class="card-title" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">
+								<h3 th:text="${card.name}"></h3>
+								<p th:text="${card.info}"></p>
+							</div>
+							<div class="card-annual-fee">
+								<div class="card-annual-fee-sub-title">
+									<span>연회비</span>
+									<span th:onclick="openModal([[${card.name}]], [[${card.feeList}]])">자세히보기<i class="bi bi-caret-right-fill"></i></span>
+								</div>
+								<hr>
+								<div class="card-annual-fee-box" th:each="fee : ${card.feeList}">
+									<span>
+										<img th:if="${fee.brand} == '국내 전용'" th:src="@{/assets/img/card/logo-domestic.png}">
+										<img th:if="${fee.brand} == 'VISA'" th:src="@{/assets/img/card/logo-visa.png}">
+										<img th:if="${fee.brand} == 'MASTER'" th:src="@{/assets/img/card/logo-mastercard.png}">
+										<img th:if="${fee.brand} == 'AMEX'" th:src="@{/assets/img/card/logo-americanexpress.png}">
+										<img th:if="${fee.brand} == 'JCB'" th:src="@{/assets/img/card/logo-jcb.png}">
+										<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
+										<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
+									</span>
+									<span th:text="${fee.annualFee} == 0 ? '연회비 없음' : ${fee.annualFee}"></span>
+								</div>
+							</div>
+							<div class="button-container">
+								<button type="button" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">상세보기</button>
+								<button type="button" th:onclick="">카드신청</button>
+							</div>
 						</div>
 					</div>
-					
-					<!-- back -->
-					<div class="card-box-item back">
-						<h3>알뜰교통플러스 카드</h3>
-						<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						<div>
-							<p>연회비</p>
-						</div>
-					</div>
+
 				</div>
-			
-				<div class="card-box">
-					<!-- front -->
-					<div class="card-box-item front">
-						<h3>알뜰교통플러스 카드</h3>
-						<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						<div class="card-img">
-							<img src="/assets/img/card/card_sample1.png">
-						</div>
-					</div>
-					
-					<!-- back -->
-					<div class="card-box-item back">
-						<h3>알뜰교통플러스 카드</h3>
-						<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						<div>
-							<p>연회비</p>
-						</div>
-					</div>
-				</div>
-			
-				<div class="card-box">
-					<!-- front -->
-					<div class="card-box-item front">
-						<h3>알뜰교통플러스 카드</h3>
-						<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						<div class="card-img">
-							<img src="/assets/img/card/card_sample1.png">
-						</div>
-					</div>
-					
-					<!-- back -->
-					<div class="card-box-item back">
-						<h3>알뜰교통플러스 카드</h3>
-						<p>교통비 SAVE!! 생활서비스 할인 혜택까지~</p>
-						<div>
-							<p>연회비</p>
-						</div>
-					</div>
-				</div>
-			
-			
 			</div>
-		
+			
+			<!-- Modal -->
+			<div class="modal fade" id="annualFeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modal"></h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+						<div class="modal-body">
+							<h5 style="font-size: 1rem; font-weight: 600;">연회비 안내</h5>
+							<table id="m-table" style="width: 100%;"></table>
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeModal()">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 		</section> <!-- End New Card List Section -->
 		
 		<!-- Card Benefits List Section -->
@@ -307,76 +495,143 @@
 			<h2>혜택별 카드 찾기</h2>
 			
 			<ul class="benefits-menu">
-				<li><a href="javascript:void(0);">신용카드</a></li>
-				<li><a href="javascript:void(0);">체크카드</a></li>
+				<li><a href="javascript:void(0);" id="credit">신용카드</a></li>
+				<li><a href="javascript:void(0);" id="debit">체크카드</a></li>
 			</ul>
 			
-			<div class="benefits-container">
+			<!-- Credit Cards Benefits -->
+			<div class="benefits-container credit-card">
 				<ul>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>적립/할인</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=saving-discount">
+							<img src="/atlanbank/assets/img/card/discount-saving_icon.png">
+							<span>적립/할인</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>여행</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=travle">
+							<img src="/atlanbank/assets/img/card/airplane_icon.png">
+							<span>여행</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>쇼핑</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=shopping">
+							<img src="/atlanbank/assets/img/card/shopping_icon.png">
+							<span>쇼핑</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>주유/충전</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=charging">
+							<img src="/atlanbank/assets/img/card/gas-fuel_icon.png">
+							<span>주유/충전</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>통신</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=communication">
+							<img src="/atlanbank/assets/img/card/phone_icon.png">
+							<span>통신</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>교육</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=education">
+							<img src="/atlanbank/assets/img/card/education_icon.png">
+							<span>교육</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>의료</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=medical">
+							<img src="/atlanbank/assets/img/card/hospital_icon.png">
+							<span>의료</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>음식</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=food">
+							<img src="/atlanbank/assets/img/card/cutlery_icon.png">
+							<span>음식</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>렌탈</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=rental">
+							<img src="/atlanbank/assets/img/card/rental_icon.png">
+							<span>렌탈</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>선택형</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=choice">
+							<img src="/atlanbank/assets/img/card/choice_icon.png">
+							<span>선택형</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="">
-							<strong>공공/정부지원</strong>
+						<a href="/atlanbank/user/card/credit/view.do?category=public">
+							<img src="/atlanbank/assets/img/card/public_icon.png">
+							<span>공공/정부지원</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- Debit Cards Benefits -->
+			<div class="benefits-container debit-card">
+				<ul>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=discount">
+							<img src="/atlanbank/assets/img/card/discount_icon.png">
+							<span>할인</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=saving">
+							<img src="/atlanbank/assets/img/card/discount-saving_icon.png">
+							<span>적립</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=food">
+							<img src="/atlanbank/assets/img/card/cutlery_icon.png">
+							<span>음식</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=shopping">
+							<img src="/atlanbank/assets/img/card/shopping_icon.png">
+							<span>쇼핑</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=travle">
+							<img src="/atlanbank/assets/img/card/airplane_icon.png">
+							<span>여행</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=communication">
+							<img src="/atlanbank/assets/img/card/phone_icon.png">
+							<span>통신</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=education">
+							<img src="/atlanbank/assets/img/card/education_icon.png">
+							<span>교육</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=culture">
+							<img src="/atlanbank/assets/img/card/culture_icon.png">
+							<span>문화</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=id">
+							<img src="/atlanbank/assets/img/card/student-id-card_icon.png">
+							<span>학생증</span>
+						</a>
+					</li>
+					<li>
+						<a href="/atlanbank/user/card/debit/view.do?category=public">
+							<img src="/atlanbank/assets/img/card/public_icon.png">
+							<span>공공/정부지원</span>
 						</a>
 					</li>
 				</ul>
@@ -386,6 +641,87 @@
 		
 	</main>
 	<!-- End Main -->
+
+	<!-- Script -->
+	<script>
+	
+		/* Form submit function for icon */
+		function submit() {
+			$('#form-search').submit();
+		}
+	
+		//Add 'on' class to the 'credit' menu upon page load
+		$(document).ready(function() {
+			$('#credit').addClass('on');
+		});
+		
+		//Benefits menu toggle
+		$('ul.benefits-menu a').click(function() {
+			
+			$('ul.benefits-menu a').removeClass('on');
+			
+			$(this).addClass('on');
+			
+			if ($('#credit').hasClass('on')) {
+				$('.benefits-container.credit-card').css('display', 'block');
+				$('.benefits-container.debit-card').css('display', 'none');
+			} else if (!$('#credit').hasClass('on')) {
+				$('.benefits-container.credit-card').css('display', 'none');
+				$('.benefits-container.debit-card').css('display', 'block');
+			}
+			
+		});
+		
+		/* Modal */
+		function openModal(name, feeList) {
+			
+			//init fee table
+			$('#m-table').html('');
+			
+			//add card name
+			$('#modal').text(name);
+			
+			//add fee table
+			feeList.forEach(function(obj) {
+				
+				let brand = obj.brand;
+				let fee = obj.annualFee;
+				let newFee = (fee == 0) ? '연회비 없음' : fee;
+				let imgSrc = brandImg[brand];
+				
+				$('#m-table').append(`
+					<tr style="width: 100%; border-top: 1px solid rgba(0, 0, 0, .15); border-bottom: 1px solid rgba(0, 0, 0, .15);">
+						<td style="width: 20%; text-align: center; padding: 5px;">
+							<img src="${imgSrc}">
+						</td>
+						<td style="width: 55%;">${brand}</td>
+						<td style="width: 25%; text-align: right; padding-right: 5px;">${newFee}</td>
+					</tr>
+				`);
+				
+			});
+			
+			$('#annualFeeModal').modal('show');
+		}
+		
+		function closeModal() {
+			$('#annualFeeModal').modal('hide');
+		}
+		
+		//brand img mapping
+		const brandImg = {
+			'국내 전용' : '/atlanbank/assets/img/card/logo-domestic.png',
+			'VISA' : '/atlanbank/assets/img/card/logo-visa.png',
+			'MASTER' : '/atlanbank/assets/img/card/logo-mastercard.png',
+			'AMEX' : '/atlanbank/assets/img/card/logo-americanexpress.png',
+			'JCB' : '/atlanbank/assets/img/card/logo-jcb.png',
+			'UPI(K-WORLD)' : '/atlanbank/assets/img/card/logo-unionpay-kworld.png',
+			'JCB(K-WORLD)' : '/atlanbank/assets/img/card/logo-jcb-kworld.png'
+		};
+		
+		
+	</script>
+
 
 </body>
 </html>

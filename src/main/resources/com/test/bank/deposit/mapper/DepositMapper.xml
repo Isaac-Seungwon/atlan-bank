@@ -3,7 +3,39 @@
 
 <mapper namespace="com.test.bank.deposit.mapper.DepositMapper">
 	<select id="getList" resultType="com.test.bank.deposit.domain.BankBookProductDTO">
-		select * from tblBankBookProduct
+		select 
+		    * 
+		from tblBankBookProduct bp
+		    inner join (select 
+		                    bank_book_product_seq,
+		                    max(interest_rate) as interest_rate
+		                from tblInterestRate
+		                    group by bank_book_product_seq)  r
+		        on bp.bank_book_product_seq = r.bank_book_product_seq
+	</select>
+
+	<select id="get">
+		SELECT SYSDATE FROM DUAL
+	</select>
+	
+	<select id="getDto" resultType="com.test.bank.deposit.domain.BankBookProductDTO" parameterType="String">
+		select 
+		    * 
+		from tblBankBookProduct bp
+		    inner join (select 
+		                    bank_book_product_seq,
+		                    max(interest_rate) as interest_rate
+		                from tblInterestRate
+		                    group by bank_book_product_seq)  r
+		        on bp.bank_book_product_seq = r.bank_book_product_seq
+		            where bp.bank_book_product_seq = #{seq}
+	</select>
+	
+	<select id="getRateList" resultType="com.test.bank.deposit.domain.InterestRateDTO" parameterType="String">
+		select 
+		    *
+		from tblInterestRate
+		    where bank_book_product_seq = #{seq}
 	</select>
 
 </mapper>
