@@ -29,14 +29,13 @@ public class SecurityConfig {
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf((csrfConfig) -> csrfConfig.disable())
+		http
 				.headers(
 						(headerConfig) -> headerConfig.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()))
 				.authorizeHttpRequests((authorizeRequests) -> authorizeRequests
 						/* .requestMatchers("/user/**").hasRole("USER") */
 						.requestMatchers("/**").permitAll().anyRequest().authenticated())
 //				.csrf((csrf) -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
-				.csrf().disable()
 				/*
 				 * .formLogin((formLogin) ->
 				 * formLogin.loginPage("/login").usernameParameter("id").passwordParameter("pw")
