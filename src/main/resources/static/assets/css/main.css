@@ -2118,6 +2118,7 @@ section {
 
 ul li {
 	text-indent: -.9em;
+	word-break: break-all;
 }
 
 ul li p {
