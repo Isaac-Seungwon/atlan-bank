@@ -10,21 +10,19 @@
 	section {
 		margin: 20px 135px;
 		padding: 20px 60px;
-		max-width: 1200px;
-	}
-
-	/* responsive */
-	/* @media (max-width: 1100px) {
-		section {
-			margin: 20px 0;
-		}
 	}
 	
-	@media (max-width: 1380px) {
-		section {
-			width: 1110px;
+	/* responsive */
+	@media (max-width: 1400px) {
+		main, footer {
+			min-width: 1140px;
 		}
-	} */
+		
+		.container {
+			min-width: 1140px;
+		}
+
+	}
 	
 	/* 결제예정금액 파트 */
 	.overview-container {
@@ -145,7 +143,7 @@
 				<div class="container">
 					<ol>
 						<li><a href="/atlanbank/index.do">Home</a></li>
-						<li><a href="#">MyPage</a></li>
+						<li><a href="/atlanbank/member/card/view.do">MyPage</a></li>
 					</ol>
 				</div>
 			</nav>
@@ -173,80 +171,81 @@
 		
 		<!-- Mypage Card Section -->
 		<section>
-			<!-- Quick Menu -->
-			<!-- <div style="display: flex;">
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+			<div>
+				<!-- Quick Menu -->
+				<!-- <div style="display: flex;">
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							<img alt="" src="">
+						</div>
+						<div>카드이용내역</div>
 					</div>
-					<div>카드이용내역</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							<img alt="" src="">
+						</div>
+						<div>결제예정금액</div>
 					</div>
-					<div>결제예정금액</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							<img alt="" src="">
+						</div>
+						<div>이용대금명세서</div>
 					</div>
-					<div>이용대금명세서</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							<img alt="" src="">
+						</div>
+						<div>즉시결제</div>
 					</div>
-					<div>즉시결제</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							<img alt="" src="">
+						</div>
+						<div>분실신고</div>
 					</div>
-					<div>분실신고</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							<img alt="" src="">
+						</div>
+						<div>카드사용등록</div>
 					</div>
-					<div>카드사용등록</div>
+				</div> -->
+				
+				<div th:text="|${dto.name}님|" style="font-size: 1.3rem; padding: 10px;"></div>
+				
+				<!-- 결제예정금액 -->
+				<div class="overview-container">
+					<div class="title">결제예정금액</div>
+					<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
+					<div class="btn-box">
+						<a href="/atlanbank/member/card/payment.do">바로결제</a>
+						<a href="">일부결제금액<br>이월약정(리볼빙)</a>
+					</div>
 				</div>
-			</div> -->
-			
-			<div th:text="|${dto.name}님|" style="font-size: 1.3rem; padding: 10px;"></div>
-			
-			<!-- 결제예정금액 -->
-			<div class="overview-container">
-				<div class="title">결제예정금액</div>
-				<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
-				<div class="btn-box">
-					<a href="/atlanbank/member/card/payment.do">바로결제</a>
-					<a href="">일부결제금액<br>이월약정(리볼빙)</a>
+				
+				<!-- 결제내역 -->
+				<div class="history-container">
+					<div class="title-box">
+						<div class="title">이용내역</div>
+						<div class="btn-box"><a href="#">자세히보기<i class="bi bi-caret-right-fill"></i></a></div>
+					</div>
+					<div class="history">
+						<table>
+							<tr>
+								<th>이용일자</th>
+								<th>가맹점</th>
+								<th>이용금액</th>
+							</tr>
+							<tr th:each="history, historyStat : ${historyList}">
+								<td th:text="${#strings.substring(history.transactionDate, 0, 10)}"></td>
+								<td th:utext="${history.name}"></td>
+								<td th:text="${history.amount}"></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
-			
-			<!-- 결제내역 -->
-			<div class="history-container">
-				<div class="title-box">
-					<div class="title">이용내역</div>
-					<div class="btn-box"><a href="#">자세히보기<i class="bi bi-caret-right-fill"></i></a></div>
-				</div>
-				<div class="history">
-					<table>
-						<tr>
-							<th>이용일자</th>
-							<th>가맹점</th>
-							<th>이용금액</th>
-						</tr>
-						<tr th:each="history, historyStat : ${historyList}">
-							<td th:text="${#strings.substring(history.transactionDate, 0, 10)}"></td>
-							<td th:utext="${history.name}"></td>
-							<td th:text="${history.amount}"></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			
 		</section> <!-- End Mypage Card Section -->
 		
 		

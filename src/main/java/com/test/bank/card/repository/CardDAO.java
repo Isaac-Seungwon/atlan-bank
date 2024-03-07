@@ -1,11 +1,13 @@
 package com.test.bank.card.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.domain.CardUsageGuideDTO;
+import com.test.bank.card.domain.MemberCardDTO;
 import com.test.bank.card.domain.MemberCardHistoryDTO;
 
 public interface CardDAO {
@@ -29,5 +31,11 @@ public interface CardDAO {
 	List<MemberCardHistoryDTO> getPrevMonthCardHistory(String memberSeq);
 
 	List<MemberCardHistoryDTO> getHistoryList(String memberSeq);
+
+	List<MemberCardHistoryDTO> checkAmount(Map<String, Integer> map);
+
+	int checkPassword(Map<String, String> map);
+
+	List<MemberCardDTO> getMemberCardList(String seq);
 
 }

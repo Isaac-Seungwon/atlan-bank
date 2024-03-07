@@ -13,4 +13,7 @@ public class MemberCardDTO {
 	private String cvc;
 	private String cardPaymentDate;
 	private String status;
+	
+	//CardDTO
+	private String name;
 }

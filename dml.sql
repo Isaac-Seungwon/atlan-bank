@@ -3168,6 +3168,7 @@ INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (car
 -- tblMemberCard
 INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 1, 5678491679463164, 68, TO_DATE('2028-01-31', 'yyyy-mm-dd'), 267, 1111, 14, 'y');
 INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 2, 6985236482456362, 69, TO_DATE('2030-06-30', 'yyyy-mm-dd'), 235, 1111, 10, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 2, 6287775896541555, 1, TO_DATE('2032-01-31', 'yyyy-mm-dd'), 635, 1111, 10, 'y');
 INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 3, 3124574225399547, 67, TO_DATE('2031-12-31', 'yyyy-mm-dd'), 769, 1111, 7, 'y');
 
 -- tblMemberCardHistory

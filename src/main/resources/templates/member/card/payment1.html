@@ -10,118 +10,19 @@
 	section {
 		margin: 20px 135px;
 		padding: 20px 60px;
-		max-width: 1200px;
 	}
-
+	
 	/* responsive */
-	/* @media (max-width: 1100px) {
-		section {
-			margin: 20px 0;
+	@media (max-width: 1400px) {
+		main, footer {
+			min-width: 1140px;
 		}
-	}
-	
-	@media (max-width: 1380px) {
-		section {
-			width: 1110px;
+		
+		.container {
+			min-width: 1140px;
 		}
-	} */
-	
-	/* 결제예정금액 파트 */
-	.overview-container {
-		background: #F9FAFC;
-		padding: 20px 30px;
-		border-radius: 5px;
-		margin-bottom: 30px;
+
 	}
-	
-	.overview-container .title {
-		font-size: 1.5rem;
-		font-weight: 600;
-	}
-	
-	.overview-container .price {
-		text-align: center;
-		font-weight: 600;
-		padding: 30px;
-	}
-	
-	.overview-container .price a {
-		color: var(--bs-body-color);
-		font-size: 1.4rem;
-	}
-	
-	.overview-container .btn-box {
-		text-align: center;
-		padding: 30px;
-		display: flex;
-		justify-content: center;
-	}
-	
-	.overview-container .btn-box a {
-		padding: 10px 20px;
-		border-radius: 5px;
-		display: inline-block;
-		width: 170px;
-	}
-	
-	.overview-container .btn-box a:first-child {
-		background: #FFF; 
-		border: 1px solid black;
-		margin-right: 15px;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	}
-	
-	.overview-container .btn-box a:last-child {
-		background: #0d6efd;
-		color: #FFF;
-		border: 0;
-		display: flex;
-	    justify-content: center;
-	    align-items: center;
-	}
-	
-	/* 결제내역 파트 */
-	.history-container {
-		background: #F9FAFC;
-		padding: 20px 30px;
-		border-radius: 5px;
-		margin-bottom: 30px;
-	}
-	
-	.history-container .title-box {
-		display: flex;
-    	justify-content: space-between;
-	}
-	
-	.title-box .btn-box a {
-	    margin-right: 15px;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    padding: 5px;
-    	display: inline-block;
-	}
-	
-	.history-container .title {
-		font-size: 1.5rem;
-		font-weight: 600;
-	}
-	
-	.history-container table {
-		width: 80%;
-		margin: 0 auto;
-	}
-	
-	.history-container table th { text-align: center; }
-	.history-container table th:first-child { width: 20%; }
-	.history-container table th:nth-child(2) { width: 60%; }
-	.history-container table th:last-child { width: 20%; }
-	
-	.history-container table td:first-child { text-align: center; }
-	.history-container table td:nth-child(2) { padding-left: 5%; }
-	.history-container table td:last-child { text-align: right; }
 	
 </style>
 </head>
@@ -145,7 +46,7 @@
 				<div class="container">
 					<ol>
 						<li><a href="/atlanbank/index.do">Home</a></li>
-						<li><a href="#">MyPage</a></li>
+						<li><a href="/atlanbank/member/card/view.do">MyPage</a></li>
 					</ol>
 				</div>
 			</nav>
@@ -154,90 +55,99 @@
 		
 		<!-- Mypage Card Section -->
 		<section>
-			<h2>바로출금결제</h2>
-			
-			<!-- 바로출금결제 과정 순서도 -->
-			<div class="mt-30">
-				<div class="process-box">
-					<div class="step1 now"><strong>1. 정보입력</strong></div>
-					<div class="step2">2. 본인인증</div>
-					<div class="step3">3. 정보확인</div>
-					<div class="step4">4. 완료</div>
-				</div>
-			</div>
-			 
-			<!-- 카드 및 결제방식 선택 -->
-			<form method="POST" action="">
+			<div>
+				<h2>바로출금결제</h2>
+				
+				<!-- 바로출금결제 과정 순서도 -->
 				<div class="mt-30">
+					<div class="process-box">
+						<div class="step1 now"><strong>1. 정보입력</strong></div>
+						<div class="step2">2. 본인인증</div>
+						<div class="step3">3. 정보확인</div>
+						<div class="step4">4. 완료</div>
+					</div>
+				</div>
+				 
+				<!-- 카드 및 결제방식 선택 -->
+				<div class="mt-30 select-method">
 					<h3>카드 및 결제방식 선택</h3>
 					<table>
-						<tr>
-							<th>카드구분</th>
-							<td>
-								<div>
-									<select>
-										<option>신용카드</option>
-									</select>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th>결제범위</th>
-							<td>
-								<div>
+						<colgroup>
+							<col style="width: 20%;">
+							<col style="width: 80%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>카드구분</th>
+								<td>
 									<div>
-										<input type="radio" id="thisMonthAmount" name="range" value="1" checked>
-										<label>이번달 결제금액</label>
+										<select>
+											<option>신용카드</option>
+										</select>
 									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>결제범위</th>
+								<td>
 									<div>
-										<input type="radio" id="allAmount" name="range" onclick="return false;" value="2">
-										<label>전체 결제금액</label>
+										<div class="radio-box">
+											<input type="radio" id="thisMonthAmount" name="range" value="1" checked>
+											<label for="thisMonthAmount">이번달 결제금액</label>
+										</div>
+										<div class="radio-box">
+											<input type="radio" id="allAmount" name="range" onclick="return false;" value="2">
+											<label for="allAmount">전체 결제금액</label>
+										</div>
 									</div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th>결제방식</th>
-							<td>
-								<div>
+								</td>
+							</tr>
+							<tr>
+								<th>결제방식</th>
+								<td>
 									<div>
-										<input type="radio" id="payAllAmount" name="method" value="1" checked>
-										<label>전체 금액 결제</label>
+										<div class="radio-box">
+											<input type="radio" id="payAllAmount" name="method" value="1" checked>
+											<label for="payAllAmount">전체 금액 결제</label>
+										</div>
+										<div class="radio-box">
+											<input type="radio" id="paySpecificAmount" name="method" value="2">
+											<label for="paySpecificAmount">이용건별 결제</label>
+										</div>
 									</div>
-									<div>
-										<input type="radio" id="paySpecificAmount" name="method" value="2">
-										<label>이용건별 결제</label>
-									</div>
-								</div>
-							</td>
-						</tr>
+								</td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
-				<div>
-					<button>조회</button>
+				<div style="text-align: center; padding: 30px;">
+					<button type="button" id="checkAmount">조회</button>
 				</div>
-				<div>
-					<ul class="listStyle2">
-						<li>일부결제금액이월약정은 이월할 때만 수수료가 발생합니다.<br>
-							단, 해외수수료는 이월하지 않아도 표기합니다.
-						</li>
-					</ul>
-				</div>
-			</form>
-			
-			
-			<form method="POST" action="/atlanbank/member/card/payment.do">
-				<input type="hidden" name="flag" value="2">
-			</form>
-			
-			<div style="display: flex; justify-content:space-between;">
-				<div>일시불</div>
-				<div th:text="|${thisMonthAmount}원|"></div> <!-- 이거 일시불 금액만으로 바꾸기 -->
-				<div>결제하기 </div>
+				<div id="specificAmountNotice"></div>
+				
+				<form method="POST" action="/atlanbank/member/card/payment.do">
+					<div id="ajax-value">
+					
+					
+					
+					
+					
+					
+					
+					</div>
+					<!-- 진행과정 -->
+					<input type="hidden" name="flag" value="2">
+					
+					<!-- 결제범위 -->
+					<input type="hidden" name="range" value="1">
+					
+					<!-- 결제방식 -->
+					<input type="hidden" name="method" value="1">
+					
+					<!-- 토큰 -->
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+				</form>
 			</div>
-			
-			
-			
 		</section> <!-- End Mypage Card Section -->
 		
 		<!-- 안내사항 Section -->
@@ -283,6 +193,122 @@
 
 	<!-- Script -->
 	<script>
+		
+		$(document).ready(function() {
+			checkPaymentAmount();
+		});
+	
+		var csrfToken = $("meta[name='_csrf']").attr("content");
+		var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+		
+		let obj = {
+			range: $('input[name="range"]:checked').val(),
+			method: $('input[name="method"]:checked').val() 
+		};
+		
+		function checkPaymentAmount() {
+			$.ajax({
+				type: 'POST',
+				url: '/atlanbank/card/checkpaymentamount',
+				headers: {'content-Type': 'application/json'},
+				data: JSON.stringify(obj),
+				dataType: 'json',
+				beforeSend: function(xhr) {
+			        xhr.setRequestHeader(csrfHeader, csrfToken);
+			    },
+				success: function(result) {
+					
+					$('#specificAmountNotice').html('');
+					$('#ajax-value').html('');
+					
+					if (obj.method == 1) {
+						
+						$('#ajax-value').append(`
+							<div class="mt-30 all-amount">
+								<div>
+									<h3>전체내역</h3>
+									<p class="unit">(단위: 원)</p>
+								</div>
+								<table>
+									<colgroup>
+										<col style="width: 20%;">
+										<col style="width: 20%;">
+										<col style="width: 20%;">
+										<col style="width: 20%;">
+										<col style="width: 20%;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>구분</th>
+											<th>이용금액</th>
+											<th>원금</th>
+											<th>수수료</th>
+											<th>잔여원금</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="th">일시불</td>
+											<td th:text=""></td>
+											<td></td>
+											<td>0</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td class="th">합계</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div style="text-align: center; padding: 30px;">
+								<button class="allamount-btn" id="nextStepBtn">다음</button>
+								<button type="button" class="allamount-btn" onclick="location.href='/atlanbank/member/card/view.do';">취소</button>
+							</div>
+						`);
+						
+						
+					} else {
+						
+						$('#specificAmountNotice').append(`
+								<ul class="listStyle2">
+									<li>일부결제금액이월약정은 이월할 때만 수수료가 발생합니다.<br>
+										단, 해외수수료는 이월하지 않아도 표기합니다.
+									</li>
+								</ul>
+						`);
+						
+						$('#ajax-value').append(`
+							
+						`);
+					}
+					
+					if (obj.method == 2) {
+						
+						
+						$('#ajax-value').append('하이');
+					}
+					
+				},
+				error: function(a, b, c) {
+					console.log(a,b,c);
+				}
+			});
+		}
+
+		//조회버튼 클릭 시 결제 금액 조회(Ajax)
+		$('#checkAmount').click(function() {
+			
+			obj = {
+				range: $('input[name="range"]:checked').val(),
+				method: $('input[name="method"]:checked').val() 
+			};
+			
+			checkPaymentAmount();
+		});
 		
 	</script>
 

@@ -2088,6 +2088,190 @@ section {
 	font-size: 1.1rem;
 }
 
+table thead th,
+table tbody td.th {
+	font-weight: bold;
+	text-align: center;
+}
+
+/* 바로출금결제 */
+/* 바로출금결제 진행과정 */
+.process-box {
+	display: flex;
+	justify-content: space-around;
+	padding: 30px 10px;
+	border: 1px solid #e1e1e1;
+	border-radius: 12px;
+}
+
+.process-box > div {
+	position: relative;
+	float: left;
+	width: 33.33%;
+	padding: 48px 0 0 0;
+	text-align: center;
+	
+}
+
+.process-box > div::before {
+	content: '';
+	display: block;
+	width: 28px;
+	height: 28px;
+	font-size: 18px;
+	line-height: 23px;
+	border: 3px solid #e1e1e1;
+	border-radius: 40px;
+	text-align: center;
+	margin-bottom: 3px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -17px;
+}
+
+.process-box > div::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 15px;
+	left: -63px;
+	width: 126px;
+	height: 4px;
+	border-radius: 4px;
+	background: #e2e2e2;
+}
+
+.process-box > div:first-child::after {
+	display: none;
+}
+
+.process-box > div.step1::before {
+	content: '1';
+}
+
+.process-box > div.step2::before {
+	content: '2';
+}
+
+.process-box > div.step3::before {
+	content: '3';
+}
+
+.process-box > div.step4::before {
+	content: '4';
+}
+
+.process-box > div.now::before {
+	background: #666;
+	border-color: #666;
+	color: #FFF;
+}
+
+.process-box > div.completed::before {
+	content: '';
+	border-color: #666;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+	background-color: #666;
+}
+
+.process-box > div.completed::after,
+.process-box > div.now::after {
+	background: #666;
+}
+
+/* 조회방식선택(결제방식선택) */
+.select-method td select {
+	padding: 5px 20px;
+}
+
+.select-method .radio-box {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+
+/* 전체내역 */
+.all-amount > div:first-child {
+	position: relative;
+}
+
+.all-amount > div:first-child p.unit {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-bottom: 0;
+}
+
+.authentication table,
+.select-method table,
+.all-amount table {
+	width: 100%;
+}
+
+.authentication table th,
+.authentication table td,
+.select-method table th,
+.select-method table td,
+.all-amount table th,
+.all-amount table td {
+	border: 1px solid  #d1d1d1;
+	padding: 15px;	
+}
+
+.all-amount table td {
+	text-align: right;
+}
+
+.authentication table tbody tr:first-child th:first-child,
+.authentication table tbody tr:nth-child(2) th:first-child,
+.authentication table tbody tr:last-child th:first-child,
+.select-method table tbody tr:first-child th:first-child,
+.select-method table tbody tr:nth-child(2) th:first-child,
+.select-method table tbody tr:last-child th:first-child,
+.all-amount table thead tr:first-child th:first-child,
+.all-amount table tbody tr:nth-child(1) td:first-child,
+.all-amount table tbody tr:last-child td:first-child {
+	border-left: 0;
+}
+
+.authentication table tbody tr:first-child td:last-child,
+.authentication table tbody tr:nth-child(2) td:last-child,
+.authentication table tbody tr:last-child td:last-child,
+.select-method table tbody tr:first-child td:last-child,
+.select-method table tbody tr:nth-child(2) td:last-child,
+.select-method table tbody tr:last-child td:last-child,
+.all-amount table thead tr:first-child th:last-child,
+.all-amount table tbody tr:nth-child(1) td:last-child,
+.all-amount table tbody tr:last-child td:last-child {
+	border-right: 0;
+}
+
+.all-amount table thead tr th,
+.all-amount table tbody tr:first-child td {
+	border-bottom: 1px solid #848484 !important
+}
+
+button#checkAmount {
+	padding: 10px 50px;
+	border-radius: 8px;
+	border: 0;	
+}
+
+.authentication-btn,
+.allamount-btn {
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 0;
+}
+
+.authentication-btn:first-child,
+.allamount-btn:first-child {
+	margin-right: 20px;
+}
+
 /* 안내사항 */
 .noticeArea {
 	border: 1px solid rgba(0, 0, 0, 0.16);
@@ -2132,7 +2316,7 @@ ul.listStyle3 {
 }
 
 ul.listStyle1 > li {
-	padding: 0 0 10px 10px;
+	padding: 0 10px 10px 10px;
 }
 
 ul.listStyle1 > li::before {
@@ -2176,61 +2360,19 @@ p.example {
 	font-size: 12px;
 }
 
-/* 바로출금결제 진행과정 */
-.process-box {
-	display: flex;
-	justify-content: space-around;
-	padding: 30px 10px;
-	border: 1px solid #e1e1e1;
-	border-radius: 12px;
+/* 인증정보입력 */
+.authentication td select {
+	padding: 5px 50px 5px 10px;
 }
 
-.process-box > div {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+.authentication .radio-box {
+	display: inline-block;
+	margin-right: 15px;
 }
 
-.process-box > div::before {
-	content: '';
-	display: block;
-	width: 28px;
-	height: 28px;
-	font-size: 18px;
-	line-height: 23px;
-	border: 3px solid #e1e1e1;
-	border-radius: 40px;
-	text-align: center;
-	margin-bottom: 3px;
-}
-
-.process-box > div.step1::before {
-	content: '1';
-}
-
-.process-box > div.step2::before {
-	content: '2';
-}
-
-.process-box > div.step3::before {
-	content: '3';
-}
-
-.process-box > div.step4::before {
-	content: '4';
-}
-
-.process-box > div.now::before {
-	background: #666;
-	border-color: #666;
-	color: #FFF;
-}
-
-.process-box > div.completed::before {
-	content: '';
-	border-color: #666;
-	background-image: url('/atlanbank/assets/img/card/check.svg');
-	background-size: contain;
-	background-repeat:no-repeat;
+section #checkAmount,
+#nextStepBtn,
+#checkAuthentication {
+    background: var(--color-primary);
+    color: #FFF;
 }

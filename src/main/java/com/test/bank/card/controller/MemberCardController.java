@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.bank.card.domain.MemberCardDTO;
 import com.test.bank.card.domain.MemberCardHistoryDTO;
 import com.test.bank.card.service.CardService;
 import com.test.bank.member.domain.MemberDTO;
@@ -74,21 +75,45 @@ public class MemberCardController {
 	}
 	
 	@PostMapping(value = "/payment.do")
-	public String paymentStep(Model model, Authentication auth, @RequestParam(defaultValue = "1") int flag, @RequestParam(defaultValue = "1") int range, @RequestParam(defaultValue = "1") int method) {
+//	public String paymentStep(Model model, Authentication auth, @RequestParam(defaultValue = "1") int flag, @RequestParam(defaultValue = "1") int range, @RequestParam(defaultValue = "1") int method) {
+	public String paymentStep(Model model, Authentication auth, @RequestParam Map<String, String> map) {
 
 		//진행과정(flag) > 1: 정보입력, 2: 본인인증, 3: 정보확인, 4: 완료
 		//결제범위(range) > 1: 이번달 결제금액, 2: 전체 결제금액
 		//결제방식(method) > 1: 전체 금액 결제, 2: 이용건별 결제
 		
-		if (flag == 2) {
+		String flag = map.get("flag");
+		String seq = "2"; //auth에서 seq 가져오기 
+		
+		if (flag.equals("2")) {
+			
+			//해당 유저가 소유한 카드 불러오기
+			List<MemberCardDTO> clist = service.getMemberCardList(seq);
+			
+			model.addAttribute("clist", clist);
+			model.addAttribute("value", seq);
+			
 			return "member/card/payment2";
-		} else if (flag == 3) {
+			
+		} else if (flag.equals("3")) {
+			
+			
+//			//카드비밀번호 확인과정
+//			int result  = service.checkPassword(map);
+//			
+//			if (result > 0) {
+//				return "member/card/payment3";
+//			} else {
+//				return "member/card/payment2";
+//			}
+			
 			return "member/card/payment3";
-		} else if (flag == 4) {
+			
+		} else if (flag.equals("4")) {
 			return "member/card/payment4";
 		}
 		
-		return "";
+		return "member/card/view";
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.test.bank.card.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,6 +10,7 @@ import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.domain.CardUsageGuideDTO;
+import com.test.bank.card.domain.MemberCardDTO;
 import com.test.bank.card.domain.MemberCardHistoryDTO;
 import com.test.bank.card.mapper.CardMapper;
 
@@ -66,6 +68,21 @@ public class CardDAOImpl implements CardDAO {
 	@Override
 	public List<MemberCardHistoryDTO> getHistoryList(String memberSeq) {
 		return mapper.getHistoryList(memberSeq);
+	}
+
+	@Override
+	public List<MemberCardHistoryDTO> checkAmount(Map<String, Integer> map) {
+		return mapper.checkAmount(map);
+	}
+
+	@Override
+	public int checkPassword(Map<String, String> map) {
+		return mapper.checkPassword(map);
+	}
+
+	@Override
+	public List<MemberCardDTO> getMemberCardList(String seq) {
+		return mapper.getMemberCardList(seq);
 	}
 
 	

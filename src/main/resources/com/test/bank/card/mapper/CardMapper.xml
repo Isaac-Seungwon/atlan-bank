@@ -82,4 +82,31 @@
 		 order by transaction_date desc
 	</select>
 	
+	<select id="checkAmount" parameterType="map" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select * from tblMemberCardHistory
+	</select>
+	
+	<select id="checkPassword" parameterType="map" resultType="int">
+		SELECT
+		    count(*)
+		  FROM tblMemberCard
+		 WHERE 1=1 and
+		       member_seq = #{memberSeq} and
+		       substr(card_no, length(card_no)-3) = #{cardNo} and
+		       substr(password, 0, 2) = #{pw}
+	</select>
+	
+	<select id="getMemberCardList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardDTO">
+		select
+		    a.member_card_seq,
+		    a.member_seq,
+		    SUBSTR(a.card_no, 1, 4) || '-' || RPAD('*', 4, '*') || '-' || RPAD('*', 4, '*') || '-' || SUBSTR(a.card_no, 13) AS card_no,
+		    a.card_seq,
+		    a.exp,
+		    a.password,
+		    (select name from tblCard where card_seq = a.card_seq) as name
+		from tblMemberCard a
+		where member_seq = #{seq}
+	</select>
+	
 </mapper>

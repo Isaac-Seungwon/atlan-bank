@@ -20,4 +20,5 @@ public class MemberCardHistoryDTO {
 	private String cvc;
 	private String paymentDate;
 	private String status;
+	
 }

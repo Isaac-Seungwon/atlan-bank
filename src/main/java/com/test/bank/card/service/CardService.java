@@ -1,6 +1,7 @@
 package com.test.bank.card.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.domain.CardUsageGuideDTO;
+import com.test.bank.card.domain.MemberCardDTO;
 import com.test.bank.card.domain.MemberCardHistoryDTO;
 import com.test.bank.card.repository.CardDAO;
 
@@ -225,6 +227,18 @@ public class CardService {
 	    }
 	    
 	    return list;
+	}
+
+	public List<MemberCardHistoryDTO> checkAmount(Map<String, Integer> map) {
+		return dao.checkAmount(map);
+	}
+
+	public int checkPassword(Map<String, String> map) {
+		return dao.checkPassword(map);
+	}
+
+	public List<MemberCardDTO> getMemberCardList(String seq) {
+		return dao.getMemberCardList(seq);
 	}
 
 	
