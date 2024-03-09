@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.bank.login.mapper.LoginMapper">
+
+	<insert id="joinMember" parameterType="com.test.bank.member.domain.MemberDTO">
+		INSERT INTO tblMember
+		VALUES(member_seq.nextVal, #{name}, #{id}, #{pw}, #{RRN}, #{transferLimit}, #{tel}, #{email}, #{zipcode}, #{address}, #{creditRate}, #{isGuarantee}, #{point})
+	</insert>
+
+</mapper>

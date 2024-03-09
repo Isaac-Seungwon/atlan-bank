@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/layout/layout}" 
-	layout:fragment="Content">
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>Event</title>
 <meta name="_csrf" th:content="${_csrf.token}">
@@ -94,7 +93,7 @@
 }
 
 .in-progress, .completed, .upcoming {
-    font-size: 0.9rem;
+	font-size: 0.9rem;
 }
 
 #page-bar {
@@ -138,6 +137,71 @@
 .nav-icon {
 	font-size: 50px;
 }
+
+/* 서브 메뉴 */
+.sub-menu {
+	
+}
+
+#quickmenu {
+	width: 200px;
+	list-style-type: none;
+}
+
+#quickmenu>li {
+	width: 200px;
+	line-height: 30px;
+	text-align: center;
+	background-color: pink;
+	margin-right: 5px;
+}
+
+.menu-list {
+	display: none;
+	list-style-type: none;
+}
+
+.menu-list li {
+	background-color: skyblue;
+}
+
+#quickmenu li:last-child {
+	margin-right: 0;
+}
+
+#quickmenu2 {
+	width: 190px;
+	text-align: center;
+	list-style-type: none;
+}
+
+.menu-head {
+	line-height: 2;
+	border: 1px solid #222;
+	position: relative;
+}
+
+.menu-head .menu-list2 {
+	position: absolute;
+	width: 150px;
+	left: 149px;
+	border: 1px solid #222;
+	background-color: #222;
+	color: white;
+	top: -1px;
+	display: none;
+	list-style-type: none;
+}
+
+.menu-head:hover {
+	background-color: #222;
+	color: white;
+}
+
+.menu-head .menu-list2>li:hover {
+	background-color: white;
+	color: #222;
+}
 </style>
 </head>
 <body>
@@ -162,6 +226,7 @@
 						<li><a th:href="@{/index.do}">Home</a></li>
 						<li>이벤트</li>
 					</ol>
+
 				</div>
 			</nav>
 		</div>
@@ -221,6 +286,7 @@
 											th:if="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">마감</span>
 											<span class="upcoming"
 											th:unless="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') ge #dates.format(eventList.startDate, 'yyyy-MM-dd HH:mm:ss')
+
 											and #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') le #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')
 											or #calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') gt #dates.format(eventList.endDate, 'yyyy-MM-dd HH:mm:ss')}">진행예정</span>
 										</td>
@@ -228,11 +294,13 @@
 										<!-- 이벤트 기한 -->
 										<td th:text="${#dates.format(eventList.startDate, 'yyyy.MM.dd.')} + ' ~ ' + ${#dates.format(eventList.endDate, 'yyyy.MM.dd.')}"></td>
 										
+
 										<!-- 조회수 -->
 										<td th:text="${eventList.hitsCount}"></td>
 									</tr>
 								</tbody>
 							</table>
+
 							
 							<!-- Search -->
 							<form method="GET" action="/atlanbank/user/event/view.do" id="search-form">
@@ -240,10 +308,12 @@
 									<option value="name">제목</option>
 									<option value="content">내용</option>
 								</select> <input type="text" name="word" id="search-field" size="60" pattern=".{1,}" placeholder="검색어를 입력하세요." required>
+
 								<button type="submit" id="search-button">
 									<span class="material-symbols-outlined">search</span>
 								</button>
 							</form>
+
 							
 							<!-- Paging -->
 							<nav id="page-bar" aria-label="Page navigation example">
@@ -315,12 +385,15 @@
 	<!-- End Main -->
 
 	<script>
-		document.addEventListener('keydown',
-			function(event) {
-				if (event.key === 'F5' || ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
-					location.href = '/atlanbank/user/event/view.do';
-				}
-			});
+		document
+				.addEventListener(
+						'keydown',
+						function(event) {
+							if (event.key === 'F5'
+									|| ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
+								location.href = '/atlanbank/user/event/view.do';
+							}
+						});
 	</script>
 </body>
 </html>

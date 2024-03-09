@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>Join</title>
+<style>
+#event {
+	text-align: center;
+}
+
+#search-form {
+	margin-top: 40px;
+}
+
+#category {
+	width: 100px;
+	height: 40px;
+	margin-right: 5px;
+}
+
+#search-field {
+	height: 40px;
+}
+
+#search-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+#search-button span {
+	font-size: 40px;
+	position: relative;
+	top: 13px;
+}
+
+#event-list {
+	width: 100%;
+	text-align: center;
+	margin: 0;
+}
+
+#event-list th, #event-list td {
+	height: 60px;
+	color: #444;
+	padding: 10px;
+	border-bottom: 1px solid #E1E1E1;
+}
+
+#event-list th {
+	font-size: 1.02rem;
+	font-weight: bold;
+}
+
+#event-list th:nth-child(1) {
+	width: 15%;
+}
+
+#event-list th:nth-child(2) {
+	width: 70%;
+}
+
+#event-list th:nth-child(3) {
+	width: 15%;
+}
+
+#event-list td:nth-child(2) a {
+	font-weight: bold;
+	color: #333;
+}
+
+#event-list td:nth-child(2) {
+	text-align: left;
+}
+
+.in-progress {
+	color: var(--color-primary);
+}
+
+.completed {
+	color: #555;
+}
+
+.in-progress, .completed {
+	font-size: 0.9rem;
+}
+
+#page-bar {
+	display: flex;
+	font-size: 1.2rem;
+	justify-content: center;
+	margin-top: 50px;
+	margin-bottom: 15px;
+}
+
+#previous-button, #current-page, #other-pages, #next-button {
+	color: #000;
+	margin: 0 10px;
+}
+
+#previous-button, #next-button {
+	display: block;
+	margin-top: 1.5px;
+}
+
+#current-page {
+	color: #F00;
+}
+
+#button-list {
+	text-align: right;
+}
+
+#button-list i {
+	margin-right: 10px;
+}
+
+#add-button {
+	width: 90px;
+	height: 40px;
+	background-color: transparent;
+	border: 2px solid #CCC;
+	margin: 30px 150px 0;
+}
+
+.nav-icon {
+	font-size: 50px;
+}
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="event">
+
+		<!-- Start Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>Join</h2>
+							<p>회원 가입</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="index.do">Home</a></li>
+						<li>Join</li>
+					</ol>
+				</div>
+			</nav>
+
+		<div class="container">
+
+			<!-- 전체 이벤트 -->
+			<div layout:fragment="content" class="container my-3">
+				<form action="@{/joinaction.do}" method="post">
+					<div class="mb-3">
+						<label for="username" class="form-label">이름</label> <input
+							type="text" name="name" id="name" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">아이디</label> <input
+							type="text" name="id" id="id" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">암호</label> <input
+							type="password" name="pw" id="pw" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">주민등록번호</label> <input
+							type="text" name="RRN" id="RRN" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">연락처</label> <input
+							type="text" name="tel" id="tel" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">이메일</label> <input
+							type="text" name="email" id="email" class="form-control">
+					</div>
+
+					<!-- 주소 -->
+					<button type="button" class="btn btn-primary"
+							onclick="execDaumPostcode()">우편번호 검색</button>
+					<div class="address">
+						<label for="username" class="form-label">우편번호</label> <input
+							type="text" name="zipcode" id="zipcode" class="form-control">
+					</div>
+
+					<div class="address">
+						<label for="username" class="form-label">기본주소</label> <input
+							type="text" name="address-basis" id="address-basis"
+							class="form-control">
+					</div>
+					<div class="address">
+						<label for="username" class="form-label">상세주소</label> <input
+							type="text" name="address-detail" id="address-detail"
+							class="form-control">
+					</div>
+
+					<button type="submit" class="btn btn-primary">회원가입</button>
+				</form>
+			</div>
+		</div>
+
+	</main>
+	<!-- End Main -->
+
+	<script>
+		
+	</script>
+
+	<script
+		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<!-- 주소 입력 폼 -->
+	<script>
+		function execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							var addr = '';
+							var extraAddr = '';
+
+							if (data.userSelectedType === 'R') { // 도로명 주소 선택
+								addr = data.roadAddress;
+							} else { // 지번 주소 선택
+								addr = data.jibunAddress;
+							}
+
+							if (data.userSelectedType === 'R') {
+								if (data.bname !== ''
+										&& /[동|로|가]$/g.test(data.bname)) {
+									extraAddr += data.bname;
+								}
+								if (data.buildingName !== ''
+										&& data.apartment === 'Y') {
+									extraAddr += (extraAddr !== '' ? ', '
+											+ data.buildingName
+											: data.buildingName);
+								}
+								if (extraAddr !== '') {
+									extraAddr = ' (' + extraAddr + ')';
+								}
+							} else {
+								document.getElementById("address-basis").value = '';
+							}
+
+							// 우편번호와 주소 정보를 input 박스에 삽입
+							document.getElementById('zipcode').value = data.zonecode;
+							document.getElementById("address-basis").value = addr;
+							document.getElementById("address-basis").value += extraAddr;
+							document.getElementById("address-detail").focus(); // 상세주소로 포커스 이동
+						}
+					}).open();
+		}
+	</script>
+
+</body>
+</html>
