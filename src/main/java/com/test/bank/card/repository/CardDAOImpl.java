@@ -85,5 +85,10 @@ public class CardDAOImpl implements CardDAO {
 		return mapper.getMemberCardList(seq);
 	}
 
+	@Override
+	public List<MemberCardHistoryDTO> getAllThisMonthPaymentList(String seq) {
+		return mapper.getAllThisMonthPaymentList(seq);
+	}
+
 	
 }

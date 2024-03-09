@@ -38,4 +38,6 @@ public interface CardMapper {
 
 	List<MemberCardDTO> getMemberCardList(String seq);
 
+	List<MemberCardHistoryDTO> getAllThisMonthPaymentList(String seq);
+
 }

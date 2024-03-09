@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="mt-30 specific-amount">
+	<div style="position: relative;">
+		<h3>상세내역</h3>
+		<p class="unit">(단위: 원)</p>
+	</div>
+	<table>
+		<colgroup>
+			<col style="width: 6%;">
+			<col style="width: 14%;">
+			<col style="width: 19%;">
+			<col style="width: 25%;">
+			<col style="width: 10%;">
+			<col style="width: 6%;">
+			<col style="width: 20%;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>선택</th>
+				<th>이용일</th>
+				<th>이용카드</th>
+				<th>이용하신곳</th>
+				<th>결제방법</th>
+				<th>회차</th>
+				<th>이용금액</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="list : ${thisMonthPaymentList}">
+				<td>
+					<div class="chkbox-container">
+						<input type="checkbox" id="chkbox1">
+						<label for="chkbox1"></label>
+					</div>
+				</td>
+				<td th:text="${list.transactionDate}"></td>
+				<td th:text="${list.cardName}"></td>
+				<td th:text="${list.name}"></td>
+				<td th:text="${list.installmentMonths}"></td>
+				<td th:text="${list.installmentMonths}"></td>
+				<td th:text="${list.amount}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</html>

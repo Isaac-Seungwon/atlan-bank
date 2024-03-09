@@ -109,4 +109,22 @@
 		where member_seq = #{seq}
 	</select>
 	
+	<select id="getAllThisMonthPaymentList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select
+		    a.member_card_history_seq,
+		    b.member_seq,
+		    b.member_card_seq,
+		    b.card_seq,
+		    (select name from tblCard where card_seq = b.card_seq) as card_name,
+		    a.transaction_date,
+		    a.name,
+		    a.amount,
+		    a.installment_months
+		from tblMemberCardHistory a 
+		inner join tblmembercard b
+		on b.member_card_seq = a.member_card_seq
+		where to_char(transaction_date, 'yyyymm') = to_char(add_months(sysdate, -1), 'yyyymm') and
+			  b.member_seq = #{seq}
+	</select>
+	
 </mapper>

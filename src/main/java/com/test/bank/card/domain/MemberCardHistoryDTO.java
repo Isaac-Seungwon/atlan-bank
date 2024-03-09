@@ -21,4 +21,7 @@ public class MemberCardHistoryDTO {
 	private String paymentDate;
 	private String status;
 	
+	//tblCard
+	private String cardName;
+	
 }

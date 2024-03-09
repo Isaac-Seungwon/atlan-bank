@@ -241,5 +241,9 @@ public class CardService {
 		return dao.getMemberCardList(seq);
 	}
 
+	public List<MemberCardHistoryDTO> getAllThisMonthPaymentList(String seq) {
+		return dao.getAllThisMonthPaymentList(seq);
+	}
+
 	
 }

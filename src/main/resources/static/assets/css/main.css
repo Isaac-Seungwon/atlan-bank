@@ -2194,23 +2194,22 @@ table tbody td.th {
 
 
 /* 전체내역 */
-.all-amount > div:first-child {
-	position: relative;
-}
-
-.all-amount > div:first-child p.unit {
+p.unit {
 	position: absolute;
 	right: 0;
 	bottom: 0;
 	margin-bottom: 0;
 }
 
+.specific-amount table,
 .authentication table,
 .select-method table,
 .all-amount table {
 	width: 100%;
 }
 
+.specific-amount table th,
+.specific-amount table td,
 .authentication table th,
 .authentication table td,
 .select-method table th,
@@ -2225,6 +2224,9 @@ table tbody td.th {
 	text-align: right;
 }
 
+.specific-amount table thead tr:first-child th:first-child,
+.specific-amount table tbody tr:nth-child(1) td:first-child,
+.specific-amount table tbody tr:last-child td:first-child,
 .authentication table tbody tr:first-child th:first-child,
 .authentication table tbody tr:nth-child(2) th:first-child,
 .authentication table tbody tr:last-child th:first-child,
@@ -2237,6 +2239,9 @@ table tbody td.th {
 	border-left: 0;
 }
 
+.specific-amount table thead tr:first-child th:last-child,
+.specific-amount table tbody tr:nth-child(1) td:last-child,
+.specific-amount table tbody tr:last-child td:last-child,
 .authentication table tbody tr:first-child td:last-child,
 .authentication table tbody tr:nth-child(2) td:last-child,
 .authentication table tbody tr:last-child td:last-child,
@@ -2270,6 +2275,47 @@ button#checkAmount {
 .authentication-btn:first-child,
 .allamount-btn:first-child {
 	margin-right: 20px;
+}
+
+/* 선택 결제 */
+div.chkbox-container {
+	text-align: center;
+}
+
+.chkbox-container input[type="checkbox"] {
+	display: none;
+}
+
+.chkbox-container input[type="checkbox"] + label {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.chkbox-container input[type="checkbox"] + label::before {
+	content: '';
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border: 2px solid #e1e1e1;
+	border-radius: 100%;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23d1d1d1" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-color: #FFF;
+	cursor: pointer;
+}
+
+.chkbox-container input[type="checkbox"]:checked + label::before {
+	content: '';
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>');
+	border-color: #0d42ff;
+	background-color: #0d42ff;
+}
+
+div.select-btn img {
+	width: 25px;
+	height: 25px;
 }
 
 /* 안내사항 */

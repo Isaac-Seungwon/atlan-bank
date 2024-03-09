@@ -126,14 +126,8 @@
 				<div id="specificAmountNotice"></div>
 				
 				<form method="POST" action="/atlanbank/member/card/payment.do">
-					<div id="ajax-value">
-					
-					
-					
-					
-					
-					
-					
+					<div>
+						<div id="ajax-value"></div>
 					</div>
 					<!-- 진행과정 -->
 					<input type="hidden" name="flag" value="2">
@@ -146,6 +140,11 @@
 					
 					<!-- 토큰 -->
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+					<!-- 버튼 -->
+					<div style="text-align: center; padding: 30px;">
+						<button class="allamount-btn" id="nextStepBtn">다음</button>
+						<button type="button" class="allamount-btn" onclick="location.href='/atlanbank/member/card/view.do';">취소</button>
+					</div>
 				</form>
 			</div>
 		</section> <!-- End Mypage Card Section -->
@@ -212,85 +211,27 @@
 				url: '/atlanbank/card/checkpaymentamount',
 				headers: {'content-Type': 'application/json'},
 				data: JSON.stringify(obj),
-				dataType: 'json',
+				dataType: 'html',
 				beforeSend: function(xhr) {
 			        xhr.setRequestHeader(csrfHeader, csrfToken);
 			    },
 				success: function(result) {
 					
 					$('#specificAmountNotice').html('');
-					$('#ajax-value').html('');
 					
-					if (obj.method == 1) {
-						
-						$('#ajax-value').append(`
-							<div class="mt-30 all-amount">
-								<div>
-									<h3>전체내역</h3>
-									<p class="unit">(단위: 원)</p>
-								</div>
-								<table>
-									<colgroup>
-										<col style="width: 20%;">
-										<col style="width: 20%;">
-										<col style="width: 20%;">
-										<col style="width: 20%;">
-										<col style="width: 20%;">
-									</colgroup>
-									<thead>
-										<tr>
-											<th>구분</th>
-											<th>이용금액</th>
-											<th>원금</th>
-											<th>수수료</th>
-											<th>잔여원금</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td class="th">일시불</td>
-											<td th:text=""></td>
-											<td></td>
-											<td>0</td>
-											<td></td>
-										</tr>
-										<tr>
-											<td class="th">합계</td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div style="text-align: center; padding: 30px;">
-								<button class="allamount-btn" id="nextStepBtn">다음</button>
-								<button type="button" class="allamount-btn" onclick="location.href='/atlanbank/member/card/view.do';">취소</button>
-							</div>
-						`);
-						
-						
-					} else {
+					if (obj.method == 2) {
 						
 						$('#specificAmountNotice').append(`
 								<ul class="listStyle2">
-									<li>일부결제금액이월약정은 이월할 때만 수수료가 발생합니다.<br>
+									<li  style="font-size: .8rem; color: #888; padding: 0 0 30px 0">일부결제금액이월약정은 이월할 때만 수수료가 발생합니다.<br>
 										단, 해외수수료는 이월하지 않아도 표기합니다.
 									</li>
 								</ul>
 						`);
-						
-						$('#ajax-value').append(`
-							
-						`);
 					}
-					
-					if (obj.method == 2) {
-						
-						
-						$('#ajax-value').append('하이');
-					}
+					console.log(result);
+					//$('#ajax-value').replaceWith(result);
+					$('#ajax-value').html(result);
 					
 				},
 				error: function(a, b, c) {

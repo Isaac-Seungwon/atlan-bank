@@ -38,4 +38,6 @@ public interface CardDAO {
 
 	List<MemberCardDTO> getMemberCardList(String seq);
 
+	List<MemberCardHistoryDTO> getAllThisMonthPaymentList(String seq);
+
 }

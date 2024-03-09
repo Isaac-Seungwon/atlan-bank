@@ -5,6 +5,9 @@
 <head>
 <title>카드</title>
 
+<!-- toastr -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 <style>
 	/* section empty space */
 	section {
@@ -220,7 +223,7 @@
 					<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
 					<div class="btn-box">
 						<a href="/atlanbank/member/card/payment.do">바로결제</a>
-						<a href="">일부결제금액<br>이월약정(리볼빙)</a>
+						<a href="javascript:void(0);" onclick="applyRevolving()">일부결제금액<br>이월약정(리볼빙)</a>
 					</div>
 				</div>
 				
@@ -252,9 +255,34 @@
 	</main>
 	<!-- End Main -->
 
+	<!-- toastr -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	
 	<!-- Script -->
 	<script>
 		
+		function applyRevolving() {
+			toastr.success('카드 리볼빙 신청이 완료되었습니다.', '카드 리볼빙 신청');
+		}
+	
+		//toastr 설정
+		toastr.options = {
+			"closeButton": false,
+			"debug": false,
+			"newestOnTop": false,
+			"progressBar": false,
+			"positionClass": "toast-top-center",
+			"preventDuplicates": false,
+			"onclick": null,
+			"showDuration": "300",
+			"hideDuration": "1000",
+			"timeOut": "5000",
+			"extendedTimeOut": "1000",
+			"showEasing": "swing",
+			"hideEasing": "linear",
+			"showMethod": "fadeIn",
+			"hideMethod": "fadeOut"	
+		};
 	</script>
 
 
