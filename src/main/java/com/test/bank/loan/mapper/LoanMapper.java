@@ -40,4 +40,6 @@ public interface LoanMapper {
 
 	void updateAccountTransfer(AccountTransferDTO dto);
 
+	void AccountTransfer(AccountTransferDTO dto);
+
 }

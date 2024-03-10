@@ -39,6 +39,8 @@ public interface LoanDAO {
 	void insertDepositWithdrawal(AccountTransferDTO dto);
 
 	void updateAccountTransfer(AccountTransferDTO dto);
+
+	void AccountTransfer(AccountTransferDTO dto);
 	
 	
 }

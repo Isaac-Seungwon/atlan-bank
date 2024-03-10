@@ -340,8 +340,8 @@
 			  	</div>
 				<div class="display_center insert-account">
 			  		<span style="width: 120px;">받는계좌</span>
-			  		<input type="hidden" name="insert-bank" id="insert-bank" readonly>	
-			  		<input type="hidden" name="insert-address" id="insert-address" readonly>	  	
+			  		<input type="hidden" name="insertbank" id="insertbank" readonly>	
+			  		<input type="hidden" name="accountNumber" id="accountNumber" readonly>	  	
 			  		<span id="insert-bank-view" style="margin-right: 10px;"></span>		
 			  		<span id="insert-address-view"></span>	 	
 			  	</div>
@@ -415,7 +415,7 @@ $('.slider').on('afterChange', function(event, slick, currentSlide){
 
 $(function() {
 	$("#address, #money").on('input', function() {
-		if($("#address").val() == '' || $("#money").val() == '') {
+		if($("#address").val() == '' || $("#money").val() == '' || $("#money").val() == '0') {
 			$(".btn-open-modal").attr("disabled", true);
 			$(".btn-open-modal").css("background-color","#999999");
 		} else {
@@ -431,8 +431,8 @@ const btnCloseModal=document.querySelector('.btn-close-modal');
 
 btnOpenModal.addEventListener("click", ()=>{
 	var accountNumber = $('.slick-active > .accountNumber').attr('value');
-	$('#insert-bank').val($('#bankchoice').val());
-	$('#insert-address').val($('#address').val());
+	$('#insertbank').val($('#bankchoice').val());
+	$('#accountNumber').val($('#address').val());
 	$('#depositWithdrawaAmount').val(uncomma($('#money').val()));
 	$('#out-bank').val(accountNumber);
 	

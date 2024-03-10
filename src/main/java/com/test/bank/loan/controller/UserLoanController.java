@@ -161,19 +161,17 @@ public class UserLoanController {
 	}
 	
 	@GetMapping(value="/accountTransferComplete.do")
-	public String accountTransferComplete(Model model, AccountTransferDTO dto) {
+	public String accountTransferComplete(Model model, AccountTransferDTO dto, String insertbank) {
 		
 		Date date = Calendar.getInstance().getTime();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		dto.setDate(dateFormat.format(date));
 		
-		System.out.println(dto.getDate());
-		System.out.println(dto.getBankBookSeq());
-		System.out.println(dto.getDepositWithdrawaAmount());
-		System.out.println(dto.getBalance());
-		
 		service.insertDepositWithdrawal(dto);
 		service.updateAccountTransfer(dto);
+		if (insertbank.equals("atlan")) {
+			service.AccountTransfer(dto);			
+		}
 
 		model.addAttribute("memberdto", service.getmember(userseq));
 		

@@ -73,6 +73,12 @@
 			set balance = (select balance from tblbankbook b  where b.bank_book_seq = #{bankBookSeq}) - #{depositWithdrawaAmount}
 			where bb.bank_book_seq = #{bankBookSeq}
 	</update>
+	
+	<update id="AccountTransfer" parameterType="com.test.bank.loan.domain.AccountTransferDTO">
+		UPDATE tblbankbook bb
+			set balance = (select balance from tblbankbook b  where b.account_number = #{accountNumber}) + #{depositWithdrawaAmount}
+			where bb.account_number = #{accountNumber}
+	</update>
 
 
 </mapper>

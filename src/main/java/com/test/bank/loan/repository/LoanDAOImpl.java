@@ -97,5 +97,11 @@ public class LoanDAOImpl implements LoanDAO {
 	public void updateAccountTransfer(AccountTransferDTO dto) {
 		mapper.updateAccountTransfer(dto);
 	}
+
+	@Override
+	public void AccountTransfer(AccountTransferDTO dto) {
+		mapper.AccountTransfer(dto);
+		
+	}
 	
 }

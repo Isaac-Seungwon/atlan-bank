@@ -82,5 +82,10 @@ public class LoanService {
 	public void updateAccountTransfer(AccountTransferDTO dto) {
 		dao.updateAccountTransfer(dto);
 	}
+
+	public void AccountTransfer(AccountTransferDTO dto) {
+		dao.AccountTransfer(dto);
+		
+	}
 	
 }
