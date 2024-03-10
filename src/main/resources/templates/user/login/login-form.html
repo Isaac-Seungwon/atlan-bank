@@ -161,7 +161,7 @@
 
 			<!-- 전체 이벤트 -->
 			<div layout:fragment="content" class="container my-3">
-				<form th:action="@{/user/login}" method="post">
+				<form th:action="@{/user/login}" method="post" autocomplete="off">
 					<div th:if="${param.error}">
 						<div class="alert alert-danger">사용자ID 또는 비밀번호를 확인해 주세요.</div>
 					</div>
@@ -176,12 +176,16 @@
 					<button type="submit" class="btn btn-primary">로그인</button>
 				</form>
 			</div>
+			<br>
+			회원이 아니신가요? <button type="submit" class="btn btn-primary" onclick="location.href='/atlanbank/join.do'">회원가입</button>
+			<br>
 		</div>
+		<br>
 	</main>
 	<!-- End Main -->
 
 	<script>
-		document
+		/* document
 				.addEventListener(
 						'keydown',
 						function(event) {
@@ -189,7 +193,7 @@
 									|| ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
 								location.href = '/atlanbank/user/event/view.do';
 							}
-						});
+						}); */
 	</script>
 
 	<!-- <script>
