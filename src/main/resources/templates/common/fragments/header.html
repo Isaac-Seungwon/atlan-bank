@@ -14,8 +14,14 @@
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a th:href="@{/about.do}">소개</a></li>
-                    <li class="dropdown"><a th:href="@{/index.do}"><span>예금</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li class="dropdown"><a th:href="@{/about.do}"><span>소개</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                        <ul>
+                            <li><a th:href="@{/about.do}">소개</a></li>
+                            <li><a th:href="@{/ticket/searchbank.do}">지점찾기/번호표 발행</a></li>
+                            <li><a th:href="@{/ticket/myticket.do}">번호표 확인</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a th:href="@{/user/deposit/view.do}"><span>예금</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li><a th:href="@{/index.do}">계좌 1</a></li>
                             <li><a th:href="@{/index.do}">계좌 2</a></li>
@@ -27,6 +33,7 @@
                             <li><a th:href="@{/user/news/view.do}">오늘의 소식</a></li>
                             <li><a th:href="@{/user/event/view.do}">전체 이벤트</a></li>
                             <li><a th:href="@{/user/benefit/view.do}">전체 혜택</a></li>
+                            <li><a th:href="@{/index.do}">전체 혜택</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a th:href="@{/loan/view.do}"><span>대출</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -71,7 +78,7 @@
                         </ul>
                     </li>
                     -->
-                    <li><a class="get-a-quote" th:href="@{/get-a-quote}">로그인</a></li>
+                    <li><a class="get-a-quote" th:href="@{/user/login}">로그인</a></li>
                 </ul>
             </nav><!-- .navbar -->
 

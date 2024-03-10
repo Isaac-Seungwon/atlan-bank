@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>Login</title>
+<style>
+#event {
+	text-align: center;
+}
+
+#search-form {
+	margin-top: 40px;
+}
+
+#category {
+	width: 100px;
+	height: 40px;
+	margin-right: 5px;
+}
+
+#search-field {
+	height: 40px;
+}
+
+#search-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+#search-button span {
+	font-size: 40px;
+	position: relative;
+	top: 13px;
+}
+
+#event-list {
+	width: 100%;
+	text-align: center;
+	margin: 0;
+}
+
+#event-list th, #event-list td {
+	height: 60px;
+	color: #444;
+	padding: 10px;
+	border-bottom: 1px solid #E1E1E1;
+}
+
+#event-list th {
+	font-size: 1.02rem;
+	font-weight: bold;
+}
+
+#event-list th:nth-child(1) {
+	width: 15%;
+}
+
+#event-list th:nth-child(2) {
+	width: 70%;
+}
+
+#event-list th:nth-child(3) {
+	width: 15%;
+}
+
+#event-list td:nth-child(2) a {
+	font-weight: bold;
+	color: #333;
+}
+
+#event-list td:nth-child(2) {
+	text-align: left;
+}
+
+.in-progress {
+	color: var(--color-primary);
+}
+
+.completed {
+	color: #555;
+}
+
+.in-progress, .completed {
+	font-size: 0.9rem;
+}
+
+#page-bar {
+	display: flex;
+	font-size: 1.2rem;
+	justify-content: center;
+	margin-top: 50px;
+	margin-bottom: 15px;
+}
+
+#previous-button, #current-page, #other-pages, #next-button {
+	color: #000;
+	margin: 0 10px;
+}
+
+#previous-button, #next-button {
+	display: block;
+	margin-top: 1.5px;
+}
+
+#current-page {
+	color: #F00;
+}
+
+#button-list {
+	text-align: right;
+}
+
+#button-list i {
+	margin-right: 10px;
+}
+
+#add-button {
+	width: 90px;
+	height: 40px;
+	background-color: transparent;
+	border: 2px solid #CCC;
+	margin: 30px 150px 0;
+}
+
+.nav-icon {
+	font-size: 50px;
+}
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="event">
+
+		<!-- Start Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('assets/img/page-header.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>Login</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="index.do">Home</a></li>
+						<li>Login</li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+
+		<div class="container">
+
+			<!-- 전체 이벤트 -->
+			<div layout:fragment="content" class="container my-3">
+				<form th:action="@{/user/login}" method="post">
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">사용자ID 또는 비밀번호를 확인해 주세요.</div>
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">사용자ID</label> <input
+							type="text" name="username" id="username" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="password" class="form-label">비밀번호</label> <input
+							type="password" name="pw" id="password" class="form-control">
+					</div>
+					<button type="submit" class="btn btn-primary">로그인</button>
+				</form>
+			</div>
+		</div>
+	</main>
+	<!-- End Main -->
+
+	<script>
+		document
+				.addEventListener(
+						'keydown',
+						function(event) {
+							if (event.key === 'F5'
+									|| ((event.ctrlKey || event.metaKey) && event.key === 'F5')) {
+								location.href = '/atlanbank/user/event/view.do';
+							}
+						});
+	</script>
+
+	<!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 폼 제출 동작을 중지합니다.
+
+            const username = document.getElementById('username').value;
+            const pw = document.getElementById('password').value;
+
+            console.log('ID:', username);
+            console.log('Password:', pw);
+
+            // 나머지 로그인 처리 코드를 이곳에 추가합니다.
+            // 예: form.submit();
+        });
+    });
+</script> -->
+</body>
+</html>

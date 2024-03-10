@@ -5,14 +5,24 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.service.TicketService;
+
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -31,15 +41,72 @@ public class TicketAjaxController {
 		return searchedBankList;
 	}
 	
-	@GetMapping("/ticket/{bankSeq}/{type}")
+	@GetMapping("/ticket/worklist/{bankSeq}/{type}")
 	public Map<String, Map<String, List<String>>> getWorkList(@PathVariable("bankSeq") String bankSeq, @PathVariable("type") String type) {
 		// Map<String, List<WorkListDTO>> workList = new HashMap<>();
 		// List<WorkListDTO> result = service.getWorkList(bankSeq, type); 
 		Map<String, Map<String, List<String>>> workList = new HashMap();
 		Map<String, List<String>> result = service.getWorkList(bankSeq, type); 
 		workList.put("data", result);
-		System.out.println("TicketAjaxController workList: " + workList);
+//		System.out.println("TicketAjaxController workList: " + workList);
 		return workList;
+	}
+	
+	//번호표 발급 번호 가져오기
+	@GetMapping("/ticket/waiting/{bankSeq}/{type}")
+	public ResponseEntity<?> getWaitingNumber(@PathVariable("bankSeq") String bankSeq, @PathVariable("type") String type, HttpSession session) {
+		session.setAttribute("id", "test1");
+//		session.removeAttribute("id");
+		String userId = (String) session.getAttribute("id");
+		System.out.println("TicketAjaxController userId: " + userId);
+		if (userId == null) {
+			System.out.println("로그인 안함");
+			return ResponseEntity.ok(false);
+		}
+		
+		int number = service.getWaitingNumber(bankSeq, type);
+		return ResponseEntity.ok(number);
+	}
+	
+	//번호표 발급 추가
+	@PostMapping("/ticket/addticket/{bankSeq}/{type}")
+	public String addTicket(@PathVariable("bankSeq") String bankSeq, @PathVariable("type") String type, HttpSession session, HttpServletResponse resp) {
+		String userId = (String) session.getAttribute("id");
+		if (userId == null) {
+			return "false";
+		}
+		return service.addTicket(bankSeq, type, userId, resp);
+	}
+	
+	//즐겨찾기 삭제
+	@DeleteMapping("/ticket/delfavorite/{bankSeq}")
+	public int delFavorite(@PathVariable("bankSeq") String bankSeq, HttpSession session) {
+		String userId = (String) session.getAttribute("id");
+		if (userId == null) {
+			return 0;
+		}
+		return service.delFavorite(bankSeq, userId);
+	}
+	
+	//즐겨찾기 추가
+	@PostMapping("/ticket/addfavorite/{bankSeq}")
+	public int addFavorite(@PathVariable("bankSeq") String bankSeq, HttpSession session) {
+		String userId = (String) session.getAttribute("id");
+		if (userId == null) {
+			return 0;
+		}
+		return service.addFavorite(bankSeq, userId);
+	}
+	
+	//번호표 삭제
+	@DeleteMapping("/ticket/delticket/{ticketWaitingStatusSeq}")
+	public int delTicket(@PathVariable("ticketWaitingStatusSeq") String watingSeq, HttpSession session) {
+		String userId = (String) session.getAttribute("id");
+		System.out.println("userId");
+		if (userId == null) {
+			return 0;
+		}
+		return service.delTicket(watingSeq);
 	}
 	
 	

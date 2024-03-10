@@ -4,9 +4,18 @@
 	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
 <title>Forex</title>
+<style>
+#calculate{
+	margin-left: 20px;
+	background-color: #b5b5b5;
+	color: #fff;
+}
+#calculate:hover{
+ 	background:rgb(39, 86, 255);
+}
 
+</style>
 </head>
-
 <body>
 	<!-- Start Main -->
 	<main id="main">
@@ -33,6 +42,15 @@
 			</nav>
 		</div>
 		<!-- End Breadcrumbs -->
+		
+		<div class="container" style="margin-right: 170px; margin-top: 0px; margin-bottom: 100px;">
+			<h2 style="margin-top: 50px; text-align: center; margin-bottom: 30px;">외화 환전</h2>
+			<div style="box-shadow: 5px 10px 30px grey; text-align: center; padding: 20px 0 20px 0;">
+				<p style="color: black;">외화 환전 예상금액을 계산해 보세요.</p>
+				<button type="button" class="btn" data-bs-toggle="modal" id="calculate"
+					data-bs-target="#Modal">계산하기</button>
+			</div>
+		</div>
 		
 		<!-- 계산기 -->
 		<div class="modal fade" id="Modal" tabindex="-1"
@@ -72,13 +90,29 @@
                </div>
             </div>
             </div>
-            
-            <!-- 입력창 -->
+            <!-- 
+			<div class="exchange-rate">
+				<div class="currency-info">
+					<div class="select-currency">
+						<select class="me-2" id="sel_account" name="currency" style="width: 60px; height: 40px;"
+								onchange="selectCountry(this.value);">
+							<th:block th:each="list : ${exchangelist}">
+                    			<option th:if="${list.nationKr.contains('일본')}" th:text="${#strings.substring(list.nationKr, 0, #strings.length(list.nationKr)-9)}" th:value="${list.nationKr}"></option>
+                    			<option th:unless="${list.nationKr.contains('일본')}" th:text="${#strings.substring(list.nationKr, 0, #strings.length(list.nationKr)-3)}" th:value="${list.nationKr}"></option>
+                			</th:block>
+						</select>
+					</div>
+				</div>
+			</div>
+			 -->
+
+			<!-- 입력창 -->
             <div class="input-money d-flex">
                <input type="text" id="calc_forAmt" name="calc_forAmt" maxlength="15" 
                   title="환율계산할 금액 입력" value="1"
                   onkeyup="setNumeric(this); autoCal2();" style="width:154px" /> 
-                  <div class="unit" id="unit" style="margin-top:5px;margin-left:7px;font-family:Pretendard-Regular">달러</div>
+                  <div class="unit" id="unit" style="margin-top:5px;margin-left:7px;font-family:Pretendard-Regular; font-size: 15.5px;
+                  ">달러</div>
             </div>
             </div>
             </div>
@@ -106,7 +140,7 @@
          </div>
          </div>
          
-            <script>
+            <script>  //계산기 내 현재 시간 표시
             Date.prototype.format = function(f) {
                    if (!this.valueOf()) return " ";
                    var d = this;
@@ -130,6 +164,7 @@
 
             document.getElementById("set_date").innerHTML = new Date().format("yyyy년 MM월 dd일 a/p hh시 mm분 ss초");
          </script>
+         
                <ul class="list_type1 s2" style="background-color:#f7ffff;margin-bottom:3px;">
                   <li>환율계산기는 단순 참고용으로 위 계산결과는 환율변동 또는<br> 우대율 적용에 따라 실제 거래 시
                      적용되는 환율과 다를 수 있습니다.</li>
@@ -143,310 +178,149 @@
                <button type="button" class="btn btn-secondary"
                   data-bs-dismiss="modal" >취소</button>
                <button type="button" class="btn btn-secondary"
-                  onclick="nextStep();" style="margin-right:150px">확인</button>
+                  onclick="Confirm()" style="margin-right:150px">확인</button>
             </div>
             </div>
          </div>
       </div>
-
- <div class="container" style="margin-right:170px;margin-top:0px; margin-bottom:50px;">
- 	<h2 style="font-family: 'Noto Sans KR', sans-serif; margin-left: 600px; margin-top:100px; display:inline-block">
-			외화환전</h2>
-         <div class="row gtr-uniform">
-            <div align="center">
-            <div class="container">
-            <br>
-            <br>
-            <div style="box-shadow: 5px 10px 30px grey;">
-               <dl>
-                  <div class="exchange_main_bn" style="color:grey">
-                  <div class="padding_top">
-                  
-                  <div class="text_style"  style="color:black;margin-left:20px">
-                     환율 계산기
-                     <p>외화 환전 예상금액을 계산해 보세요.</p>
-                  </div>
-                  </div>
-                  </div>
-               </dl>
       
-               <button type="button" class="btn" data-bs-toggle="modal"
-                  data-bs-target="#Modal" style="margin-left: 20px; background-color:#b5b5b5;color:#fff">계산하기</button>
-            </div>
+		<script>
+		
+			function Confirm() {  //환전완료
+				alert('완료되었습니다.');
+			}
+			
+			function setNumeric(num) {  //입력창에 숫자만 가능하도록
+				var numeric = Number(num.value);
+				num.value = numeric;
+			}
+			
+			function selectCountry(value) {
+				$('#unit').empty();
+				if (value == '미국') {
+					$('#unit').append('달러');
+					autoCal2();
+				}
+				if (value == '일본엔(JPY)') {
+					$('#unit').append('(100)엔');
+					autoCal2();
+				}
+				if (value == '유럽유로(EUR)') {
+					$('#unit').append('유로');
+					autoCal2();
+				}
+				if (value == '중국위안(CNY)') {
+					$('#unit').append('위안');
+					autoCal2();
+				}
+			}
+			/*
+			function selectCountry(value) {
+				//console.log(value);  //뒤에 단위까지 전부 나옴
+			    $('#unit').empty();
+			    
+			    console.log(exchangelist);
+			    // exchangelist 배열에서 선택한 나라에 해당하는 객체 찾기
+			    var selectedCountry = exchangelist.find(function(item) {
+			        return item.nationKr==value;
+			    });
+			    console.log(selectedCountry); // 선택된 나라의 정보 확인
+			    
+			    if (selectedCountry) { //선택한 나라 있으면
+			        var unitValue = selectedCountry.nationKr.slice(-3);  //nationKr에서 뒤에서 3자리 가져오기
+			        
+			        console.log(unitValue); // 가져온 단위 값 확인
+			        
+			        $('#unit').append(unitValue);
+			        autoCal2();
+			    }
+			} 
+			*/
 
-            </div>
-            </div>
-            </div>
-</div>
-               
-                  <script>
-                  var cashbuy = 0; // 현찰 사실때
-                  var coupon_per = 0; // 쿠폰적용환율
-                  var preferential_fee = 0; // 우대수수료
-         
-                  function nextStep() {
-                	    alert('완료되었습니다.');
-                	}
-                  function displayCoupon(result){
-                     let list = result
-                     let str =''
-                     console.log(result);
-      
-                     $('#rate').text(result.pop().RATE)
-                  }
-                  function displaySelectedCoupon(){
-                    let input=$('#rate').text()*1  
-                     $('#percentCoupon').empty();     
-                     console.log("input"+input);
-                     $('#percentCoupon').text(input); 
-                     $('#percentCoupon').css('display','none');
-                     coupon_per = input;
-                     change_ex_per();
-                  }
-                  function showSelectedCoupon(){
-                     $('#percentCoupon').css('display','block');
-                     coupon_per = $('#rate').text()*1 
-                     console.log(coupon_per);
-                  }
-                  function setNumeric(num) {
-                     var numeric = Number(num.value);
-                     num.value = numeric;
-                  }
-               
-                  var num2 = 0
-                  
-                  
-                  function autoCal2(){
-                  var currency = 0; 
-                  var current = 0;
-                  var current2 = 0;
-                  var calc_total = 0;
-               
-                  var result = new Array();
-                  var result2 = new Array();
-               
-                  currency = $("#sel_account option:selected").val();
-                  var type = $("#sel_account_01 option:selected").val();
-               
-                  if(type=="1"){
-                  <c:forEach items="list : ${exchangelist}">
-                     result.push("${item.buyBasicRate}");
-                  </c:forEach>
-                  }
-                  if(type=="2"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.transferSendRate}");
-                  </c:forEach>
-                  }
-                  if(type=="3"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.transferReceiveRate}");
-                  </c:forEach>
-                  }
-                  if(type=="4"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.cashBuyRate}");
-                  </c:forEach>
-                  }
-                  if(type=="5"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.cashSellRate}");
-                  </c:forEach>
-                  }
-                  
-                  <c:forEach items="${exchangelist}" var="item">
-                     result2.push("${item.cashBuyRate}");
-                  </c:forEach>
-               
-                  if (currency == "미국달러(USD)") {
-                     current = result[0];
-                     current2 = result2[0];
-                  }
-                  if (currency == '일본엔(JPY)') {
-                     current = result[2];
-                     current2 = result2[2];
-                  }
-                  if (currency == '유럽유로(EUR)') {
-                     current = result[1];
-                     current2 = result2[1];
-                  }
-                  if (currency == '중국위안(CNY)') {
-                     current = result[3];
-                     current2 = result2[3];
-                  }
-                  if (currency == '홍콩달러(HKD)') {
-                     current = result[8];
-                     current2 = result2[8];
-                  }
-               
-                  $('#calc_forAmt').each(function(){
-                     calc_total = Number($(this).val())*current;
-                     num2 = Number($(this).val());
-               
-                     $('input[name="calc_krwAmt"]').val((calc_total).toFixed(2));
-                  });
-                  }
-               
-                  function autoCal(){
-                  var currency = 0; 
-                  var total = 0;
-                  var total2 = 0;
-                  var current = 0;
-                  var current2 = 0;
-                  var current3 = 0;
-                  var commission = 0;
-                  var per3 = 0;
-               
-                  var result = new Array();
-                  var result2 = new Array();
-                  var result3 = new Array();
-               
-                  currency = $("#sel_account_02 option:selected").val();
-                  var type = $("#sel_account_01 option:selected").val();
-                  var ex_per = $('input[name="ex_per"]').val();
-                  $('input[name="R_ex_per"]').val(Number(ex_per)+Number(coupon_per));
-               
-                  if(type=="1"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.buyBasicRate}");
-                  </c:forEach>
-                  }
-                  if(type=="2"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.transferSendRate}");
-                  </c:forEach>
-                  }
-                  if(type=="3"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.transferReceiveRate}");
-                  </c:forEach>
-                  }
-                  if(type=="4"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.cashBuyRate}");
-                  </c:forEach>
-                  }
-                  if(type=="5"){
-                  <c:forEach items="${exchangelist}" var="item">
-                     result.push("${item.cashSellRate}");
-                  </c:forEach>
-                  }
-               
-                  <c:forEach items="${exchangelist}" var="item">
-                     result2.push("${item.cashBuyRate}");
-                     result3.push("${item.buyBasicRate}");
-                  </c:forEach>
-                  
-                  if (currency == "미국달러(USD)") {
-                     current = result[0];
-                     current2 = result2[0];
-                     
-                  }
-                  if (currency == '일본엔(JPY)') {
-                     current = result[2];
-                     current2 = result2[2];
-                  }
-                  if (currency == '유럽유로(EUR)') {
-                     current = result[1];
-                     current2 = result2[1];
-                  }
-                  if (currency == '중국위안(CNY)') {
-                     current = result[3];
-                     current2 = result2[3];
-                  }
-                  if (currency == '홍콩달러(HKD)') {
-                     current = result[8];
-                     current2 = result2[8];
-                  }
-               
-                  var value2 = $("#sel_account_02 option:selected").val();
-                  if (value2 == "미국달러(USD)") {
-                     current2 = result2[0];
-                     current3 = result3[0];
-                  }
-                  if (value2 == "일본엔(JPY)") {
-                     current2 = result2[2];
-                     current3 = result3[2];
-                  }
-                  if (value2 == '유럽유로(EUR)') {
-                     current2 = result2[1];
-                     current3 = result3[1];
-                  }
-                  if (value2 == '중국위안(CNY)') {
-                        current2 = result2[3];
-                        current3 = result3[3];
-                     }
-                  
-                  var num = 0;
-               
-                  var num3 = 0;
-                  var coupon_per2 = 0;
-               
-                  console.log(current);
-                  console.log(current2);
-                  console.log(current3);
-               
-                  $('#forAmt').each(function(){
-                  total = Number($(this).val())*current;
-                  cashbuy = Number($(this).val())*current2;
-                  num = Number($(this).val());
-                  });
-               
-                  $('#forAmt_01').each(function(){
-                  num3 = Number($(this).val());
-                  total2 = Number($(this).val())*current2;
-                  preferential_fee = (Number($(this).val())*((cashbuy-Number(current3))));
-                  
-                  coupon_per2 = Number(coupon_per)/100; 
-                  
-                  withdrawal_amount = (preferential_fee*(1-(0.85+coupon_per2))+Number(current3)*Number($(this).val()));
-                  });
-               
-                  commission = cashbuy-total;
-                  $('input[name="krwAmt"]').val(total);
-               
-                  var preferential_exchange_rate = (current2-current3)*(1-(0.85+coupon_per2))+Number(current3);
-                  $('input[name="krwAmtTxt"]').val(current2);
-                  $('input[name="basicEx"]').val(preferential_exchange_rate.toFixed(2));
-                  
-                  $('input[name="preferentialAmount"]').val((current2-preferential_exchange_rate).toFixed(2));
-               
-               
-                  per3 = $('input[name="st_department"]').val();
-               
-                  if(type!='1'){
-                  $('input[name="R_krwAmt"]').val(((1-per3/100)+current3)*num2);
-                  }
-                  
-                  $('input[name="exchangecharge"]').val((preferential_exchange_rate*num3).toFixed(2));
-                  }
-       
-                  function selectCountry(value) {
-                     $('#unit').empty();
-                     if (value == '미국달러(USD)') {
-                        $('#unit').append('달러');
-                        autoCal2();
-                     }
-                     if (value == '일본엔(JPY)') {
-                        $('#unit').append('(100)엔');
-                        autoCal2();
-                     }
-                     if (value == '유럽유로(EUR)') {
-                        $('#unit').append('유로');
-                        autoCal2();
-                     }
-                     if (value == '중국위안(CNY)') {
-                        $('#unit').append('위안');
-                        autoCal2();
-                     }
-               
-                  }
-                  function change_ex_per(){
-                     var per = $('input[name="ex_per"]').val();
-                     console.log(coupon_per);
-                     $('input[id="R_ex_per"]').val(Number(per)+Number(coupon_per));
-                  }
-                  </script>
+			var num2 = 0
+			
+			function autoCal2() {
+			    var currency = 0;
+			    var current = 0;
+			    var current2 = 0;
+			    var calc_total = 0;
+
+			    var result = [];
+			    var result2 = [];
+
+			    // 선택된 화폐와 거래 타입을 가져오기
+			    currency = $("#sel_account option:selected").val();
+			    var type = $("#sel_account_01 option:selected").val();
+
+			    // 서버로부터 데이터 받아오기
+			    $.ajax({
+			        url: 'getExchangeList',
+			        type: 'GET',
+			        dataType: 'json',
+			        success: function(exchangelist) {
+			            // exchangelist를 사용하여 result와 result2를 구성
+			            if (type == '1') {
+			                for (var i = 0; i < exchangelist.length; i++) {
+			                    result.push(exchangelist[i].buyBasicRate);
+			                }
+			            } else if (type == '2') {
+			                for (var i = 0; i < exchangelist.length; i++) {
+			                    result.push(exchangelist[i].transferSendRate);
+			                }
+			            } else if (type == '3') {
+			                for (var i = 0; i < exchangelist.length; i++) {
+			                    result.push(exchangelist[i].transferReceiveRate);
+			                }
+			            } else if (type == '4') {
+			                for (var i = 0; i < exchangelist.length; i++) {
+			                    result.push(exchangelist[i].cashBuyRate);
+			                }
+			            } else if (type == '5') {
+			                for (var i = 0; i < exchangelist.length; i++) {
+			                    result.push(exchangelist[i].cashSellRate);
+			                }
+			            }
+
+			            for (var i = 0; i < exchangelist.length; i++) {
+			                result2.push(exchangelist[i].cashBuyRate);  //현찰 사실 때 환율
+			            }
+
+			            // 선택된 화폐에 따라서 현재 값 설정
+			            if (currency == "미국달러(USD)") {
+			                current = result[0];
+			                current2 = result2[0];
+			            } else if (currency == '일본엔(JPY)') {
+			                current = result[2];
+			                current2 = result2[2];
+			            } else if (currency == '유럽유로(EUR)') {
+			                current = result[1];
+			                current2 = result2[1];
+			            } else if (currency == '중국위안(CNY)') {
+			                current = result[3];
+			                current2 = result2[3];
+			            } else if (currency == '홍콩달러(HKD)') {
+			                current = result[8];
+			                current2 = result2[8];
+			            }
+			            
+			         // calc_forAmt에 입력된 값에 대한 계산 수행
+			            var calc_forAmtValue = Number($('#calc_forAmt').val());
+			            calc_total = calc_forAmtValue * current;
+			            num2 = calc_forAmtValue;
+			            
+			         // 계산 결과를 console.log를 통해 확인
+			            console.log('계산 결과:', calc_total);
+
+			            // 계산 결과를 input[name="calc_krwAmt"]에 표시
+			            $('input[name="calc_krwAmt"]').val(calc_total.toFixed(2));
+			        
+			        },
+			        error: function() {
+			            console.error('데이터를 가져오지 못했습니다.');
+			        }
+			    });
+			}
+		</script>
 		
 	</main>
 	<!-- End Main -->

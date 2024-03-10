@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.FavoriteBankDTO;
 import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.mapper.TicketMapper;
@@ -59,5 +60,45 @@ public class TicketDAOImpl implements TicketDAO{
 	@Override
 	public List<WorkListDTO> getWorkList(String bankSeq, String type) {
 		return mapper.getWorkList(bankSeq, type);
+	}
+	
+	@Override
+	public int getWaitingNumber(String bankSeq, String type) {
+		return mapper.getWaitingNumber(bankSeq, type);
+	}
+	
+	@Override
+	public int addTicket(String bankSeq, String type, String userId) {
+		return mapper.addTicket(bankSeq, type, userId);
+	}
+	
+	@Override
+	public int addFavorite(String bankSeq, String userId) {
+		return mapper.addFavorite(bankSeq, userId);
+	}
+	
+	@Override
+	public int findFavorite(String bankSeq, String userId) {
+		return mapper.findFavorite(bankSeq, userId);
+	}
+	
+	@Override
+	public int delFavorite(String bankSeq, String userId) {
+		return mapper.delFavorite(bankSeq, userId);
+	}
+	
+	@Override
+	public List<FavoriteBankDTO> getfavoriteBanks(String userId) {
+		return mapper.getfavoriteBanks(userId);
+	}
+	
+	@Override
+	public List<TicketWaitingStatusDTO> getTicketList(String userSeq) {
+		return mapper.getTicketList(userSeq);
+	}
+	
+	@Override
+	public int delTicket(String watingSeq) {
+		return mapper.delTicket(watingSeq);
 	}
 }

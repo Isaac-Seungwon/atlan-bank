@@ -11,6 +11,10 @@ import com.test.bank.event.domain.EventDTO;
 import com.test.bank.event.service.EventService;
 import com.test.bank.news.domain.NewsDTO;
 import com.test.bank.news.service.NewsService;
+import com.test.bank.ticket.domain.FavoriteBankDTO;
+import com.test.bank.ticket.service.TicketService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MainController {
@@ -20,9 +24,12 @@ public class MainController {
 	
 	@Autowired
 	private NewsService newsService;
+	
+	@Autowired
+	private TicketService ticketService;
 
 	@GetMapping(value = "/index.do")
-	public String index(Model model) {
+	public String index(Model model, HttpSession session) {
 		// 최신 이벤트 3개
 		List<EventDTO> latestEvents = evtService.getLatestEvents();
 		model.addAttribute("latestEvents", latestEvents);
@@ -30,6 +37,16 @@ public class MainController {
 		// 최신 소식 3개
 		List<NewsDTO> latestNews = newsService.getLatestNews();
 		model.addAttribute("latestNews", latestNews);
+		
+		//즐겨찾기 지점
+		//임시 id 발급
+		session.setAttribute("id", "test1");
+		session.setAttribute("seq", "1");
+		String userId = (String) session.getAttribute("id");
+		String userSeq = (String) session.getAttribute("seq");
+		List<FavoriteBankDTO> favoriteBanks = ticketService.getfavoriteBanks(userSeq);
+		model.addAttribute("favoriteBanks", favoriteBanks);
+//		System.out.println("Maincontroller favoriteBanks: " + favoriteBanks.toString());
 
 		return "user/index";
 	}

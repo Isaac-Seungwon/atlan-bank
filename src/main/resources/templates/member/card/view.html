@@ -1,10 +1,242 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>카드</title>
+
+<style>
+	/* Font */
+	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+	
+	body {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Nanum Gothic", sans-serif;
+	}
+
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 20px 60px;
+		max-width: 1200px;
+	}
+
+	/* responsive */
+	/* @media (max-width: 1100px) {
+		section {
+			margin: 20px 0;
+		}
+	}
+	
+	@media (max-width: 1380px) {
+		section {
+			width: 1110px;
+		}
+	} */
+	
+	/* 결제예정금액 파트 */
+	.overview-container {
+		background: #F9FAFC;
+		padding: 20px 30px;
+		border-radius: 5px;
+		margin-bottom: 30px;
+	}
+	
+	.overview-container .title {
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+	
+	.overview-container .price {
+		text-align: center;
+		font-weight: 600;
+		padding: 30px;
+	}
+	
+	.overview-container .price a {
+		color: var(--bs-body-color);
+		font-size: 1.4rem;
+	}
+	
+	.overview-container .btn-box {
+		text-align: center;
+		padding: 30px;
+		display: flex;
+		justify-content: center;
+	}
+	
+	.overview-container .btn-box a {
+		padding: 10px 20px;
+		border-radius: 5px;
+		display: inline-block;
+		width: 170px;
+	}
+	
+	.overview-container .btn-box a:first-child {
+		background: #FFF; 
+		border: 1px solid black;
+		margin-right: 15px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	.overview-container .btn-box a:last-child {
+		background: #0d6efd;
+		color: #FFF;
+		border: 0;
+		display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	/* 결제내역 파트 */
+	.history-container {
+		background: #F9FAFC;
+		padding: 20px 30px;
+		border-radius: 5px;
+		margin-bottom: 30px;
+	}
+	
+	.history-container .title {
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+	
+	.history-container .history ul {
+		list-style: none;
+	}
+	
+</style>
 </head>
+
 <body>
-	<h1>Hi</h1>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/atlanbank/assets/img/card/credit-card-851502_1280.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>나의 카드</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="#">MyPage</a></li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- My Info Section -->
+		<!-- <section>
+			<div>
+				<div th:text="|${dto.name}님|"></div>
+				<div style="display: flex; flex-direction: column; background: #F9FAFC; border-radius: 5px; padding: 20px 30px;">
+					<div style="display: flex; justify-content: space-around;">
+						<div>명세서수령</div>
+						<div>스마트폰앱(카카오)</div>
+					</div>
+					<div style="display: flex; justify-content: space-around;">
+						<div>카드사용알림</div>
+						<div>PUSH(무료)</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</section> --> <!--End My Info Section -->
+		
+		<!-- Mypage Card Section -->
+		<section>
+			<!-- Quick Menu -->
+			<!-- <div style="display: flex;">
+				<div style="display: flex; flex-direction: column;">
+					<div>
+						<img alt="" src="">
+					</div>
+					<div>카드이용내역</div>
+				</div>
+				<div style="display: flex; flex-direction: column;">
+					<div>
+						<img alt="" src="">
+					</div>
+					<div>결제예정금액</div>
+				</div>
+				<div style="display: flex; flex-direction: column;">
+					<div>
+						<img alt="" src="">
+					</div>
+					<div>이용대금명세서</div>
+				</div>
+				<div style="display: flex; flex-direction: column;">
+					<div>
+						<img alt="" src="">
+					</div>
+					<div>즉시결제</div>
+				</div>
+				<div style="display: flex; flex-direction: column;">
+					<div>
+						<img alt="" src="">
+					</div>
+					<div>분실신고</div>
+				</div>
+				<div style="display: flex; flex-direction: column;">
+					<div>
+						<img alt="" src="">
+					</div>
+					<div>카드사용등록</div>
+				</div>
+			</div> -->
+			
+			<div th:text="|${dto.name}님|" style="font-size: 1.3rem; padding: 10px;"></div>
+			
+			<!-- 결제예정금액 -->
+			<div class="overview-container">
+				<div class="title">결제예정금액</div>
+				<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
+				<div class="btn-box">
+					<a href="">바로결제</a>
+					<a href="">일부결제금액<br>이월약정(리볼빙)</a>
+				</div>
+			</div>
+			
+			<!-- 결제내역 -->
+			<div class="history-container">
+				<div class="title">결제내역</div>
+				<div class="history">
+					<ul>
+						<li th:each="history : ${historyList}">
+							<span th:text="${#strings.substring(history.transactionDate, 0, 10)}">날짜</span>
+							<span>가맹점</span>
+							<span th:text="${history.amount}">이용금액</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		</section> <!-- End Mypage Card Section -->
+		
+		
+	</main>
+	<!-- End Main -->
+
+	<!-- Script -->
+	<script>
+		
+	</script>
+
+
 </body>
 </html>
