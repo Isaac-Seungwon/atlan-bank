@@ -160,7 +160,7 @@
 
 			<!-- 전체 이벤트 -->
 			<div layout:fragment="content" class="container my-3">
-				<form action="@{/joinaction.do}" method="post">
+				<form action="@{/joinaction.do}" method="post" autocomplete="off">
 					<div class="mb-3">
 						<label for="username" class="form-label">이름</label> <input
 							type="text" name="name" id="name" class="form-control">
@@ -188,7 +188,7 @@
 
 					<!-- 주소 -->
 					<button type="button" class="btn btn-primary"
-							onclick="execDaumPostcode()">우편번호 검색</button>
+							onclick="execDaumPostcode()">주소 검색</button>
 					<div class="address">
 						<label for="username" class="form-label">우편번호</label> <input
 							type="text" name="zipcode" id="zipcode" class="form-control">
@@ -204,7 +204,7 @@
 							type="text" name="address-detail" id="address-detail"
 							class="form-control">
 					</div>
-
+					<br>
 					<button type="submit" class="btn btn-primary">회원가입</button>
 				</form>
 			</div>
