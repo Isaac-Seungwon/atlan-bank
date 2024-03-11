@@ -4,6 +4,7 @@
 <div class="mt-30 all-amount">
 	<div style="position: relative;">
 		<h3>전체내역</h3>
+		<p>'전체금액' <span th:text="|${#numbers.formatInteger(totalAmount, 0, 'COMMA')}원|" style="font-weight: bold; color: #0d42ff;"></span>이 결제됩니다.</p>
 		<p class="unit">(단위: 원)</p>
 	</div>
 	<table>
@@ -31,10 +32,10 @@
 				<td th:text="|0|"></td>
 				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
 			</tr>
-			<tr>
+			<tr style="font-weight: 600; background: #F9FAFC;">
 				<td class="th">합계</td>
 				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
-				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}" id="totalAmount"></td>
 				<td th:text="|0|"></td>
 				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
 			</tr>

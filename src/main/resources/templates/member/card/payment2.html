@@ -124,15 +124,22 @@
 								</tr>
 							</tbody>
 						</table>
-					<div style="text-align: center; padding: 30px;">
-						<button type="button" class="authentication-btn" onclick="history.back();">이전</button>
-						<button type="button" class="authentication-btn" id="checkAuthentication">다음</button>
-					</div>
-					<!-- 진행과정 -->
-					<input type="hidden" name="flag" value="3">
-					
-					<!-- 토큰 -->
-					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+						<!-- 버튼 -->
+						<div style="text-align: center; padding: 30px;">
+							<button type="button" class="authentication-btn" onclick="prevStep()">이전</button>
+							<button type="button" id="nextStepBtn" class="authentication-btn"  onclick="nextStep()">다음</button>
+						</div>
+						<!-- 진행과정 -->
+						<input type="hidden" name="flag" value="3">
+						
+						<!-- 결제범위 -->
+						<input type="hidden" name="range" th:value="${range}">
+						
+						<!-- 결제방식 -->
+						<input type="hidden" name="method" th:value="${method}">
+						
+						<!-- 토큰 -->
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 					</div>
 				</form>
 			</div>
@@ -144,31 +151,31 @@
 				<h4 class="title">안내사항</h4>
 				<p style="padding-left: 2rem; padding-top: .7rem;">고객님께서 이용하신 내역에 대해서 결제일 이전에 원하는만큼 미리 결제할 수 있는 서비스 입니다.</p>
 				<h5 class="title2">이용가능 결제기관</h5>
-				<ul class="listStyle1">
+				<ul class="listStyle1 indent">
 					<li>KB국민은행, 우리은행, SC제일은행, 삼성증권, IBK기업은행, NH농협, 신한은행, 하나은행, 우체국, KDB산업은행, 한국씨티은행, DGB대구은행, BNK부산은행, 광주은행, 제주은행, 전북은행, BNK경남은행, MG새마을금고, 신협, 카카오뱅크, 케이뱅크, 토스뱅크, 유안타증권</li>
 					<li>이 외 결제기관의 경우 오픈뱅킹 서비스 등록 고객에 한하여 가능합니다.
-						<ul class="listStyle2">
+						<ul class="listStyle2 indent">
 							<li>오픈뱅킹 서비스 등록 [Atlan Pay > 뱅킹 > 오픈뱅킹 등록]</li>
 						</ul>
 					</li>
 				</ul>
 				<h5 class="title2">결제 가능 대상</h5>
-				<ul class="listStyle1">
+				<ul class="listStyle1 indent">
 					<li>카드별 결제금액, 이번 달 결제금액, 전체 결제금액, 이용 건별 결제금액(전체/일부), 이용 유형별(일시불/할부) 결제금액</li>
 					<li>1,000원 미만 바로출금결제는 1일 5회까지 할 수 있습니다.</li>
 					<li>취소전표가 포함된 경우 카드대금결제가 일부 제한될 수 있습니다.</li>
 					<li>영업일 야간(19:30 이후) 및 휴일은 이용건별 부분 결제가 제한 됩니다.</li>
 				</ul>
 				<h5 class="title2">이용가능 시간</h5>
-				<ul class="listStyle1">
+				<ul class="listStyle1 indent">
 					<li>바로출금 이용 가능시간
-						<ul class="listStyle2">
+						<ul class="listStyle2 indent">
 							<li>08:00 ~ 23:30 : 바로출금결제 가능(단, 영업일 18:30 ~ 19:30 불가)</li>
 							<li>00:00 ~ 07:59 : 바로출금결제 예약접수(08:00 이후 결제계좌 출금 처리)</li>
 						</ul>
 					</li>
 					<li>이중출금 가능시간
-						<ul class="listStyle2">
+						<ul class="listStyle2 indent">
 							<li>KB국민은행 : 17:30 이후</li>
 							<li>우리은행, SC 제일은행, 삼성증권 : 16:00 이후</li>
 							<li>IBK기업은행, NH농협, 신한은행, 하나은행, 우체국, KDB산업은행, 한국씨티은행, DGB대구은행, BNK부산은행, 광주은행, 제주은행, 전북은행, BNK경남은행, MG새마을금고, 신협, 카카오뱅크, 케이뱅크, 토스뱅크, 유안타증권 : 13:00 이후</li>
@@ -177,7 +184,7 @@
 						</ul>
 					</li>
 					<li>바로출금결제 예약
-						<ul class="listStyle2">
+						<ul class="listStyle2 indent">
 							<li>예약 접수 시간 : 매일 00:00 ~ 07:59</li>
 							<li>예약 완료건은 당일 08:00 이후 결제계좌에서 출금되며, 출금 후 회수 및 이용한도가 반영됩니다.</li>
 							<li>하루 한 건만 예약 가능하고, 예약 취소는 [My Atlan > 대금결제 > 결제내역 > 바로출금결제 예약내역]에서 가능합니다.</li>
@@ -188,7 +195,7 @@
 					<li>이용대금 결제처리 작업에 따라 바로출금 거래가 제한될 수 있습니다.</li>
 				</ul>
 				<h5 class="title2">결제 관련 안내</h5>
-				<ul class="listStyle1">
+				<ul class="listStyle1 indent">
 					<li>바로출금결제 시 오픈뱅킹 또는 펌뱅킹으로 출금하며 오픈뱅킹으로 출금 시 오픈뱅킹 출금한도가 차감됩니다. (전 금융기관 일 한도 1,000만원)</li>
 					<li>오픈뱅킹과 펌뱅킹은 아틀란카드와 금융기관 간 통신방식의 차이이며 요청하는 계좌에서 동일하게 출금됩니다.</li>
 					<li>오픈뱅킹 망을 이용한 바로출금결제를 원하지 않으시면, [Atlan Pay > 바로출금결제] 화면에서 "오픈뱅킹 바로출금결제 이용해지" 바랍니다.<br>
@@ -203,7 +210,7 @@
 					<li>일부결제금액이월약정(리볼빙) 최소결제금액 선결제 후, 잔여금액 재청구 결제일을 이번 달 또는 다음 달 결제일로 선택 할 수 있습니다.</li>
 					<li>연체중인 경우, 다른 결제단위의 결제계좌에서 교차하여 출금될 수 있습니다.<br>
 						예)체크카드 후불교통 금액이 연체된 경우, 신용카드를 선택하시면 신용카드 결제계좌에서 출금됩니다.
-						<ul class="listStyle2">
+						<ul class="listStyle2 indent">
 							<li style="margin-top: 3px !important; font-size: 12px;">월말 휴일 결제 시 다음 달 결제회수실적으로 처리되어, 월별 회수실적으로 서비스를 제공하는 카드를 이용하시는 경우, 해당 카드의 할인(적립) 서비스 한도 산정에 반영되지 않는 점을 유의하시기 바랍니다.<br>
 								예) 2020.2.29(토) 결제 시 결제회수실적은 다음 영업일인 2020.3.2(월) 기준으로 산정</li>
 						</ul>
@@ -221,25 +228,25 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 	<!-- Script -->
-	<script th:inline="javascript">
-	    /*<![CDATA[*/
-	    let value = /*[[${value}]]*/ null;
-	    /*]]>*/
-	</script>
-	
 	<script>
 		
+
 		//Enter key > submit block
 		
-	
 		
-		$('#checkAuthentication').click(function() {
+		//Previous Button
+		function prevStep() {
+			location.href='/atlanbank/member/card/payment.do';
+		}
+		
+		//Next Button
+		function nextStep() {
 
 			var csrfToken = $("meta[name='_csrf']").attr("content");
 			var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 			
 			let form = $('#auth-form');
-			
+
 			let obj = {
 				pw: $('input[name="pw"]').val(),
 				cardNo: $('select[name="cardNo"]').val().slice(-4)
@@ -271,7 +278,7 @@
 			    }
 				
 			});
-		});
+		}
 		
 		//toastr 설정
 		toastr.options = {

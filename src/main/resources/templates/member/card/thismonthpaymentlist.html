@@ -6,6 +6,7 @@
 		<h3>상세내역</h3>
 		<p class="unit">(단위: 원)</p>
 	</div>
+	<p>선택하신 <span id="chkNumSum" style="font-weight: bold; color: #0d42ff;"></span>건에 대한 결제 요청 금액은 <span id="chkAmountSum" style="font-weight: bold; color: #0d42ff;"></span> 입니다.</p>
 	<table>
 		<colgroup>
 			<col style="width: 6%;">
@@ -28,11 +29,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="list : ${thisMonthPaymentList}">
-				<td>
+			<tr th:each="list, status : ${thisMonthPaymentList}">
+				<td style="border-left: 0;">
 					<div class="chkbox-container">
-						<input type="checkbox" id="chkbox1">
-						<label for="chkbox1"></label>
+						<input type="checkbox" th:id="|chkbox${status.count}|" th:value="${list.memberCardHistorySeq}" th:data-amount="${list.amount}">
+						<label th:for="|chkbox${status.count}|"></label>
 					</div>
 				</td>
 				<td th:text="${list.transactionDate}"></td>
@@ -40,9 +41,15 @@
 				<td th:text="${list.name}"></td>
 				<td th:text="${list.installmentMonths}"></td>
 				<td th:text="${list.installmentMonths}"></td>
-				<td th:text="${list.amount}"></td>
+				<td th:text="${#numbers.formatInteger(list.amount, 0, 'COMMA')}" style="border-right: 0;"></td>
 			</tr>
 		</tbody>
 	</table>
 </div>
+<script>
+//개별결제시 체크박스 클릭할때마다 개수/금액 합치기
+$('.chkbox-container input[type="checkbox"]').click(function() {
+	sumChkbox();
+});
+</script>
 </html>

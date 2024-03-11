@@ -66,8 +66,8 @@ public class CardDAOImpl implements CardDAO {
 	}
 
 	@Override
-	public List<MemberCardHistoryDTO> getHistoryList(String memberSeq) {
-		return mapper.getHistoryList(memberSeq);
+	public List<MemberCardHistoryDTO> getFiveHistoryList(String memberSeq) {
+		return mapper.getFiveHistoryList(memberSeq);
 	}
 
 	@Override
@@ -88,6 +88,31 @@ public class CardDAOImpl implements CardDAO {
 	@Override
 	public List<MemberCardHistoryDTO> getAllThisMonthPaymentList(String seq) {
 		return mapper.getAllThisMonthPaymentList(seq);
+	}
+
+	@Override
+	public int getThisMonthTotalAmount(String seq) {
+		return mapper.getThisMonthTotalAmount(seq);
+	}
+
+	@Override
+	public String[] getThisMonthTotalSeq(String seq) {
+		return mapper.getThisMonthTotalSeq(seq);
+	}
+
+	@Override
+	public int getThisMonthSpecificTotalAmount(String memberCardHistorySeq) {
+		return mapper.getThisMonthSpecificTotalAmount(memberCardHistorySeq);
+	}
+
+	@Override
+	public MemberCardHistoryDTO getThisMonthSpecificAmountList(Map<String, String> map) {
+		return mapper.getThisMonthSpecificAmountList(map);
+	}
+
+	@Override
+	public int checkBalance(Map<String, String> map) {
+		return mapper.checkBalance(map);
 	}
 
 	

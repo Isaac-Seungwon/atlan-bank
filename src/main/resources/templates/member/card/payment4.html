@@ -126,11 +126,9 @@
 						</table>
 					<div style="text-align: center; padding: 30px;">
 						<button type="button" class="authentication-btn" onclick="history.back();">이전</button>
-						<button type="button" class="authentication-btn" id="checkAuthentication">다음</button>
+						<button type="button" class="authentication-btn" id="nextStepBtn">다음</button>
 					</div>
-					<!-- 진행과정 -->
-					<input type="hidden" name="flag" value="3">
-					
+
 					<!-- 토큰 -->
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 					</div>
@@ -144,7 +142,7 @@
 				<h4 class="title">안내사항</h4>
 				<p style="padding-left: 2rem; padding-top: .7rem;">고객님께서 이용하신 내역에 대해서 결제일 이전에 원하는만큼 미리 결제할 수 있는 서비스 입니다.</p>
 				<h5 class="title2">이용가능 결제기관</h5>
-				<ul class="listStyle1">
+				<ul class="listStyle1 indent">
 					<li>KB국민은행, 우리은행, SC제일은행, 삼성증권, IBK기업은행, NH농협, 신한은행, 하나은행, 우체국, KDB산업은행, 한국씨티은행, DGB대구은행, BNK부산은행, 광주은행, 제주은행, 전북은행, BNK경남은행, MG새마을금고, 신협, 카카오뱅크, 케이뱅크, 토스뱅크, 유안타증권</li>
 					<li>이 외 결제기관의 경우 오픈뱅킹 서비스 등록 고객에 한하여 가능합니다.
 						<ul class="listStyle2">

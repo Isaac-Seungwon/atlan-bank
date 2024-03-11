@@ -346,7 +346,7 @@
 							<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
 							<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
 						</span>
-						<span th:text="${fee.annualFee}"></span>
+						<span th:text="${#numbers.formatInteger(fee.annualFee, 0 'COMMA')}"></span>
 					</div>
 				</div>
 			
@@ -424,7 +424,7 @@
 							</tr>
 							<tr th:each="fee : ${card.feeList}">
 								<td th:text="${fee.brand}"></td>
-								<td th:text="${fee.annualFee}"></td>
+								<td th:text="${#numbers.formatInteger(fee.annualFee, 0 'COMMA')}"></td>
 							</tr>
 						</table>
 					</div>

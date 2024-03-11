@@ -1,5 +1,6 @@
 package com.test.bank.card.controller;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.test.bank.card.service.CardService;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @RestController
@@ -22,7 +25,7 @@ public class RestCardController {
 		
 		map.put("memberSeq", "2"); //시큐리티 구현되면 넣기
 		
-		System.out.println(map.toString());
+		//System.out.println(map.toString());
 		
 		//카드 비밀번호 앞 2자리(pw)
 		//유저번호(memberSeq)
@@ -30,7 +33,19 @@ public class RestCardController {
 		
 		int value = service.checkPassword(map);
 		
-		System.out.println("value: " + value);
+		//System.out.println("value: " + value);
+		
+		return value;
+	}
+	
+	@PostMapping(value = "/card/checkbalance")
+	public int checkBalance(@RequestBody Map<String, String> map, Authentication auth, HttpSession session) {
+		
+		map.put("memberSeq", "2"); //시큐리티 구현되면 넣기
+		
+		System.out.println(Arrays.toString((String[])session.getAttribute("memberCardHistorySeq")));
+		
+		int value = 0; //service.checkBalance(map);
 		
 		return value;
 	}
