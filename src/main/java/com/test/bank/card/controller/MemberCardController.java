@@ -1,6 +1,5 @@
 package com.test.bank.card.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +36,7 @@ public class MemberCardController {
 		
 		List<MemberCardHistoryDTO> list = service.getPrevMonthCardHistory(dto.getMemberSeq());
 		
-		String thisMonthAmount = service.getThisMonthAmount(dto.getMemberSeq());
+		int thisMonthAmount = service.getThisMonthAmount(dto.getMemberSeq());
 		
 		//2. 결제내역 가져오기(최근 결제내역 5개)
 		List<MemberCardHistoryDTO> historyList = service.getFiveHistoryList(dto.getMemberSeq());
@@ -63,7 +62,9 @@ public class MemberCardController {
 		//결제방식(method) > 1: 전체 금액 결제, 2: 이용건별 결제
 		//선택한 이용건 배열(memberCardHistorySeq)
 		
-		String seq = "2"; //auth에서 seq 가져오기
+		map.put("memberSeq", "2"); ////Security 구현되면 auth에서 seq 가져오기
+		
+		String seq = map.get("memberSeq");
 		String flag =  map.get("flag");
 		String method = map.get("method");
 		
@@ -99,7 +100,18 @@ public class MemberCardController {
 			
 		} else if (flag.equals("4")) {
 			//4. 완료
+			service.AddPayment(map, session);
 			session.removeAttribute("memberCardHistorySeq");
+
+			//출금계좌, 결제금액, 계좌 잔액
+			String account = service.getAccountNumber(map);
+			int totalAmount = Integer.parseInt(map.get("totalAmount"));
+			int balance = service.checkBalance(map);
+			
+			model.addAttribute("account", account);
+			model.addAttribute("totalAmount", totalAmount);
+			model.addAttribute("balance", balance);
+			
 			return "member/card/payment4";
 		}
 		

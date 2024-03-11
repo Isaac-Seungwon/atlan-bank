@@ -12,6 +12,7 @@ public class MemberCardDTO {
 	private String exp;
 	private String cvc;
 	private String cardPaymentDate;
+	private String bankBookSeq;
 	private String status;
 	
 	//CardDTO

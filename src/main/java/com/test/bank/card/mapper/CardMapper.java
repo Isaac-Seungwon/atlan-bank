@@ -32,8 +32,6 @@ public interface CardMapper {
 
 	List<MemberCardHistoryDTO> getFiveHistoryList(String memberSeq);
 
-	List<MemberCardHistoryDTO> checkAmount(Map<String, Integer> map);
-
 	int checkPassword(Map<String, String> map);
 
 	List<MemberCardDTO> getMemberCardList(String seq);
@@ -49,5 +47,13 @@ public interface CardMapper {
 	MemberCardHistoryDTO getThisMonthSpecificAmountList(Map<String, String> map);
 
 	int checkBalance(Map<String, String> map);
+
+	String getAmount(String memberCardHistorySeq);
+
+	int AddPayment(Map<String, String> map);
+
+	int withdraw(Map<String, String> map);
+
+	String getAccountNumber(Map<String, String> map);
 
 }

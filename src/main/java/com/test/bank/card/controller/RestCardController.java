@@ -39,14 +39,22 @@ public class RestCardController {
 	}
 	
 	@PostMapping(value = "/card/checkbalance")
-	public int checkBalance(@RequestBody Map<String, String> map, Authentication auth, HttpSession session) {
+	public int checkBalance(@RequestBody Map<String, String> map, Authentication auth) {
 		
 		map.put("memberSeq", "2"); //시큐리티 구현되면 넣기
+		int totalAmount = Integer.parseInt(map.get("amount"));
 		
-		System.out.println(Arrays.toString((String[])session.getAttribute("memberCardHistorySeq")));
+		System.out.println("amount 안나와요?: " + map.get("amount"));
 		
-		int value = 0; //service.checkBalance(map);
+		int value = service.checkBalance(map);
 		
-		return value;
+		System.out.println("amount(결제할 총 금액): " + map.get("amount"));
+		System.out.println("value(통장 잔액): " + value);
+		
+		if (totalAmount <= value) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 }

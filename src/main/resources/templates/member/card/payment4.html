@@ -71,10 +71,10 @@
 					</div>
 				</div>
 				 
-				<!-- 인증정보입력 -->
+				<!-- 결제완료 -->
 				<form method="POST" action="/atlanbank/member/card/payment.do" id="auth-form">
 					<div class="mt-30 authentication">
-						<h3>인증정보입력</h3>
+						<h3>출금내역</h3>
 						<table>
 							<colgroup>
 								<col style="width: 20%;">
@@ -82,51 +82,21 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th>인증방법</th>
-									<td>
-										<div>
-											<div class="radio-box">
-												<input type="radio" id="phone" name="authmethod" onclick="return false;">
-												<label for="phone">휴대폰</label>
-											</div>
-											<div class="radio-box">
-												<input type="radio" id="commonauth" name="authmethod" onclick="return false;">
-												<label for="commonauth">공동인증서(구 공인인증서)</label>
-											</div>
-											<div class="radio-box">
-												<input type="radio" id="card" name="authmethod" value="1" checked>
-												<label for="card">카드</label>
-											</div>
-										</div>
-									</td>
+									<td class="th" style="border-left: 0;">출금계좌</td>
+									<td th:text="${account}"></td>
 								</tr>
 								<tr>
-									<th>카드번호</th>
-									<td>
-										<div>
-											<select name="cardNo">
-												<option th:each="clist : ${clist}" th:value="${clist.cardNo}" th:text="|${clist.cardNo} : ${clist.name}|"></option>
-											</select>
-										</div>
-									</td>
+									<td class="th" style="border-left: 0;">결제금액</td>
+									<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
 								</tr>
 								<tr>
-									<th>카드비밀번호</th>
-									<td>
-										<div style="display: flex; align-items: center;">
-											<input type="password" name="pw" maxlength="2" style="width: 2rem;">
-											<span style="font-size: 1.5rem; padding: 0 5px;">**</span>
-											<ul class="listStyle2" style="display: inline-block; margin-bottom: 0; color: #777;">
-												<li>앞 2자리</li>
-											</ul>
-										</div>
-									</td>
+									<td class="th" style="border-left: 0;">계좌 잔액</td>
+									<td th:text="${#numbers.formatInteger(balance, 0, 'COMMA')}"></td>
 								</tr>
 							</tbody>
 						</table>
 					<div style="text-align: center; padding: 30px;">
-						<button type="button" class="authentication-btn" onclick="history.back();">이전</button>
-						<button type="button" class="authentication-btn" id="nextStepBtn">다음</button>
+						<button type="button" class="authentication-btn" id="nextStepBtn" onclick="location.href='/atlanbank/member/card/view.do';">완료</button>
 					</div>
 
 					<!-- 토큰 -->

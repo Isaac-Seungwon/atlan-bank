@@ -91,6 +91,9 @@
 					<!-- 결제방식 -->
 					<input type="hidden" name="method" th:value="${method}">
 					
+					<!-- 결제금액 -->
+					<input type="hidden" name="totalAmount">
+					
 					<!-- 토큰 -->
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 				</form>
@@ -168,7 +171,7 @@
 			let form = $('#auth-form');
 			
 			let obj = {
-				amount: $('input#totalAmount').val(),
+				amount: $('input[name="totalAmount"]').val(),
 			};
 			
 			$.ajax({
@@ -184,7 +187,7 @@
 			    	
 			    	if (result > 0) {
 			    		//pass
-			    		$('input[name="flag"]').val("3");
+			    		$('input[name="flag"]').val("4");
 			    		form.submit();
 			    	} else {
 			    		//fail

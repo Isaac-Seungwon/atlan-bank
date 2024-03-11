@@ -35,11 +35,14 @@
 			<tr style="font-weight: 600; background: #F9FAFC;">
 				<td class="th">합계</td>
 				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
-				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}" id="totalAmount"></td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}" id="totalAmount" th:data-value="${totalAmount}"></td>
 				<td th:text="|0|"></td>
 				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
 			</tr>
 		</tbody>
 	</table>
 </div>
+<script>
+	$('input[name="totalAmount"]').val($('#totalAmount').data('value'));
+</script>
 </html>

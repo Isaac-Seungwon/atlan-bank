@@ -71,11 +71,6 @@ public class CardDAOImpl implements CardDAO {
 	}
 
 	@Override
-	public List<MemberCardHistoryDTO> checkAmount(Map<String, Integer> map) {
-		return mapper.checkAmount(map);
-	}
-
-	@Override
 	public int checkPassword(Map<String, String> map) {
 		return mapper.checkPassword(map);
 	}
@@ -113,6 +108,26 @@ public class CardDAOImpl implements CardDAO {
 	@Override
 	public int checkBalance(Map<String, String> map) {
 		return mapper.checkBalance(map);
+	}
+
+	@Override
+	public String getAmount(String memberCardHistorySeq) {
+		return mapper.getAmount(memberCardHistorySeq);
+	}
+
+	@Override
+	public int AddPayment(Map<String, String> map) {
+		return mapper.AddPayment(map);
+	}
+
+	@Override
+	public int withdraw(Map<String, String> map) {
+		return mapper.withdraw(map);
+	}
+
+	@Override
+	public String getAccountNumber(Map<String, String> map) {
+		return mapper.getAccountNumber(map);
 	}
 
 	

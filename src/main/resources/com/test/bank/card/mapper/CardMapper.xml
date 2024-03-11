@@ -84,10 +84,6 @@
 		where rownum &lt;= 5
 	</select>
 	
-	<select id="checkAmount" parameterType="map" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
-		select * from tblMemberCardHistory
-	</select>
-	
 	<select id="checkPassword" parameterType="map" resultType="int">
 		SELECT
 		    count(*)
@@ -127,8 +123,9 @@
 		inner join tblmembercard b
 		on b.member_card_seq = a.member_card_seq
 		where to_char(transaction_date, 'yyyymm') = to_char(add_months(sysdate, -1), 'yyyymm') and
-			  b.member_seq = #{seq}
-		order by transaction_date asc
+			  b.member_seq = #{seq} and
+			  a.member_card_history_seq not in (select member_card_history_seq from tblPayment where member_card_history_seq = a.member_card_history_seq)
+		order by a.transaction_date asc
 	</select>
 	
 	<select id="getThisMonthTotalAmount" parameterType="String" resultType="int">
@@ -139,7 +136,8 @@
 		    ON b.member_card_seq = a.member_card_seq
 		 WHERE 1=1 and
 		       to_char(transaction_date, 'yyyymm') = to_char(add_months(sysdate, -1), 'yyyymm') and
-		       b.member_seq = #{seq}
+		       b.member_seq = #{seq} and
+		       a.member_card_history_seq not in (select member_card_history_seq from tblPayment where member_card_history_seq = a.member_card_history_seq)
 	</select>
 	
 	<select id="getThisMonthTotalSeq" parameterType="String" resultType="String">
@@ -150,7 +148,8 @@
 		    ON b.member_card_seq = a.member_card_seq
 		 WHERE 1=1 and
 		       to_char(transaction_date, 'yyyymm') = to_char(add_months(sysdate, -1), 'yyyymm') and
-		       b.member_seq = #{seq}	
+		       b.member_seq = #{seq} and
+		       a.member_card_history_seq not in (select member_card_history_seq from tblPayment where member_card_history_seq = a.member_card_history_seq)
 	</select>
 	
 	<select id="getThisMonthSpecificTotalAmount" parameterType="String" resultType="int">
@@ -175,5 +174,42 @@
 		on b.member_card_seq = a.member_card_seq
 		where a.member_card_history_seq = #{memberCardHistorySeq}
 	</select>
+	
+	<select id="checkBalance" parameterType="map" resultType="int">
+		select
+		    balance
+		  from tblBankBook
+		 where bank_book_seq = (
+		     select distinct bank_book_seq
+		       from tblMemberCard
+		      where member_seq = #{memberSeq})		
+	</select>
+	
+	<select id="getAmount" parameterType="String" resultType="String">
+		select amount from tblMemberCardHistory where member_card_history_seq = #{seq}
+	</select>
+	
+	<insert id="AddPayment" parameterType="map">
+		insert into tblPayment (payment_seq, member_card_history_seq, payment_date, amount) values (payment_seq.nextVal, #{memberCardHistorySeq}, TO_DATE(sysdate, 'YYYY-MM-DD HH24:MI'), #{amount})
+	</insert>
+	
+	<update id="withdraw" parameterType="map">
+		update tblBankBook set balance = balance - #{amount}
+			where bank_book_seq = (
+		     select distinct bank_book_seq
+		       from tblMemberCard
+		      where member_seq = #{memberSeq})
+	</update>
+	
+	<select id="getAccountNumber" parameterType="map" resultType="String">
+		select
+		    account_number
+		  from tblBankBook
+		 where bank_book_seq = (
+		     select distinct bank_book_seq
+		       from tblMemberCard
+		      where member_seq = #{memberSeq})
+	</select>
+	
 	
 </mapper>

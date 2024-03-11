@@ -220,7 +220,7 @@
 				<!-- 결제예정금액 -->
 				<div class="overview-container">
 					<div class="title">결제예정금액</div>
-					<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
+					<div class="price"><a href=""  th:text="|${#numbers.formatInteger(thisMonthAmount, 0, 'COMMA')}원|"></a></div>
 					<div class="btn-box">
 						<a href="/atlanbank/member/card/payment.do">바로결제</a>
 						<a href="javascript:void(0);" onclick="applyRevolving()">일부결제금액<br>이월약정(리볼빙)</a>

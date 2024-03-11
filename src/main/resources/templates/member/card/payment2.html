@@ -232,7 +232,12 @@
 		
 
 		//Enter key > submit block
-		
+		$(document).keydown(function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				nextStep();
+			}
+		});
 		
 		//Previous Button
 		function prevStep() {

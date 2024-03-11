@@ -139,27 +139,13 @@ public class CardService {
 		return dao.getPrevMonthCardHistory(memberSeq);
 	}
 
-	public String getThisMonthAmount(String memberSeq) {
+	public int getThisMonthAmount(String memberSeq) {
 
-		List<MemberCardHistoryDTO> list = dao.getPrevMonthCardHistory(memberSeq);
-		
-		int sum = 0;
-		
-		for (MemberCardHistoryDTO dto : list) {
-			sum += Integer.parseInt(dto.getAmount()); 
-		}
-		
-		String newSum = String.format("%,d", sum);
-		
-		return newSum;
+		return dao.getThisMonthTotalAmount(memberSeq);
 	}
 
 	public List<MemberCardHistoryDTO> getFiveHistoryList(String memberSeq) {
 	    return dao.getFiveHistoryList(memberSeq);
-	}
-
-	public List<MemberCardHistoryDTO> checkAmount(Map<String, Integer> map) {
-		return dao.checkAmount(map);
 	}
 
 	public int checkPassword(Map<String, String> map) {
@@ -217,6 +203,35 @@ public class CardService {
 
 	public int checkBalance(Map<String, String> map) {
 		return dao.checkBalance(map);
+	}
+
+	public void AddPayment(Map<String, String> map, HttpSession session) {
+		
+		String[] seqArr = (String[]) session.getAttribute("memberCardHistorySeq");
+		
+		int result = 0;
+		
+		for (int i=0; i<seqArr.length; i++) {
+			
+			String amount = dao.getAmount(seqArr[i]);
+			
+			System.out.println("amount: "+ amount);
+			
+			map.put("amount", amount);
+			map.put("memberCardHistorySeq", seqArr[i]);
+			
+			System.out.println("amount: " + map.get("amount"));
+			System.out.println("memberCardHistorySeq: " + map.get("memberCardHistorySeq"));
+			
+			result += dao.AddPayment(map);
+			
+			System.out.println("여기?");
+			result += dao.withdraw(map);
+		}
+	}
+
+	public String getAccountNumber(Map<String, String> map) {
+		return dao.getAccountNumber(map);
 	}
 
 	

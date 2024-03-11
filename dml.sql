@@ -2225,6 +2225,25 @@ VALUES (seqLoanStatus.nextVal, 3000000, to_date('2024-01-24', 'YYYY-MM-DD HH24:M
 INSERT INTO TBLLOANSTATUS (LOANSTATUS_SEQ, MONEY, START_DATE, END_DATE, LOAN_INTERESTRATE, TYPE, INTERESTRATE, MAX_MONEY, MEMBER_SEQ, LOAN_SEQ) 
 VALUES (seqLoanStatus.nextVal, 40000000, to_date('2024-01-24', 'YYYY-MM-DD HH24:MI:SS'), to_date('2029-01-24', 'YYYY-MM-DD HH24:MI:SS'), 5.72, '원금균등상환', '금융채6개월', 40000000, 3, 15);
 
+------------------------------------------- 카드 대금결제용 예금 테스트 데이터 --------------------------------------------------------------------
+/* 예금 */
+-- tblBankBookProduct 
+insert into tblBankBookProduct 
+      values (bank_book_product_seq.nextVal, 'Atlan 예금', 'Atlan 대표 예금', 1, 'Atlan 대표 정기예금으로, 자동 만기관리부터 분할인출까지 가능한 편리한 온라인 전용 정기예금입니다', '개인 및 사업자', '1개월 이상 36개월 이하', '1000000');
+insert into tblBankBookProduct 
+      values (bank_book_product_seq.nextVal, 'UP정기 예금', '목돈 굴리는 예금', 1, '1개월 단위로 이율이 상승하는 계단식 금리구조 및 일부인출 서비스를 통해 거래편의성을 높이고 Atlan은행 및 Atlan카드 상품 거래시 우대이율을 제공하는 월복리 정기예금', '제한없음', '12개월', '3000000');
+insert into tblBankBookProduct 
+      values (bank_book_product_seq.nextVal, '드림 예금', '미래를 달리는 예금', 1, '계약기간 및 가입금액이 자유롭고 자동재예치를 통해 자금관리가 가능한 Atlan 전용 정기예금', '제한없음', '1개월 이상 36개월 이하', '1000000');
+insert into tblBankBookProduct 
+      values (bank_book_product_seq.nextVal, '입출금통장', '입출금통장테스트', 99, '카드대금결제용 입출금통장 테스트 데이터입니다.', '제한없음', '1개월 이상 36개월 이하', 0);
+
+-- tblBankBook
+insert into tblBankBook
+    values (bank_book_seq.nextVal, 4, 12345678765432, to_date('2024-03-11', 'yyyy-mm-dd'), to_date('2099-03-11', 'yyyy-mm-dd'), 5000000, 2);
+
+
+
+
 --========================================================================= Card =========================================================================--
 -- tblCard
 INSERT INTO tblCard (card_seq, type, category, name, info, img, orientation) VALUES (card_seq.nextVal, 1, '적립/할인', 'WE:SH All 카드', 'Simple Life를 위한 모두의 카드', '(신용)위시올카드.png', 1);
@@ -3165,11 +3184,11 @@ INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (car
 INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1OS10A');
 INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 14, 'C1OS10A');
 
--- tblMemberCard
-INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 1, 5678491679463164, 68, TO_DATE('2028-01-31', 'yyyy-mm-dd'), 267, 1111, 14, 'y');
-INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 2, 6985236482456362, 69, TO_DATE('2030-06-30', 'yyyy-mm-dd'), 235, 1111, 10, 'y');
-INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 2, 6287775896541555, 1, TO_DATE('2032-01-31', 'yyyy-mm-dd'), 635, 1111, 10, 'y');
-INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, status) VALUES (member_card_seq.nextVal, 3, 3124574225399547, 67, TO_DATE('2031-12-31', 'yyyy-mm-dd'), 769, 1111, 7, 'y');
+-- tblMemberCard --추후 tblBankBookProduct 생기고 나서 tblBankBook DML 추가 후 bank_book_seq 수정 필요 -> 지금은 임시로 1번 통일
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, bank_book_seq, status) VALUES (member_card_seq.nextVal, 1, 5678491679463164, 68, TO_DATE('2028-01-31', 'yyyy-mm-dd'), 267, 1111, 14, 1, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, bank_book_seq, status) VALUES (member_card_seq.nextVal, 2, 6985236482456362, 69, TO_DATE('2030-06-30', 'yyyy-mm-dd'), 235, 1111, 10, 1, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, bank_book_seq, status) VALUES (member_card_seq.nextVal, 2, 6287775896541555, 1, TO_DATE('2032-01-31', 'yyyy-mm-dd'), 635, 1111, 10, 1, 'y');
+INSERT INTO tblMemberCard (member_card_seq, member_seq, card_no, card_seq, exp, cvc, password, card_payment_date, bank_book_seq, status) VALUES (member_card_seq.nextVal, 3, 3124574225399547, 67, TO_DATE('2031-12-31', 'yyyy-mm-dd'), 769, 1111, 7, 1, 'y');
 
 -- tblMemberCardHistory
 INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, transaction_date, name, amount, installment_months) VALUES (member_card_history_seq.nextVal, 1, TO_DATE('2024-01-02 09:00', 'YYYY-MM-DD HH24:MI'), '후원금', 3000, 1);
@@ -3204,6 +3223,9 @@ INSERT INTO tblMemberCardHistory (member_card_history_seq, member_card_seq, tran
 
 -- tblPayment
 --INSERT INTO tblPayment (payment_seq, member_card_history_seq, payment_date, amount) VALUES (payment_seq.nextVal, , TO_DATE('', 'yyyy-mm-dd'), );
+
+
+
 
 
 commit;
