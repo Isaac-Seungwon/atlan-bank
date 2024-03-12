@@ -75,7 +75,8 @@
 			    to_char(a.transaction_date, 'YYYY-MM-DD HH24:MI') as transaction_date,
 			    a.name,
 			    a.amount,
-			    a.installment_months
+			    a.installment_months,
+			    (select name from tblCard where card_seq = b.card_seq) as card_name
 			  from tblMemberCardHistory a
 			 inner join tblMemberCard b
 			    on b.member_card_seq = a.member_card_seq
@@ -211,5 +212,22 @@
 		      where member_seq = #{memberSeq})
 	</select>
 	
+	<select id="getAllPaymentList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select
+		    a.member_card_history_seq,
+		    b.member_seq,
+		    b.member_card_seq,
+		    b.card_seq,
+		    (select name from tblCard where card_seq = b.card_seq) as card_name,
+		    to_char(a.transaction_date, 'YYYY-MM-DD HH24:MI') as transaction_date,
+		    a.name,
+		    a.amount,
+		    a.installment_months
+		from tblMemberCardHistory a 
+		inner join tblmembercard b
+		on b.member_card_seq = a.member_card_seq
+		where b.member_seq = #{seq}
+		order by a.transaction_date desc
+	</select>
 	
 </mapper>

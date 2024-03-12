@@ -130,5 +130,10 @@ public class CardDAOImpl implements CardDAO {
 		return mapper.getAccountNumber(map);
 	}
 
+	@Override
+	public List<MemberCardHistoryDTO> getAllPaymentList(String seq) {
+		return mapper.getAllPaymentList(seq);
+	}
+
 	
 }

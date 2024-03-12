@@ -118,4 +118,16 @@ public class MemberCardController {
 		return "member/card/view";
 	}
 	
+	@GetMapping(value = "/history.do")
+	public String history(Model model, Authentication auth) {
+		
+		String seq = "2"; //나중에 시큐리티 구현되면 seq에 대입하기
+		
+		List<MemberCardHistoryDTO> list = service.getAllPaymentList(seq);
+		
+		model.addAttribute("list", list);
+		
+		return "member/card/history";
+	}
+	
 }

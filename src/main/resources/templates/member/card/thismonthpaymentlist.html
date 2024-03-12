@@ -36,12 +36,12 @@
 						<label th:for="|chkbox${status.count}|"></label>
 					</div>
 				</td>
-				<td th:text="${list.transactionDate}"></td>
-				<td th:text="${list.cardName}"></td>
-				<td th:text="${list.name}"></td>
-				<td th:text="${list.installmentMonths}"></td>
-				<td th:text="${list.installmentMonths}"></td>
-				<td th:text="${#numbers.formatInteger(list.amount, 0, 'COMMA')}" style="border-right: 0;"></td>
+				<td th:text="${list.transactionDate}" style="text-align: center;"></td>
+				<td th:text="${list.cardName}" style="text-align: center;"></td>
+				<td th:text="${list.name}" style="text-align: center;"></td>
+				<td th:text="${list.installmentMonths} == 1 ? '일시불'" style="text-align: center;"></td>
+				<td th:text="${list.installmentMonths} == 1 ? '1/1'" style="text-align: center;"></td>
+				<td th:text="${#numbers.formatInteger(list.amount, 0, 'COMMA')}" style="border-right: 0; text-align: right;"></td>
 			</tr>
 		</tbody>
 	</table>

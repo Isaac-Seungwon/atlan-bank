@@ -56,4 +56,6 @@ public interface CardDAO {
 
 	String getAccountNumber(Map<String, String> map);
 
+	List<MemberCardHistoryDTO> getAllPaymentList(String seq);
+
 }

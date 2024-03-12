@@ -234,5 +234,9 @@ public class CardService {
 		return dao.getAccountNumber(map);
 	}
 
+	public List<MemberCardHistoryDTO> getAllPaymentList(String seq) {
+		return dao.getAllPaymentList(seq);
+	}
+
 	
 }
