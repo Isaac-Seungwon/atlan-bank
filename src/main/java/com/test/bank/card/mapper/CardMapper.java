@@ -58,4 +58,6 @@ public interface CardMapper {
 
 	List<MemberCardHistoryDTO> getAllPaymentList(String seq);
 
+	List<Map<String, Object>> autocomplete(Map<String, Object> paraMap);
+
 }

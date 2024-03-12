@@ -135,5 +135,10 @@ public class CardDAOImpl implements CardDAO {
 		return mapper.getAllPaymentList(seq);
 	}
 
+	@Override
+	public List<Map<String, Object>> autocomplete(Map<String, Object> paraMap) {
+		return mapper.autocomplete(paraMap);
+	}
+
 	
 }

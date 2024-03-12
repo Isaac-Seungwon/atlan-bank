@@ -238,5 +238,9 @@ public class CardService {
 		return dao.getAllPaymentList(seq);
 	}
 
+	public List<Map<String, Object>> autocomplete(Map<String, Object> paraMap) {
+		return dao.autocomplete(paraMap);
+	}
+
 	
 }

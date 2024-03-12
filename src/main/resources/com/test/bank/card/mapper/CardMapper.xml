@@ -230,4 +230,11 @@
 		order by a.transaction_date desc
 	</select>
 	
+	<select id="autocomplete" parameterType="map" resultType="map">
+		SELECT
+			name
+		  FROM tblCard
+		 WHERE name like '%' || #{value} || '%'
+	</select>
+	
 </mapper>

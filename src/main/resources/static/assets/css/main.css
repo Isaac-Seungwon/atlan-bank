@@ -2100,8 +2100,6 @@ table tbody td.th {
 	display: flex;
 	justify-content: space-around;
 	padding: 30px 10px;
-	/* border: 1px solid #e1e1e1; */
-	/* border-radius: 12px; */
 }
 
 .quickmenu-box > div {
