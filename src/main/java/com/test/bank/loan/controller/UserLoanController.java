@@ -139,13 +139,18 @@ public class UserLoanController {
 
 		MemberDTO memberdto = service.getmember(userseq);
 		List<LoanStatusDTO> loanstatuslist = service.getmemberloanstatus(memberdto.getMemberSeq());
-		
-		for (LoanStatusDTO loanstatusdto : loanstatuslist) {
-			loanstatusdto.setMoney(decFormat.format(Integer.parseInt(loanstatusdto.getMoney())));
-			loanstatusdto.setMaxMoney(decFormat.format(Integer.parseInt(loanstatusdto.getMaxMoney())));			
-		}
 		model.addAttribute("memberdto", memberdto);
-		model.addAttribute("loanstatuslist", loanstatuslist);
+		
+		if (loanstatuslist.isEmpty()) {
+		    model.addAttribute("loanstatuslist", "nothing");
+		} else {
+		    for (LoanStatusDTO loanstatusdto : loanstatuslist) {
+		    	loanstatusdto.setMoney(decFormat.format(Integer.parseInt(loanstatusdto.getMoney())));
+		    	loanstatusdto.setMaxMoney(decFormat.format(Integer.parseInt(loanstatusdto.getMaxMoney())));			
+		    }
+		    model.addAttribute("loanstatuslist", loanstatuslist);
+		}
+		
 
 		return "user/loan/myloan";
 	}
@@ -155,7 +160,11 @@ public class UserLoanController {
 		
 		List<AccountTransferDTO> dto = service.getaccounttransfer(userseq);
 		
-		model.addAttribute("accounttransferdto", dto);
+		if (dto.isEmpty()) {
+		    model.addAttribute("accounttransferdto", "nothing");
+		} else {
+		    model.addAttribute("accounttransferdto", dto);
+		}
 		
 		return "user/loan/accountTransfer";
 	}

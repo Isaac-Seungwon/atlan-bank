@@ -255,9 +255,12 @@
         <div class="section-header">
           <h2>계좌이체</h2>
         </div>
-		<form action="/atlanbank/accountTransferComplete.do" method="get" class="php-email-form" style="margin-bottom: 50px;">
+		<div class="php-email-form" style="margin-bottom: 50px;" th:if="${accounttransferdto} == 'nothing'">
+			<h2 style="margin: 0;">고객님의 계좌가 존재하지 않습니다.</h2>
+		</div>
+		<form action="/atlanbank/accountTransferComplete.do" method="get" class="php-email-form" style="margin-bottom: 50px;" th:if="${accounttransferdto} != 'nothing'">
 		<h3>계좌 선택</h3>
-        <div class="card-container">
+        <div class="card-container" >
 			<div class="card-row slider">
 				<div class="card-box slide" th:each="accounttransferdto, account:${accounttransferdto}" th:id="'account'+${account.index}" th:value="${accounttransferdto.bankBookSeq}">
 					<!-- front -->
@@ -472,6 +475,10 @@ function inputNumberFormat(obj) {
     if (parseInt(obj.value) > parseInt(balance)) {
     	obj.value = balance;
     	alert("잔액을 초과한 금액은 입력할 수 없습니다.");
+    } 
+    if (parseInt(obj.value) == 0) {
+    	obj.value = '';
+    	alert("0원은 입력할 수 없습니다.");
     } 
     obj.value = comma(obj.value);
 }
