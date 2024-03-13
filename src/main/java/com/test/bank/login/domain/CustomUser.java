@@ -15,18 +15,19 @@ import lombok.Getter;
 public class CustomUser extends User {
 	
 	private MemberDTO dto;
+	private String name;
 
-	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities, String name) {
 		super(username, password, authorities);
+		this.name = name;
 	}
 	
 	public CustomUser(MemberDTO dto) {
 		super(dto.getId(), dto.getPw(), Collections.emptyList());
-		
+		this.name = dto.getName();
 		System.out.println(Collections.singletonList(new SimpleGrantedAuthority(dto.getId())));
 		
 		this.dto = dto;
-		
 	}
 	
 }

@@ -3,6 +3,8 @@ package com.test.bank;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,8 @@ import com.test.bank.news.service.NewsService;
 import com.test.bank.ticket.domain.FavoriteBankDTO;
 import com.test.bank.ticket.service.TicketService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -27,6 +31,9 @@ public class MainController {
 	
 	@Autowired
 	private TicketService ticketService;
+	
+	@Autowired
+	private HttpSession session;
 
 	@GetMapping(value = "/index.do")
 	public String index(Model model, HttpSession session) {
@@ -49,6 +56,18 @@ public class MainController {
 //		System.out.println("Maincontroller favoriteBanks: " + favoriteBanks.toString());
 
 		return "user/index";
+	}
+	
+	@GetMapping(value = "/logout") 
+	public String logout(HttpServletRequest request, HttpServletResponse response){
+		// Security 로그아웃 실행
+        SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+        logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+
+        // 세션 무효화
+        session.invalidate();
+
+        return "redirect:/index.do"; // 로그아웃 후 홈페이지로 리다이렉트
 	}
 
 	@GetMapping(value = "/about.do")

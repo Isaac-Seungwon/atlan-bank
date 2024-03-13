@@ -43,7 +43,7 @@ public class SecurityConfig {
 				 * true))
 				 */
 				.formLogin((formLogin) -> formLogin.loginPage("/user/login").defaultSuccessUrl("/index.do"))
-				.logout((logoutConfig) -> logoutConfig.logoutSuccessUrl("/index.do"));
+				.logout((logoutConfig) -> logoutConfig.logoutUrl("/logout").logoutSuccessUrl("/index.do").invalidateHttpSession(true).deleteCookies("JSESSIONID"));
 
 		return http.build();
 	}
