@@ -5,18 +5,11 @@
 <head>
 <title>카드</title>
 
-<style>
-	/* Font */
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-	
-	body {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		font-family: "Nanum Gothic", sans-serif;
-	}
+<!-- jQuery UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<style>
 	/* section empty space */
 	section {
 		margin: 20px 135px;
@@ -364,7 +357,7 @@
 				
 				<form id="form-search" method="GET" action="/atlanbank/user/card/search.do">
 					<div>
-						<input type="text" id="search-box" name="word" placeholder="카드명 또는 혜택을 입력하세요." th:value="${word}">
+						<input type="text" id="search-box" name="word" placeholder="카드명을 입력하세요." th:value="${word}">
 						<i class="bi bi-search" onclick="submit();"></i>
 					</div>
 				</form>
@@ -419,12 +412,12 @@
 										<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
 										<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
 									</span>
-									<span th:text="${fee.annualFee} == 0 ? '연회비 없음' : ${fee.annualFee}"></span>
+									<span th:text="${fee.annualFee} == 0 ? '연회비 없음' : ${#numbers.formatInteger(fee.annualFee, 0, 'COMMA')}"></span>
 								</div>
 							</div>
 							<div class="button-container">
 								<button type="button" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">상세보기</button>
-								<button type="button" th:onclick="">카드신청</button>
+								<button type="button" th:onclick="|alert('신청 완료!');|">카드신청</button>
 							</div>
 						</div>
 					</div>
@@ -461,6 +454,19 @@
 	<!-- Script -->
 	<script>
 	
+		$(document).ready(function() {
+			let cardNameArr = ['WE:SH All 카드', 'My WE:SH 카드', 'Our WE:SH 카드', 'American Express Blue Card', 'American Express Rose Gold Card', 'TMAP 아틀란카드', 'toss 아틀란카드', '갤러리아 아틀란카드', 'LFmall 신용카드', 'Easy on 카드', '마이핏카드(적립형)', '마이핏카드(할인형)', '톡톡 with카드', '가온글로벌', 'Wavve 카드', '레고랜드카드', '레고랜드매니아카드', '스카이패스 티타늄 카드', '아시아나 올림카드', '하나투어 아틀란카드', '모두투어 투어마일리지 아틀란카드', '제주항공 Refresh Point 아틀란카드', 'Easy fly 티타늄카드', 'FINTECH카드(대한항공)', 'The CJ 아틀란카드', '탄탄대로 웰컴카드', '위메프페이 신용카드', '롯데마트 아틀란카드', 'CHALLENGE BAG 아틀란카드', 'H.Point 아틀란카드', 'AK 아틀란카드', 'GS SHOP 아틀란카드', 'Easy auto 티타늄카드', '탄탄대로 온리유 티타늄카드', 'E1 LPG 아틀란카드', 'SK에너지 러브유 아틀란카드', 'LGU+ 심플라이트카드', '토스모바일 아틀란카드', 'SK 7 mobile카드', '스마트 지킴이카드', 'Easy ring 티타늄카드', 'Liiv M 카드', 'LG 헬로비전 카드', 'T-economy 아틀란카드', 'kt M mobile 카드', '웅진씽크빅 카드', '밀크T 카드', '에듀카드', '아틀란 펫코노미 카드', '반려愛카드(강아지)', '골든라이프올림카드', '랭킹닭컴 신용카드', '요기패스 신용카드(가로형)', '청호나이스 Ⅱ 카드', '교원 웰스 아틀란카드', 'SK 매직 올림카드', '청호나이스 아틀란카드', 'LG전자 아틀란카드', '톡톡 my living카드', 'Easy pick 티타늄카드', '탄탄대로 Biz카드', '국민행복카드', '국방멤버쉽카드', '보탬e전용카드', '아틀란 군인연금증 신용카드', '그린카드', 'Easy pick카드', '에버랜드 판다카드(푸바오 에디션)', '알뜰교통플러스 카드', '토심이 첵첵 체크카드', '노리2 체크카드', '우리동네 체크카드(키뮤)', '우리동네 체크카드', '노리2 체크카드(Global)', '위글위글 첵첵 체크카드', '펭수 노리 체크카드(펭모티콘)', '펭수 노리 체크카드(펭카)', '카카오페이 아틀란 체크카드', '위메프페이 체크카드', '알뜰교통플러스 체크카드', '새로이 체크카드', '음 체크카드', '민 체크카드', '청춘대로 싱글 레터링 체크카드(긁으면)', '청춘대로 싱글 체크카드', '아시아나 체크카드', 'LG U+ 체크카드', 'Liiv M 체크카드', '쏘영 체크카드', '훈 체크카드', '레고랜드 체크카드', '그린재킷 체크카드', '아틀란 티머니 노리 학생증 체크카드(블루_세로형)', '아틀란 티머니 노리 학생증 체크카드(블루_가로형)', '아틀란 티머니 노리 학생증 체크카드(퍼플_가로형)', '국민행복체크카드', '나라사랑체크카드'];
+			
+			//autocomplete
+			$('#search-box').autocomplete({
+				source: cardNameArr,
+				minLength: 1,
+				focus : function(event, ui) {
+					return false;
+				}
+			});
+		});
+	
 		/* Modal */
 		function openModal(name, feeList) {
 			
@@ -474,8 +480,8 @@
 			feeList.forEach(function(obj) {
 				
 				let brand = obj.brand;
-				let fee = obj.annualFee;
-				let newFee = (fee == 0) ? '연회비 없음' : fee;
+				let fee = Number(obj.annualFee);
+				let newFee = (fee == 0) ? '연회비 없음' : fee.toLocaleString();
 				let imgSrc = brandImg[brand];
 				
 				$('#m-table').append(`
@@ -507,6 +513,8 @@
 			'UPI(K-WORLD)' : '/atlanbank/assets/img/card/logo-unionpay-kworld.png',
 			'JCB(K-WORLD)' : '/atlanbank/assets/img/card/logo-jcb-kworld.png'
 		};
+		
+		
 	</script>
 
 </body>

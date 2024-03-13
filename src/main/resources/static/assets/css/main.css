@@ -2071,3 +2071,517 @@ section {
 .footer .credits a {
 	color: #fff;
 }
+
+/*--------------------------------------------------------------
+# Narae's Card Common CSS
+--------------------------------------------------------------*/
+.mt-30 {
+	margin-top: 30px;
+}
+
+.title {
+	
+}
+
+.title2 {
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+
+table thead th,
+table tbody td.th {
+	font-weight: bold;
+	text-align: center;
+}
+
+/* 마이페이지 메인 view */
+/* Quick Menu */
+.quickmenu-box {
+	display: flex;
+	justify-content: space-around;
+	padding: 30px 10px;
+}
+
+.quickmenu-box > div {
+	position: relative;
+	float: left;
+	width: 33.33%;
+	padding: 48px 0 0 0;
+	text-align: center;
+	cursor: pointer;
+}
+
+.quickmenu-box > div::before {
+	content: '';
+	display: block;
+	width: 28px;
+	height: 28px;
+	font-size: 18px;
+	line-height: 23px;
+	text-align: center;
+	margin-bottom: 3px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -17px;
+}
+
+.quickmenu-box > #card-history::before {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%230d42ff" class="bi bi-card-list" viewBox="0 0 16 16"><path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/><path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
+.quickmenu-box > #payment::before {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%230d42ff" class="bi bi-cash-coin" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/><path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/><path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/><path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
+.quickmenu-box > #billing-statement::before {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%230d42ff" class="bi bi-receipt" viewBox="0 0 16 16"><path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/><path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
+.quickmenu-box > #payment-history::before {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%230d42ff" class="bi bi-card-checklist" viewBox="0 0 16 16"><path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/><path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
+.quickmenu-box > #mycard::before {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%230d42ff" class="bi bi-credit-card-fill" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
+.quickmenu-box > #report-loss::before {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%230d42ff" class="bi bi-telephone-plus-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM12.5 1a.5.5 0 0 1 .5.5V3h1.5a.5.5 0 0 1 0 1H13v1.5a.5.5 0 0 1-1 0V4h-1.5a.5.5 0 0 1 0-1H12V1.5a.5.5 0 0 1 .5-.5"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
+
+
+/* 결제예정금액 파트 */
+.overview-container {
+	background: #F9FAFC;
+	padding: 20px 30px;
+	border-radius: 5px;
+	margin-bottom: 30px;
+}
+
+.overview-container .title {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.overview-container .price {
+	text-align: center;
+	font-weight: 600;
+	padding: 30px;
+}
+
+.overview-container .price a {
+	color: var(--bs-body-color);
+	font-size: 1.4rem;
+}
+
+.overview-container .btn-box {
+	text-align: center;
+	padding: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.overview-container .btn-box a {
+	padding: 10px 20px;
+	border-radius: 5px;
+	display: inline-block;
+	width: 170px;
+}
+
+.overview-container .btn-box a:first-child {
+	background: #FFF; 
+	border: 1px solid black;
+	margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overview-container .btn-box a:last-child {
+	background: #0d6efd;
+	color: #FFF;
+	border: 0;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 결제내역 파트 */
+.history-container {
+	background: #F9FAFC;
+	padding: 20px 30px;
+	border-radius: 5px;
+	margin-bottom: 30px;
+}
+
+.history-container .title-box {
+	display: flex;
+   	justify-content: space-between;
+}
+
+.title-box .btn-box a {
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+   	display: inline-block;
+}
+
+.history-container .title {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.history-container .history {
+	padding: 30px 20px;
+}
+
+.history-container table {
+	width: 100%;
+}
+
+.history-container table th,
+.history-container table td {
+	border: 1px solid  #d1d1d1;
+	padding: 15px;
+}
+
+/* 바로출금결제 */
+/* 바로출금결제 진행과정 */
+.process-box {
+	display: flex;
+	justify-content: space-around;
+	padding: 30px 10px;
+	border: 1px solid #e1e1e1;
+	border-radius: 12px;
+}
+
+.process-box > div {
+	position: relative;
+	float: left;
+	width: 33.33%;
+	padding: 48px 0 0 0;
+	text-align: center;
+	
+}
+
+.process-box > div::before {
+	content: '';
+	display: block;
+	width: 28px;
+	height: 28px;
+	font-size: 18px;
+	line-height: 23px;
+	border: 3px solid #e1e1e1;
+	border-radius: 40px;
+	text-align: center;
+	margin-bottom: 3px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -17px;
+}
+
+.process-box > div::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 15px;
+	left: -63px;
+	width: 126px;
+	height: 4px;
+	border-radius: 4px;
+	background: #e2e2e2;
+}
+
+.process-box > div:first-child::after {
+	display: none;
+}
+
+.process-box > div.step1::before {
+	content: '1';
+}
+
+.process-box > div.step2::before {
+	content: '2';
+}
+
+.process-box > div.step3::before {
+	content: '3';
+}
+
+.process-box > div.step4::before {
+	content: '4';
+}
+
+.process-box > div.now::before {
+	background: #666;
+	border-color: #666;
+	color: #FFF;
+}
+
+.process-box > div.completed::before {
+	content: '';
+	border-color: #666;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>');
+	background-size: contain;
+	background-repeat:no-repeat;
+	background-color: #666;
+}
+
+.process-box > div.completed::after,
+.process-box > div.now::after {
+	background: #666;
+}
+
+/* 조회방식선택(결제방식선택) */
+.select-method td select {
+	padding: 5px 20px;
+}
+
+.select-method .radio-box {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+
+/* 전체내역 */
+p.unit {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-bottom: 0;
+}
+
+.specific-amount table,
+.authentication table,
+.select-method table,
+.all-amount table {
+	width: 100%;
+}
+
+.specific-amount table th,
+.specific-amount table td,
+.authentication table th,
+.authentication table td,
+.select-method table th,
+.select-method table td,
+.all-amount table th,
+.all-amount table td {
+	border: 1px solid  #d1d1d1;
+	padding: 15px;	
+}
+
+.all-amount table td {
+	text-align: right;
+}
+
+.specific-amount table thead tr:first-child th:first-child,
+.authentication table tbody tr:first-child th:first-child,
+.authentication table tbody tr:nth-child(2) th:first-child,
+.authentication table tbody tr:last-child th:first-child,
+.select-method table tbody tr:first-child th:first-child,
+.select-method table tbody tr:nth-child(2) th:first-child,
+.select-method table tbody tr:last-child th:first-child,
+.all-amount table thead tr:first-child th:first-child,
+.all-amount table tbody tr:nth-child(1) td:first-child,
+.all-amount table tbody tr:last-child td:first-child {
+	border-left: 0;
+}
+
+.specific-amount table thead tr:first-child th:last-child,
+.authentication table tbody tr:first-child td:last-child,
+.authentication table tbody tr:nth-child(2) td:last-child,
+.authentication table tbody tr:last-child td:last-child,
+.select-method table tbody tr:first-child td:last-child,
+.select-method table tbody tr:nth-child(2) td:last-child,
+.select-method table tbody tr:last-child td:last-child,
+.all-amount table thead tr:first-child th:last-child,
+.all-amount table tbody tr:nth-child(1) td:last-child,
+.all-amount table tbody tr:last-child td:last-child {
+	border-right: 0;
+}
+
+.all-amount table thead tr th,
+.all-amount table tbody tr:first-child td {
+	border-bottom: 1px solid #848484 !important
+}
+
+button#checkAmount {
+	padding: 10px 50px;
+	border-radius: 8px;
+	border: 0;	
+}
+
+.authentication-btn,
+.allamount-btn {
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 0;
+}
+
+.authentication-btn:first-child,
+.allamount-btn:first-child {
+	margin-right: 20px;
+}
+
+/* 선택 결제 */
+div.chkbox-container {
+	text-align: center;
+}
+
+.chkbox-container input[type="checkbox"] {
+	display: none;
+}
+
+.chkbox-container input[type="checkbox"] + label {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.chkbox-container input[type="checkbox"] + label::before {
+	content: '';
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border: 2px solid #e1e1e1;
+	border-radius: 100%;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23d1d1d1" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-color: #FFF;
+	cursor: pointer;
+}
+
+.chkbox-container input[type="checkbox"]:checked + label::before {
+	content: '';
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check" viewBox="0 0 16 16"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>');
+	border-color: #0d42ff;
+	background-color: #0d42ff;
+}
+
+div.select-btn img {
+	width: 25px;
+	height: 25px;
+}
+
+/* 안내사항 */
+.noticeArea {
+	border: 1px solid rgba(0, 0, 0, 0.16);
+   	border-radius: 12px;
+}
+
+.noticeArea h4 {
+	padding: 15px 30px;
+}
+
+.noticeArea h5 {
+	padding: 10px 30px;
+}
+
+.noticeArea > h4:first-child {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+.noticeArea .title::before {
+	content: '';
+	display: inline-block;
+	width: .8em;
+	height: .8em;
+	background-image: url('/atlanbank/assets/img/card/bookmark-star.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	margin-right: 3px;
+}
+
+ul.indent li {
+	text-indent: -.9em;
+	word-break: break-all;
+}
+
+ul li p {
+	text-indent: 0;
+}
+
+ul.listStyle1,
+ul.listStyle2,
+ul.listStyle3 {
+	list-style: none;
+}
+
+ul.listStyle1 > li {
+	padding: 0 10px 10px 10px;
+}
+
+ul.listStyle1 > li::before {
+	content: '';
+	display: inline-block;
+	height: .7em;
+	width: .7em;
+	background-image: url('/atlanbank/assets/img/card/dash.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	opacity: .5;
+	margin-right: 3px;
+}
+
+ul.listStyle2 > li::before {
+	content: '';
+	display: inline-block;
+	height: .7em;
+	width: .7em;
+	background-image: url('/atlanbank/assets/img/card/dot.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	opacity: .5;
+	margin-right: 3px;
+}
+
+ul.listStyle3 > li::before {
+	content: '';
+	display: inline-block;
+	height: .7em;
+	width: .7em;
+	background-image: url('/atlanbank/assets/img/card/asterisk.svg');
+	background-size: contain;
+	background-repeat:no-repeat;
+	opacity: .5;
+	margin-right: 3px;
+}
+
+p.example {
+	margin-top: 3px !important;
+	font-size: 12px;
+}
+
+/* 인증정보입력 */
+.authentication td select {
+	padding: 5px 50px 5px 10px;
+}
+
+.authentication .radio-box {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+section #checkAmount,
+#nextStepBtn,
+#checkAuthentication {
+    background: var(--color-primary);
+    color: #FFF;
+}

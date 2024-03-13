@@ -8,6 +8,7 @@ public class MemberCardHistoryDTO {
 	private String memberCardHistorySeq;
 	private String memberCardSeq;
 	private String transactionDate;
+	private String name;
 	private String amount;
 	private String installmentMonths;
 	
@@ -19,4 +20,8 @@ public class MemberCardHistoryDTO {
 	private String cvc;
 	private String paymentDate;
 	private String status;
+	
+	//tblCard
+	private String cardName;
+	
 }

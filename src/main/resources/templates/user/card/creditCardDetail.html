@@ -6,17 +6,6 @@
 <title>카드</title>
 
 <style>
-	/* Font */
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-	
-	body {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
 	/* section empty space */
 	section {
 		margin: 20px 135px;
@@ -27,46 +16,6 @@
 		color: inherit;
 	}
 	
-	/* card benefits list */
-	ul {
-		list-style: none;
-		padding-left: 0;
-	}
-	
-	ul.benefits-menu li {
-		width: 150px;
-		height: 50px;
-		float: left;
-		border: 1px solid #777;
-		margin: 5px 10px;
-		border-radius: 5px;
-	}
-	
-	ul.benefits-menu li a {
-		display: flex;
-		width: 100%;
-		height: 100%;
-		justify-content: center;
-		align-items: center;
-		color: inherit;
-	}
-	
-	ul.benefits-menu li a:hover {
-		outline: 2px solid black;
-		border-radius: 5px;
-	}
-
-	ul.benefits-menu li a:focus {
-		outline: 2px solid black;
-		border-radius: 5px;
-	}
-	
-	ul.benefits-menu::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
 	/* ===== card detail section ===== */
 	.card-detail-title {
 		display: flex;
@@ -116,6 +65,7 @@
 	
 	.card-detail-summary div img {
 		max-width: 100%;
+		width: 80%;
 	}
 	
 	.vertical {
@@ -123,7 +73,6 @@
 	}
 	
 	.card-detail-summary ul {
-		list-style: disc;
 		width: 50%;
 	}
 	
@@ -158,20 +107,22 @@
 	}
 	
 	.card-detail-contents ul {
+		list-style: none;
 		display: flex;
 		flex-wrap: wrap;
 	}
 	
-	.card-detail-contents ul li {
-		padding: 0 15px;
+	.card-detail-contents ul.tab-menu li {
+		padding: 10px 20px;
+		width: 25%;
+		text-align: center;
+		border-bottom: 2px solid #FFF;
+		cursor: pointer;
 	}
 	
-	.tabs div {
-		/* display: none; */
-	}
-	
-	.on {
-		display: block;
+	.card-detail-contents ul.tab-menu li:hover {
+		border-bottom: 2px solid #0d42ff;
+		transition: border-bottom 0.5s ease;
 	}
 	
 	/* Common Notice */
@@ -250,10 +201,12 @@
 	.main-benefit-box {
 		border: 1px solid #F9FAFC;
 		border-radius: 5px;
-		width: 50%;
+		width: 48%;
 		display: flex;
 		align-items: center;
 		padding: 10px;
+		margin: 10px;
+		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 	}
 	
 	.main-benefit-box div:first-child {
@@ -263,7 +216,6 @@
 	/* Annual Fee */
 	.annual-fee-table {
 		width: 100%;
-		border: 1px solid #e1e1e1;
 		text-align: center;
 		border-radius: 10px;
 	}
@@ -325,7 +277,7 @@
 						<img th:src="|/atlanbank/assets/img/card/${card.img}|" th:classappend="${card.orientation} == 1 ? 'vertical' : ''">
 					</div>
 					<div>
-						<ul style="width: 100%;">
+						<ul style="width: 100%;" class="listStyle2">
 							<li th:each="benefit : ${card.benefitList}">
 								<span th:text="${benefit.subject}"></span>
 								<span th:if="${benefit.type != '3'}" th:text="|${benefit.rate}%|" class="bold"></span>
@@ -358,23 +310,23 @@
 							<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
 							<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
 						</span>
-						<span th:text="${fee.annualFee}"></span>
+						<span th:text="${#numbers.formatInteger(fee.annualFee, 0, 'COMMA')}"></span>
 					</div>
 				</div>
 			
 			</div>
 			
 			<div class="card-detail-contents">
-				<ul>
-					<li><a href="javascript:void(0);" data-value="main-benefit-tab" onclick="switchMenu('main-benefit-tab')">주요혜택</a></li>
-					<li><a href="javascript:void(0);" data-value="detail-benefit-tab" onclick="switchMenu('detail-benefit-tab')">상세혜택</a></li>
-					<li><a href="javascript:void(0);" data-value="annual-fee-tab" onclick="switchMenu('annual-fee-tab')">연회비</a></li>
-					<li><a href="javascript:void(0);" data-value="usage-guide-tab" onclick="switchMenu('usage-guide-tab')">확인사항</a></li>
+				<ul class="tab-menu">
+					<li data-value="main-benefit-tab" onclick="switchMenu('main-benefit-tab')">주요혜택</li>
+					<li data-value="detail-benefit-tab" onclick="switchMenu('detail-benefit-tab')">상세혜택</li>
+					<li data-value="annual-fee-tab" onclick="switchMenu('annual-fee-tab')">연회비</li>
+					<li data-value="usage-guide-tab" onclick="switchMenu('usage-guide-tab')">확인사항</li>
 				</ul>
 			
 				<div class="tabs">
 					<!-- Main Benefits Tab -->
-					<div id="main-benefit-tab">
+					<div id="main-benefit-tab" class="mt-30">
 						<h3>주요혜택</h3>
 						
 						<!-- 1 Main Benefits -->
@@ -397,11 +349,11 @@
 					</div>
 					
 					<!-- Benefits Detail Tab -->
-					<div id="detail-benefit-tab">
+					<div id="detail-benefit-tab" class="mt-30">
 						<h3>상세혜택</h3>
 					
 						<!-- 1 Card Detail Benefits -->
-						<div th:each="benefit : ${card.benefitList}" style="margin: 25px 0; border-bottom: 1px solid #e1e1e1;">
+						<div th:each="benefit : ${card.benefitList}" style="margin: 25px 0; padding: 15px; border-radius: 8px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
 							<div style="display: flex; align-items: center;">
 								<div style="margin-right: 15px;">
 									<img th:src="|/atlanbank/assets/img/card/${benefit.img}|">
@@ -427,22 +379,30 @@
 					</div>
 				
 					<!-- Annual Fee Tab -->
-					<div id="annual-fee-tab">
+					<div id="annual-fee-tab" class="mt-30">
 						<h3>연회비</h3>
 						<table class="annual-fee-table">
-							<tr>
-								<th>브랜드</th>
-								<th>연회비</th>
-							</tr>
-							<tr th:each="fee : ${card.feeList}">
-								<td th:text="${fee.brand}"></td>
-								<td th:text="${fee.annualFee}"></td>
-							</tr>
+							<colgroup>
+								<col style="width: 50%;">
+								<col style="width: 50%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th style="border-left: 0;">브랜드</th>
+									<th style="border-right: 0;">연회비</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="fee : ${card.feeList}">
+									<td th:text="${fee.brand}" style="border-left: 0;"></td>
+									<td th:text="${#numbers.formatInteger(fee.annualFee, 0, 'COMMA')}" style="border-right: 0;"></td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				
 					<!-- Card Notice Tab -->
-					<div id="usage-guide-tab">
+					<div id="usage-guide-tab" class="mt-30">
 						<h3>확인사항</h3>
 						
 						<!-- 1 Card Usage Guide -->
@@ -459,7 +419,7 @@
 				<div class="consumer-right-container">
 					<h3>금융소비자권리</h3>
 					<div class="consumer-right-content">
-						<ul>
+						<ul style="padding-left: 0;">
 							<li>
 								<h4>금리인하요구권 관련 안내</h4>
 								<a href="#" target="_blank">자세히보기</a>
@@ -501,13 +461,14 @@
 	<!-- Script -->
 	<script>
 		$(document).ready(function() {
-			$('.tabs > div').css('display', 'none');
-			$('#main-benefit-tab').css('display', 'block');
+			switchMenu('main-benefit-tab');
 		});
 		
 		function switchMenu(dataValue) {
 			$('.tabs > div').css('display', 'none');
+			$('.card-detail-contents ul.tab-menu li').css('border-color', '#FFF');
 			$('#' + dataValue).css('display', 'block');
+			$('.card-detail-contents ul.tab-menu li[data-value=' + dataValue + ']').css('border-color', '#0d42ff');
 		}
 		
 	</script>

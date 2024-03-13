@@ -6,22 +6,22 @@
 <title>카드</title>
 
 <style>
-	/* Font */
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-	
-	body {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-
 	/* section empty space */
 	section {
 		margin: 20px 135px;
-		padding: 0 60px;
-		max-width: 1200px;
+		padding: 20px 60px;
+	}
+	
+	/* responsive */
+	@media (max-width: 1400px) {
+		main, footer {
+			min-width: 1140px;
+		}
+		
+		.container {
+			min-width: 1140px;
+		}
+
 	}
 	
 	/* card benefits list */
@@ -368,12 +368,12 @@
 										<img th:if="${fee.brand} == 'UPI(K-WORLD)'" th:src="@{/assets/img/card/logo-unionpay-kworld.png}">
 										<img th:if="${fee.brand} == 'JCB(K-WORLD)'" th:src="@{/assets/img/card/logo-jcb-kworld.png}">
 									</span>
-									<span th:text="${fee.annualFee} == 0 ? '연회비 없음' : ${fee.annualFee}"></span>
+									<span th:text="${fee.annualFee} == 0 ? '연회비 없음' : ${#numbers.formatInteger(fee.annualFee, 0, 'COMMA')}"></span>
 								</div>
 							</div>
 							<div class="button-container">
 								<button type="button" th:onclick="|location.href='@{/user/card/credit/detail.do(seq=${card.cardSeq})}'|">상세보기</button>
-								<button type="button" th:onclick="">카드신청</button>
+								<button type="button" th:onclick="|alert('신청 완료!');|">카드신청</button>
 							</div>
 						</div>
 					</div>
@@ -445,8 +445,8 @@
 			feeList.forEach(function(obj) {
 				
 				let brand = obj.brand;
-				let fee = obj.annualFee;
-				let newFee = (fee == 0) ? '연회비 없음' : fee;
+				let fee = Number(obj.annualFee);
+				let newFee = (fee == 0) ? '연회비 없음' : fee.toLocaleString();
 				let imgSrc = brandImg[brand];
 				
 				$('#m-table').append(`

@@ -5,111 +5,27 @@
 <head>
 <title>카드</title>
 
-<style>
-	/* Font */
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-	
-	body {
-		font-family: "Nanum Gothic", sans-serif;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		font-family: "Nanum Gothic", sans-serif;
-	}
+<!-- toastr -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+<style>
 	/* section empty space */
 	section {
 		margin: 20px 135px;
 		padding: 20px 60px;
-		max-width: 1200px;
 	}
-
+	
 	/* responsive */
-	/* @media (max-width: 1100px) {
-		section {
-			margin: 20px 0;
+	@media (max-width: 1400px) {
+		main, footer {
+			min-width: 1140px;
 		}
-	}
-	
-	@media (max-width: 1380px) {
-		section {
-			width: 1110px;
+		
+		.container {
+			min-width: 1140px;
 		}
-	} */
-	
-	/* 결제예정금액 파트 */
-	.overview-container {
-		background: #F9FAFC;
-		padding: 20px 30px;
-		border-radius: 5px;
-		margin-bottom: 30px;
+
 	}
-	
-	.overview-container .title {
-		font-size: 1.5rem;
-		font-weight: 600;
-	}
-	
-	.overview-container .price {
-		text-align: center;
-		font-weight: 600;
-		padding: 30px;
-	}
-	
-	.overview-container .price a {
-		color: var(--bs-body-color);
-		font-size: 1.4rem;
-	}
-	
-	.overview-container .btn-box {
-		text-align: center;
-		padding: 30px;
-		display: flex;
-		justify-content: center;
-	}
-	
-	.overview-container .btn-box a {
-		padding: 10px 20px;
-		border-radius: 5px;
-		display: inline-block;
-		width: 170px;
-	}
-	
-	.overview-container .btn-box a:first-child {
-		background: #FFF; 
-		border: 1px solid black;
-		margin-right: 15px;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	}
-	
-	.overview-container .btn-box a:last-child {
-		background: #0d6efd;
-		color: #FFF;
-		border: 0;
-		display: flex;
-	    justify-content: center;
-	    align-items: center;
-	}
-	
-	/* 결제내역 파트 */
-	.history-container {
-		background: #F9FAFC;
-		padding: 20px 30px;
-		border-radius: 5px;
-		margin-bottom: 30px;
-	}
-	
-	.history-container .title {
-		font-size: 1.5rem;
-		font-weight: 600;
-	}
-	
-	.history-container .history ul {
-		list-style: none;
-	}
-	
 </style>
 </head>
 
@@ -132,7 +48,7 @@
 				<div class="container">
 					<ol>
 						<li><a href="/atlanbank/index.do">Home</a></li>
-						<li><a href="#">MyPage</a></li>
+						<li><a href="/atlanbank/member/card/view.do">MyPage</a></li>
 					</ol>
 				</div>
 			</nav>
@@ -153,88 +69,106 @@
 						<div>PUSH(무료)</div>
 					</div>
 				</div>
-				
 			</div>
-			
 		</section> --> <!--End My Info Section -->
 		
 		<!-- Mypage Card Section -->
 		<section>
-			<!-- Quick Menu -->
-			<!-- <div style="display: flex;">
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+			<div>
+				<div th:text="|${dto.name}님|" style="font-size: 1.3rem; padding: 10px;"></div>
+				
+				<!-- Quick Menu -->
+				<div style="background: #F9FAFC; border-radius: 5px;">
+					<div class="quickmenu-box">
+						<div id="card-history" onclick="location.href='/atlanbank/member/card/history.do';" style="border-right: 1px solid #e1e1e1;">카드이용내역</div>
+						<div id="payment" onclick="location.href='/atlanbank/member/card/payment.do';" style="border-right: 1px solid #e1e1e1;">즉시결제</div>
+						<div id="billing-statement" onclick="alert('지원하지 않는 기능입니다.');" style="border-right: 1px solid #e1e1e1;">이용대금명세서</div>
+						<div id="payment-history" onclick="alert('지원하지 않는 기능입니다.');" style="border-right: 1px solid #e1e1e1;">대금결제내역</div>
+						<div id="mycard" onclick="alert('지원하지 않는 기능입니다.');" style="border-right: 1px solid #e1e1e1;">나의 카드</div>
+						<div id="report-loss" onclick="reportLoss()">분실신고</div>
 					</div>
-					<div>카드이용내역</div>
 				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+				
+				<!-- 결제예정금액 -->
+				<div class="overview-container mt-30">
+					<div class="title">결제예정금액</div>
+					<div class="price"><a href="javascript:void(0);"  th:text="|${#numbers.formatInteger(thisMonthAmount, 0, 'COMMA')}원|"></a></div>
+					<div class="btn-box">
+						<a href="/atlanbank/member/card/payment.do">바로결제</a>
+						<a href="javascript:void(0);" onclick="applyRevolving()">일부결제금액<br>이월약정(리볼빙)</a>
 					</div>
-					<div>결제예정금액</div>
 				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+				
+				<!-- 이용내역 -->
+				<div class="history-container">
+					<div class="title-box">
+						<div class="title">최근이용내역</div>
+						<div class="btn-box"><a href="/atlanbank/member/card/history.do">자세히보기<i class="bi bi-caret-right-fill"></i></a></div>
 					</div>
-					<div>이용대금명세서</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
+					<div class="history">
+						<table>
+							<colgroup>
+								<col style="width: 20%;">
+								<col style="width: 20%;">
+								<col style="width: 40%;">
+								<col style="width: 20%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th style="border-left: 0;">이용일</th>
+									<th>이용카드</th>
+									<th>이용하신곳</th>
+									<th style="border-right: 0;">이용금액</th>
+								</tr>
+							</thead>
+							<tr th:each="history, historyStat : ${historyList}">
+								<td th:text="${#strings.substring(history.transactionDate, 0, 10)}" style="border-left: 0; text-align: center;"></td>
+								<td th:utext="${history.cardName}" style="text-align: center;"></td>
+								<td th:utext="${history.name}" style="text-align: center;"></td>
+								<td th:text="${#numbers.formatInteger(history.amount, 0, 'COMMA')}" style="border-right: 0; text-align: right"></td>
+							</tr>
+						</table>
 					</div>
-					<div>즉시결제</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
-					</div>
-					<div>분실신고</div>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<div>
-						<img alt="" src="">
-					</div>
-					<div>카드사용등록</div>
-				</div>
-			</div> -->
-			
-			<div th:text="|${dto.name}님|" style="font-size: 1.3rem; padding: 10px;"></div>
-			
-			<!-- 결제예정금액 -->
-			<div class="overview-container">
-				<div class="title">결제예정금액</div>
-				<div class="price"><a href=""  th:text="|${thisMonthAmount}원|"></a></div>
-				<div class="btn-box">
-					<a href="">바로결제</a>
-					<a href="">일부결제금액<br>이월약정(리볼빙)</a>
 				</div>
 			</div>
-			
-			<!-- 결제내역 -->
-			<div class="history-container">
-				<div class="title">결제내역</div>
-				<div class="history">
-					<ul>
-						<li th:each="history : ${historyList}">
-							<span th:text="${#strings.substring(history.transactionDate, 0, 10)}">날짜</span>
-							<span>가맹점</span>
-							<span th:text="${history.amount}">이용금액</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-			
 		</section> <!-- End Mypage Card Section -->
 		
 		
 	</main>
 	<!-- End Main -->
 
+	<!-- toastr -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	
 	<!-- Script -->
 	<script>
 		
+		function reportLoss() {
+			toastr.success('카드 분실 신고가 완료되었습니다.', '카드 분실 신고');
+		}
+	
+		function applyRevolving() {
+			toastr.success('카드 리볼빙 신청이 완료되었습니다.', '카드 리볼빙 신청');
+		}
+	
+		//toastr 설정
+		toastr.options = {
+			"closeButton": false,
+			"debug": false,
+			"newestOnTop": false,
+			"progressBar": false,
+			"positionClass": "toast-bottom-center",
+			"preventDuplicates": false,
+			"onclick": null,
+			"showDuration": "300",
+			"hideDuration": "1000",
+			"timeOut": "5000",
+			"extendedTimeOut": "1000",
+			"showEasing": "swing",
+			"hideEasing": "linear",
+			"showMethod": "fadeIn",
+			"hideMethod": "fadeOut"	
+		};
 	</script>
 
 

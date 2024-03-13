@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="mt-30 specific-amount">
+	<div style="position: relative;">
+		<h3>상세내역</h3>
+		<p class="unit">(단위: 원)</p>
+	</div>
+	<p>선택하신 <span id="chkNumSum" style="font-weight: bold; color: #0d42ff;"></span>건에 대한 결제 요청 금액은 <span id="chkAmountSum" style="font-weight: bold; color: #0d42ff;"></span> 입니다.</p>
+	<table>
+		<colgroup>
+			<col style="width: 6%;">
+			<col style="width: 14%;">
+			<col style="width: 19%;">
+			<col style="width: 25%;">
+			<col style="width: 10%;">
+			<col style="width: 6%;">
+			<col style="width: 20%;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>선택</th>
+				<th>이용일</th>
+				<th>이용카드</th>
+				<th>이용하신곳</th>
+				<th>결제방법</th>
+				<th>회차</th>
+				<th>이용금액</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="list, status : ${thisMonthPaymentList}">
+				<td style="border-left: 0;">
+					<div class="chkbox-container">
+						<input type="checkbox" th:id="|chkbox${status.count}|" th:value="${list.memberCardHistorySeq}" th:data-amount="${list.amount}">
+						<label th:for="|chkbox${status.count}|"></label>
+					</div>
+				</td>
+				<td th:text="${list.transactionDate}" style="text-align: center;"></td>
+				<td th:text="${list.cardName}" style="text-align: center;"></td>
+				<td th:text="${list.name}" style="text-align: center;"></td>
+				<td th:text="${list.installmentMonths} == 1 ? '일시불'" style="text-align: center;"></td>
+				<td th:text="${list.installmentMonths} == 1 ? '1/1'" style="text-align: center;"></td>
+				<td th:text="${#numbers.formatInteger(list.amount, 0, 'COMMA')}" style="border-right: 0; text-align: right;"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script>
+//개별결제시 체크박스 클릭할때마다 개수/금액 합치기
+$('.chkbox-container input[type="checkbox"]').click(function() {
+	sumChkbox();
+});
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="mt-30 all-amount">
+	<div style="position: relative;">
+		<h3>전체내역</h3>
+		<p>'전체금액' <span th:text="|${#numbers.formatInteger(totalAmount, 0, 'COMMA')}원|" style="font-weight: bold; color: #0d42ff;"></span>이 결제됩니다.</p>
+		<p class="unit">(단위: 원)</p>
+	</div>
+	<table>
+		<colgroup>
+			<col style="width: 20%;">
+			<col style="width: 20%;">
+			<col style="width: 20%;">
+			<col style="width: 20%;">
+			<col style="width: 20%;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>구분</th>
+				<th>이용금액</th>
+				<th>원금</th>
+				<th>수수료</th>
+				<th>잔여원금</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="th">일시불</td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
+				<td th:text="|0|"></td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
+			</tr>
+			<tr style="font-weight: 600; background: #F9FAFC;">
+				<td class="th">합계</td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}" id="totalAmount" th:data-value="${totalAmount}"></td>
+				<td th:text="|0|"></td>
+				<td th:text="${#numbers.formatInteger(totalAmount, 0, 'COMMA')}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script>
+	$('input[name="totalAmount"]').val($('#totalAmount').data('value'));
+</script>
+</html>
