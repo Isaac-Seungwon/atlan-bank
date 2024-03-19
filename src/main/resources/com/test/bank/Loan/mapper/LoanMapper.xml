@@ -79,6 +79,13 @@
 			set balance = (select balance from tblbankbook b  where b.account_number = #{accountNumber}) + #{depositWithdrawaAmount}
 			where bb.account_number = #{accountNumber}
 	</update>
+	
+	<select id="getDepositWithdrawal" resultType="com.test.bank.loan.domain.DepositWithdrawalDTO">
+		select * from tblDepositWithdrawal dw 
+		    inner join tblbankbook bb 
+		        on bb.bank_book_seq = dw.bank_book_seq 
+		    where dw.bank_book_seq=#{currentValue}
+	</select>
 
 
 </mapper>

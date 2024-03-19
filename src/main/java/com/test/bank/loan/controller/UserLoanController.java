@@ -1,5 +1,6 @@
 package com.test.bank.loan.controller;
 
+import java.security.Principal;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,23 +9,28 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.test.bank.card.domain.MemberCardHistoryDTO;
 import com.test.bank.loan.domain.AccountTransferDTO;
+import com.test.bank.loan.domain.DepositWithdrawalDTO;
 import com.test.bank.loan.domain.LoanCautionDTO;
 import com.test.bank.loan.domain.LoanDTO;
 import com.test.bank.loan.domain.LoanStatusDTO;
 import com.test.bank.loan.service.LoanService;
+import com.test.bank.login.domain.CustomUser;
 import com.test.bank.member.domain.MemberDTO;
 
 @Controller
 public class UserLoanController {
 	
-	private int userseq = 1;
-
+	private int userseq = 0;
+	
 	@Autowired
 	private LoanService service;
 
@@ -79,7 +85,13 @@ public class UserLoanController {
 	}
 	
 	@GetMapping(value="/loan/application.do")
-	public String application(Model model, String seq) {
+	public String application(Model model, String seq, @AuthenticationPrincipal CustomUser user) {
+		
+		if (user != null) {
+			userseq = Integer.parseInt(user.getDto().getMemberSeq());
+		} else {
+			return "redirect:/user/login";
+		}
 		
 		DecimalFormat decFormat = new DecimalFormat("###,###");
 		LoanDTO loandto =  service.getloandetail(seq);
@@ -107,7 +119,13 @@ public class UserLoanController {
 		return "user/loan/application";
 	}
 	@GetMapping(value="/loan/check.do")
-	public String check(Model model, LoanStatusDTO dto) {
+	public String check(Model model, LoanStatusDTO dto, @AuthenticationPrincipal CustomUser user) {
+		
+		if (user != null) {
+			userseq = Integer.parseInt(user.getDto().getMemberSeq());
+		} else {
+			return "redirect:/user/login";
+		}
 		
 		Date startdate = Calendar.getInstance().getTime();
 		Date enddate = Calendar.getInstance().getTime();
@@ -123,8 +141,14 @@ public class UserLoanController {
 	}
 	
 	@GetMapping(value="/loan/complete.do")
-	public String complete(Model model, LoanStatusDTO dto) {
+	public String complete(Model model, LoanStatusDTO dto, @AuthenticationPrincipal CustomUser user) {
 
+		if (user != null) {
+			userseq = Integer.parseInt(user.getDto().getMemberSeq());
+		} else {
+			return "redirect:/user/login";
+		}
+		
 		service.insertloanstatus(dto);
 		
 		LoanDTO loandto =  service.getloandetail(dto.getLoanSeq());		
@@ -134,7 +158,14 @@ public class UserLoanController {
 	}
 	
 	@GetMapping(value="/loan/myloan.do")
-	public String complete(Model model) {
+	public String complete(Model model, Principal principal,@AuthenticationPrincipal CustomUser user) {
+		
+		if (user != null) {
+			userseq = Integer.parseInt(user.getDto().getMemberSeq());
+		} else {
+			return "redirect:/user/login";
+		}
+		
 		DecimalFormat decFormat = new DecimalFormat("###,###");
 
 		MemberDTO memberdto = service.getmember(userseq);
@@ -152,39 +183,6 @@ public class UserLoanController {
 		}
 		
 
-		return "user/loan/myloan";
+		return "member/loan/myloan";
 	}
-	
-	@GetMapping(value="/accountTransfer.do")
-	public String accountTransfer(Model model) {
-		
-		List<AccountTransferDTO> dto = service.getaccounttransfer(userseq);
-		
-		if (dto.isEmpty()) {
-		    model.addAttribute("accounttransferdto", "nothing");
-		} else {
-		    model.addAttribute("accounttransferdto", dto);
-		}
-		
-		return "user/loan/accountTransfer";
-	}
-	
-	@GetMapping(value="/accountTransferComplete.do")
-	public String accountTransferComplete(Model model, AccountTransferDTO dto, String insertbank) {
-		
-		Date date = Calendar.getInstance().getTime();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		dto.setDate(dateFormat.format(date));
-		
-		service.insertDepositWithdrawal(dto);
-		service.updateAccountTransfer(dto);
-		if (insertbank.equals("atlan")) {
-			service.AccountTransfer(dto);			
-		}
-
-		model.addAttribute("memberdto", service.getmember(userseq));
-		
-		return "user/loan/accountTransferComplete";
-	}
-	
 }

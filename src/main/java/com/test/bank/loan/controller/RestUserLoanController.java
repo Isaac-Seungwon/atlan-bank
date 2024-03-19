@@ -40,7 +40,6 @@ public class RestUserLoanController {
 			calculatorDTO indto = new calculatorDTO();
 						
 			if (dto.getRepaymentType().equals("1")) {
-				/*payment = (int)(principal+(int)(interestRate * mthAmount/12)-(interestRate * (balance)/12));*/
 				if (i==1) {					
 					payment = (int)(principal+(int)(interestRate * mthAmount/22.68));
 				}

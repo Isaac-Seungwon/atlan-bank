@@ -3,6 +3,7 @@ package com.test.bank.loan.repository;
 import java.util.List;
 
 import com.test.bank.loan.domain.AccountTransferDTO;
+import com.test.bank.loan.domain.DepositWithdrawalDTO;
 import com.test.bank.loan.domain.InterestRateDTO;
 import com.test.bank.loan.domain.LoanCautionDTO;
 import com.test.bank.loan.domain.LoanDTO;
@@ -41,6 +42,8 @@ public interface LoanDAO {
 	void updateAccountTransfer(AccountTransferDTO dto);
 
 	void AccountTransfer(AccountTransferDTO dto);
+
+	List<DepositWithdrawalDTO> getDepositWithdrawal(String currentValue);
 	
 	
 }

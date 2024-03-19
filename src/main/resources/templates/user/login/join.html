@@ -160,7 +160,7 @@
 
 			<!-- 전체 이벤트 -->
 			<div layout:fragment="content" class="container my-3">
-				<form action="@{/joinaction.do}" method="post" autocomplete="off">
+				<form th:action="@{/joinaction.do}" method="post" autocomplete="off">
 					<div class="mb-3">
 						<label for="username" class="form-label">이름</label> <input
 							type="text" name="name" id="name" class="form-control">
@@ -204,6 +204,8 @@
 							type="text" name="address-detail" id="address-detail"
 							class="form-control">
 					</div>
+					<input type="hidden" th:name = "${_csrf.parameterName}" th:value="${_csrf.token}" />
+					
 					<br>
 					<button type="submit" class="btn btn-primary">회원가입</button>
 				</form>

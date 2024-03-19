@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.bank.loan.domain.AccountTransferDTO;
+import com.test.bank.loan.domain.DepositWithdrawalDTO;
 import com.test.bank.loan.domain.InterestRateDTO;
 import com.test.bank.loan.domain.LoanCautionDTO;
 import com.test.bank.loan.domain.LoanDTO;
@@ -86,6 +87,10 @@ public class LoanService {
 	public void AccountTransfer(AccountTransferDTO dto) {
 		dao.AccountTransfer(dto);
 		
+	}
+
+	public List<DepositWithdrawalDTO> getDepositWithdrawal(String currentValue) {
+		return dao.getDepositWithdrawal(currentValue);
 	}
 	
 }

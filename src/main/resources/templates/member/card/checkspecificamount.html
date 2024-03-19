@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="mt-30 specific-amount">
+	<div style="position: relative;">
+		<h3>결제정보</h3>
+		<p>고객님께서 선택하신 <span th:text="|${#lists.size(list)}건|" style="font-weight: bold; color: #0d42ff;"></span>에 대한 결제 요청 금액은 <span th:text="|${#numbers.formatInteger(amount, 0, 'COMMA')}원|" style="font-weight: bold; color: #0d42ff;"></span> 입니다.</p>
+		<p class="unit">(단위: 원)</p>
+	</div>
+	<table>
+		<colgroup>
+			<col style="width: 20%;">
+			<col style="width: 20%;">
+			<col style="width: 30%;">
+			<col style="width: 30%;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>이용일</th>
+				<th>이용카드</th>
+				<th>이용하신곳</th>
+				<th>청구금액</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="list : ${list}">
+				<td th:text="${list.transactionDate}" style="border-left: 0; text-align: center;"></td>
+				<td th:text="${list.cardName}" style="text-align: center;"></td>
+				<td th:text="${list.name}" style="text-align: center;"></td>
+				<td th:text="${#numbers.formatInteger(list.amount, 0, 'COMMA')}" style="border-right: 0; text-align: right;"></td>
+			</tr>
+			<tr style="font-weight: 600; background: #F9FAFC;">
+				<td colspan="3" class="th" style="border-left: 0;">합계</td>
+				<td th:text="${#numbers.formatInteger(amount, 0, 'COMMA')}" id="totalAmount" style="text-align: right; border-right: 0;" th:data-value="${amount}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script>
+	$('input[name="totalAmount"]').val($('#totalAmount').data('value'));
+
+</script>
+</html>

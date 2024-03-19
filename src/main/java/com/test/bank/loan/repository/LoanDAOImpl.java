@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.bank.loan.domain.AccountTransferDTO;
+import com.test.bank.loan.domain.DepositWithdrawalDTO;
 import com.test.bank.loan.domain.InterestRateDTO;
 import com.test.bank.loan.domain.LoanCautionDTO;
 import com.test.bank.loan.domain.LoanDTO;
@@ -102,6 +103,11 @@ public class LoanDAOImpl implements LoanDAO {
 	public void AccountTransfer(AccountTransferDTO dto) {
 		mapper.AccountTransfer(dto);
 		
+	}
+
+	@Override
+	public List<DepositWithdrawalDTO> getDepositWithdrawal(String currentValue) {
+		return mapper.getDepositWithdrawal(currentValue);
 	}
 	
 }

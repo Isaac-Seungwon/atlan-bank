@@ -30,6 +30,8 @@ DELETE FROM tblCardBenefit;
 DELETE FROM tblPayment;
 DELETE FROM tblMemberCardHistory;
 DELETE FROM tblMemberCard;
+DELETE FROM tblBankBook;
+DELETE FROM tblBankBookProduct;
 DELETE FROM tblCardUsageGuide;
 DELETE FROM tblCardAnnualFee;
 DELETE FROM tblAnnualFee;
@@ -62,11 +64,13 @@ DROP TABLE tblLoanUsageGuide;
 DROP TABLE tblLoanCaution;
 DROP TABLE tblLoanProductGuide;
 DROP TABLE tblInterestRate;
-DROP TABLE tblPerformanceBenefit;
+--DROP TABLE tblPerformanceBenefit;
 DROP TABLE tblCardBenefit;
 DROP TABLE tblPayment;
 DROP TABLE tblMemberCardHistory;
 DROP TABLE tblMemberCard;
+DROP TABLE tblBankBook;
+DROP TABLE tblBankBookProduct;
 DROP TABLE tblCardUsageGuide;
 DROP TABLE tblCardAnnualFee;
 DROP TABLE tblAnnualFee;
@@ -104,12 +108,14 @@ DROP SEQUENCE card_seq;
 DROP SEQUENCE card_annual_fee_seq;
 DROP SEQUENCE card_usage_guide_seq;
 --DROP SEQUENCE benefits_seq;
-DROP SEQUENCE performance_benefit_seq;
+--DROP SEQUENCE performance_benefit_seq;
 DROP SEQUENCE card_benefit_seq;
 DROP SEQUENCE member_card_seq;
 DROP SEQUENCE member_card_history_seq;
 DROP SEQUENCE payment_seq;
 DROP SEQUENCE forex_seq;
+DROP SEQUENCE bank_book_seq;
+DROP SEQUENCE bank_book_product_seq;
 
 
 -- CREATE SEQUENCE
@@ -145,6 +151,8 @@ CREATE SEQUENCE member_card_seq;
 CREATE SEQUENCE member_card_history_seq;
 CREATE SEQUENCE payment_seq;
 CREATE SEQUENCE forex_seq;
+CREATE SEQUENCE bank_book_seq;
+CREATE SEQUENCE bank_book_product_seq;
 
 
 -- CREATE TABLE
@@ -163,6 +171,32 @@ CREATE TABLE tblMember (
 	credit_rate VARCHAR2(500) not null, /* 신용등급 */
 	is_guarantee VARCHAR2(500) not null, /* 담보등급 */
 	point VARCHAR2(500) not null /* 포인트 */
+);
+
+-- 카드 대금결제 구현에 필요해서 아래 계좌 관련 테이블 중 아래 2개 테이블만 먼저 추가해놓음(tblBankBookProduct, tblBankBook)
+CREATE TABLE tblBankBookProduct (
+   bank_book_product_seq NUMBER PRIMARY KEY, -- 통장 상품 번호
+    name VARCHAR2(200),
+    sim_info VARCHAR2(2000),
+   type NUMBER ,     -- 예금 종류
+   info VARCHAR2(2000),     -- 상품설명
+   join_info VARCHAR2(2000),      -- 가입조건
+    join_date_info VARCHAR2(2000),
+    join_fee NUMBER
+);
+
+-- 통장
+CREATE TABLE tblBankBook (
+   bank_book_seq NUMBER PRIMARY KEY, -- 통장 번호
+   bank_book_product_seq NUMBER,     -- 통장 상품 번호
+   account_number VARCHAR2(300),     -- 계좌 번호
+   join_date DATE,     -- 가입 날짜
+   maturity_date DATE,     -- 만기 날짜
+   balance NUMBER,      -- 잔액
+    member_seq NUMBER,      -- 회원번호
+
+    CONSTRAINT tblBankBook_product_seq_FK FOREIGN KEY (bank_book_product_seq) REFERENCES tblBankBookProduct(bank_book_product_seq),
+    CONSTRAINT tblBankBook_member_seq_FK FOREIGN KEY (member_seq) REFERENCES tblMember(member_seq)
 );
 
 /* 지점(은행) 테이블 */
@@ -463,7 +497,9 @@ CREATE TABLE tblMemberCard (
 	card_seq NUMBER REFERENCES tblCard(card_seq) NOT NULL, /* 카드종류번호 */
 	exp DATE NOT NULL, /* 만료일 */
 	cvc NUMBER NOT NULL, /* 카드인증코드 */
+    password NUMBER NOT NULL, /* 카드 비밀번호 */
 	card_payment_date NUMBER NOT NULL, /* 카드 대금결제일 */
+    bank_book_seq NUMBER REFERENCES tblBankBook(bank_book_seq) NOT NULL, /* 통장번호 */
     status CHAR(1) NOT NULL /* 사용 여부 */
 );
 
@@ -472,6 +508,7 @@ CREATE TABLE tblMemberCardHistory (
 	member_card_history_seq NUMBER PRIMARY KEY, /* 회원카드이용내역번호 */
 	member_card_seq NUMBER REFERENCES tblMemberCard(member_card_seq) NOT NULL, /* 회원카드번호 */
 	transaction_date DATE NOT NULL, /* 결제일 */
+    name VARCHAR2(200) NOT NULL, /* 가맹점 */
 	amount NUMBER NOT NULL, /* 금액 */
 	installment_months NUMBER NOT NULL /* 할부 개월수 */
 );
@@ -494,4 +531,4 @@ CREATE TABLE tblForex(
     transfer_receive_rate number not null,  --송금 받을 때
     buy_basic_rate number not null,  --매매 기준율
     usd_change_rate number not null  -- 미화 환산율
-);    
+);

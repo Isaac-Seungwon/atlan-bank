@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<title>카드</title>
+
+<style>
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 20px 60px;
+	}
+	
+	/* responsive */
+	@media (max-width: 1400px) {
+		main, footer {
+			min-width: 1140px;
+		}
+		
+		.container {
+			min-width: 1140px;
+		}
+
+	}
+	
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/atlanbank/assets/img/card/credit-card-851502_1280.jpg');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>나의 카드</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="/atlanbank/member/card/view.do">MyPage</a></li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- Mypage Card Section -->
+		<section>
+			<div class="mt-30 specific-amount">
+				<div style="position: relative;">
+					<h2>카드이용내역</h2>
+				</div>
+				<div style="padding: 10px; position: relative;">
+					<a href="javascript: void(0);" style="color: #FFF; padding: 10px 20px; background: #0d42ff; border-radius: 5px; display: inline-block; font-size: .9rem;">최신순 <i class="bi bi-arrow-down-up"></i></a>
+					<p class="unit">(단위: 원)</p>
+				</div>
+				<table>
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 20%;">
+						<col style="width: 28%;">
+						<col style="width: 10%;">
+						<col style="width: 6%;">
+						<col style="width: 16%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>이용일</th>
+							<th>이용카드</th>
+							<th>이용하신곳</th>
+							<th>결제방법</th>
+							<th>회차</th>
+							<th>이용금액</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="list, status : ${list}">
+							<td th:text="${list.transactionDate}" style="border-left: 0; text-align: center;"></td>
+							<td th:text="${list.cardName}" style="text-align: center;"></td>
+							<td th:text="${list.name}" style="text-align: center;"></td>
+							<td th:text="${list.installmentMonths} == 1 ? '일시불'" style="text-align: center;"></td>
+							<td th:text="${list.installmentMonths} == 1 ? '1/1'" style="text-align: center;"></td>
+							<td th:text="${#numbers.formatInteger(list.amount, 0, 'COMMA')}" style="border-right: 0; text-align: right"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+				
+			<div style="text-align: center; padding: 30px;">
+				<button type="button" id="checkAmount" onclick="location.href='/atlanbank/member/card/view.do';">돌아가기</button>
+			</div>
+		</section> <!-- End Mypage Card Section -->
+		
+		<!-- 안내사항 Section -->
+		<section>
+			<div class="noticeArea">
+				<h4 class="title">안내사항</h4>
+				<ul class="listStyle1 indent mt-30">
+					<li>최근 12개월 이내 카드 승인 정보를 기준으로 이용내역이 조회됩니다.(단, 해외 이용내역은 최근 6개월이내)<br>
+						연회비, SMS이용요금, KB국민 포인트리연계할부서비스 등 승인없이 청구되는 내역은 결제예정금액조회에서 조회할 수 있습니다.
+					</li>
+					<li>이용금액의 할인 여부 및 할인금액은 매출전표 접수 이후 결제예정금액조회에서 조회할 수 있습니다.</li>
+					<li>교통/자판기, 단기카드대출(현금서비스), 해외청구, 화물차유류카드(유가보조금) 세부 이용내역은 해당 탭에서 조회할 수 있습니다.</li>
+					<li>신차구입관련 할인금액은 고객센터로 확인해주시기 바랍니다.</li>
+					<li>정상 매출 발생 후 90일을 초과하여 취소한 경우, 이미 납부한 할부수수료와 일부결제금액이월약정(리볼빙) 수수료는 환급되지 않습니다.</li>
+					<li>정상 매출 취소 시 청구금액과 환급금액은 일반적으로 자동정리(상계)됩니다. 자동으로 정리되지 않는 경우 취소전표 매입일 기준 처음 도래하는 결제일에 환급되며 할부 취소전표는 할부기간 동안 균등 분할하여 수수료와 합산하여 환급됩니다. 단, 정상결제된 전표가 결제일 당일 취소매입 되는 경우 결제금액에서 차감됩니다.</li>
+					<li>해외 정상/취소 매출(승인시점) 조회시 해외에서 이용한 금액은 국제브랜드사가 지정한 환율에 의해 미화(USD)로 환산된 금액이 보여집니다.</li>
+					<li>승인시간은 거래한 해외가맹점에 따라 그리니치표준시(GMT) 또는 현지시간(Local Time)으로 보여질 수 있습니다.></li>
+					<li>국제브랜드사와 해외가맹점의 여건과 승인(이용) / 매입(청구) 시점의 차이로 인해 결제 금액과 취소금액이 상이할 수 있습니다.</li>
+					<li>해외가맹점에서 해당 국가의 현지 통화가 아닌 원화(KRW) 결제 시 통화 환전이 추가 발생되어 더 많은 금액이 청구될 수 있으니, 해외 결제 시 미화 또는 현지 통화로 결제하시길 권장합니다.</li>
+				</ul>
+			</div>
+		</section>
+		<!-- //End 안내사항 Section -->
+		
+		
+	</main>
+	<!-- End Main -->
+
+	<!-- Script -->
+	<script>
+		
+	</script>
+
+
+</body>
+</html>

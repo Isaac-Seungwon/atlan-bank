@@ -35,56 +35,45 @@
 
 		<!-- ======= Contact Section ======= -->
 		<section id="contact" class="contact">
-		<!-- 
-			<div class="container">
-				<div>
-				
-					<h2 style="text-align: left">지점 검색</h2>
-					<hr>
-					<ul>
-						<li style="text-align: left;"><span class="text-danger">지점</span>을 선택해주세요</li>
-					</ul>
-					<form id="form">
-						<div id="input">
-							<input type="text" placeholder="지점명을 입력하세요"
-								style="float: left; width: 100%; height: 10%;" name="branchname"
-								id="InputName" class="form-control mb-2">
-						</div>
-					</form>
-					<button id="test" class="btn btn-main mb-2" style="height: 35px;">검색</button>
-				</div>
-				<div style="width: 50%; float: left;" class="col-md-6">
-
-					<div id="branchList"></div>
-				</div>
-
-				<div id="map" style="width: 50%; float: left;"></div>
-			</div> -->
 
 			<div class="container">
 				<div
 					style="width: 100%; height: 600px; text-align: center; margin: 0 auto; padding: 20px;">
 					<div style="width: 50%; height: 80%; float: left;" class="col-md-6">
-	
-						<h2 style="text-align: left">지점 검색</h2>
+						<h2 style="text-align: left; font-weight: 600;">지점 검색</h2>
 						<hr>
 						<ul>
 							<li style="text-align: left;"><span style="color: red;">지점</span>을 선택해주세요</li>
 						</ul>
 						<form id="form">
-							<div id="input">
+							<div id="input" class="is-flex">
 								<input type="text" placeholder="지점명을 입력하세요"
-									style="float: left; width: 100%; height: 10%;" name="branchname"
+									style="float: left; width: 85%;" name="branchname"
 									id="InputName" class="form-control mb-2">
+								<button id="searchBtn" class="btn btn-primary mb-2" style="width: 13%; height: 35px;">검색</button>
 							</div>
 						</form>
-						<button id="test" class="btn btn-main mb-2" style="height: 35px;">검색</button>
-						<!--<button id="basket" class="btn btn-main mb-2" style="height: 48px;">즐겨찾기에 등록</button>-->
 	
 						<div id="branchList"></div>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						      </div>
+						      <div class="modal-body">
+						        365 자동화코너 입니다. 번호표 발급 서비스가 제한된 지점입니다.
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 					</div>
 	
-					<div id="map" style="width: 50%; height: 80%; float: left;"></div>
+					<div id="map" style="width: 50%; height: 100%; float: left;"></div>
 				</div>
 			</div>
 
@@ -128,6 +117,7 @@
 	      for(let i=0 ; i<data.positions.length; i++){
 	        displayInfo(markers[i], data.positions[i])
 	      }
+	      $('.infodata').parent().parent().css('height', '200px');
 	      
 	      // 마커 클러스터러를 생성합니다 
 		    const clusterer = new kakao.maps.MarkerClusterer({
@@ -156,13 +146,12 @@
 	        map.panTo(moveLatLon);            
 	    }        
 	    
-	 	let infoCheck = null;
+	 		let infoCheck = null;
 	    //infodata.지점코드 해서 정보를 가지고 온다.
 	  	 function displayInfo(infomarker, infodata) {
-	  		//console.log(infodata.bankName);
-	    	let iwContent = '<div style="text-align: center; padding:5px;">'
-	  						+ '<div class="close" onclick="closeCustomOverlay()" title="닫기">X</div>'
-	  						+ '<table class="table table-hover" style="width: 100%;">'
+	    	let iwContent = '<div class="infodata" style="text-align: center; padding:5px; height: 200px;">'
+	  						
+	  						+ '<table class="table" style="width: 100%;">'
 	  						+ '<colgroup>'
 	  						+ '<col style="width:100px;">'
 	  						+ '<col>'
@@ -190,14 +179,14 @@
 	  						+ '</td>'
 	  						+ '</tr>'
 	  						+ '</table>'
+	  						+ '<div class="close" onclick="closeCustomOverlay()" title="닫기">X</div>'
 	   		,
 	     	iwPosition = new kakao.maps.LatLng(infodata.lat,infodata.lng)
 		  // 인포윈도우를 생성합니다
 		     let infowindow = new kakao.maps.InfoWindow({
 		         position : iwPosition, 
-		         content : iwContent 
+		         content : iwContent,
 		     });
-	  		//console.log('displayInfo')
 	  		kakao.maps.event.addListener(infomarker, 'click', function(){
 	  			if(infoCheck){
 	  				infoCheck.setMap(null);// param이 null ==> 지도에서 infoCheck를 제. 
@@ -205,14 +194,31 @@
 	  			infowindow.open(map, infomarker);
 	  			infoCheck = infowindow
 	  		})
+		    
+	  		window.closeCustomOverlay = function() {
+ 	        infoCheck.setMap(null);
+  	    };
+		    
 	    }
-	    
-	    function closeCustomOverlay() {
-	    	infoCheck.setMap(null);
-		}
-	    
-	    $(document).on('click', "#test", function(){
-	       $.ajax({
+	    //엔터 검색
+      document.getElementById("InputName").addEventListener("keydown", function(event) {
+          if (event.keyCode === 13) {
+              searchBank();
+          }
+      });
+      
+	    //버튼 검색
+      document.getElementById("searchBtn").addEventListener("click", function() {
+    	  searchBank();
+      });
+      
+      function searchBank() {
+   	    let event = window.event;
+
+   	    // 이벤트의 기본 동작을 막음
+   	    event.preventDefault();
+   	    
+    	  $.ajax({
 	          url : '/atlanbank/ticket/' + $('#InputName').val(),   
 	          type : 'get',
 	          success : function (data){
@@ -223,18 +229,20 @@
 	             content +=     '<table class="table table-hover" style="text-align:center">';
 	             content +=         '<thead>';
 	             content +=             '<tr>'
-	             content +=                 '<th scope="col" style="width: 15%;">지점명</th>';
-	             content +=                 '<th scope="col" style="width: 70%;">주소</th>';
+	             content +=                 '<th scope="col" style="width: 20%;">지점명</th>';
+	             content +=                 '<th scope="col" style="width: auto;">주소</th>';
 	             content +=                 '<th scope="col" style="width: 15%;">영업시간</th>';
+	             content +=                 '<th scope="col" style="width: 10%;">비고</th>';
 	             content +=             '</tr>';
 	             content +=         '</thead>';
 	             content +=         '<tbody>';
 	             
 	             data.data.forEach(function(item){
 	            	 content += '<tr class="chooselocation" id=' + item.bankSeq + '>';
-	                 content += '<td style="width: 15%;">' + item.bankName + '</td>';
-	                 content += '<td style="width: 70%;">' + item.bankAddress + '</td>';
+	                 content += '<td style="width: 20%;">' + item.bankName + '</td>';
+	                 content += '<td style="width: auto;">' + item.bankAddress + '</td>';
 	                 content += '<td style="width: 15%;">' + (item.startTime ? (item.startTime + '~' + item.endTime) : '영업시간 정보 없음') + '</td>';
+	                 content += '<td style="width: 5%;">' + (item.type == 1 ? '은행' : 'ATM') + '</td>';
 	                 content += '</tr>';
 	           	});
 	             
@@ -244,37 +252,37 @@
 	             
 	             // 이동할 위도 경도 위치를 생성합니다 
 	             let moveLatLon = new kakao.maps.LatLng(data.data[0].lat, data.data[0].lng);
-	               
-	               // 지도 중심을 부드럽게 이동시킵니다
-	               // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-	               map.panTo(moveLatLon);
+               
+               // 지도 중심을 부드럽게 이동시킵니다
+               // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+               map.panTo(moveLatLon);
 	             
 	          },
 	          error : function() {
 	        	  console.error("Error fetching data:", error);
 	          }
 	       })
-	    })
+      }
+      
+	    
     })
     
     $(document).on('click', ".chooselocation", function(){
        let bankSeq = $(this).attr('id');
-       location.href = "/atlanbank/ticket/reservation/" + bankSeq
+       let type = $(this).find('td:last-child').text().trim(); // 해당 열의 마지막 td 요소의 텍스트(비고)를 가져옴
+				console.log("type", type);
+       // 비고가 'ATM'인 경우에만 modal 띄우기
+       if (type === 'ATM') {
+           $('#exampleModal').modal('show');
+       } else {
+       		location.href = "/atlanbank/ticket/reservation/" + bankSeq
+       }
+       
+       
 
     })
   
 </script>
-
-	<!-- Essential Scripts
-    =====================================-->
-	<!-- 
-    <script src="${ pageContext.request.contextPath }/resources/plugins/slick-carousel/slick/slick.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="${ pageContext.request.contextPath }/resources/plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
-    
-    <script src="${ pageContext.request.contextPath }/resources/js/script.js"></script>
-    <script src="${ pageContext.request.contextPath }/static/assets/js/script.js"></script>
-	 -->
 
 </body>
 </html>

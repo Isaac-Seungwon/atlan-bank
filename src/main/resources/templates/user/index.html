@@ -142,8 +142,8 @@
 	                    <!-- Iterate over bankList to dynamically generate rows -->
 	                    <th:block th:each="bank : ${favoriteBanks}">
 	                        <tr>
-	                            <td th:text="${bank.bankName}"></td> <!-- Assuming you have a property 'name' in Bank class -->
-	                            <td><button th:id="${bank.bankSeq}" class="tdBtn btn btn-main">번호표 발급</button></td>
+	                            <td th:text="${bank.bankName}" valign="middle"></td>
+	                            <td valign="middle"><button th:id="${bank.bankSeq}" class="tdBtn btn btn-main">번호표 발급</button></td>
 	                        </tr>
 	                    </th:block>
 	                </tbody>

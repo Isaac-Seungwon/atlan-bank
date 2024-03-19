@@ -1,6 +1,9 @@
 package com.test.bank.card.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +12,11 @@ import com.test.bank.card.domain.BenefitsDTO;
 import com.test.bank.card.domain.CardAnnualFeeDTO;
 import com.test.bank.card.domain.CardDTO;
 import com.test.bank.card.domain.CardUsageGuideDTO;
+import com.test.bank.card.domain.MemberCardDTO;
 import com.test.bank.card.domain.MemberCardHistoryDTO;
 import com.test.bank.card.repository.CardDAO;
+
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class CardService {
@@ -38,27 +44,8 @@ public class CardService {
 		
 		//Add annualFeeList to CardDTOList
 		for (CardDTO card : list) {
-			
 		    List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
-		    
-			//thousands separator
-		    for (CardAnnualFeeDTO f : feeList) {
-		        String annualFeeStr = f.getAnnualFee();
-		        if (annualFeeStr != null && !annualFeeStr.isEmpty()) {
-		            try {
-		                int fee = Integer.parseInt(annualFeeStr);
-		                String newFee = String.format("%,d", fee);
-		                f.setAnnualFee(newFee);
-		            } catch (NumberFormatException e) {
-		                // 정수로 변환할 수 없는 경우 처리
-		                // 예를 들어 로깅 또는 다른 예외 처리 로직 추가
-		                e.printStackTrace();
-		            }
-		        }
-		    }
-		    
 		    card.setFeeList(feeList);
-		    //System.out.println(card.toString());
 		}
 		
 		return list;
@@ -71,13 +58,6 @@ public class CardService {
 		//Add annualFeeList to CardDTOList
 		for (CardDTO card : list) {
 			List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
-			
-			//thousands separator
-			for (CardAnnualFeeDTO f : feeList) {
-				int fee = Integer.parseInt(f.getAnnualFee());
-				String newFee = String.format("%,d", fee);
-				f.setAnnualFee(newFee);
-			}
 			card.setFeeList(feeList);
 		}
 		
@@ -90,22 +70,6 @@ public class CardService {
 		
 		//1. Add annualFeeList to CardDTO
 		List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(seq);
-		
-		//thousands separator
-		for (CardAnnualFeeDTO f : feeList) {
-	        String annualFeeStr = f.getAnnualFee();
-	        if (annualFeeStr != null && !annualFeeStr.isEmpty()) {
-	            try {
-	                int fee = Integer.parseInt(annualFeeStr);
-	                String newFee = String.format("%,d", fee);
-	                f.setAnnualFee(newFee);
-	            } catch (NumberFormatException e) {
-	                // 정수로 변환할 수 없는 경우 처리
-	                // 예를 들어 로깅 또는 다른 예외 처리 로직 추가
-	                e.printStackTrace();
-	            }
-	        }
-	    }
 		
 		dto.setFeeList(feeList);
 		
@@ -165,22 +129,6 @@ public class CardService {
 			
 		    List<CardAnnualFeeDTO> feeList = dao.getAnnualFeeList(card.getCardSeq());
 		    
-			//thousands separator
-		    for (CardAnnualFeeDTO f : feeList) {
-		        String annualFeeStr = f.getAnnualFee();
-		        if (annualFeeStr != null && !annualFeeStr.isEmpty()) {
-		            try {
-		                int fee = Integer.parseInt(annualFeeStr);
-		                String newFee = String.format("%,d", fee);
-		                f.setAnnualFee(newFee);
-		            } catch (NumberFormatException e) {
-		                // 정수로 변환할 수 없는 경우 처리
-		                // 예를 들어 로깅 또는 다른 예외 처리 로직 추가
-		                e.printStackTrace();
-		            }
-		        }
-		    }
-		    
 		    card.setFeeList(feeList);
 		}
 		
@@ -191,23 +139,107 @@ public class CardService {
 		return dao.getPrevMonthCardHistory(memberSeq);
 	}
 
-	public String getThisMonthAmount(String memberSeq) {
+	public int getThisMonthAmount(String memberSeq) {
 
-		List<MemberCardHistoryDTO> list = dao.getPrevMonthCardHistory(memberSeq);
-		
-		int sum = 0;
-		
-		for (MemberCardHistoryDTO dto : list) {
-			sum += Integer.parseInt(dto.getAmount()); 
-		}
-		
-		String newSum = String.format("%,d", sum);
-		
-		return newSum;
+		return dao.getThisMonthTotalAmount(memberSeq);
 	}
 
-	public List<MemberCardHistoryDTO> getHistoryList(String memberSeq) {
-		return dao.getHistoryList(memberSeq);
+	public List<MemberCardHistoryDTO> getFiveHistoryList(String memberSeq) {
+	    return dao.getFiveHistoryList(memberSeq);
+	}
+
+	public int checkPassword(Map<String, String> map) {
+		return dao.checkPassword(map);
+	}
+
+	public List<MemberCardDTO> getMemberCardList(String seq) {
+		return dao.getMemberCardList(seq);
+	}
+
+	public List<MemberCardHistoryDTO> getAllThisMonthPaymentList(String seq) {
+		return dao.getAllThisMonthPaymentList(seq);
+	}
+
+	public int getThisMonthTotalAmount(String seq) {
+		return dao.getThisMonthTotalAmount(seq);
+	}
+
+	public String[] getThisMonthTotalSeq(String seq) {
+		return dao.getThisMonthTotalSeq(seq);
+	}
+
+	public int getThisMonthSpecificTotalAmount(HttpSession session) {
+		
+		String[] seqArr = (String[]) session.getAttribute("memberCardHistorySeq");
+		
+		int amount = 0;
+		
+		for (int i=0; i<seqArr.length; i++) {
+			
+			amount += dao.getThisMonthSpecificTotalAmount(seqArr[i]);
+		}
+		
+		return amount;
+	}
+
+	public List<MemberCardHistoryDTO> getThisMonthSpecificAmountList(Map<String, String> map, HttpSession session) {
+		
+		String[] seqArr = (String[]) session.getAttribute("memberCardHistorySeq");
+		
+		List<MemberCardHistoryDTO> list = new ArrayList<MemberCardHistoryDTO>();
+		
+		for (int i=0; i<seqArr.length; i++) {
+			
+			MemberCardHistoryDTO dto = new MemberCardHistoryDTO();
+			
+			map.put("memberCardHistorySeq", seqArr[i]);
+			
+			dto =  dao.getThisMonthSpecificAmountList(map);
+			list.add(dto);
+		}
+		
+		return list;
+	}
+
+	public int checkBalance(Map<String, String> map) {
+		return dao.checkBalance(map);
+	}
+
+	public void AddPayment(Map<String, String> map, HttpSession session) {
+		
+		String[] seqArr = (String[]) session.getAttribute("memberCardHistorySeq");
+		
+		int result = 0;
+		
+		for (int i=0; i<seqArr.length; i++) {
+			
+			String amount = dao.getAmount(seqArr[i]);
+			
+			System.out.println("amount: "+ amount);
+			
+			map.put("amount", amount);
+			map.put("memberCardHistorySeq", seqArr[i]);
+			
+			System.out.println("amount: " + map.get("amount"));
+			System.out.println("memberCardHistorySeq: " + map.get("memberCardHistorySeq"));
+			
+			result += dao.AddPayment(map);
+			
+			System.out.println("여기?");
+			result += dao.withdraw(map);
+		}
+	}
+
+	public String getAccountNumber(Map<String, String> map) {
+		return dao.getAccountNumber(map);
+	}
+
+	public List<MemberCardHistoryDTO> getAllPaymentList(String seq) {
+		return dao.getAllPaymentList(seq);
+	}
+
+	public List<Map<String, Object>> autocomplete(Map<String, Object> paraMap) {
+		return dao.autocomplete(paraMap);
 	}
 
 	

@@ -66,19 +66,175 @@
 		       to_char(transaction_date, 'yyyy-mm') = to_char(sysdate, 'yyyy-mm')
 	</select>
 	
-	<select id="getHistoryList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+	<select id="getFiveHistoryList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select * from(
+			select
+			    b.member_seq,
+			    a.member_card_history_seq,
+			    a.member_card_seq,
+			    to_char(a.transaction_date, 'YYYY-MM-DD HH24:MI') as transaction_date,
+			    a.name,
+			    a.amount,
+			    a.installment_months,
+			    (select name from tblCard where card_seq = b.card_seq) as card_name
+			  from tblMemberCardHistory a
+			 inner join tblMemberCard b
+			    on b.member_card_seq = a.member_card_seq
+			 where member_seq = 2
+			 order by transaction_date desc)
+		where rownum &lt;= 5
+	</select>
+	
+	<select id="checkPassword" parameterType="map" resultType="int">
+		SELECT
+		    count(*)
+		  FROM tblMemberCard
+		 WHERE 1=1 and
+		       member_seq = #{memberSeq} and
+		       substr(card_no, length(card_no)-3) = #{cardNo} and
+		       substr(password, 0, 2) = #{pw}
+	</select>
+	
+	<select id="getMemberCardList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardDTO">
 		select
-		    b.member_seq,
-		    a.member_card_history_seq,
 		    a.member_card_seq,
-		    to_char(a.transaction_date, 'YYYY-MM-DD HH:MI') as transaction_date,
+		    a.member_seq,
+		    SUBSTR(a.card_no, 1, 4) || '-' || RPAD('*', 4, '*') || '-' || RPAD('*', 4, '*') || '-' || SUBSTR(a.card_no, 13) AS card_no,
+		    a.card_seq,
+		    a.exp,
+		    a.password,
+		    (select name from tblCard where card_seq = a.card_seq) as name
+		from tblMemberCard a
+		where member_seq = #{seq}
+		order by a.member_card_seq desc
+	</select>
+	
+	<select id="getAllThisMonthPaymentList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select
+		    a.member_card_history_seq,
+		    b.member_seq,
+		    b.member_card_seq,
+		    b.card_seq,
+		    (select name from tblCard where card_seq = b.card_seq) as card_name,
+		    to_char(a.transaction_date, 'yyyy-mm-dd') as transaction_date,
+		    a.name,
 		    a.amount,
 		    a.installment_months
-		  from tblMemberCardHistory a
-		 inner join tblMemberCard b
-		    on b.member_card_seq = a.member_card_seq
-		 where member_seq = #{memberSeq}
-		 order by transaction_date desc
+		from tblMemberCardHistory a 
+		inner join tblmembercard b
+		on b.member_card_seq = a.member_card_seq
+		where to_char(transaction_date, 'yyyymm') = to_char(add_months(sysdate, -1), 'yyyymm') and
+			  b.member_seq = #{seq} and
+			  a.member_card_history_seq not in (select member_card_history_seq from tblPayment where member_card_history_seq = a.member_card_history_seq)
+		order by a.transaction_date asc
+	</select>
+	
+	<select id="getThisMonthTotalAmount" parameterType="String" resultType="int">
+		SELECT
+		    sum(amount) as sum
+		  FROM tblMemberCardHistory a
+		 INNER JOIN tblMemberCard b
+		    ON b.member_card_seq = a.member_card_seq
+		 WHERE 1=1 and
+		       to_char(transaction_date, 'yyyymm') = to_char(add_months(sysdate, -1), 'yyyymm') and
+		       b.member_seq = #{seq} and
+		       a.member_card_history_seq not in (select member_card_history_seq from tblPayment where member_card_history_seq = a.member_card_history_seq)
+	</select>
+	
+	<select id="getThisMonthTotalSeq" parameterType="String" resultType="String">
+		SELECT
+		    a.member_card_history_seq
+		  FROM tblMemberCardHistory a
+		 INNER JOIN tblMemberCard b
+		    ON b.member_card_seq = a.member_card_seq
+		 WHERE 1=1 and
+		       to_char(transaction_date, 'yyyymm') = to_char(add_months(sysdate, -1), 'yyyymm') and
+		       b.member_seq = #{seq} and
+		       a.member_card_history_seq not in (select member_card_history_seq from tblPayment where member_card_history_seq = a.member_card_history_seq)
+	</select>
+	
+	<select id="getThisMonthSpecificTotalAmount" parameterType="String" resultType="int">
+		SELECT
+			amount
+		  FROM tblMemberCardHistory
+		 WHERE member_card_history_seq = #{memberCardHistorySeq}
+	</select>
+	
+	<select id="getThisMonthSpecificAmountList" parameterType="map" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select
+		    a.member_card_history_seq,
+		    b.member_seq,
+		    b.member_card_seq,
+		    b.card_seq,
+		    (select name from tblCard where card_seq = b.card_seq) as card_name,
+		    to_char(a.transaction_date, 'yyyy-mm-dd') as transaction_date,
+		    a.name,
+		    a.amount
+		from tblMemberCardHistory a 
+		inner join tblmembercard b
+		on b.member_card_seq = a.member_card_seq
+		where a.member_card_history_seq = #{memberCardHistorySeq}
+	</select>
+	
+	<select id="checkBalance" parameterType="map" resultType="int">
+		select
+		    balance
+		  from tblBankBook
+		 where bank_book_seq = (
+		     select distinct bank_book_seq
+		       from tblMemberCard
+		      where member_seq = #{memberSeq})		
+	</select>
+	
+	<select id="getAmount" parameterType="String" resultType="String">
+		select amount from tblMemberCardHistory where member_card_history_seq = #{seq}
+	</select>
+	
+	<insert id="AddPayment" parameterType="map">
+		insert into tblPayment (payment_seq, member_card_history_seq, payment_date, amount) values (payment_seq.nextVal, #{memberCardHistorySeq}, TO_DATE(sysdate, 'YYYY-MM-DD HH24:MI'), #{amount})
+	</insert>
+	
+	<update id="withdraw" parameterType="map">
+		update tblBankBook set balance = balance - #{amount}
+			where bank_book_seq = (
+		     select distinct bank_book_seq
+		       from tblMemberCard
+		      where member_seq = #{memberSeq})
+	</update>
+	
+	<select id="getAccountNumber" parameterType="map" resultType="String">
+		select
+		    account_number
+		  from tblBankBook
+		 where bank_book_seq = (
+		     select distinct bank_book_seq
+		       from tblMemberCard
+		      where member_seq = #{memberSeq})
+	</select>
+	
+	<select id="getAllPaymentList" parameterType="String" resultType="com.test.bank.card.domain.MemberCardHistoryDTO">
+		select
+		    a.member_card_history_seq,
+		    b.member_seq,
+		    b.member_card_seq,
+		    b.card_seq,
+		    (select name from tblCard where card_seq = b.card_seq) as card_name,
+		    to_char(a.transaction_date, 'YYYY-MM-DD HH24:MI') as transaction_date,
+		    a.name,
+		    a.amount,
+		    a.installment_months
+		from tblMemberCardHistory a 
+		inner join tblmembercard b
+		on b.member_card_seq = a.member_card_seq
+		where b.member_seq = #{seq}
+		order by a.transaction_date desc
+	</select>
+	
+	<select id="autocomplete" parameterType="map" resultType="map">
+		SELECT
+			name
+		  FROM tblCard
+		 WHERE name like '%' || #{value} || '%'
 	</select>
 	
 </mapper>

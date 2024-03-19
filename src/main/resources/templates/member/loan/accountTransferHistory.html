@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout/layout}" layout:fragment="Content">
+<head>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<title>카드</title>
+
+<style>
+	.card-container {
+		margin-left: 20%;
+		width: 60%;
+	}
+	.section-header h2 {
+		font-size: 32px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    padding-bottom: 0;
+	    color: #001973;
+	    position: relative;
+	    z-index: 2;
+	    padding-bottom: 20px;
+	    position: relative;
+	}
+	.section-header h2:after {
+	    content: "";
+	    position: absolute;
+	    display: block;
+	    width: 45px;
+	    height: 3px;
+	    background: var(--color-primary);
+	    bottom: 0;
+	    margin: auto;
+	}
+	.section-header h2 {
+	    padding-bottom: 20px;	
+	}
+	/* section empty space */
+	section {
+		margin: 20px 135px;
+		padding: 20px 60px;
+	}
+	
+	.card-container {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.card-box {
+		width: 50%;
+		height: 200px;
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 1000;
+		margin: 10px 0;
+	}
+	
+	.card-container .card-box:last-child {
+		padding-right: 0;
+	}
+	
+	.card-box-item {
+		width: 100%;
+		height: 100%;
+		border-radius: 12px;
+		padding: 24px;
+		position: relative;
+		top: 0;
+		left: 0;
+		backface-visibility: hidden;
+		transition: all .5s;
+		border-color: #000;
+	}
+	
+	.card-title {
+		cursor: pointer;
+	}
+	
+	.front {
+		position: absolute;
+		z-index: 1;
+		opacity: 1;
+		transform: rotateY(0);
+		background: #FFF;
+	}
+	
+	.card-img {
+		position: absolute;
+		left: 50%;
+		top: 245px;
+		width: 202px;
+		height: 128px;
+		margin-left: -101px;
+		z-index: 1;
+	}
+	
+	.card-img img {
+		max-width: 202px;
+		max-height: 202px;
+	}
+	
+	.vertical {
+		transform: rotate(90deg);
+	}
+	
+	/* card annual fee */
+	.card-annual-fee {
+		padding: 10px 0;
+		font-size: .9rem;
+	}
+	
+	.card-annual-fee-sub-title > span:first-child {
+		float: left;
+	}
+	
+	.card-annual-fee-sub-title > span:last-child {
+		float: right;
+	}
+	
+	.card-annual-fee-sub-title::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	.card-annual-fee-sub-title span {
+		margin-bottom: 0;
+		font-weight: bold;
+	}
+	
+	.card-annual-fee-sub-title span:nth-child(2) {
+		cursor: pointer;
+	}
+	
+	.card-annual-fee > hr {
+		margin: 10px 1px;
+		opacity: .1;
+	}
+	
+	.card-annual-fee-box {
+		display: inline-block;
+		width: 49%;
+	}
+	
+	.card-annual-fee-box span {
+		font-weight: 500;
+	}
+	
+	.none_select {
+		-webkit-touch-callout: none; /* iOS Safari */
+	    -webkit-user-select: none; /* Safari */
+	    -ms-user-select: none; /* 인터넷익스플로러 */
+	    user-select: none;
+	    pointer-events : none;
+	    caret-color: transparent;
+	}
+	.slick-prev:before, .slick-next:before {
+		color: #000;
+	}
+</style>
+</head>
+
+<body>
+	<!-- Start Main -->
+	<main id="main">
+		<!-- ======= Breadcrumbs ======= -->
+		<div class="breadcrumbs">
+			<div class="page-header d-flex align-items-center"
+				style="background-image: url('/atlanbank/assets/img/loan/accountTransfer_main.png');">
+				<div class="container position-relative">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-6 text-center">
+							<h2>나의 입출금내역</h2>
+							<p>수수료가 0원! Atlan Bank 계좌이체</p>
+             				<p>나의 돈을 타인에게 보내야 할때, 실시간 계좌이체를 통해 간편하게!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<div class="container">
+					<ol>
+						<li><a href="/atlanbank/index.do">Home</a></li>
+						<li><a href="/atlanbank/member/card/view.do">MyPage</a></li>
+						<li><a href="#">입출금내역</a></li>
+					</ol>
+				</div>
+			</nav>
+		</div>
+		<!-- End Breadcrumbs -->
+		
+		<!-- Mypage Card Section -->
+		<section id="get-a-quote" class="get-a-quote" style="margin-top: 20px; padding: 0 0;">
+			<div class="mt-30 specific-amount container" data-aos="fade-up">
+				<div class="section-header" style="position: relative;">
+					<h2>입출금내역</h2>
+				</div>
+				<div class="php-email-form" style="margin-bottom: 50px;" th:if="${accounttransferdto} == 'nothing'">
+					<h2 style="margin: 0;">고객님의 계좌가 존재하지 않습니다.</h2>
+				</div>
+				<div class="php-email-form" style="margin-bottom: 50px;" th:if="${accounttransferdto} != 'nothing'">
+					<h3>계좌 선택</h3>
+			        <div class="card-container" >
+						<div class="card-row slider">
+							<div class="card-box slide" th:each="accounttransferdto, account:${accounttransferdto}" th:id="'account'+${account.index}" th:value="${accounttransferdto.bankBookSeq}">
+								<div class="card-box-item front" style="border: 1px solid #d1d1d1;">
+									<div class="card-title none_select">
+										<div class="card-title none_select">
+											<h3 th:text="${accounttransferdto.name}"></h3>
+											<p th:text="${accounttransferdto.info}"></p>
+										</div>
+									</div>
+									<div class="card-annual-fee none_select">
+										<div class="card-annual-fee-sub-title none_select">
+											<span>계좌번호</span>
+											<span th:text="${accounttransferdto.accountNumber}"></span>
+										</div>
+										<div class="card-annual-fee-sub-title none_select">
+											<span>잔액</span>
+											<span th:text="${accounttransferdto.balance}"></span>
+										</div>
+										<div class="card-annual-fee-sub-title none_select">
+											<span>만료일</span>
+											<span th:text="${#strings.substring(accounttransferdto.maturityDate,0,10)}"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<br>
+				<br>
+				<div style="padding: 10px; position: relative;">
+					<a href="javascript: void(0);" style="color: #FFF; padding: 10px 20px; background: #0d42ff; border-radius: 5px; display: inline-block; font-size: .9rem;">최신순 <i class="bi bi-arrow-down-up"></i></a>
+					<p class="unit">(단위: 원)</p>
+				</div>
+				<table>
+					<colgroup>
+						<col style="width: 25%;">
+						<col style="width: 25%;">
+						<col style="width: 50%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>이용일</th>
+							<th>이용카드</th>
+							<th>이용금액</th>
+						</tr>
+					</thead>
+					<tbody id="account-history-list">
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</section> <!-- End Mypage Card Section -->
+		
+		<!-- 안내사항 Section -->
+		<section>
+			<div class="noticeArea">
+				<h4 class="title">안내사항</h4>
+				<ul class="listStyle1 indent mt-30">
+					<li>최근 12개월 이내 카드 승인 정보를 기준으로 이용내역이 조회됩니다.(단, 해외 이용내역은 최근 6개월이내)<br>
+						연회비, SMS이용요금, KB국민 포인트리연계할부서비스 등 승인없이 청구되는 내역은 결제예정금액조회에서 조회할 수 있습니다.
+					</li>
+					<li>이용금액의 할인 여부 및 할인금액은 매출전표 접수 이후 결제예정금액조회에서 조회할 수 있습니다.</li>
+					<li>교통/자판기, 단기카드대출(현금서비스), 해외청구, 화물차유류카드(유가보조금) 세부 이용내역은 해당 탭에서 조회할 수 있습니다.</li>
+					<li>신차구입관련 할인금액은 고객센터로 확인해주시기 바랍니다.</li>
+					<li>정상 매출 발생 후 90일을 초과하여 취소한 경우, 이미 납부한 할부수수료와 일부결제금액이월약정(리볼빙) 수수료는 환급되지 않습니다.</li>
+					<li>정상 매출 취소 시 청구금액과 환급금액은 일반적으로 자동정리(상계)됩니다. 자동으로 정리되지 않는 경우 취소전표 매입일 기준 처음 도래하는 결제일에 환급되며 할부 취소전표는 할부기간 동안 균등 분할하여 수수료와 합산하여 환급됩니다. 단, 정상결제된 전표가 결제일 당일 취소매입 되는 경우 결제금액에서 차감됩니다.</li>
+					<li>해외 정상/취소 매출(승인시점) 조회시 해외에서 이용한 금액은 국제브랜드사가 지정한 환율에 의해 미화(USD)로 환산된 금액이 보여집니다.</li>
+					<li>승인시간은 거래한 해외가맹점에 따라 그리니치표준시(GMT) 또는 현지시간(Local Time)으로 보여질 수 있습니다.></li>
+					<li>국제브랜드사와 해외가맹점의 여건과 승인(이용) / 매입(청구) 시점의 차이로 인해 결제 금액과 취소금액이 상이할 수 있습니다.</li>
+					<li>해외가맹점에서 해당 국가의 현지 통화가 아닌 원화(KRW) 결제 시 통화 환전이 추가 발생되어 더 많은 금액이 청구될 수 있으니, 해외 결제 시 미화 또는 현지 통화로 결제하시길 권장합니다.</li>
+				</ul>
+			</div>
+		</section>
+		<!-- //End 안내사항 Section -->
+		
+		
+	</main>
+	<!-- End Main -->
+
+	<!-- Script -->
+	<script>
+		$('.slider').slick({
+			infinite: false
+		});
+		$(document).ready(function () {
+			$('.slick-prev').click();
+		});
+		$('.slider').on('afterChange', function(event, slick, currentSlide){
+			var currentValue = $('.slick-active').attr('value');
+			$.ajax({
+				type : 'POST',
+				url : '/atlanbank/accountTransfer/depositWithdrawal',
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				beforeSend : function(jqXHR, settings) {
+					var header = $("meta[name='_csrf_header']").attr("content");
+					var token = $("meta[name='_csrf']").attr("content");
+					jqXHR.setRequestHeader(header, token);
+				},
+				data : JSON.stringify(currentValue),
+				dataType : 'json',
+				success : function(result) {
+					$('#account-history-list').html("");
+	 				$(result).each((index, item) => {
+	 					$('#account-history-list').append(`
+	 						<tr>
+								<td style="border-left: 0; text-align: center;">${item.dwDate}</td>
+								<td style="text-align: center;">${item.accountNumber}</td>
+								<td style="border-right: 0; text-align: center;">${item.depositWithdrawaAmount}</td>
+							</tr>
+	 					`);
+	 				});
+				},
+				error : function(a, b, c) {
+					console.log(a, b, c);
+				}
+			});
+		});
+		
+	</script>
+
+
+</body>
+</html>

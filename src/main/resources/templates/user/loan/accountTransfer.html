@@ -179,7 +179,7 @@
          justify-content: center;
          
          width:100%;
-         height:135%;
+         height:170%;
          
          background-color: rgba(0,0,0,0.4);
          align-items: center;
@@ -204,7 +204,6 @@
      .modal_body {
      	background-color: #fff;
      	width: 50%; 
-     	height: 50%;
         border-radius: 10px;
      }
      .modal_body input{
@@ -221,20 +220,23 @@
 	.btn-open-modal{
 		background: #999999;
 	}
-
+	section {
+		margin: 20px 135px;
+		padding: 20px 60px;
+	}
 </style>
 <body>
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/loan_main2.png');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('/atlanbank/assets/img/loan/accountTransfer_main.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>계좌이체</h2>
-              <p>돈이 필요한 순간 Atlan Bank 대출</p>
-              <p>돈이 필요한 순간, 필요한 분들에게 대출의 기회가 돌아갈 수 있도록 입체적인 심사 기준을 만들었어요</p>
+              <p>수수료가 0원! Atlan Bank 계좌이체</p>
+              <p>나의 돈을 타인에게 보내야 할때, 실시간 계좌이체를 통해 간편하게!</p>
             </div>
           </div>
         </div>
@@ -372,6 +374,19 @@
 		</form>		
       </div>
     </section><!-- End Services Section -->
+    <!-- 안내사항 Section -->
+	<section>
+		<div class="noticeArea">
+			<h4 class="title">안내사항</h4>
+			<ul class="listStyle1 indent mt-30">
+				<li>입금시에는 창구에서 은행직원으로부터 입금금액 일치여부를 확인하고, 출금시에는 창구에서 현금 및 통장상의 찾으신 금액과 잔액을 확인하여야 합니다.</li>
+				<li>현금카드를 이용하여 현금을 출금하는 경우에는 현금인출기에 비밀번호 입력시 다른 사람에게 보이지 않도록 주의하고 현금이 나오지 않을 경우 즉시 은행직원에게 연락하여 출금으로 처리되었는지 여부를 확인해야 합니다.</li>
+				<li>인터넷뱅킹, 자동화기기, 폰뱅킹을 이용한 계좌이체시 계좌를 잘못 입력하여 제3자에게 착오 송금된 경우 취소할 수 없으며, 수취인에게 예금을 반환 받기 위해서는 법적절차 등을 밟아야 하므로 계좌이체 실행전에 다시한번 정확한 계좌번호 및 수취인을 확인하여야 합니다.</li>
+				<li>은행 영업점 창구에서 송금인이 무통장입금전표를 잘못 작성하여 송금한 경우에도 동일하게 해당되므로 정확한 수취인명의 및 수취계좌를 확인해야 합니다.</li>
+			</ul>
+		</div>
+	</section>
+	<!-- //End 안내사항 Section -->
 </main><!-- End #main -->
 </body>
 <script>
@@ -455,6 +470,7 @@ btnOpenModal.addEventListener("click", ()=>{
 	
     modal.style.display="flex";
 });
+
 btnCloseModal.addEventListener("click", ()=>{
     modal.style.display="";
 });
